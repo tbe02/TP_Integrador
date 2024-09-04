@@ -1,25 +1,29 @@
-﻿Public Structure Usuario
-    Public Nombre As String
-    Public Contrasena As String
-End Structure
+﻿
 
-Dim usuarios As New List(Of Usuario)
 
-Sub AgregarUsuarios()
-    usuarios.Add(New Usuario With {.Nombre = "admin", .Contrasena = "admin"})
-    ' Puedes agregar más usuarios aquí
-End Sub
-
-Function VerificarPassword(nombre As String, password As String) As Boolean
-    For Each usuario In usuarios
-        If usuario.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase) Then
-            Return usuario.Contrasena.Equals(password)
-        End If
-    Next
-    Return False
-End Function
 
 Public Class Form1
+
+    Public Structure Usuario
+        Public Nombre As String
+        Public Contrasena As String
+    End Structure
+
+    Dim usuarios As New List(Of Usuario)
+
+    Sub AgregarUsuarios()
+        usuarios.Add(New Usuario With {.Nombre = "admin", .Contrasena = "admin"})
+        ' Puedes agregar más usuarios aquí
+    End Sub
+
+    Function VerificarPassword(nombre As String, password As String) As Boolean
+        For Each usuario In usuarios
+            If usuario.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase) Then
+                Return usuario.Contrasena.Equals(password)
+            End If
+        Next
+        Return False
+    End Function
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
         AgregarUsuarios()
 
@@ -33,11 +37,11 @@ Public Class Form1
             MessageBox.Show("Debe completar todos los campos.", "Falta de datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             If VerificarPassword(usuario, password) Then
-                MessageBox.Show("Ingreso exitoso", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Success)
+                MessageBox.Show("Ingreso exitoso", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
             Else
                 MessageBox.Show("Ingreso fallido", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End if
-        End if
+            End If
+        End If
     End Sub
 End Class
 
