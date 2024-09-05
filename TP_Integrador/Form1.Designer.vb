@@ -29,7 +29,6 @@ Partial Class Form1
         PictureBox1 = New PictureBox()
         TextBox1 = New TextBox()
         Label1 = New Label()
-        Button3 = New Button()
         Panel1.SuspendLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -117,19 +116,6 @@ Partial Class Form1
         Label1.TabIndex = 0
         Label1.Text = "Login"
         ' 
-        ' Button3
-        ' 
-        Button3.BackColor = Color.FromArgb(CByte(128), CByte(128), CByte(255))
-        Button3.FlatStyle = FlatStyle.Popup
-        Button3.Font = New Font("Arial Rounded MT Bold", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Button3.ForeColor = Color.White
-        Button3.Location = New Point(37, 23)
-        Button3.Name = "Button3"
-        Button3.Size = New Size(70, 29)
-        Button3.TabIndex = 6
-        Button3.Text = "Salir"
-        Button3.UseVisualStyleBackColor = False
-        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(8.0F, 20.0F)
@@ -137,7 +123,6 @@ Partial Class Form1
         BackColor = Color.FromArgb(CByte(0), CByte(51), CByte(102))
         BackgroundImageLayout = ImageLayout.Stretch
         ClientSize = New Size(782, 553)
-        Controls.Add(Button3)
         Controls.Add(Panel1)
         MaximizeBox = False
         MaximumSize = New Size(800, 600)
@@ -159,6 +144,5 @@ Partial Class Form1
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PictureBox2 As PictureBox
-    Friend WithEvents Button3 As Button
 
 End Class
