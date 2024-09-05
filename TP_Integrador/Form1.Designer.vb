@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form1
+Partial Class FormLogin
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,127 +22,222 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Panel1 = New Panel()
-        PictureBox2 = New PictureBox()
-        Button1 = New Button()
-        TextBox2 = New TextBox()
-        PictureBox1 = New PictureBox()
-        TextBox1 = New TextBox()
-        Label1 = New Label()
-        Panel1.SuspendLayout()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
+        BIniciarSesion = New Button()
+        BarraTitulo = New Panel()
+        PBMinimizar = New PictureBox()
+        PBCerrar = New PictureBox()
+        TBUsuario = New TextBox()
+        TBContrasena = New TextBox()
+        LUsuario = New Label()
+        LContrasena = New Label()
+        BarraFooter = New Panel()
+        CBRecordarme = New CheckBox()
+        PBIconoEmpresa = New PictureBox()
+        LGST = New Label()
+        LGestionServicTec = New Label()
+        BarraTitulo.SuspendLayout()
+        CType(PBMinimizar, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PBCerrar, ComponentModel.ISupportInitialize).BeginInit()
+        CType(PBIconoEmpresa, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' Panel1
+        ' BIniciarSesion
         ' 
-        Panel1.BackColor = Color.FromArgb(CByte(0), CByte(0), CByte(60))
-        Panel1.Controls.Add(PictureBox2)
-        Panel1.Controls.Add(Button1)
-        Panel1.Controls.Add(TextBox2)
-        Panel1.Controls.Add(PictureBox1)
-        Panel1.Controls.Add(TextBox1)
-        Panel1.Controls.Add(Label1)
-        Panel1.Location = New Point(203, 60)
-        Panel1.Name = "Panel1"
-        Panel1.Size = New Size(361, 403)
-        Panel1.TabIndex = 0
+        BIniciarSesion.BackColor = Color.FromArgb(CByte(128), CByte(128), CByte(255))
+        BIniciarSesion.FlatAppearance.BorderSize = 0
+        BIniciarSesion.FlatStyle = FlatStyle.Flat
+        BIniciarSesion.Font = New Font("Arial Rounded MT Bold", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BIniciarSesion.ForeColor = Color.White
+        BIniciarSesion.Location = New Point(44, 563)
+        BIniciarSesion.Margin = New Padding(3, 2, 3, 2)
+        BIniciarSesion.Name = "BIniciarSesion"
+        BIniciarSesion.Size = New Size(350, 50)
+        BIniciarSesion.TabIndex = 4
+        BIniciarSesion.Text = "Iniciar Sesión"
+        BIniciarSesion.UseVisualStyleBackColor = False
         ' 
-        ' PictureBox2
+        ' BarraTitulo
         ' 
-        PictureBox2.BackColor = Color.Transparent
-        PictureBox2.Image = My.Resources.Resources.llave
-        PictureBox2.Location = New Point(55, 208)
-        PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(30, 34)
-        PictureBox2.TabIndex = 5
-        PictureBox2.TabStop = False
+        BarraTitulo.BackColor = Color.FromArgb(CByte(36), CByte(43), CByte(73))
+        BarraTitulo.Controls.Add(PBMinimizar)
+        BarraTitulo.Controls.Add(PBCerrar)
+        BarraTitulo.Dock = DockStyle.Top
+        BarraTitulo.Location = New Point(0, 0)
+        BarraTitulo.Name = "BarraTitulo"
+        BarraTitulo.Size = New Size(430, 45)
+        BarraTitulo.TabIndex = 5
         ' 
-        ' Button1
+        ' PBMinimizar
         ' 
-        Button1.BackColor = Color.FromArgb(CByte(128), CByte(128), CByte(255))
-        Button1.FlatStyle = FlatStyle.Popup
-        Button1.Font = New Font("Arial Rounded MT Bold", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Button1.ForeColor = Color.White
-        Button1.Location = New Point(99, 317)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(140, 29)
-        Button1.TabIndex = 4
-        Button1.Text = "Iniciar Sesión"
-        Button1.UseVisualStyleBackColor = False
+        PBMinimizar.Image = My.Resources.Resources.minimizar_blanco
+        PBMinimizar.Location = New Point(348, 6)
+        PBMinimizar.Name = "PBMinimizar"
+        PBMinimizar.Size = New Size(32, 32)
+        PBMinimizar.SizeMode = PictureBoxSizeMode.AutoSize
+        PBMinimizar.TabIndex = 1
+        PBMinimizar.TabStop = False
         ' 
-        ' TextBox2
+        ' PBCerrar
         ' 
-        TextBox2.BackColor = Color.Gray
-        TextBox2.BorderStyle = BorderStyle.FixedSingle
-        TextBox2.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox2.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        TextBox2.Location = New Point(99, 214)
-        TextBox2.Name = "TextBox2"
-        TextBox2.Size = New Size(184, 28)
-        TextBox2.TabIndex = 3
-        TextBox2.Text = "Contraseña"
+        PBCerrar.Image = My.Resources.Resources.cerrar_blanco
+        PBCerrar.Location = New Point(386, 6)
+        PBCerrar.Name = "PBCerrar"
+        PBCerrar.Size = New Size(32, 32)
+        PBCerrar.SizeMode = PictureBoxSizeMode.AutoSize
+        PBCerrar.TabIndex = 0
+        PBCerrar.TabStop = False
         ' 
-        ' PictureBox1
+        ' TBUsuario
         ' 
-        PictureBox1.BackColor = Color.Transparent
-        PictureBox1.Image = My.Resources.Resources.hombre
-        PictureBox1.Location = New Point(55, 120)
-        PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(30, 34)
-        PictureBox1.TabIndex = 2
-        PictureBox1.TabStop = False
+        TBUsuario.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        TBUsuario.BorderStyle = BorderStyle.None
+        TBUsuario.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TBUsuario.ForeColor = Color.Silver
+        TBUsuario.Location = New Point(44, 411)
+        TBUsuario.Margin = New Padding(3, 2, 3, 2)
+        TBUsuario.Name = "TBUsuario"
+        TBUsuario.Size = New Size(350, 17)
+        TBUsuario.TabIndex = 1
         ' 
-        ' TextBox1
+        ' TBContrasena
         ' 
-        TextBox1.BackColor = Color.Gray
-        TextBox1.BorderStyle = BorderStyle.FixedSingle
-        TextBox1.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox1.ForeColor = Color.FromArgb(CByte(224), CByte(224), CByte(224))
-        TextBox1.Location = New Point(99, 126)
-        TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(184, 28)
-        TextBox1.TabIndex = 1
-        TextBox1.Text = "Usuario"
+        TBContrasena.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        TBContrasena.BorderStyle = BorderStyle.None
+        TBContrasena.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TBContrasena.ForeColor = Color.Silver
+        TBContrasena.Location = New Point(44, 475)
+        TBContrasena.Margin = New Padding(3, 2, 3, 2)
+        TBContrasena.Name = "TBContrasena"
+        TBContrasena.Size = New Size(350, 17)
+        TBContrasena.TabIndex = 3
+        TBContrasena.UseSystemPasswordChar = True
         ' 
-        ' Label1
+        ' LUsuario
         ' 
-        Label1.AutoSize = True
-        Label1.Font = New Font("Impact", 16.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label1.ForeColor = Color.White
-        Label1.Location = New Point(144, 38)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(77, 35)
-        Label1.TabIndex = 0
-        Label1.Text = "Login"
+        LUsuario.AutoSize = True
+        LUsuario.Font = New Font("Arial Rounded MT Bold", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LUsuario.ForeColor = Color.Silver
+        LUsuario.Location = New Point(44, 379)
+        LUsuario.Name = "LUsuario"
+        LUsuario.Size = New Size(70, 18)
+        LUsuario.TabIndex = 6
+        LUsuario.Text = "Usuario"
         ' 
-        ' Form1
+        ' LContrasena
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        LContrasena.AutoSize = True
+        LContrasena.Font = New Font("Arial Rounded MT Bold", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LContrasena.ForeColor = Color.Silver
+        LContrasena.Location = New Point(44, 445)
+        LContrasena.Name = "LContrasena"
+        LContrasena.Size = New Size(102, 18)
+        LContrasena.TabIndex = 7
+        LContrasena.Text = "Contraseña"
+        ' 
+        ' BarraFooter
+        ' 
+        BarraFooter.BackColor = Color.FromArgb(CByte(36), CByte(43), CByte(73))
+        BarraFooter.Dock = DockStyle.Bottom
+        BarraFooter.Location = New Point(0, 670)
+        BarraFooter.Name = "BarraFooter"
+        BarraFooter.Size = New Size(430, 10)
+        BarraFooter.TabIndex = 0
+        ' 
+        ' CBRecordarme
+        ' 
+        CBRecordarme.AutoSize = True
+        CBRecordarme.FlatStyle = FlatStyle.Flat
+        CBRecordarme.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        CBRecordarme.ForeColor = Color.DarkGray
+        CBRecordarme.Location = New Point(44, 515)
+        CBRecordarme.Name = "CBRecordarme"
+        CBRecordarme.Size = New Size(104, 19)
+        CBRecordarme.TabIndex = 8
+        CBRecordarme.Text = "Recordarme"
+        CBRecordarme.UseVisualStyleBackColor = True
+        ' 
+        ' PBIconoEmpresa
+        ' 
+        PBIconoEmpresa.BackColor = Color.Transparent
+        PBIconoEmpresa.Image = My.Resources.Resources.impresora21
+        PBIconoEmpresa.Location = New Point(93, 51)
+        PBIconoEmpresa.Name = "PBIconoEmpresa"
+        PBIconoEmpresa.Size = New Size(237, 216)
+        PBIconoEmpresa.SizeMode = PictureBoxSizeMode.StretchImage
+        PBIconoEmpresa.TabIndex = 9
+        PBIconoEmpresa.TabStop = False
+        ' 
+        ' LGST
+        ' 
+        LGST.AutoSize = True
+        LGST.BackColor = Color.Transparent
+        LGST.Font = New Font("Berlin Sans FB", 24.0F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        LGST.ForeColor = Color.Silver
+        LGST.Location = New Point(176, 257)
+        LGST.Name = "LGST"
+        LGST.Size = New Size(68, 35)
+        LGST.TabIndex = 10
+        LGST.Text = "GST"
+        ' 
+        ' LGestionServicTec
+        ' 
+        LGestionServicTec.AutoSize = True
+        LGestionServicTec.BackColor = Color.Transparent
+        LGestionServicTec.Font = New Font("Berlin Sans FB", 18.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LGestionServicTec.ForeColor = Color.Silver
+        LGestionServicTec.Location = New Point(93, 292)
+        LGestionServicTec.Name = "LGestionServicTec"
+        LGestionServicTec.Size = New Size(248, 26)
+        LGestionServicTec.TabIndex = 11
+        LGestionServicTec.Text = "Gestión Servicio Técnico"
+        ' 
+        ' FormLogin
+        ' 
+        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.FromArgb(CByte(0), CByte(51), CByte(102))
+        BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         BackgroundImageLayout = ImageLayout.Stretch
-        ClientSize = New Size(782, 553)
-        Controls.Add(Panel1)
+        ClientSize = New Size(430, 680)
+        Controls.Add(LGestionServicTec)
+        Controls.Add(LGST)
+        Controls.Add(PBIconoEmpresa)
+        Controls.Add(CBRecordarme)
+        Controls.Add(BarraFooter)
+        Controls.Add(LContrasena)
+        Controls.Add(LUsuario)
+        Controls.Add(TBContrasena)
+        Controls.Add(BarraTitulo)
+        Controls.Add(TBUsuario)
+        Controls.Add(BIniciarSesion)
+        FormBorderStyle = FormBorderStyle.None
+        Margin = New Padding(3, 2, 3, 2)
         MaximizeBox = False
-        MaximumSize = New Size(800, 600)
+        MaximumSize = New Size(430, 680)
         MinimizeBox = False
-        MinimumSize = New Size(800, 600)
-        Name = "Form1"
-        Text = "Form1"
-        Panel1.ResumeLayout(False)
-        Panel1.PerformLayout()
-        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
-        CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
+        MinimumSize = New Size(430, 680)
+        Name = "FormLogin"
+        StartPosition = FormStartPosition.CenterScreen
+        Text = "FormLogin"
+        BarraTitulo.ResumeLayout(False)
+        BarraTitulo.PerformLayout()
+        CType(PBMinimizar, ComponentModel.ISupportInitialize).EndInit()
+        CType(PBCerrar, ComponentModel.ISupportInitialize).EndInit()
+        CType(PBIconoEmpresa, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
-
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents BIniciarSesion As Button
+    Friend WithEvents BarraTitulo As Panel
+    Friend WithEvents TBUsuario As TextBox
+    Friend WithEvents TBContrasena As TextBox
+    Friend WithEvents LUsuario As Label
+    Friend WithEvents LContrasena As Label
+    Friend WithEvents BarraFooter As Panel
+    Friend WithEvents CBRecordarme As CheckBox
+    Friend WithEvents PBIconoEmpresa As PictureBox
+    Friend WithEvents LGST As Label
+    Friend WithEvents LGestionServicTec As Label
+    Friend WithEvents PBCerrar As PictureBox
+    Friend WithEvents PBMinimizar As PictureBox
 
 End Class
