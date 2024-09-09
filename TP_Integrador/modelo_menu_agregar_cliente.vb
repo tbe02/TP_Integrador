@@ -1,7 +1,8 @@
 ﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Window
 Imports FontAwesome.Sharp
 Imports System.Runtime.InteropServices 'Permite funcionalidades de API de Windows para poder trabajar con la funcion releaseCapture'
-Public Class modelo_menu_user_maestro
+
+Public Class modelo_menu_agregar_cliente
     '-------------------------------------------------------------------------------------------------------------------------'
     'Declaraciones para poder utilizar la funcion releaseCapture, que permite mover el formulario desde el panel superior'
     <DllImport("user32.dll", CharSet:=CharSet.Auto)>
@@ -27,8 +28,8 @@ Public Class modelo_menu_user_maestro
 
 
 
-        ' Llama al método IBMenuPrincipal_Click desde el evento Load del formulario
-        EjecutarIBMenuPrincipal()
+        ' Llama al método IBAgregarCliente_Click desde el evento Load del formulario
+        EjecutarIBAgregarCliente()
 
 
 
@@ -93,7 +94,7 @@ Public Class modelo_menu_user_maestro
         activarBoton(sender, color)
     End Sub
 
-    Private Sub IBAgregarCliente_Click(sender As Object, e As EventArgs) Handles IBAgregarUsuario.Click
+    Private Sub IBAgregarCliente_Click(sender As Object, e As EventArgs) Handles IBAgregarCliente.Click
         Dim color As Color
 
         color = Color.FromArgb(249, 118, 176)
@@ -107,7 +108,7 @@ Public Class modelo_menu_user_maestro
         activarBoton(sender, color)
     End Sub
 
-    Private Sub IBAgregarEquipo_Click(sender As Object, e As EventArgs) Handles IBListaUsuarios.Click
+    Private Sub IBAgregarEquipo_Click(sender As Object, e As EventArgs) Handles IBAgregarEquipo.Click
         Dim color As Color
 
         color = Color.FromArgb(95, 77, 221)
@@ -121,9 +122,9 @@ Public Class modelo_menu_user_maestro
         activarBoton(sender, color)
     End Sub
 
-    Private Sub EjecutarIBMenuPrincipal()
+    Private Sub EjecutarIBAgregarCliente()
         ' Llama al método IBMenuPrincipal_Click, pasando un valor predeterminado para sender y e
-        IBMenuPrincipal_Click(IBMenuPrincipal, EventArgs.Empty)
+        IBAgregarCliente_Click(IBAgregarCliente, EventArgs.Empty)
     End Sub
 
     Private Sub PMenuSuperior_MouseDown(sender As Object, e As MouseEventArgs) Handles PMenuSuperior.MouseDown
@@ -157,4 +158,5 @@ Public Class modelo_menu_user_maestro
     Private Sub IBSesion_Click(sender As Object, e As EventArgs) Handles IBSesion.Click
         MenuPerfil.Show(IBSesion, New Point(0, IBSesion.Height))
     End Sub
+
 End Class
