@@ -2,7 +2,7 @@
 Imports FontAwesome.Sharp
 Imports System.Runtime.InteropServices 'Permite funcionalidades de API de Windows para poder trabajar con la funcion releaseCapture'
 
-Public Class modelo_menu_agregar_cliente
+Public Class modelo_menu_agregar_equipo
     '-------------------------------------------------------------------------------------------------------------------------'
     'Declaraciones para poder utilizar la funcion releaseCapture, que permite mover el formulario desde el panel superior'
     <DllImport("user32.dll", CharSet:=CharSet.Auto)>
@@ -29,7 +29,7 @@ Public Class modelo_menu_agregar_cliente
 
 
         ' Llama al método IBAgregarCliente_Click desde el evento Load del formulario
-        EjecutarIBAgregarCliente()
+        EjecutarIBAgregarEquipo()
 
 
 
@@ -122,9 +122,9 @@ Public Class modelo_menu_agregar_cliente
         activarBoton(sender, color)
     End Sub
 
-    Private Sub EjecutarIBAgregarCliente()
+    Private Sub EjecutarIBAgregarEquipo()
         ' Llama al método IBMenuPrincipal_Click, pasando un valor predeterminado para sender y e
-        IBAgregarCliente_Click(IBAgregarCliente, EventArgs.Empty)
+        IBAgregarEquipo_Click(IBAgregarEquipo, EventArgs.Empty)
     End Sub
 
     Private Sub PMenuSuperior_MouseDown(sender As Object, e As MouseEventArgs) Handles PMenuSuperior.MouseDown
@@ -152,8 +152,6 @@ Public Class modelo_menu_agregar_cliente
         End If
 
     End Sub
-
-
 
     Private Sub IBSesion_Click(sender As Object, e As EventArgs) Handles IBSesion.Click
         MenuPerfil.Show(IBSesion, New Point(0, IBSesion.Height))

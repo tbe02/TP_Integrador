@@ -1,5 +1,5 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class modelo_menu_agregar_cliente
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class modelo_menu_agregar_equipo
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -40,26 +40,39 @@ Partial Class modelo_menu_agregar_cliente
         MenuPerfil = New ContextMenuStrip(components)
         TSMMiPerfil = New ToolStripMenuItem()
         TSMCerrarSesion = New ToolStripMenuItem()
-        PAgregarCliente = New Panel()
+        PAgregarEquipo = New Panel()
+        BAgregarEquipo = New Button()
+        TBObservaciones = New TextBox()
+        TBRazonIngreso = New TextBox()
+        TBNroSerie = New TextBox()
+        TBModelo = New TextBox()
+        LObservaciones = New Label()
+        LRazonIngreso = New Label()
+        LModelo = New Label()
+        LMarca = New Label()
+        LNroSerie = New Label()
+        CBEquipoEnciende = New CheckBox()
+        ComboBTipoEquipo = New ComboBox()
+        TBMarca = New TextBox()
+        LTipoEquipo = New Label()
+        PictureBox2 = New PictureBox()
+        Label2 = New Label()
+        LSiNoEstaRegistrado = New Label()
+        PAsociarCliente = New Panel()
         BAgregarCliente = New Button()
-        LAgregarCliente = New Label()
-        LTelefono = New Label()
-        LCorreo = New Label()
-        LDNI = New Label()
-        LNombre = New Label()
-        LApellido = New Label()
-        TBTelefono = New TextBox()
-        TBCorreo = New TextBox()
-        TBDNI = New TextBox()
-        TBNombre = New TextBox()
-        TBApellido = New TextBox()
-        PBAgregarCliente = New PictureBox()
+        ComboBAsociarCliente = New ComboBox()
+        TextBox8 = New TextBox()
+        TextBox9 = New TextBox()
+        PBAsociarCliente = New PictureBox()
+        LAsociarCliente = New Label()
         PMenuIzquierdo.SuspendLayout()
         CType(PBIconoEmpresa, ComponentModel.ISupportInitialize).BeginInit()
         PMenuSuperior.SuspendLayout()
         MenuPerfil.SuspendLayout()
-        PAgregarCliente.SuspendLayout()
-        CType(PBAgregarCliente, ComponentModel.ISupportInitialize).BeginInit()
+        PAgregarEquipo.SuspendLayout()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
+        PAsociarCliente.SuspendLayout()
+        CType(PBAsociarCliente, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' PMenuIzquierdo
@@ -107,7 +120,7 @@ Partial Class modelo_menu_agregar_cliente
         ' 
         LGST.AutoSize = True
         LGST.BackColor = Color.Transparent
-        LGST.Font = New Font("Berlin Sans FB", 12.0F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        LGST.Font = New Font("Berlin Sans FB", 12F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
         LGST.ForeColor = Color.Silver
         LGST.Location = New Point(89, 136)
         LGST.Name = "LGST"
@@ -337,7 +350,7 @@ Partial Class modelo_menu_agregar_cliente
         ' 
         TSMMiPerfil.AutoSize = False
         TSMMiPerfil.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        TSMMiPerfil.Font = New Font("Arial Rounded MT Bold", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TSMMiPerfil.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TSMMiPerfil.ForeColor = Color.White
         TSMMiPerfil.ImageTransparentColor = Color.Transparent
         TSMMiPerfil.Name = "TSMMiPerfil"
@@ -348,206 +361,336 @@ Partial Class modelo_menu_agregar_cliente
         ' 
         TSMCerrarSesion.AutoSize = False
         TSMCerrarSesion.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        TSMCerrarSesion.Font = New Font("Arial Rounded MT Bold", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TSMCerrarSesion.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TSMCerrarSesion.ForeColor = Color.White
         TSMCerrarSesion.ImageTransparentColor = Color.Transparent
         TSMCerrarSesion.Name = "TSMCerrarSesion"
         TSMCerrarSesion.Size = New Size(176, 29)
         TSMCerrarSesion.Text = "Cerrar sesión"
         ' 
-        ' PAgregarCliente
+        ' PAgregarEquipo
         ' 
-        PAgregarCliente.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        PAgregarCliente.Controls.Add(BAgregarCliente)
-        PAgregarCliente.Controls.Add(LAgregarCliente)
-        PAgregarCliente.Controls.Add(LTelefono)
-        PAgregarCliente.Controls.Add(LCorreo)
-        PAgregarCliente.Controls.Add(LDNI)
-        PAgregarCliente.Controls.Add(LNombre)
-        PAgregarCliente.Controls.Add(LApellido)
-        PAgregarCliente.Controls.Add(TBTelefono)
-        PAgregarCliente.Controls.Add(TBCorreo)
-        PAgregarCliente.Controls.Add(TBDNI)
-        PAgregarCliente.Controls.Add(TBNombre)
-        PAgregarCliente.Controls.Add(TBApellido)
-        PAgregarCliente.Controls.Add(PBAgregarCliente)
-        PAgregarCliente.Location = New Point(416, 64)
-        PAgregarCliente.Name = "PAgregarCliente"
-        PAgregarCliente.Size = New Size(500, 638)
-        PAgregarCliente.TabIndex = 3
+        PAgregarEquipo.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        PAgregarEquipo.Controls.Add(BAgregarEquipo)
+        PAgregarEquipo.Controls.Add(TBObservaciones)
+        PAgregarEquipo.Controls.Add(TBRazonIngreso)
+        PAgregarEquipo.Controls.Add(TBNroSerie)
+        PAgregarEquipo.Controls.Add(TBModelo)
+        PAgregarEquipo.Controls.Add(LObservaciones)
+        PAgregarEquipo.Controls.Add(LRazonIngreso)
+        PAgregarEquipo.Controls.Add(LModelo)
+        PAgregarEquipo.Controls.Add(LMarca)
+        PAgregarEquipo.Controls.Add(LNroSerie)
+        PAgregarEquipo.Controls.Add(CBEquipoEnciende)
+        PAgregarEquipo.Controls.Add(ComboBTipoEquipo)
+        PAgregarEquipo.Controls.Add(TBMarca)
+        PAgregarEquipo.Controls.Add(LTipoEquipo)
+        PAgregarEquipo.Controls.Add(PictureBox2)
+        PAgregarEquipo.Controls.Add(Label2)
+        PAgregarEquipo.Location = New Point(623, 64)
+        PAgregarEquipo.Name = "PAgregarEquipo"
+        PAgregarEquipo.Size = New Size(500, 638)
+        PAgregarEquipo.TabIndex = 3
+        ' 
+        ' BAgregarEquipo
+        ' 
+        BAgregarEquipo.BackColor = Color.FromArgb(CByte(128), CByte(128), CByte(255))
+        BAgregarEquipo.FlatAppearance.BorderSize = 0
+        BAgregarEquipo.FlatStyle = FlatStyle.Flat
+        BAgregarEquipo.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BAgregarEquipo.ForeColor = Color.White
+        BAgregarEquipo.Location = New Point(75, 573)
+        BAgregarEquipo.Name = "BAgregarEquipo"
+        BAgregarEquipo.Size = New Size(350, 50)
+        BAgregarEquipo.TabIndex = 39
+        BAgregarEquipo.Text = "Agregar equipo"
+        BAgregarEquipo.UseVisualStyleBackColor = True
+        ' 
+        ' TBObservaciones
+        ' 
+        TBObservaciones.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        TBObservaciones.BorderStyle = BorderStyle.None
+        TBObservaciones.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TBObservaciones.ForeColor = Color.Silver
+        TBObservaciones.Location = New Point(134, 405)
+        TBObservaciones.Margin = New Padding(3, 2, 3, 2)
+        TBObservaciones.Multiline = True
+        TBObservaciones.Name = "TBObservaciones"
+        TBObservaciones.Size = New Size(345, 92)
+        TBObservaciones.TabIndex = 39
+        ' 
+        ' TBRazonIngreso
+        ' 
+        TBRazonIngreso.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        TBRazonIngreso.BorderStyle = BorderStyle.None
+        TBRazonIngreso.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TBRazonIngreso.ForeColor = Color.Silver
+        TBRazonIngreso.Location = New Point(134, 295)
+        TBRazonIngreso.Margin = New Padding(3, 2, 3, 2)
+        TBRazonIngreso.Multiline = True
+        TBRazonIngreso.Name = "TBRazonIngreso"
+        TBRazonIngreso.Size = New Size(345, 90)
+        TBRazonIngreso.TabIndex = 38
+        ' 
+        ' TBNroSerie
+        ' 
+        TBNroSerie.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        TBNroSerie.BorderStyle = BorderStyle.None
+        TBNroSerie.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TBNroSerie.ForeColor = Color.Silver
+        TBNroSerie.Location = New Point(134, 164)
+        TBNroSerie.Margin = New Padding(3, 2, 3, 2)
+        TBNroSerie.Name = "TBNroSerie"
+        TBNroSerie.Size = New Size(345, 17)
+        TBNroSerie.TabIndex = 37
+        ' 
+        ' TBModelo
+        ' 
+        TBModelo.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        TBModelo.BorderStyle = BorderStyle.None
+        TBModelo.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TBModelo.ForeColor = Color.Silver
+        TBModelo.Location = New Point(134, 240)
+        TBModelo.Margin = New Padding(3, 2, 3, 2)
+        TBModelo.Name = "TBModelo"
+        TBModelo.Size = New Size(345, 17)
+        TBModelo.TabIndex = 36
+        ' 
+        ' LObservaciones
+        ' 
+        LObservaciones.AutoSize = True
+        LObservaciones.Font = New Font("Arial Rounded MT Bold", 9.75F)
+        LObservaciones.ForeColor = Color.Silver
+        LObservaciones.Location = New Point(10, 440)
+        LObservaciones.Name = "LObservaciones"
+        LObservaciones.Size = New Size(104, 15)
+        LObservaciones.TabIndex = 35
+        LObservaciones.Text = "Observaciones"
+        ' 
+        ' LRazonIngreso
+        ' 
+        LRazonIngreso.AutoSize = True
+        LRazonIngreso.Font = New Font("Arial Rounded MT Bold", 9.75F)
+        LRazonIngreso.ForeColor = Color.Silver
+        LRazonIngreso.Location = New Point(10, 330)
+        LRazonIngreso.Name = "LRazonIngreso"
+        LRazonIngreso.Size = New Size(118, 15)
+        LRazonIngreso.TabIndex = 34
+        LRazonIngreso.Text = "Razon de ingreso"
+        ' 
+        ' LModelo
+        ' 
+        LModelo.AutoSize = True
+        LModelo.Font = New Font("Arial Rounded MT Bold", 9.75F)
+        LModelo.ForeColor = Color.Silver
+        LModelo.Location = New Point(10, 242)
+        LModelo.Name = "LModelo"
+        LModelo.Size = New Size(54, 15)
+        LModelo.TabIndex = 33
+        LModelo.Text = "Modelo"
+        ' 
+        ' LMarca
+        ' 
+        LMarca.AutoSize = True
+        LMarca.Font = New Font("Arial Rounded MT Bold", 9.75F)
+        LMarca.ForeColor = Color.Silver
+        LMarca.Location = New Point(10, 206)
+        LMarca.Name = "LMarca"
+        LMarca.Size = New Size(48, 15)
+        LMarca.TabIndex = 32
+        LMarca.Text = "Marca"
+        ' 
+        ' LNroSerie
+        ' 
+        LNroSerie.AutoSize = True
+        LNroSerie.Font = New Font("Arial Rounded MT Bold", 9.75F)
+        LNroSerie.ForeColor = Color.Silver
+        LNroSerie.Location = New Point(10, 164)
+        LNroSerie.Name = "LNroSerie"
+        LNroSerie.Size = New Size(90, 15)
+        LNroSerie.TabIndex = 31
+        LNroSerie.Text = "Nro. de serie"
+        ' 
+        ' CBEquipoEnciende
+        ' 
+        CBEquipoEnciende.AutoSize = True
+        CBEquipoEnciende.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        CBEquipoEnciende.ForeColor = Color.Silver
+        CBEquipoEnciende.Location = New Point(10, 524)
+        CBEquipoEnciende.Name = "CBEquipoEnciende"
+        CBEquipoEnciende.Size = New Size(348, 19)
+        CBEquipoEnciende.TabIndex = 30
+        CBEquipoEnciende.Text = "Marcar si el equipo enciende a la hora de ingresar"
+        CBEquipoEnciende.UseVisualStyleBackColor = True
+        ' 
+        ' ComboBTipoEquipo
+        ' 
+        ComboBTipoEquipo.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        ComboBTipoEquipo.FlatStyle = FlatStyle.Flat
+        ComboBTipoEquipo.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ComboBTipoEquipo.ForeColor = Color.Silver
+        ComboBTipoEquipo.FormattingEnabled = True
+        ComboBTipoEquipo.Location = New Point(134, 114)
+        ComboBTipoEquipo.Name = "ComboBTipoEquipo"
+        ComboBTipoEquipo.Size = New Size(345, 24)
+        ComboBTipoEquipo.TabIndex = 28
+        ' 
+        ' TBMarca
+        ' 
+        TBMarca.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        TBMarca.BorderStyle = BorderStyle.None
+        TBMarca.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TBMarca.ForeColor = Color.Silver
+        TBMarca.Location = New Point(134, 204)
+        TBMarca.Margin = New Padding(3, 2, 3, 2)
+        TBMarca.Name = "TBMarca"
+        TBMarca.Size = New Size(345, 17)
+        TBMarca.TabIndex = 5
+        ' 
+        ' LTipoEquipo
+        ' 
+        LTipoEquipo.AutoSize = True
+        LTipoEquipo.Font = New Font("Arial Rounded MT Bold", 9.75F)
+        LTipoEquipo.ForeColor = Color.Silver
+        LTipoEquipo.Location = New Point(10, 118)
+        LTipoEquipo.Name = "LTipoEquipo"
+        LTipoEquipo.Size = New Size(101, 15)
+        LTipoEquipo.TabIndex = 7
+        LTipoEquipo.Text = "Tipo de equipo"
+        ' 
+        ' PictureBox2
+        ' 
+        PictureBox2.Image = My.Resources.Resources.agregar_equipo
+        PictureBox2.Location = New Point(68, 13)
+        PictureBox2.Name = "PictureBox2"
+        PictureBox2.Size = New Size(74, 71)
+        PictureBox2.TabIndex = 17
+        PictureBox2.TabStop = False
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.BackColor = Color.Transparent
+        Label2.Font = New Font("Bahnschrift Condensed", 24F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Label2.ForeColor = Color.White
+        Label2.Location = New Point(155, 36)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(203, 39)
+        Label2.TabIndex = 16
+        Label2.Text = "2. Agregar equipo"
+        ' 
+        ' LSiNoEstaRegistrado
+        ' 
+        LSiNoEstaRegistrado.AutoSize = True
+        LSiNoEstaRegistrado.Font = New Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LSiNoEstaRegistrado.ForeColor = Color.Silver
+        LSiNoEstaRegistrado.Location = New Point(46, 227)
+        LSiNoEstaRegistrado.Name = "LSiNoEstaRegistrado"
+        LSiNoEstaRegistrado.Size = New Size(139, 15)
+        LSiNoEstaRegistrado.TabIndex = 13
+        LSiNoEstaRegistrado.Text = "si no esta registrado"
+        ' 
+        ' PAsociarCliente
+        ' 
+        PAsociarCliente.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        PAsociarCliente.Controls.Add(BAgregarCliente)
+        PAsociarCliente.Controls.Add(ComboBAsociarCliente)
+        PAsociarCliente.Controls.Add(TextBox8)
+        PAsociarCliente.Controls.Add(TextBox9)
+        PAsociarCliente.Controls.Add(PBAsociarCliente)
+        PAsociarCliente.Controls.Add(LAsociarCliente)
+        PAsociarCliente.Controls.Add(LSiNoEstaRegistrado)
+        PAsociarCliente.Location = New Point(240, 64)
+        PAsociarCliente.Name = "PAsociarCliente"
+        PAsociarCliente.Size = New Size(359, 321)
+        PAsociarCliente.TabIndex = 31
         ' 
         ' BAgregarCliente
         ' 
         BAgregarCliente.BackColor = Color.FromArgb(CByte(128), CByte(128), CByte(255))
         BAgregarCliente.FlatAppearance.BorderSize = 0
         BAgregarCliente.FlatStyle = FlatStyle.Flat
-        BAgregarCliente.Font = New Font("Arial Rounded MT Bold", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BAgregarCliente.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BAgregarCliente.ForeColor = Color.White
-        BAgregarCliente.Location = New Point(75, 542)
-        BAgregarCliente.Margin = New Padding(3, 2, 3, 2)
+        BAgregarCliente.Location = New Point(200, 219)
         BAgregarCliente.Name = "BAgregarCliente"
-        BAgregarCliente.Size = New Size(350, 50)
+        BAgregarCliente.Size = New Size(145, 29)
         BAgregarCliente.TabIndex = 4
         BAgregarCliente.Text = "Agregar cliente"
-        BAgregarCliente.UseVisualStyleBackColor = False
+        BAgregarCliente.UseVisualStyleBackColor = True
         ' 
-        ' LAgregarCliente
+        ' ComboBAsociarCliente
         ' 
-        LAgregarCliente.AutoSize = True
-        LAgregarCliente.BackColor = Color.Transparent
-        LAgregarCliente.Font = New Font("Bahnschrift Condensed", 36.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        LAgregarCliente.ForeColor = Color.White
-        LAgregarCliente.Location = New Point(112, 140)
-        LAgregarCliente.Name = "LAgregarCliente"
-        LAgregarCliente.Size = New Size(275, 58)
-        LAgregarCliente.TabIndex = 11
-        LAgregarCliente.Text = "Agregar Cliente"
+        ComboBAsociarCliente.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        ComboBAsociarCliente.FlatStyle = FlatStyle.Flat
+        ComboBAsociarCliente.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ComboBAsociarCliente.ForeColor = Color.Silver
+        ComboBAsociarCliente.FormattingEnabled = True
+        ComboBAsociarCliente.Location = New Point(46, 134)
+        ComboBAsociarCliente.Name = "ComboBAsociarCliente"
+        ComboBAsociarCliente.Size = New Size(264, 24)
+        ComboBAsociarCliente.TabIndex = 38
         ' 
-        ' LTelefono
+        ' TextBox8
         ' 
-        LTelefono.AutoSize = True
-        LTelefono.Font = New Font("Arial Rounded MT Bold", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        LTelefono.ForeColor = Color.Silver
-        LTelefono.Location = New Point(40, 466)
-        LTelefono.Name = "LTelefono"
-        LTelefono.Size = New Size(77, 18)
-        LTelefono.TabIndex = 10
-        LTelefono.Text = "Telefono"
+        TextBox8.Location = New Point(365, 322)
+        TextBox8.Name = "TextBox8"
+        TextBox8.Size = New Size(116, 23)
+        TextBox8.TabIndex = 25
         ' 
-        ' LCorreo
+        ' TextBox9
         ' 
-        LCorreo.AutoSize = True
-        LCorreo.Font = New Font("Arial Rounded MT Bold", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        LCorreo.ForeColor = Color.Silver
-        LCorreo.Location = New Point(40, 406)
-        LCorreo.Name = "LCorreo"
-        LCorreo.Size = New Size(64, 18)
-        LCorreo.TabIndex = 9
-        LCorreo.Text = "Correo"
+        TextBox9.Location = New Point(365, 275)
+        TextBox9.Name = "TextBox9"
+        TextBox9.Size = New Size(116, 23)
+        TextBox9.TabIndex = 21
         ' 
-        ' LDNI
+        ' PBAsociarCliente
         ' 
-        LDNI.AutoSize = True
-        LDNI.Font = New Font("Arial Rounded MT Bold", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        LDNI.ForeColor = Color.Silver
-        LDNI.Location = New Point(40, 346)
-        LDNI.Name = "LDNI"
-        LDNI.Size = New Size(37, 18)
-        LDNI.TabIndex = 8
-        LDNI.Text = "DNI"
+        PBAsociarCliente.Image = My.Resources.Resources.cliente
+        PBAsociarCliente.Location = New Point(46, 13)
+        PBAsociarCliente.Name = "PBAsociarCliente"
+        PBAsociarCliente.Size = New Size(69, 77)
+        PBAsociarCliente.TabIndex = 15
+        PBAsociarCliente.TabStop = False
         ' 
-        ' LNombre
+        ' LAsociarCliente
         ' 
-        LNombre.AutoSize = True
-        LNombre.Font = New Font("Arial Rounded MT Bold", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        LNombre.ForeColor = Color.Silver
-        LNombre.Location = New Point(40, 286)
-        LNombre.Name = "LNombre"
-        LNombre.Size = New Size(84, 18)
-        LNombre.TabIndex = 7
-        LNombre.Text = "Nombre/s"
+        LAsociarCliente.AutoSize = True
+        LAsociarCliente.BackColor = Color.Transparent
+        LAsociarCliente.Font = New Font("Bahnschrift Condensed", 24F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LAsociarCliente.ForeColor = Color.White
+        LAsociarCliente.Location = New Point(121, 36)
+        LAsociarCliente.Name = "LAsociarCliente"
+        LAsociarCliente.Size = New Size(194, 39)
+        LAsociarCliente.TabIndex = 11
+        LAsociarCliente.Text = "1. Asociar cliente"
         ' 
-        ' LApellido
+        ' modelo_menu_agregar_equipo
         ' 
-        LApellido.AutoSize = True
-        LApellido.Font = New Font("Arial Rounded MT Bold", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        LApellido.ForeColor = Color.Silver
-        LApellido.Location = New Point(40, 226)
-        LApellido.Name = "LApellido"
-        LApellido.Size = New Size(85, 18)
-        LApellido.TabIndex = 6
-        LApellido.Text = "Apellido/s"
-        ' 
-        ' TBTelefono
-        ' 
-        TBTelefono.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
-        TBTelefono.BorderStyle = BorderStyle.None
-        TBTelefono.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TBTelefono.ForeColor = Color.Silver
-        TBTelefono.Location = New Point(189, 466)
-        TBTelefono.Margin = New Padding(3, 2, 3, 2)
-        TBTelefono.Name = "TBTelefono"
-        TBTelefono.Size = New Size(264, 17)
-        TBTelefono.TabIndex = 5
-        ' 
-        ' TBCorreo
-        ' 
-        TBCorreo.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
-        TBCorreo.BorderStyle = BorderStyle.None
-        TBCorreo.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TBCorreo.ForeColor = Color.Silver
-        TBCorreo.Location = New Point(189, 406)
-        TBCorreo.Margin = New Padding(3, 2, 3, 2)
-        TBCorreo.Name = "TBCorreo"
-        TBCorreo.Size = New Size(264, 17)
-        TBCorreo.TabIndex = 4
-        ' 
-        ' TBDNI
-        ' 
-        TBDNI.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
-        TBDNI.BorderStyle = BorderStyle.None
-        TBDNI.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TBDNI.ForeColor = Color.Silver
-        TBDNI.Location = New Point(189, 346)
-        TBDNI.Margin = New Padding(3, 2, 3, 2)
-        TBDNI.Name = "TBDNI"
-        TBDNI.Size = New Size(264, 17)
-        TBDNI.TabIndex = 3
-        ' 
-        ' TBNombre
-        ' 
-        TBNombre.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
-        TBNombre.BorderStyle = BorderStyle.None
-        TBNombre.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TBNombre.ForeColor = Color.Silver
-        TBNombre.Location = New Point(189, 286)
-        TBNombre.Margin = New Padding(3, 2, 3, 2)
-        TBNombre.Name = "TBNombre"
-        TBNombre.Size = New Size(264, 17)
-        TBNombre.TabIndex = 2
-        ' 
-        ' TBApellido
-        ' 
-        TBApellido.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
-        TBApellido.BorderStyle = BorderStyle.None
-        TBApellido.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TBApellido.ForeColor = Color.Silver
-        TBApellido.Location = New Point(189, 226)
-        TBApellido.Margin = New Padding(3, 2, 3, 2)
-        TBApellido.Name = "TBApellido"
-        TBApellido.Size = New Size(264, 17)
-        TBApellido.TabIndex = 1
-        ' 
-        ' PBAgregarCliente
-        ' 
-        PBAgregarCliente.Image = My.Resources.Resources.agregar_cliente
-        PBAgregarCliente.Location = New Point(184, 3)
-        PBAgregarCliente.Name = "PBAgregarCliente"
-        PBAgregarCliente.Size = New Size(132, 132)
-        PBAgregarCliente.TabIndex = 0
-        PBAgregarCliente.TabStop = False
-        ' 
-        ' modelo_menu_agregar_cliente
-        ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
         ClientSize = New Size(1150, 714)
-        Controls.Add(PAgregarCliente)
+        Controls.Add(PAsociarCliente)
+        Controls.Add(PAgregarEquipo)
         Controls.Add(PMenuSuperior)
         Controls.Add(PMenuIzquierdo)
         FormBorderStyle = FormBorderStyle.None
         Margin = New Padding(3, 2, 3, 2)
-        Name = "modelo_menu_agregar_cliente"
+        Name = "modelo_menu_agregar_equipo"
         Text = "modelo_menu_principal"
         PMenuIzquierdo.ResumeLayout(False)
         PMenuIzquierdo.PerformLayout()
         CType(PBIconoEmpresa, ComponentModel.ISupportInitialize).EndInit()
         PMenuSuperior.ResumeLayout(False)
         MenuPerfil.ResumeLayout(False)
-        PAgregarCliente.ResumeLayout(False)
-        PAgregarCliente.PerformLayout()
-        CType(PBAgregarCliente, ComponentModel.ISupportInitialize).EndInit()
+        PAgregarEquipo.ResumeLayout(False)
+        PAgregarEquipo.PerformLayout()
+        CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
+        PAsociarCliente.ResumeLayout(False)
+        PAsociarCliente.PerformLayout()
+        CType(PBAsociarCliente, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
     Friend WithEvents PMenuIzquierdo As Panel
@@ -567,18 +710,29 @@ Partial Class modelo_menu_agregar_cliente
     Friend WithEvents MenuPerfil As ContextMenuStrip
     Friend WithEvents TSMMiPerfil As ToolStripMenuItem
     Friend WithEvents TSMCerrarSesion As ToolStripMenuItem
-    Friend WithEvents PAgregarCliente As Panel
-    Friend WithEvents PBAgregarCliente As PictureBox
-    Friend WithEvents TBApellido As TextBox
-    Friend WithEvents LApellido As Label
-    Friend WithEvents TBTelefono As TextBox
-    Friend WithEvents TBCorreo As TextBox
-    Friend WithEvents TBDNI As TextBox
-    Friend WithEvents TBNombre As TextBox
-    Friend WithEvents LTelefono As Label
-    Friend WithEvents LCorreo As Label
-    Friend WithEvents LDNI As Label
-    Friend WithEvents LNombre As Label
-    Friend WithEvents LAgregarCliente As Label
+    Friend WithEvents PAgregarEquipo As Panel
+    Friend WithEvents LSiNoEstaRegistrado As Label
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents ComboBTipoEquipo As ComboBox
+    Friend WithEvents TBMarca As TextBox
+    Friend WithEvents LTipoEquipo As Label
+    Friend WithEvents CBEquipoEnciende As CheckBox
+    Friend WithEvents PAsociarCliente As Panel
+    Friend WithEvents TextBox8 As TextBox
+    Friend WithEvents TextBox9 As TextBox
+    Friend WithEvents PBAsociarCliente As PictureBox
+    Friend WithEvents LAsociarCliente As Label
+    Friend WithEvents LObservaciones As Label
+    Friend WithEvents LRazonIngreso As Label
+    Friend WithEvents LModelo As Label
+    Friend WithEvents LMarca As Label
+    Friend WithEvents LNroSerie As Label
+    Friend WithEvents TBNroSerie As TextBox
+    Friend WithEvents TBModelo As TextBox
+    Friend WithEvents TBObservaciones As TextBox
+    Friend WithEvents TBRazonIngreso As TextBox
+    Friend WithEvents ComboBAsociarCliente As ComboBox
     Friend WithEvents BAgregarCliente As Button
+    Friend WithEvents BAgregarEquipo As Button
 End Class
