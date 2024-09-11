@@ -42,8 +42,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="capa_datos\" />
-  </ItemGroup>
-
 </Project>

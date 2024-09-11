@@ -1,5 +1,6 @@
 ﻿Imports System.Runtime.InteropServices 'Permite funcionalidades de API de Windows para poder trabajar con la funcion releaseCapture'
 Imports TP_Integrador
+Imports TP_Integrador.Autenticacion
 
 Public Class FormLogin
 
@@ -18,9 +19,24 @@ Public Class FormLogin
     '-------------------------------------------------------------------------------------------------------------------------'
 
     Private Sub BIniciarSesion_Click(sender As Object, e As EventArgs) Handles BIniciarSesion.Click
-        Dim autenticador As New Autenticacion
+        Dim autenticador As New Autenticador
 
-        autenticador.autenticarLogin(TBUsuario.Text, TBContrasena.Text)
+        Dim usuario, password As String
+
+        usuario = TBUsuario.Text
+        password = TBContrasena.Text
+
+        If (usuario = "" Or password = "") Then
+            MessageBox.Show("Debe completar todos los campos.", "Falta de datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Else
+            If autenticador.autenticarUsuario(TBUsuario.Text, TBContrasena.Text) Then
+                MessageBox.Show("Ingreso exitoso", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("Ingreso fallido", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        End If
+
+
     End Sub
 
 
@@ -39,6 +55,5 @@ Public Class FormLogin
             SendMessage(Me.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0)
         End If
     End Sub
-
 End Class
 
