@@ -1,8 +1,7 @@
 ﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Window
 Imports FontAwesome.Sharp
 Imports System.Runtime.InteropServices 'Permite funcionalidades de API de Windows para poder trabajar con la funcion releaseCapture'
-
-Public Class modelo_menu_agregar_equipo
+Public Class modelo_menu_user_maestro
     '-------------------------------------------------------------------------------------------------------------------------'
     'Declaraciones para poder utilizar la funcion releaseCapture, que permite mover el formulario desde el panel superior'
     <DllImport("user32.dll", CharSet:=CharSet.Auto)>
@@ -28,8 +27,8 @@ Public Class modelo_menu_agregar_equipo
 
 
 
-        ' Llama al método IBAgregarCliente_Click desde el evento Load del formulario
-        EjecutarIBAgregarEquipo()
+        ' Llama al método IBMenuPrincipal_Click desde el evento Load del formulario
+        EjecutarIBMenuPrincipal()
 
 
 
@@ -94,7 +93,7 @@ Public Class modelo_menu_agregar_equipo
         activarBoton(sender, color)
     End Sub
 
-    Private Sub IBAgregarCliente_Click(sender As Object, e As EventArgs) Handles IBAgregarCliente.Click
+    Private Sub IBAgregarCliente_Click(sender As Object, e As EventArgs) Handles IBAgregarUsuario.Click
         Dim color As Color
 
         color = Color.FromArgb(249, 118, 176)
@@ -108,7 +107,7 @@ Public Class modelo_menu_agregar_equipo
         activarBoton(sender, color)
     End Sub
 
-    Private Sub IBAgregarEquipo_Click(sender As Object, e As EventArgs) Handles IBAgregarEquipo.Click
+    Private Sub IBAgregarEquipo_Click(sender As Object, e As EventArgs) Handles IBListaUsuarios.Click
         Dim color As Color
 
         color = Color.FromArgb(95, 77, 221)
@@ -122,9 +121,9 @@ Public Class modelo_menu_agregar_equipo
         activarBoton(sender, color)
     End Sub
 
-    Private Sub EjecutarIBAgregarEquipo()
+    Private Sub EjecutarIBMenuPrincipal()
         ' Llama al método IBMenuPrincipal_Click, pasando un valor predeterminado para sender y e
-        IBAgregarEquipo_Click(IBAgregarEquipo, EventArgs.Empty)
+        IBMenuPrincipal_Click(IBMenuPrincipal, EventArgs.Empty)
     End Sub
 
     Private Sub PMenuSuperior_MouseDown(sender As Object, e As MouseEventArgs) Handles PMenuSuperior.MouseDown
@@ -153,8 +152,9 @@ Public Class modelo_menu_agregar_equipo
 
     End Sub
 
+
+
     Private Sub IBSesion_Click(sender As Object, e As EventArgs) Handles IBSesion.Click
         MenuPerfil.Show(IBSesion, New Point(0, IBSesion.Height))
     End Sub
-
 End Class

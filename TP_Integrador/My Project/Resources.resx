@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="minimizar_blanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\minimizar_blanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-llamada-de-conferencia-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\icons8-llamada-de-conferencia-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -126,6 +129,9 @@
   </data>
   <data name="icons8-agregar-propiedad-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\icons8-agregar-propiedad-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="agregar_equipo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\agregar_equipo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="agregar_cliente" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\agregar_cliente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,16 +154,13 @@
   <data name="icons8-casa-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\icons8-casa-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-agregar-administrador-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imagenes\icons8-agregar-administrador-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8-estación-de-trabajo-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\icons8-estación-de-trabajo-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="minimizar_blanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imagenes\minimizar_blanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-agregar-administrador-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\icons8-agregar-administrador-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="agregar_equipo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imagenes\agregar_equipo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="agregar_cliente1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\agregar_cliente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
