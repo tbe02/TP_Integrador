@@ -3,12 +3,13 @@
     Public Structure Usuario
         Public nombre As String
         Public password As String
+        Public tipo As String
     End Structure
 
     Private usuarios As New List(Of Usuario)()
 
-    Sub agregar(nombre As String, password As String)
-        usuarios.Add(New Usuario With {.nombre = nombre, .password = password})
+    Sub agregar(nombre As String, password As String, tipo As String)
+        usuarios.Add(New Usuario With {.nombre = nombre, .password = password, .tipo = tipo})
     End Sub
 
     Function obtenerTodos() As List(Of Usuario)

@@ -29,14 +29,18 @@ Public Class FormLogin
         If (usuario = "" Or password = "") Then
             MessageBox.Show("Debe completar todos los campos.", "Falta de datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-            If autenticador.autenticarUsuario(TBUsuario.Text, TBContrasena.Text) Then
+            If autenticador.autenticarUsuario(usuario, password) Then
                 MessageBox.Show("Ingreso exitoso", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                Dim menu = New modelo_menu_user_maestro()
+                Dim usuarioAutenticado = autenticador.obtenerUsuarioAutenticado(usuario, password)
 
-                menu.Show()
+                If usuarioAutenticado.tipo = "maestro" Then
+                    Dim menu = New modelo_menu_user_maestro()
 
-                Me.Hide()
+                    menu.Show()
+
+                    Me.Hide()
+                End If
             Else
                 MessageBox.Show("Ingreso fallido", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
