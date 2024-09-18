@@ -27,16 +27,29 @@ Public Class FormLogin
         password = TBContrasena.Text
 
         If (usuario = "" Or password = "") Then
-            MessageBox.Show("Debe completar todos los campos.", "Falta de datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Debe completar todos los campos", "Falta de datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
-            If autenticador.autenticarUsuario(TBUsuario.Text, TBContrasena.Text) Then
+            If autenticador.autenticarUsuario(usuario, password) Then
                 MessageBox.Show("Ingreso exitoso", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                Dim menu = New modelo_menu_user_maestro()
+                Dim usuarioAutenticado = autenticador.obtenerUsuarioAutenticado(usuario, password)
 
-                menu.Show()
+                If usuarioAutenticado.tipo = "maestro" Then
+                    Dim menu = New modelo_menu_user_maestro()
 
-                Me.Hide()
+                    menu.Show()
+
+                    Me.Hide()
+                ElseIf usuarioAutenticado.tipo = "tecnico" Then
+                    Dim menu = New modelo_menu_principal()
+
+                    menu.Show()
+
+                    Me.Hide()
+                Else
+                    MessageBox.Show("Tipo de usuario no encontrado", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+
             Else
                 MessageBox.Show("Ingreso fallido", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
@@ -47,7 +60,7 @@ Public Class FormLogin
 
 
     Private Sub PBCerrar_Click(sender As Object, e As EventArgs) Handles PBCerrar.Click
-        Me.Close()
+        End
     End Sub
 
     Private Sub PBMinimizar_Click(sender As Object, e As EventArgs) Handles PBMinimizar.Click
