@@ -159,6 +159,17 @@ Public Class modelo_menu_principal
         activarBoton(sender, color)
 
         Me.PFondoPrincipal.Controls.Clear()
+
+        Dim form As New FormListaEquipos()
+
+        form.TopLevel = False
+        form.FormBorderStyle = FormBorderStyle.None
+        form.Dock = DockStyle.Fill
+
+
+
+        Me.PFondoPrincipal.Controls.Add(form)
+        form.Show()
     End Sub
 
     Private Sub EjecutarIBMenuPrincipal()
