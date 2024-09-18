@@ -11,12 +11,16 @@
         usuarios.Add(New Usuario With {.nombre = nombre, .password = password})
     End Sub
 
-    Function obtener() As List(Of Usuario)
+    Function obtenerTodos() As List(Of Usuario)
         Return usuarios
     End Function
 
+    Function obtenerUno(nombre As String) As Usuario
+        Return obtenerTodos().Find(Function(usuario) usuario.nombre = nombre)
+    End Function
+
     Function verificarPassword(nombre As String, password As String) As Boolean
-        For Each usuario In obtener()
+        For Each usuario In obtenerTodos()
             If usuario.nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase) Then
                 Return usuario.password.Equals(password)
             End If
