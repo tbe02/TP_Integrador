@@ -22,9 +22,9 @@ Partial Class FormListaEquipos
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         PListaEquipos = New Panel()
         DGVListaEquipos = New DataGridView()
         C_Cliente = New DataGridViewTextBoxColumn()
@@ -47,9 +47,9 @@ Partial Class FormListaEquipos
         ' 
         PListaEquipos.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         PListaEquipos.Controls.Add(DGVListaEquipos)
-        PListaEquipos.Location = New Point(12, 106)
+        PListaEquipos.Location = New Point(12, 147)
         PListaEquipos.Name = "PListaEquipos"
-        PListaEquipos.Size = New Size(1059, 795)
+        PListaEquipos.Size = New Size(1059, 754)
         PListaEquipos.TabIndex = 0
         ' 
         ' DGVListaEquipos
@@ -60,24 +60,24 @@ Partial Class FormListaEquipos
         DGVListaEquipos.BackgroundColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         DGVListaEquipos.BorderStyle = BorderStyle.None
         DGVListaEquipos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(109), CByte(122), CByte(224))
-        DataGridViewCellStyle4.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle4.ForeColor = Color.White
-        DataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(CByte(109), CByte(122), CByte(224))
-        DataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
-        DGVListaEquipos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(109), CByte(122), CByte(224))
+        DataGridViewCellStyle1.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle1.ForeColor = Color.White
+        DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(CByte(109), CByte(122), CByte(224))
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        DGVListaEquipos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         DGVListaEquipos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DGVListaEquipos.Columns.AddRange(New DataGridViewColumn() {C_Cliente, C_TipoEquipo, C_NroSerie, C_Marca, C_EquipoEnciende, C_InfomacionEquipo, C_Editar, C_Eliminar})
-        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        DataGridViewCellStyle5.Font = New Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle5.ForeColor = Color.White
-        DataGridViewCellStyle5.SelectionBackColor = Color.MediumPurple
-        DataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = DataGridViewTriState.False
-        DGVListaEquipos.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        DataGridViewCellStyle2.Font = New Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle2.ForeColor = Color.White
+        DataGridViewCellStyle2.SelectionBackColor = Color.MediumPurple
+        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.False
+        DGVListaEquipos.DefaultCellStyle = DataGridViewCellStyle2
         DGVListaEquipos.EnableHeadersVisualStyles = False
         DGVListaEquipos.GridColor = Color.FromArgb(CByte(109), CByte(122), CByte(224))
         DGVListaEquipos.Location = New Point(0, 0)
@@ -86,10 +86,10 @@ Partial Class FormListaEquipos
         DGVListaEquipos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DGVListaEquipos.RowHeadersVisible = False
         DGVListaEquipos.RowHeadersWidth = 51
-        DataGridViewCellStyle6.ForeColor = Color.White
-        DGVListaEquipos.RowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.ForeColor = Color.White
+        DGVListaEquipos.RowsDefaultCellStyle = DataGridViewCellStyle3
         DGVListaEquipos.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DGVListaEquipos.Size = New Size(1050, 795)
+        DGVListaEquipos.Size = New Size(1050, 751)
         DGVListaEquipos.TabIndex = 0
         ' 
         ' C_Cliente
@@ -163,7 +163,7 @@ Partial Class FormListaEquipos
         BAgregarEquipo.FlatStyle = FlatStyle.Flat
         BAgregarEquipo.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BAgregarEquipo.ForeColor = Color.White
-        BAgregarEquipo.Location = New Point(893, 30)
+        BAgregarEquipo.Location = New Point(893, 92)
         BAgregarEquipo.Margin = New Padding(3, 4, 3, 4)
         BAgregarEquipo.Name = "BAgregarEquipo"
         BAgregarEquipo.Size = New Size(178, 39)
@@ -177,7 +177,7 @@ Partial Class FormListaEquipos
         LListaEquipos.BackColor = Color.Transparent
         LListaEquipos.Font = New Font("Bahnschrift Condensed", 36F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LListaEquipos.ForeColor = Color.White
-        LListaEquipos.Location = New Point(355, 9)
+        LListaEquipos.Location = New Point(350, 9)
         LListaEquipos.Name = "LListaEquipos"
         LListaEquipos.Size = New Size(349, 72)
         LListaEquipos.TabIndex = 12
