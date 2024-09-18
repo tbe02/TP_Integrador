@@ -27,7 +27,7 @@ Public Class FormLogin
         password = TBContrasena.Text
 
         If (usuario = "" Or password = "") Then
-            MessageBox.Show("Debe completar todos los campos.", "Falta de datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Debe completar todos los campos", "Falta de datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
         Else
             If autenticador.autenticarUsuario(usuario, password) Then
                 MessageBox.Show("Ingreso exitoso", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Information)
