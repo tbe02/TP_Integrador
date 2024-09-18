@@ -31,6 +31,12 @@ Public Class FormLogin
         Else
             If autenticador.autenticarUsuario(TBUsuario.Text, TBContrasena.Text) Then
                 MessageBox.Show("Ingreso exitoso", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                Dim menu = New modelo_menu_user_maestro()
+
+                menu.Show()
+
+                Me.Hide()
             Else
                 MessageBox.Show("Ingreso fallido", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
