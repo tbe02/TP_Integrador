@@ -6,7 +6,9 @@
     End Sub
 
     Sub agregarUsuarios()
-        usuarios.agregar("master", "master", "maestro")
+        usuarios.agregar("maestro", "maestro", "maestro")
+        usuarios.agregar("admin", "admin", "administrador")
+        usuarios.agregar("tecnico", "tecnico", "tecnico")
 
         ' Esto es temporal
     End Sub
