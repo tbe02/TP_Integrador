@@ -40,7 +40,16 @@ Public Class FormLogin
                     menu.Show()
 
                     Me.Hide()
+                ElseIf usuarioAutenticado.tipo = "tecnico" Then
+                    Dim menu = New modelo_menu_principal()
+
+                    menu.Show()
+
+                    Me.Hide()
+                Else
+                    MessageBox.Show("Tipo de usuario no encontrado", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
+
             Else
                 MessageBox.Show("Ingreso fallido", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
@@ -51,7 +60,7 @@ Public Class FormLogin
 
 
     Private Sub PBCerrar_Click(sender As Object, e As EventArgs) Handles PBCerrar.Click
-        Me.Close()
+        End
     End Sub
 
     Private Sub PBMinimizar_Click(sender As Object, e As EventArgs) Handles PBMinimizar.Click
