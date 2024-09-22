@@ -24,7 +24,7 @@ Public Class modelo_menu_principal
 
         'creamos un panel izquierdo al iniciar el form que vamos a usar en nuestros botones'
         bordeIzquierdo = New Panel()
-        bordeIzquierdo.Size = New Size(7, 45)
+        bordeIzquierdo.Size = New Size(7, 60)
         PMenuIzquierdo.Controls.Add(bordeIzquierdo)
 
 
@@ -128,6 +128,16 @@ Public Class modelo_menu_principal
         activarBoton(sender, color)
 
         Me.PFondoPrincipal.Controls.Clear()
+
+        Dim form As New FormListaClientes()
+
+        form.FormBorderStyle = FormBorderStyle.None
+        form.TopLevel = False
+        form.Dock = DockStyle.Fill
+
+        Me.PFondoPrincipal.Controls.Add(form)
+        form.Show()
+
     End Sub
 
     Private Sub IBAgregarEquipo_Click(sender As Object, e As EventArgs) Handles IBAgregarEquipo.Click

@@ -70,7 +70,7 @@ Partial Class modelo_menu_principal
         LGestionServicTec.BackColor = Color.Transparent
         LGestionServicTec.Font = New Font("Berlin Sans FB", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LGestionServicTec.ForeColor = Color.Silver
-        LGestionServicTec.Location = New Point(37, 204)
+        LGestionServicTec.Location = New Point(37, 214)
         LGestionServicTec.Name = "LGestionServicTec"
         LGestionServicTec.Size = New Size(176, 19)
         LGestionServicTec.TabIndex = 13
@@ -94,7 +94,7 @@ Partial Class modelo_menu_principal
         LGST.BackColor = Color.Transparent
         LGST.Font = New Font("Berlin Sans FB", 12F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
         LGST.ForeColor = Color.Silver
-        LGST.Location = New Point(102, 181)
+        LGST.Location = New Point(102, 190)
         LGST.Name = "LGST"
         LGST.Size = New Size(43, 23)
         LGST.TabIndex = 12

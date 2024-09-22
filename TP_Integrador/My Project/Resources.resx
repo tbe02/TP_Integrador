@@ -121,6 +121,9 @@
   <data name="icons8-agregar-propiedad-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\icons8-agregar-propiedad-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="devices2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\devices2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-llamada-de-conferencia-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\icons8-llamada-de-conferencia-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -132,9 +135,6 @@
   </data>
   <data name="icons8-casa-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\icons8-casa-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="minimizar_blanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imagenes\minimizar_blanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="agregar_cliente" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\agregar_cliente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,13 +160,16 @@
   <data name="icons8-casa-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\icons8-casa-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-estación-de-trabajo-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imagenes\icons8-estación-de-trabajo-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8-agregar-administrador-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\icons8-agregar-administrador-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="devices2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\imagenes\devices2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-estación-de-trabajo-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\icons8-estación-de-trabajo-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="minimizar_blanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\minimizar_blanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="people" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\people.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
