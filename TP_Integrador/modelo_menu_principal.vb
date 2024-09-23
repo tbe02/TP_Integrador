@@ -131,6 +131,7 @@ Public Class modelo_menu_principal
 
         Dim form As New FormListaClientes()
 
+
         form.FormBorderStyle = FormBorderStyle.None
         form.TopLevel = False
         form.Dock = DockStyle.Fill

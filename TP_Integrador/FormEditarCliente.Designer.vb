@@ -56,10 +56,9 @@ Partial Class FormEditarCliente
         PAgregarCliente.Controls.Add(TBNombre)
         PAgregarCliente.Controls.Add(TBApellido)
         PAgregarCliente.Controls.Add(PBAgregarCliente)
-        PAgregarCliente.Location = New Point(1, 4)
-        PAgregarCliente.Margin = New Padding(3, 4, 3, 4)
+        PAgregarCliente.Location = New Point(1, 3)
         PAgregarCliente.Name = "PAgregarCliente"
-        PAgregarCliente.Size = New Size(571, 811)
+        PAgregarCliente.Size = New Size(487, 608)
         PAgregarCliente.TabIndex = 4
         ' 
         ' BEditarCliente
@@ -67,11 +66,12 @@ Partial Class FormEditarCliente
         BEditarCliente.BackColor = Color.FromArgb(CByte(128), CByte(128), CByte(255))
         BEditarCliente.FlatAppearance.BorderSize = 0
         BEditarCliente.FlatStyle = FlatStyle.Flat
-        BEditarCliente.Font = New Font("Arial Rounded MT Bold", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BEditarCliente.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BEditarCliente.ForeColor = Color.White
-        BEditarCliente.Location = New Point(86, 723)
+        BEditarCliente.Location = New Point(75, 542)
+        BEditarCliente.Margin = New Padding(3, 2, 3, 2)
         BEditarCliente.Name = "BEditarCliente"
-        BEditarCliente.Size = New Size(400, 67)
+        BEditarCliente.Size = New Size(350, 50)
         BEditarCliente.TabIndex = 4
         BEditarCliente.Text = "Editar cliente"
         BEditarCliente.UseVisualStyleBackColor = False
@@ -80,66 +80,66 @@ Partial Class FormEditarCliente
         ' 
         LEditarCliente.AutoSize = True
         LEditarCliente.BackColor = Color.Transparent
-        LEditarCliente.Font = New Font("Bahnschrift Condensed", 36.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LEditarCliente.Font = New Font("Bahnschrift Condensed", 36F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LEditarCliente.ForeColor = Color.White
-        LEditarCliente.Location = New Point(156, 187)
+        LEditarCliente.Location = New Point(136, 140)
         LEditarCliente.Name = "LEditarCliente"
-        LEditarCliente.Size = New Size(298, 72)
+        LEditarCliente.Size = New Size(242, 58)
         LEditarCliente.TabIndex = 11
         LEditarCliente.Text = "Editar Cliente"
         ' 
         ' LTelefono
         ' 
         LTelefono.AutoSize = True
-        LTelefono.Font = New Font("Arial Rounded MT Bold", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LTelefono.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LTelefono.ForeColor = Color.Silver
-        LTelefono.Location = New Point(46, 621)
+        LTelefono.Location = New Point(40, 466)
         LTelefono.Name = "LTelefono"
-        LTelefono.Size = New Size(95, 23)
+        LTelefono.Size = New Size(77, 18)
         LTelefono.TabIndex = 10
         LTelefono.Text = "Telefono"
         ' 
         ' LCorreo
         ' 
         LCorreo.AutoSize = True
-        LCorreo.Font = New Font("Arial Rounded MT Bold", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LCorreo.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LCorreo.ForeColor = Color.Silver
-        LCorreo.Location = New Point(46, 541)
+        LCorreo.Location = New Point(40, 406)
         LCorreo.Name = "LCorreo"
-        LCorreo.Size = New Size(79, 23)
+        LCorreo.Size = New Size(64, 18)
         LCorreo.TabIndex = 9
         LCorreo.Text = "Correo"
         ' 
         ' LDNI
         ' 
         LDNI.AutoSize = True
-        LDNI.Font = New Font("Arial Rounded MT Bold", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LDNI.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LDNI.ForeColor = Color.Silver
-        LDNI.Location = New Point(46, 461)
+        LDNI.Location = New Point(40, 346)
         LDNI.Name = "LDNI"
-        LDNI.Size = New Size(46, 23)
+        LDNI.Size = New Size(37, 18)
         LDNI.TabIndex = 8
         LDNI.Text = "DNI"
         ' 
         ' LNombre
         ' 
         LNombre.AutoSize = True
-        LNombre.Font = New Font("Arial Rounded MT Bold", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LNombre.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LNombre.ForeColor = Color.Silver
-        LNombre.Location = New Point(46, 381)
+        LNombre.Location = New Point(40, 286)
         LNombre.Name = "LNombre"
-        LNombre.Size = New Size(106, 23)
+        LNombre.Size = New Size(84, 18)
         LNombre.TabIndex = 7
         LNombre.Text = "Nombre/s"
         ' 
         ' LApellido
         ' 
         LApellido.AutoSize = True
-        LApellido.Font = New Font("Arial Rounded MT Bold", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LApellido.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LApellido.ForeColor = Color.Silver
-        LApellido.Location = New Point(46, 301)
+        LApellido.Location = New Point(40, 226)
         LApellido.Name = "LApellido"
-        LApellido.Size = New Size(106, 23)
+        LApellido.Size = New Size(85, 18)
         LApellido.TabIndex = 6
         LApellido.Text = "Apellido/s"
         ' 
@@ -149,9 +149,10 @@ Partial Class FormEditarCliente
         TBTelefono.BorderStyle = BorderStyle.None
         TBTelefono.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBTelefono.ForeColor = Color.Silver
-        TBTelefono.Location = New Point(216, 621)
+        TBTelefono.Location = New Point(189, 466)
+        TBTelefono.Margin = New Padding(3, 2, 3, 2)
         TBTelefono.Name = "TBTelefono"
-        TBTelefono.Size = New Size(302, 21)
+        TBTelefono.Size = New Size(264, 17)
         TBTelefono.TabIndex = 5
         ' 
         ' TBCorreo
@@ -160,9 +161,10 @@ Partial Class FormEditarCliente
         TBCorreo.BorderStyle = BorderStyle.None
         TBCorreo.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBCorreo.ForeColor = Color.Silver
-        TBCorreo.Location = New Point(216, 541)
+        TBCorreo.Location = New Point(189, 406)
+        TBCorreo.Margin = New Padding(3, 2, 3, 2)
         TBCorreo.Name = "TBCorreo"
-        TBCorreo.Size = New Size(302, 21)
+        TBCorreo.Size = New Size(264, 17)
         TBCorreo.TabIndex = 4
         ' 
         ' TBDNI
@@ -171,9 +173,10 @@ Partial Class FormEditarCliente
         TBDNI.BorderStyle = BorderStyle.None
         TBDNI.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBDNI.ForeColor = Color.Silver
-        TBDNI.Location = New Point(216, 461)
+        TBDNI.Location = New Point(189, 346)
+        TBDNI.Margin = New Padding(3, 2, 3, 2)
         TBDNI.Name = "TBDNI"
-        TBDNI.Size = New Size(302, 21)
+        TBDNI.Size = New Size(264, 17)
         TBDNI.TabIndex = 3
         ' 
         ' TBNombre
@@ -182,9 +185,10 @@ Partial Class FormEditarCliente
         TBNombre.BorderStyle = BorderStyle.None
         TBNombre.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBNombre.ForeColor = Color.Silver
-        TBNombre.Location = New Point(216, 381)
+        TBNombre.Location = New Point(189, 286)
+        TBNombre.Margin = New Padding(3, 2, 3, 2)
         TBNombre.Name = "TBNombre"
-        TBNombre.Size = New Size(302, 21)
+        TBNombre.Size = New Size(264, 17)
         TBNombre.TabIndex = 2
         ' 
         ' TBApellido
@@ -193,29 +197,30 @@ Partial Class FormEditarCliente
         TBApellido.BorderStyle = BorderStyle.None
         TBApellido.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBApellido.ForeColor = Color.Silver
-        TBApellido.Location = New Point(216, 301)
+        TBApellido.Location = New Point(189, 226)
+        TBApellido.Margin = New Padding(3, 2, 3, 2)
         TBApellido.Name = "TBApellido"
-        TBApellido.Size = New Size(302, 21)
+        TBApellido.Size = New Size(264, 17)
         TBApellido.TabIndex = 1
         ' 
         ' PBAgregarCliente
         ' 
-        PBAgregarCliente.Image = My.Resources.Resources.agregar_cliente
-        PBAgregarCliente.Location = New Point(216, 9)
-        PBAgregarCliente.Margin = New Padding(3, 4, 3, 4)
+        PBAgregarCliente.Image = My.Resources.Resources.editar_cliente_128px
+        PBAgregarCliente.Location = New Point(189, 7)
         PBAgregarCliente.Name = "PBAgregarCliente"
-        PBAgregarCliente.Size = New Size(173, 174)
+        PBAgregarCliente.Size = New Size(151, 130)
         PBAgregarCliente.TabIndex = 0
         PBAgregarCliente.TabStop = False
         ' 
         ' FormEditarCliente
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        ClientSize = New Size(571, 818)
+        ClientSize = New Size(500, 614)
         Controls.Add(PAgregarCliente)
         FormBorderStyle = FormBorderStyle.None
+        Margin = New Padding(3, 2, 3, 2)
         Name = "FormEditarCliente"
         Text = "FormAgregarCliente"
         PAgregarCliente.ResumeLayout(False)
