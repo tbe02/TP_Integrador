@@ -39,7 +39,6 @@ Partial Class modelo_menu_principal
         IBSesion = New FontAwesome.Sharp.IconButton()
         IBCerrar = New FontAwesome.Sharp.IconButton()
         MenuPerfil = New ContextMenuStrip(components)
-        TSMMiPerfil = New ToolStripMenuItem()
         TSMCerrarSesion = New ToolStripMenuItem()
         PMenuIzquierdo.SuspendLayout()
         CType(PBIconoEmpresa, ComponentModel.ISupportInitialize).BeginInit()
@@ -311,21 +310,10 @@ Partial Class modelo_menu_principal
         ' 
         MenuPerfil.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         MenuPerfil.ImageScalingSize = New Size(20, 20)
-        MenuPerfil.Items.AddRange(New ToolStripItem() {TSMMiPerfil, TSMCerrarSesion})
+        MenuPerfil.Items.AddRange(New ToolStripItem() {TSMCerrarSesion})
         MenuPerfil.Name = "ContextMenuStrip1"
         MenuPerfil.RenderMode = ToolStripRenderMode.System
-        MenuPerfil.Size = New Size(179, 62)
-        ' 
-        ' TSMMiPerfil
-        ' 
-        TSMMiPerfil.AutoSize = False
-        TSMMiPerfil.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        TSMMiPerfil.Font = New Font("Arial Rounded MT Bold", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TSMMiPerfil.ForeColor = Color.White
-        TSMMiPerfil.ImageTransparentColor = Color.Transparent
-        TSMMiPerfil.Name = "TSMMiPerfil"
-        TSMMiPerfil.Size = New Size(176, 29)
-        TSMMiPerfil.Text = "Mi perfil"
+        MenuPerfil.Size = New Size(211, 61)
         ' 
         ' TSMCerrarSesion
         ' 
@@ -335,7 +323,7 @@ Partial Class modelo_menu_principal
         TSMCerrarSesion.ForeColor = Color.White
         TSMCerrarSesion.ImageTransparentColor = Color.Transparent
         TSMCerrarSesion.Name = "TSMCerrarSesion"
-        TSMCerrarSesion.Size = New Size(176, 29)
+        TSMCerrarSesion.Size = New Size(160, 29)
         TSMCerrarSesion.Text = "Cerrar sesión"
         ' 
         ' modelo_menu_principal
@@ -371,7 +359,6 @@ Partial Class modelo_menu_principal
     Friend WithEvents LGST As Label
     Friend WithEvents IBSesion As FontAwesome.Sharp.IconButton
     Friend WithEvents MenuPerfil As ContextMenuStrip
-    Friend WithEvents TSMMiPerfil As ToolStripMenuItem
     Friend WithEvents TSMCerrarSesion As ToolStripMenuItem
     Friend WithEvents PFondoPrincipal As Panel
 End Class
