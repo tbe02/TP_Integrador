@@ -29,8 +29,6 @@ Partial Class FormListaClientes
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         PListaEquipos = New Panel()
         DGVListaClientes = New DataGridView()
-        LListaClientes = New Label()
-        PBClientes = New PictureBox()
         C_Apellido = New DataGridViewTextBoxColumn()
         C_Nombre = New DataGridViewTextBoxColumn()
         C_DNI = New DataGridViewTextBoxColumn()
@@ -38,9 +36,14 @@ Partial Class FormListaClientes
         C_Telefono = New DataGridViewTextBoxColumn()
         C_Editar = New DataGridViewButtonColumn()
         C_Eliminar = New DataGridViewButtonColumn()
+        LListaClientes = New Label()
+        PBClientes = New PictureBox()
+        IPBBuscarCliente = New FontAwesome.Sharp.IconPictureBox()
+        TBBuscarCliente = New TextBox()
         PListaEquipos.SuspendLayout()
         CType(DGVListaClientes, ComponentModel.ISupportInitialize).BeginInit()
         CType(PBClientes, ComponentModel.ISupportInitialize).BeginInit()
+        CType(IPBBuscarCliente, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' PListaEquipos
@@ -93,28 +96,6 @@ Partial Class FormListaClientes
         DGVListaClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DGVListaClientes.Size = New Size(922, 563)
         DGVListaClientes.TabIndex = 0
-        ' 
-        ' LListaClientes
-        ' 
-        LListaClientes.AutoSize = True
-        LListaClientes.BackColor = Color.Transparent
-        LListaClientes.Font = New Font("Bahnschrift Condensed", 36F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        LListaClientes.ForeColor = Color.White
-        LListaClientes.Location = New Point(306, 7)
-        LListaClientes.Name = "LListaClientes"
-        LListaClientes.Size = New Size(290, 58)
-        LListaClientes.TabIndex = 12
-        LListaClientes.Text = "Lista de Clientes"
-        ' 
-        ' PBClientes
-        ' 
-        PBClientes.Image = My.Resources.Resources.people
-        PBClientes.Location = New Point(225, 2)
-        PBClientes.Margin = New Padding(3, 2, 3, 2)
-        PBClientes.Name = "PBClientes"
-        PBClientes.Size = New Size(91, 73)
-        PBClientes.TabIndex = 13
-        PBClientes.TabStop = False
         ' 
         ' C_Apellido
         ' 
@@ -190,12 +171,60 @@ Partial Class FormListaClientes
         C_Eliminar.Text = "Eliminar"
         C_Eliminar.UseColumnTextForButtonValue = True
         ' 
+        ' LListaClientes
+        ' 
+        LListaClientes.AutoSize = True
+        LListaClientes.BackColor = Color.Transparent
+        LListaClientes.Font = New Font("Bahnschrift Condensed", 36F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LListaClientes.ForeColor = Color.White
+        LListaClientes.Location = New Point(306, 7)
+        LListaClientes.Name = "LListaClientes"
+        LListaClientes.Size = New Size(290, 58)
+        LListaClientes.TabIndex = 12
+        LListaClientes.Text = "Lista de Clientes"
+        ' 
+        ' PBClientes
+        ' 
+        PBClientes.Image = My.Resources.Resources.people
+        PBClientes.Location = New Point(225, 2)
+        PBClientes.Margin = New Padding(3, 2, 3, 2)
+        PBClientes.Name = "PBClientes"
+        PBClientes.Size = New Size(91, 73)
+        PBClientes.TabIndex = 13
+        PBClientes.TabStop = False
+        ' 
+        ' IPBBuscarCliente
+        ' 
+        IPBBuscarCliente.BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
+        IPBBuscarCliente.BackgroundImageLayout = ImageLayout.Stretch
+        IPBBuscarCliente.IconChar = FontAwesome.Sharp.IconChar.Search
+        IPBBuscarCliente.IconColor = Color.White
+        IPBBuscarCliente.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IPBBuscarCliente.IconSize = 23
+        IPBBuscarCliente.Location = New Point(911, 67)
+        IPBBuscarCliente.Name = "IPBBuscarCliente"
+        IPBBuscarCliente.Size = New Size(24, 23)
+        IPBBuscarCliente.TabIndex = 17
+        IPBBuscarCliente.TabStop = False
+        ' 
+        ' TBBuscarCliente
+        ' 
+        TBBuscarCliente.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        TBBuscarCliente.ForeColor = SystemColors.Window
+        TBBuscarCliente.Location = New Point(797, 67)
+        TBBuscarCliente.Multiline = True
+        TBBuscarCliente.Name = "TBBuscarCliente"
+        TBBuscarCliente.Size = New Size(108, 23)
+        TBBuscarCliente.TabIndex = 16
+        ' 
         ' FormListaClientes
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
         ClientSize = New Size(948, 685)
+        Controls.Add(IPBBuscarCliente)
+        Controls.Add(TBBuscarCliente)
         Controls.Add(PBClientes)
         Controls.Add(LListaClientes)
         Controls.Add(PListaEquipos)
@@ -206,6 +235,7 @@ Partial Class FormListaClientes
         PListaEquipos.ResumeLayout(False)
         CType(DGVListaClientes, ComponentModel.ISupportInitialize).EndInit()
         CType(PBClientes, ComponentModel.ISupportInitialize).EndInit()
+        CType(IPBBuscarCliente, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -221,4 +251,6 @@ Partial Class FormListaClientes
     Friend WithEvents C_Telefono As DataGridViewTextBoxColumn
     Friend WithEvents C_Editar As DataGridViewButtonColumn
     Friend WithEvents C_Eliminar As DataGridViewButtonColumn
+    Friend WithEvents IPBBuscarCliente As FontAwesome.Sharp.IconPictureBox
+    Friend WithEvents TBBuscarCliente As TextBox
 End Class

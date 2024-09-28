@@ -204,7 +204,7 @@ Partial Class FormEditarCliente
         ' 
         ' PBEditarCliente
         ' 
-        PBEditarCliente.Image = My.Resources.Resources.editar_cliente_128px1
+        PBEditarCliente.Image = My.Resources.Resources.editar_cliente_128px
         PBEditarCliente.Location = New Point(216, 9)
         PBEditarCliente.Margin = New Padding(3, 4, 3, 4)
         PBEditarCliente.Name = "PBEditarCliente"

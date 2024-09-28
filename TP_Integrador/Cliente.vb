@@ -10,7 +10,7 @@ Public Class Cliente
     Public Shared Clientes As New List(Of Cliente)()
 
 
-    Public Sub agregarCliente(apellido As String, nombre As String, dni As String, correo As String, telefono As String)
+    Public Function agregarCliente(apellido As String, nombre As String, dni As String, correo As String, telefono As String)
 
         Dim resultado As DialogResult
 
@@ -31,14 +31,18 @@ Public Class Cliente
 
                 MessageBox.Show("Cliente agregado correctamente", "Confirmacion de cliente", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
+                Return True
+
             End If
 
         End If
 
+        Return False
 
 
 
-    End Sub
+
+    End Function
 
     Public Shared Function obtenerClientes() As List(Of Cliente)
         Return Clientes
@@ -102,6 +106,10 @@ Public Class Cliente
             End If
         Next
         Return True
+    End Function
+
+    Private Function recuperarDatos()
+
     End Function
 
 End Class

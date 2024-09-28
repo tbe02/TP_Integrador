@@ -16,13 +16,15 @@ Public Class FormAgregarCliente
 
         Dim cliente As New Cliente()
 
-        cliente.agregarCliente(apellido, nombre, dni, correo, telefono)
+        If cliente.agregarCliente(apellido, nombre, dni, correo, telefono) Then
+            TBApellido.Clear()
+            TBNombre.Clear()
+            TBDNI.Clear()
+            TBCorreo.Clear()
+            TBTelefono.Clear()
+        End If
 
-        TBApellido.Clear()
-        TBNombre.Clear()
-        TBDNI.Clear()
-        TBCorreo.Clear()
-        TBTelefono.Clear()
+
 
 
     End Sub

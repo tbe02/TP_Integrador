@@ -5,7 +5,4 @@
         DGVListaEquipos.AllowUserToAddRows = False
     End Sub
 
-    Private Sub DGVListaEquipos_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVListaEquipos.CellContentClick
-
-    End Sub
 End Class
