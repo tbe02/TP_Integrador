@@ -52,14 +52,26 @@ Public Class FormEditarCliente
 
     'le decimos que guarde los cambios que le hicimos al cliente
     Private Sub BEditarCliente_Click(sender As Object, e As EventArgs) Handles BEditarCliente.Click
+        Dim apellido = TBApellido.Text
+        Dim nombre = TBNombre.Text
+        Dim DNI = TBDNI.Text
+        Dim correo = TBCorreo.Text
+        Dim telefono = TBTelefono.Text
+        Dim estado = ComboBoxEstado.Text
 
-        ClienteActual.editarCliente(TBDNI.Text, New Cliente With {
-            .Apellido = TBApellido.Text,
-            .Nombre = TBNombre.Text,
-            .Dni = TBDNI.Text,
-            .Correo = TBCorreo.Text,
-            .Telefono = TBTelefono.Text,
-            .Estado = ComboBoxEstado.Text
+        If apellido = "" Or nombre = "" Or DNI = "" Or correo = "" Or telefono = "" Or estado = "" Then
+            MessageBox.Show("Por favor complete los campos", "Editar cliente", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+            Return
+        End If
+
+        ClienteActual.editarCliente(ClienteActual.Dni, New Cliente With {
+            .Apellido = apellido,
+            .Nombre = nombre,
+            .Dni = DNI,
+            .Correo = correo,
+            .Telefono = telefono,
+            .Estado = estado
         })
 
         Me.alFinalizar()

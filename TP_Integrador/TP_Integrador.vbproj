@@ -20,12 +20,14 @@
 	    <PackageReference Include="FontAwesome.Sharp" Version="6.6.0" />
 	    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
     </ItemGroup>
-	
-  <ItemGroup>
-    <PackageReference Include="FontAwesome.Sharp" Version="6.6.0" />
-  </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="capa_presentacion\modelo_menu_principal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="capa_presentacion\modelo_menu_user_maestro.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="My Project\Application.Designer.vb">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

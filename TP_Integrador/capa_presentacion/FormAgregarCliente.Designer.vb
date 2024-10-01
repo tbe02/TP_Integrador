@@ -66,13 +66,13 @@ Partial Class FormAgregarCliente
         BAgregarCliente.BackColor = Color.FromArgb(CByte(128), CByte(128), CByte(255))
         BAgregarCliente.FlatAppearance.BorderSize = 0
         BAgregarCliente.FlatStyle = FlatStyle.Flat
-        BAgregarCliente.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BAgregarCliente.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BAgregarCliente.ForeColor = Color.White
         BAgregarCliente.Location = New Point(75, 542)
         BAgregarCliente.Margin = New Padding(3, 2, 3, 2)
         BAgregarCliente.Name = "BAgregarCliente"
         BAgregarCliente.Size = New Size(350, 50)
-        BAgregarCliente.TabIndex = 4
+        BAgregarCliente.TabIndex = 6
         BAgregarCliente.Text = "Agregar cliente"
         BAgregarCliente.UseVisualStyleBackColor = False
         ' 
@@ -91,55 +91,55 @@ Partial Class FormAgregarCliente
         ' LTelefono
         ' 
         LTelefono.AutoSize = True
-        LTelefono.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LTelefono.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LTelefono.ForeColor = Color.Silver
         LTelefono.Location = New Point(40, 466)
         LTelefono.Name = "LTelefono"
-        LTelefono.Size = New Size(77, 18)
+        LTelefono.Size = New Size(71, 20)
         LTelefono.TabIndex = 10
         LTelefono.Text = "Telefono"
         ' 
         ' LCorreo
         ' 
         LCorreo.AutoSize = True
-        LCorreo.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LCorreo.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LCorreo.ForeColor = Color.Silver
         LCorreo.Location = New Point(40, 406)
         LCorreo.Name = "LCorreo"
-        LCorreo.Size = New Size(64, 18)
+        LCorreo.Size = New Size(57, 20)
         LCorreo.TabIndex = 9
         LCorreo.Text = "Correo"
         ' 
         ' LDNI
         ' 
         LDNI.AutoSize = True
-        LDNI.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LDNI.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LDNI.ForeColor = Color.Silver
         LDNI.Location = New Point(40, 346)
         LDNI.Name = "LDNI"
-        LDNI.Size = New Size(37, 18)
+        LDNI.Size = New Size(37, 20)
         LDNI.TabIndex = 8
         LDNI.Text = "DNI"
         ' 
         ' LNombre
         ' 
         LNombre.AutoSize = True
-        LNombre.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LNombre.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LNombre.ForeColor = Color.Silver
         LNombre.Location = New Point(40, 286)
         LNombre.Name = "LNombre"
-        LNombre.Size = New Size(84, 18)
+        LNombre.Size = New Size(77, 20)
         LNombre.TabIndex = 7
         LNombre.Text = "Nombre/s"
         ' 
         ' LApellido
         ' 
         LApellido.AutoSize = True
-        LApellido.Font = New Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LApellido.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LApellido.ForeColor = Color.Silver
         LApellido.Location = New Point(40, 226)
         LApellido.Name = "LApellido"
-        LApellido.Size = New Size(85, 18)
+        LApellido.Size = New Size(77, 20)
         LApellido.TabIndex = 6
         LApellido.Text = "Apellido/s"
         ' 
@@ -147,7 +147,7 @@ Partial Class FormAgregarCliente
         ' 
         TBTelefono.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
         TBTelefono.BorderStyle = BorderStyle.None
-        TBTelefono.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TBTelefono.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBTelefono.ForeColor = Color.Silver
         TBTelefono.Location = New Point(189, 466)
         TBTelefono.Margin = New Padding(3, 2, 3, 2)
@@ -159,7 +159,7 @@ Partial Class FormAgregarCliente
         ' 
         TBCorreo.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
         TBCorreo.BorderStyle = BorderStyle.None
-        TBCorreo.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TBCorreo.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBCorreo.ForeColor = Color.Silver
         TBCorreo.Location = New Point(189, 406)
         TBCorreo.Margin = New Padding(3, 2, 3, 2)
@@ -171,7 +171,7 @@ Partial Class FormAgregarCliente
         ' 
         TBDNI.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
         TBDNI.BorderStyle = BorderStyle.None
-        TBDNI.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TBDNI.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBDNI.ForeColor = Color.Silver
         TBDNI.Location = New Point(189, 346)
         TBDNI.Margin = New Padding(3, 2, 3, 2)
@@ -183,7 +183,7 @@ Partial Class FormAgregarCliente
         ' 
         TBNombre.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
         TBNombre.BorderStyle = BorderStyle.None
-        TBNombre.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TBNombre.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBNombre.ForeColor = Color.Silver
         TBNombre.Location = New Point(189, 286)
         TBNombre.Margin = New Padding(3, 2, 3, 2)
@@ -195,7 +195,7 @@ Partial Class FormAgregarCliente
         ' 
         TBApellido.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
         TBApellido.BorderStyle = BorderStyle.None
-        TBApellido.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TBApellido.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBApellido.ForeColor = Color.Silver
         TBApellido.Location = New Point(189, 226)
         TBApellido.Margin = New Padding(3, 2, 3, 2)

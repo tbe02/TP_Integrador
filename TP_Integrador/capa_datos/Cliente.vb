@@ -14,9 +14,10 @@ Public Class Cliente
 
     Public Shared Clientes As New List(Of Cliente)()
 
+
     Public Sub editarCliente(DNICliente As String, clienteEditado As Cliente)
         Try
-            Dim conexion As New SqlConnection("server=DESKTOP-HAOT1MM\SQLEXPRESS; Initial Catalog=gestion_reparacion_equipos; Integrated Security=True")
+            Dim conexion = New BaseDeDatos().obtenerConexion()
 
             Dim comando = New SqlCommand("UPDATE Clientes SET nombres = '" & clienteEditado.Nombre & "', apellidos = '" & clienteEditado.Apellido & "', DNI = '" & clienteEditado.Dni & "', correo = '" & clienteEditado.Correo & "', telefono = '" & clienteEditado.Telefono & "', estado = '" & clienteEditado.Estado & "' WHERE DNI = '" & DNICliente & "'", conexion)
 
@@ -25,6 +26,18 @@ Public Class Cliente
             comando.ExecuteNonQuery()
 
             MessageBox.Show("Cliente editado correctamente", "Edicion de cliente", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As SqlException
+            If ex.Number = 2627 Or ex.Number = 2601 Then
+                Dim claveRepetida As String = ""
+
+                If ex.Message.Contains(clienteEditado.Dni) Then
+                    claveRepetida = "DNI (" & clienteEditado.Dni & ")"
+                ElseIf ex.Message.Contains(clienteEditado.Correo) Then
+                    claveRepetida = "Correo (" & clienteEditado.Correo & ")"
+                End If
+
+                MessageBox.Show("Usted intento ingresar un cliente con datos que identifican a un cliente ya existente, este dato fue: " & claveRepetida, "Error al agregar cliente", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -39,7 +52,7 @@ Public Class Cliente
             If resultado = DialogResult.Yes Then
 
                 Try
-                    Dim conexion As New SqlConnection("server=DESKTOP-HAOT1MM\SQLEXPRESS; Initial Catalog=gestion_reparacion_equipos; Integrated Security=True")
+                    Dim conexion = New BaseDeDatos().obtenerConexion()
 
                     Dim comando = New SqlCommand("INSERT INTO Clientes (DNI, nombres, apellidos, telefono, correo) VALUES ('" & dni & "', '" & nombre & "', '" & apellido & "', '" & telefono & "', '" & correo & "');", conexion)
 
@@ -50,6 +63,18 @@ Public Class Cliente
                     MessageBox.Show("Cliente agregado correctamente", "Confirmacion de cliente", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                     Return True
+                Catch ex As SqlException
+                    If ex.Number = 2627 Or ex.Number = 2601 Then
+                        Dim claveRepetida As String = ""
+
+                        If ex.Message.Contains(dni) Then
+                            claveRepetida = "DNI (" & dni & ")"
+                        ElseIf ex.Message.Contains(correo) Then
+                            claveRepetida = "Correo (" & correo & ")"
+                        End If
+
+                        MessageBox.Show("Usted intento ingresar un cliente con datos que identifican a un cliente ya existente, este dato fue: " & claveRepetida, "Error al agregar cliente", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End If
                 Catch ex As Exception
                     MsgBox(ex.Message)
                 End Try
@@ -69,7 +94,7 @@ Public Class Cliente
         Dim clientes As New List(Of Cliente)()
 
         Try
-            Dim conexion As New SqlConnection("server=DESKTOP-HAOT1MM\SQLEXPRESS; Initial Catalog=gestion_reparacion_equipos; Integrated Security=True")
+            Dim conexion = New BaseDeDatos().obtenerConexion()
 
             Dim comando = New SqlCommand("SELECT * FROM Clientes;", conexion)
 
@@ -92,7 +117,7 @@ Public Class Cliente
                 End If
             End Using
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox(ex.InnerException.ToString())
         End Try
 
         Return clientes
@@ -101,7 +126,7 @@ Public Class Cliente
     Public Shared Function eliminarCliente(clienteAEliminar As Cliente)
 
         If clienteAEliminar IsNot Nothing Then
-            Dim conexion As New SqlConnection("server=DESKTOP-HAOT1MM\SQLEXPRESS; Initial Catalog=gestion_reparacion_equipos; Integrated Security=True")
+            Dim conexion = New BaseDeDatos().obtenerConexion()
 
             Dim comando = New SqlCommand("UPDATE Clientes SET estado = 'inactivo' WHERE DNI = '" & clienteAEliminar.Dni & "';", conexion)
 
@@ -163,10 +188,6 @@ Public Class Cliente
             End If
         Next
         Return True
-    End Function
-
-    Private Function recuperarDatos()
-
     End Function
 
 End Class

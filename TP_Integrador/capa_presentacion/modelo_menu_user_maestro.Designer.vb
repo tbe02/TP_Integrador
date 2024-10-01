@@ -27,8 +27,8 @@ Partial Class modelo_menu_user_maestro
         LGestionServicTec = New Label()
         PBIconoEmpresa = New PictureBox()
         LGST = New Label()
-        IBMenuPrincipal = New FontAwesome.Sharp.IconButton()
         IBAgregarUsuario = New FontAwesome.Sharp.IconButton()
+        IBMenuPrincipal = New FontAwesome.Sharp.IconButton()
         IBListaUsuarios = New FontAwesome.Sharp.IconButton()
         IBListaClientes = New FontAwesome.Sharp.IconButton()
         IBListaEquipos = New FontAwesome.Sharp.IconButton()
@@ -40,6 +40,7 @@ Partial Class modelo_menu_user_maestro
         MenuPerfil = New ContextMenuStrip(components)
         TSMMiPerfil = New ToolStripMenuItem()
         TSMCerrarSesion = New ToolStripMenuItem()
+        PFondoPrincipal = New Panel()
         PMenuIzquierdo.SuspendLayout()
         CType(PBIconoEmpresa, ComponentModel.ISupportInitialize).BeginInit()
         PMenuSuperior.SuspendLayout()
@@ -68,11 +69,11 @@ Partial Class modelo_menu_user_maestro
         ' 
         LGestionServicTec.AutoSize = True
         LGestionServicTec.BackColor = Color.Transparent
-        LGestionServicTec.Font = New Font("Berlin Sans FB", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LGestionServicTec.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LGestionServicTec.ForeColor = Color.Silver
         LGestionServicTec.Location = New Point(32, 153)
         LGestionServicTec.Name = "LGestionServicTec"
-        LGestionServicTec.Size = New Size(140, 16)
+        LGestionServicTec.Size = New Size(165, 17)
         LGestionServicTec.TabIndex = 13
         LGestionServicTec.Text = "Gestión Servicio Técnico"
         ' 
@@ -91,35 +92,13 @@ Partial Class modelo_menu_user_maestro
         ' 
         LGST.AutoSize = True
         LGST.BackColor = Color.Transparent
-        LGST.Font = New Font("Berlin Sans FB", 12.0F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        LGST.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
         LGST.ForeColor = Color.Silver
         LGST.Location = New Point(89, 136)
         LGST.Name = "LGST"
-        LGST.Size = New Size(34, 18)
+        LGST.Size = New Size(42, 20)
         LGST.TabIndex = 12
         LGST.Text = "GST"
-        ' 
-        ' IBMenuPrincipal
-        ' 
-        IBMenuPrincipal.BackColor = Color.Transparent
-        IBMenuPrincipal.FlatAppearance.BorderSize = 0
-        IBMenuPrincipal.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        IBMenuPrincipal.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        IBMenuPrincipal.FlatStyle = FlatStyle.Flat
-        IBMenuPrincipal.Font = New Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        IBMenuPrincipal.ForeColor = Color.White
-        IBMenuPrincipal.IconChar = FontAwesome.Sharp.IconChar.House
-        IBMenuPrincipal.IconColor = Color.White
-        IBMenuPrincipal.IconFont = FontAwesome.Sharp.IconFont.Auto
-        IBMenuPrincipal.IconSize = 40
-        IBMenuPrincipal.ImageAlign = ContentAlignment.MiddleLeft
-        IBMenuPrincipal.Location = New Point(-3, 220)
-        IBMenuPrincipal.Margin = New Padding(3, 2, 3, 2)
-        IBMenuPrincipal.Name = "IBMenuPrincipal"
-        IBMenuPrincipal.Size = New Size(219, 45)
-        IBMenuPrincipal.TabIndex = 10
-        IBMenuPrincipal.Text = "Menú principal"
-        IBMenuPrincipal.UseVisualStyleBackColor = False
         ' 
         ' IBAgregarUsuario
         ' 
@@ -128,7 +107,7 @@ Partial Class modelo_menu_user_maestro
         IBAgregarUsuario.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         IBAgregarUsuario.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         IBAgregarUsuario.FlatStyle = FlatStyle.Flat
-        IBAgregarUsuario.Font = New Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        IBAgregarUsuario.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         IBAgregarUsuario.ForeColor = Color.White
         IBAgregarUsuario.IconChar = FontAwesome.Sharp.IconChar.User
         IBAgregarUsuario.IconColor = Color.White
@@ -143,6 +122,28 @@ Partial Class modelo_menu_user_maestro
         IBAgregarUsuario.Text = "Agregar usuario"
         IBAgregarUsuario.UseVisualStyleBackColor = False
         ' 
+        ' IBMenuPrincipal
+        ' 
+        IBMenuPrincipal.BackColor = Color.Transparent
+        IBMenuPrincipal.FlatAppearance.BorderSize = 0
+        IBMenuPrincipal.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        IBMenuPrincipal.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        IBMenuPrincipal.FlatStyle = FlatStyle.Flat
+        IBMenuPrincipal.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        IBMenuPrincipal.ForeColor = Color.White
+        IBMenuPrincipal.IconChar = FontAwesome.Sharp.IconChar.House
+        IBMenuPrincipal.IconColor = Color.White
+        IBMenuPrincipal.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IBMenuPrincipal.IconSize = 40
+        IBMenuPrincipal.ImageAlign = ContentAlignment.MiddleLeft
+        IBMenuPrincipal.Location = New Point(-3, 220)
+        IBMenuPrincipal.Margin = New Padding(3, 2, 3, 2)
+        IBMenuPrincipal.Name = "IBMenuPrincipal"
+        IBMenuPrincipal.Size = New Size(219, 45)
+        IBMenuPrincipal.TabIndex = 10
+        IBMenuPrincipal.Text = "Menú principal"
+        IBMenuPrincipal.UseVisualStyleBackColor = False
+        ' 
         ' IBListaUsuarios
         ' 
         IBListaUsuarios.BackColor = Color.Transparent
@@ -150,7 +151,7 @@ Partial Class modelo_menu_user_maestro
         IBListaUsuarios.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         IBListaUsuarios.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         IBListaUsuarios.FlatStyle = FlatStyle.Flat
-        IBListaUsuarios.Font = New Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        IBListaUsuarios.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         IBListaUsuarios.ForeColor = Color.White
         IBListaUsuarios.IconChar = FontAwesome.Sharp.IconChar.ListSquares
         IBListaUsuarios.IconColor = Color.White
@@ -172,7 +173,7 @@ Partial Class modelo_menu_user_maestro
         IBListaClientes.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         IBListaClientes.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         IBListaClientes.FlatStyle = FlatStyle.Flat
-        IBListaClientes.Font = New Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        IBListaClientes.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         IBListaClientes.ForeColor = Color.White
         IBListaClientes.IconChar = FontAwesome.Sharp.IconChar.ListSquares
         IBListaClientes.IconColor = Color.White
@@ -194,7 +195,7 @@ Partial Class modelo_menu_user_maestro
         IBListaEquipos.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         IBListaEquipos.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         IBListaEquipos.FlatStyle = FlatStyle.Flat
-        IBListaEquipos.Font = New Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        IBListaEquipos.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         IBListaEquipos.ForeColor = Color.White
         IBListaEquipos.IconChar = FontAwesome.Sharp.IconChar.ListAlt
         IBListaEquipos.IconColor = Color.White
@@ -231,7 +232,7 @@ Partial Class modelo_menu_user_maestro
         IBMinimizar.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         IBMinimizar.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         IBMinimizar.FlatStyle = FlatStyle.Flat
-        IBMinimizar.Font = New Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        IBMinimizar.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         IBMinimizar.ForeColor = Color.White
         IBMinimizar.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize
         IBMinimizar.IconColor = Color.Gray
@@ -252,7 +253,7 @@ Partial Class modelo_menu_user_maestro
         IBMaximizar.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         IBMaximizar.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         IBMaximizar.FlatStyle = FlatStyle.Flat
-        IBMaximizar.Font = New Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        IBMaximizar.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         IBMaximizar.ForeColor = Color.White
         IBMaximizar.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize
         IBMaximizar.IconColor = Color.Gray
@@ -272,7 +273,7 @@ Partial Class modelo_menu_user_maestro
         IBSesion.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         IBSesion.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         IBSesion.FlatStyle = FlatStyle.Flat
-        IBSesion.Font = New Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        IBSesion.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         IBSesion.ForeColor = Color.White
         IBSesion.IconChar = FontAwesome.Sharp.IconChar.UserCircle
         IBSesion.IconColor = Color.White
@@ -295,7 +296,7 @@ Partial Class modelo_menu_user_maestro
         IBCerrar.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         IBCerrar.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         IBCerrar.FlatStyle = FlatStyle.Flat
-        IBCerrar.Font = New Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        IBCerrar.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         IBCerrar.ForeColor = Color.White
         IBCerrar.IconChar = FontAwesome.Sharp.IconChar.Close
         IBCerrar.IconColor = Color.Gray
@@ -315,13 +316,13 @@ Partial Class modelo_menu_user_maestro
         MenuPerfil.Items.AddRange(New ToolStripItem() {TSMMiPerfil, TSMCerrarSesion})
         MenuPerfil.Name = "ContextMenuStrip1"
         MenuPerfil.RenderMode = ToolStripRenderMode.System
-        MenuPerfil.Size = New Size(154, 62)
+        MenuPerfil.Size = New Size(148, 62)
         ' 
         ' TSMMiPerfil
         ' 
         TSMMiPerfil.AutoSize = False
         TSMMiPerfil.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        TSMMiPerfil.Font = New Font("Arial Rounded MT Bold", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TSMMiPerfil.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TSMMiPerfil.ForeColor = Color.White
         TSMMiPerfil.ImageTransparentColor = Color.Transparent
         TSMMiPerfil.Name = "TSMMiPerfil"
@@ -332,19 +333,28 @@ Partial Class modelo_menu_user_maestro
         ' 
         TSMCerrarSesion.AutoSize = False
         TSMCerrarSesion.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        TSMCerrarSesion.Font = New Font("Arial Rounded MT Bold", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TSMCerrarSesion.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TSMCerrarSesion.ForeColor = Color.White
         TSMCerrarSesion.ImageTransparentColor = Color.Transparent
         TSMCerrarSesion.Name = "TSMCerrarSesion"
         TSMCerrarSesion.Size = New Size(176, 29)
         TSMCerrarSesion.Text = "Cerrar sesión"
         ' 
+        ' PFondoPrincipal
+        ' 
+        PFondoPrincipal.BackColor = Color.Transparent
+        PFondoPrincipal.Location = New Point(219, 48)
+        PFondoPrincipal.Name = "PFondoPrincipal"
+        PFondoPrincipal.Size = New Size(931, 666)
+        PFondoPrincipal.TabIndex = 4
+        ' 
         ' modelo_menu_user_maestro
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
         ClientSize = New Size(1150, 714)
+        Controls.Add(PFondoPrincipal)
         Controls.Add(PMenuSuperior)
         Controls.Add(PMenuIzquierdo)
         FormBorderStyle = FormBorderStyle.None
@@ -375,4 +385,5 @@ Partial Class modelo_menu_user_maestro
     Friend WithEvents MenuPerfil As ContextMenuStrip
     Friend WithEvents TSMMiPerfil As ToolStripMenuItem
     Friend WithEvents TSMCerrarSesion As ToolStripMenuItem
+    Friend WithEvents PFondoPrincipal As Panel
 End Class

@@ -91,27 +91,76 @@ Public Class modelo_menu_user_maestro
 
         color = Color.FromArgb(173, 126, 241)
         activarBoton(sender, color)
+
+        Me.PFondoPrincipal.Controls.Clear()
+
+        Dim form As New FormEstadisticas()
+
+        form.TopLevel = False
+        form.FormBorderStyle = FormBorderStyle.None
+
+
+
+        Me.PFondoPrincipal.Controls.Add(form)
+        form.Show()
+
+
     End Sub
 
     Private Sub IBAgregarCliente_Click(sender As Object, e As EventArgs) Handles IBAgregarUsuario.Click
         Dim color As Color
 
-        color = Color.FromArgb(249, 118, 176)
+        color = Color.FromArgb(249, 88, 155)
         activarBoton(sender, color)
+
+        Me.PFondoPrincipal.Controls.Clear()
+
+        Dim form As New FormAgregarUsuario()
+
+        form.TopLevel = False
+        form.FormBorderStyle = FormBorderStyle.None
+        form.Dock = DockStyle.Fill
+
+
+
+        Me.PFondoPrincipal.Controls.Add(form)
+        form.Show()
     End Sub
 
     Private Sub IBListaClientes_Click(sender As Object, e As EventArgs) Handles IBListaClientes.Click
         Dim color As Color
 
-        color = Color.FromArgb(253, 138, 114)
+        color = Color.FromArgb(249, 88, 155)
         activarBoton(sender, color)
+
+        Me.PFondoPrincipal.Controls.Clear()
+
+        Dim form As New FormListaClientes()
+
+        form.TopLevel = False
+        form.FormBorderStyle = FormBorderStyle.None
+        form.Dock = DockStyle.Fill
+
+        Me.PFondoPrincipal.Controls.Add(form)
+        form.Show()
     End Sub
 
     Private Sub IBAgregarEquipo_Click(sender As Object, e As EventArgs) Handles IBListaUsuarios.Click
         Dim color As Color
 
-        color = Color.FromArgb(95, 77, 221)
+        color = Color.FromArgb(249, 88, 155)
         activarBoton(sender, color)
+
+        Me.PFondoPrincipal.Controls.Clear()
+
+        Dim form As New FormListaUsuarios()
+
+        form.TopLevel = False
+        form.FormBorderStyle = FormBorderStyle.None
+        form.Dock = DockStyle.Fill
+
+        Me.PFondoPrincipal.Controls.Add(form)
+        form.Show()
     End Sub
 
     Private Sub IBListaEquipos_Click(sender As Object, e As EventArgs) Handles IBListaEquipos.Click
@@ -119,6 +168,19 @@ Public Class modelo_menu_user_maestro
 
         color = Color.FromArgb(249, 88, 155)
         activarBoton(sender, color)
+
+        Me.PFondoPrincipal.Controls.Clear()
+
+        Dim form As New FormListaEquipos()
+
+        form.TopLevel = False
+        form.FormBorderStyle = FormBorderStyle.None
+        form.Dock = DockStyle.Fill
+
+
+
+        Me.PFondoPrincipal.Controls.Add(form)
+        form.Show()
     End Sub
 
     Private Sub EjecutarIBMenuPrincipal()

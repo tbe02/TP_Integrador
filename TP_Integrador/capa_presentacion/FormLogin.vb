@@ -41,6 +41,12 @@ Public Class FormLogin
 
                     Me.Hide()
                 ElseIf usuarioAutenticado.tipo = "tecnico" Then
+                    Dim menu = New modelo_menu_user_tecnico()
+
+                    menu.Show()
+
+                    Me.Hide()
+                ElseIf usuarioAutenticado.tipo = "administrador" Then
                     Dim menu = New modelo_menu_principal()
 
                     menu.Show()

@@ -24,13 +24,15 @@ Public Class modelo_menu_principal
 
         'creamos un panel izquierdo al iniciar el form que vamos a usar en nuestros botones'
         bordeIzquierdo = New Panel()
-        bordeIzquierdo.Size = New Size(7, 45)
+        bordeIzquierdo.Size = New Size(7, 60)
         PMenuIzquierdo.Controls.Add(bordeIzquierdo)
 
 
 
         ' Llama al método IBMenuPrincipal_Click desde el evento Load del formulario
         EjecutarIBMenuPrincipal()
+
+
 
 
 
@@ -77,22 +79,27 @@ Public Class modelo_menu_principal
 
     End Function
 
-    Private Function RGBColors()
 
-        Dim color1, color2, color3, color4, color5 As Color
-        color1 = Color.FromArgb(173, 126, 241)
-        color2 = Color.FromArgb(249, 118, 176)
-        color3 = Color.FromArgb(253, 138, 114)
-        color4 = Color.FromArgb(95, 77, 221)
-        color5 = Color.FromArgb(249, 88, 155)
-
-    End Function
 
     Private Sub IBMenuPrincipal_Click(sender As Object, e As EventArgs) Handles IBMenuPrincipal.Click
         Dim color As Color
 
         color = Color.FromArgb(173, 126, 241)
         activarBoton(sender, color)
+
+        Me.PFondoPrincipal.Controls.Clear()
+
+        Dim form As New FormEstadisticas()
+
+        form.TopLevel = False
+        form.FormBorderStyle = FormBorderStyle.None
+
+
+
+        Me.PFondoPrincipal.Controls.Add(form)
+        form.Show()
+
+
     End Sub
 
     Private Sub IBAgregarCliente_Click(sender As Object, e As EventArgs) Handles IBAgregarCliente.Click
@@ -100,6 +107,30 @@ Public Class modelo_menu_principal
 
         color = Color.FromArgb(249, 118, 176)
         activarBoton(sender, color)
+
+        ' Limpiar cualquier control que ya esté en el Panel
+        Me.PFondoPrincipal.Controls.Clear()
+
+        ' Crear una nueva instancia del formulario
+        Dim form As New FormAgregarCliente()
+
+        ' Configurar el formulario para que no sea de nivel superior y sin bordes
+        form.TopLevel = False
+        form.FormBorderStyle = FormBorderStyle.None
+
+        ' Ajustar el formulario al tamaño del Panel
+        Dim x As Integer = form.Location.X
+        Dim y As Integer = form.Location.Y
+        form.Location = New Point(x + 250, y + 40)
+
+
+        ' Añadir el formulario al Panel y mostrarlo
+        Me.PFondoPrincipal.Controls.Add(form)
+        form.Show()
+
+
+
+
     End Sub
 
     Private Sub IBListaClientes_Click(sender As Object, e As EventArgs) Handles IBListaClientes.Click
@@ -107,6 +138,19 @@ Public Class modelo_menu_principal
 
         color = Color.FromArgb(253, 138, 114)
         activarBoton(sender, color)
+
+        Me.PFondoPrincipal.Controls.Clear()
+
+        Dim form As New FormListaClientes()
+
+
+        form.FormBorderStyle = FormBorderStyle.None
+        form.TopLevel = False
+        form.Dock = DockStyle.Fill
+
+        Me.PFondoPrincipal.Controls.Add(form)
+        form.Show()
+
     End Sub
 
     Private Sub IBAgregarEquipo_Click(sender As Object, e As EventArgs) Handles IBAgregarEquipo.Click
@@ -114,6 +158,21 @@ Public Class modelo_menu_principal
 
         color = Color.FromArgb(95, 77, 221)
         activarBoton(sender, color)
+
+        Me.PFondoPrincipal.Controls.Clear()
+
+        Dim form As New FormAgregarEquipo()
+
+        form.TopLevel = False
+        form.FormBorderStyle = FormBorderStyle.None
+        form.Dock = DockStyle.Fill
+
+
+
+        Me.PFondoPrincipal.Controls.Add(form)
+        form.Show()
+
+
     End Sub
 
     Private Sub IBListaEquipos_Click(sender As Object, e As EventArgs) Handles IBListaEquipos.Click
@@ -121,11 +180,25 @@ Public Class modelo_menu_principal
 
         color = Color.FromArgb(249, 88, 155)
         activarBoton(sender, color)
+
+        Me.PFondoPrincipal.Controls.Clear()
+
+        Dim form As New FormListaEquipos()
+
+        form.TopLevel = False
+        form.FormBorderStyle = FormBorderStyle.None
+        form.Dock = DockStyle.Fill
+
+
+
+        Me.PFondoPrincipal.Controls.Add(form)
+        form.Show()
     End Sub
 
     Private Sub EjecutarIBMenuPrincipal()
         ' Llama al método IBMenuPrincipal_Click, pasando un valor predeterminado para sender y e
         IBMenuPrincipal_Click(IBMenuPrincipal, EventArgs.Empty)
+
     End Sub
 
     Private Sub PMenuSuperior_MouseDown(sender As Object, e As MouseEventArgs) Handles PMenuSuperior.MouseDown
@@ -159,4 +232,6 @@ Public Class modelo_menu_principal
     Private Sub IBSesion_Click(sender As Object, e As EventArgs) Handles IBSesion.Click
         MenuPerfil.Show(IBSesion, New Point(0, IBSesion.Height))
     End Sub
+
+
 End Class
