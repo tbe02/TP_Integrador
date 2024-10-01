@@ -123,6 +123,44 @@
   </data>
   <data name="icons8-estación-de-trabajo-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\icons8-estación-de-trabajo-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-agregar-propiedad-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\icons8-agregar-propiedad-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="devices2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\devices2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-llamada-de-conferencia-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\icons8-llamada-de-conferencia-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="devices" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\devices.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="impresora21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\impresora2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-casa-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\icons8-casa-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="agregar_cliente" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\agregar_cliente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cerrar_blanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\cerrar_blanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="agregar_equipo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\agregar_equipo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="editar_cliente_128px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\editar_cliente_128px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="agregar_cliente1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\agregar_cliente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="people" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\people.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cliente" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\cliente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="impresora2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\impresora2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -132,6 +170,11 @@
   </data>
   <data name="icons8-casa-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\icons8-casa-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="laptop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\laptop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-casa-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\icons8-casa-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-agregar-administrador-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\icons8-agregar-administrador-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -141,6 +184,20 @@
   </data>
   <data name="impresora21" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\impresora2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="editar_cliente_128px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\editar_cliente_128px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-estación-de-trabajo-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\icons8-estación-de-trabajo-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="minimizar_blanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\minimizar_blanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="editar_cliente" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\editar_cliente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-añadir-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imagenes\icons8-añadir-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-casa-30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imagenes\icons8-casa-30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
