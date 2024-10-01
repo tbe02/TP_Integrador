@@ -20,14 +20,16 @@ Public Class FormEditarCliente
 
 
     Private ClienteActual As Cliente
+    Private alFinalizar As Action
 
     ' constructor que reciba un cliente
-    Public Sub New(cliente As Cliente)
+    Public Sub New(cliente As Cliente, alFinalizar As Action)
         ' Esta llamada es necesaria para el diseñador.
         InitializeComponent()
 
         ' Asigna el cliente al formulario
         Me.ClienteActual = cliente
+        Me.alFinalizar = alFinalizar
     End Sub
 
     'le decimos que cargue la info del cliente a los textboxs
@@ -41,17 +43,26 @@ Public Class FormEditarCliente
         TBCorreo.Text = ClienteActual.Correo
 
         TBTelefono.Text = ClienteActual.Telefono
+
+        ComboBoxEstado.Text = ClienteActual.Estado
+
+        ComboBoxEstado.Items.Add("inactivo")
+        ComboBoxEstado.Items.Add("activo")
     End Sub
 
     'le decimos que guarde los cambios que le hicimos al cliente
     Private Sub BEditarCliente_Click(sender As Object, e As EventArgs) Handles BEditarCliente.Click
 
-        ClienteActual.Apellido = TBApellido.Text
-        ClienteActual.Nombre = TBNombre.Text
-        ClienteActual.Dni = TBDNI.Text
-        ClienteActual.Correo = TBCorreo.Text
-        ClienteActual.Telefono = TBTelefono.Text
+        ClienteActual.editarCliente(TBDNI.Text, New Cliente With {
+            .Apellido = TBApellido.Text,
+            .Nombre = TBNombre.Text,
+            .Dni = TBDNI.Text,
+            .Correo = TBCorreo.Text,
+            .Telefono = TBTelefono.Text,
+            .Estado = ComboBoxEstado.Text
+        })
 
+        Me.alFinalizar()
 
         Me.Close()
 
@@ -71,9 +82,5 @@ Public Class FormEditarCliente
     Private Sub IBMinimizar_Click(sender As Object, e As EventArgs) Handles IBMinimizar_EC.Click
         WindowState = FormWindowState.Minimized
     End Sub
-
-
-
-
 
 End Class

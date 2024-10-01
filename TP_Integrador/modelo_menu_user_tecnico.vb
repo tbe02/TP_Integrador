@@ -1,7 +1,7 @@
 ﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Window
 Imports FontAwesome.Sharp
 Imports System.Runtime.InteropServices 'Permite funcionalidades de API de Windows para poder trabajar con la funcion releaseCapture'
-Public Class modelo_menu_user_maestro
+Public Class modelo_menu_user_tecnico
     '-------------------------------------------------------------------------------------------------------------------------'
     'Declaraciones para poder utilizar la funcion releaseCapture, que permite mover el formulario desde el panel superior'
     <DllImport("user32.dll", CharSet:=CharSet.Auto)>
@@ -28,7 +28,7 @@ Public Class modelo_menu_user_maestro
 
 
         ' Llama al método IBMenuPrincipal_Click desde el evento Load del formulario
-        EjecutarIBMenuPrincipal()
+        IBListaEquipos_Click(IBListaEquipos, EventArgs.Empty)
 
 
 
@@ -86,83 +86,6 @@ Public Class modelo_menu_user_maestro
 
     End Function
 
-    Private Sub IBMenuPrincipal_Click(sender As Object, e As EventArgs) Handles IBMenuPrincipal.Click
-        Dim color As Color
-
-        color = Color.FromArgb(173, 126, 241)
-        activarBoton(sender, color)
-
-        Me.PFondoPrincipal.Controls.Clear()
-
-        Dim form As New FormEstadisticas()
-
-        form.TopLevel = False
-        form.FormBorderStyle = FormBorderStyle.None
-
-
-
-        Me.PFondoPrincipal.Controls.Add(form)
-        form.Show()
-
-
-    End Sub
-
-    Private Sub IBAgregarCliente_Click(sender As Object, e As EventArgs) Handles IBAgregarUsuario.Click
-        Dim color As Color
-
-        color = Color.FromArgb(249, 88, 155)
-        activarBoton(sender, color)
-
-        Me.PFondoPrincipal.Controls.Clear()
-
-        Dim form As New FormAgregarUsuario()
-
-        form.TopLevel = False
-        form.FormBorderStyle = FormBorderStyle.None
-        form.Dock = DockStyle.Fill
-
-
-
-        Me.PFondoPrincipal.Controls.Add(form)
-        form.Show()
-    End Sub
-
-    Private Sub IBListaClientes_Click(sender As Object, e As EventArgs) Handles IBListaClientes.Click
-        Dim color As Color
-
-        color = Color.FromArgb(249, 88, 155)
-        activarBoton(sender, color)
-
-        Me.PFondoPrincipal.Controls.Clear()
-
-        Dim form As New FormListaClientes()
-
-        form.TopLevel = False
-        form.FormBorderStyle = FormBorderStyle.None
-        form.Dock = DockStyle.Fill
-
-        Me.PFondoPrincipal.Controls.Add(form)
-        form.Show()
-    End Sub
-
-    Private Sub IBAgregarEquipo_Click(sender As Object, e As EventArgs) Handles IBListaUsuarios.Click
-        Dim color As Color
-
-        color = Color.FromArgb(249, 88, 155)
-        activarBoton(sender, color)
-
-        Me.PFondoPrincipal.Controls.Clear()
-
-        Dim form As New FormListaUsuarios()
-
-        form.TopLevel = False
-        form.FormBorderStyle = FormBorderStyle.None
-        form.Dock = DockStyle.Fill
-
-        Me.PFondoPrincipal.Controls.Add(form)
-        form.Show()
-    End Sub
-
     Private Sub IBListaEquipos_Click(sender As Object, e As EventArgs) Handles IBListaEquipos.Click
         Dim color As Color
 
@@ -183,32 +106,27 @@ Public Class modelo_menu_user_maestro
         form.Show()
     End Sub
 
-    Private Sub EjecutarIBMenuPrincipal()
-        ' Llama al método IBMenuPrincipal_Click, pasando un valor predeterminado para sender y e
-        IBMenuPrincipal_Click(IBMenuPrincipal, EventArgs.Empty)
-    End Sub
-
-    Private Sub PMenuSuperior_MouseDown(sender As Object, e As MouseEventArgs) Handles PMenuSuperior.MouseDown
+    Private Sub PMenuSuperior_MouseDown(sender As Object, e As MouseEventArgs) Handles PMenuSuperior.MouseDown, PMenuSuperior.MouseDown
         If e.Button = MouseButtons.Left Then
-            ReleaseCapture()
-            SendMessage(Me.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0)
+            ReleaseCapture
+            SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0)
         End If
     End Sub
 
-    Private Sub IBCerrar_Click(sender As Object, e As EventArgs) Handles IBCerrar.Click
-        Me.Close()
+    Private Sub BCerrar_Click(sender As Object, e As EventArgs) Handles BCerrar.Click, BCerrar.Click
+        End
     End Sub
 
-    Private Sub IBMinimizar_Click(sender As Object, e As EventArgs) Handles IBMinimizar.Click
-        Me.WindowState = FormWindowState.Minimized
+    Private Sub BMinimizar_Click(sender As Object, e As EventArgs) Handles BMinimizar.Click, BMinimizar.Click
+        WindowState = FormWindowState.Minimized
     End Sub
 
-    Private Sub IBMaximizar_Click(sender As Object, e As EventArgs) Handles IBMaximizar.Click
+    Private Sub BMaximizar_Click(sender As Object, e As EventArgs) Handles BMaximizar.Click, BMaximizar.Click
 
-        If (Me.WindowState = FormWindowState.Normal) Then
-            Me.WindowState = FormWindowState.Maximized
+        If WindowState = FormWindowState.Normal Then
+            WindowState = FormWindowState.Maximized
         Else
-            Me.WindowState = FormWindowState.Normal
+            WindowState = FormWindowState.Normal
 
         End If
 
@@ -216,7 +134,8 @@ Public Class modelo_menu_user_maestro
 
 
 
-    Private Sub IBSesion_Click(sender As Object, e As EventArgs) Handles IBSesion.Click
+    Private Sub IBSesion_Click(sender As Object, e As EventArgs) Handles IBSesion.Click, IBSesion.Click
         MenuPerfil.Show(IBSesion, New Point(0, IBSesion.Height))
     End Sub
+
 End Class

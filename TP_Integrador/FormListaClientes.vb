@@ -5,6 +5,12 @@
         listarClientes()
     End Sub
 
+    Private Sub refrescarLista()
+        DGVListaClientes.Rows.Clear()
+
+        listarClientes()
+    End Sub
+
     Private Sub DGVListaClientes_EditarCliente(sender As Object, e As DataGridViewCellEventArgs) Handles DGVListaClientes.CellContentClick
 
         If e.ColumnIndex = DGVListaClientes.Columns("C_Editar").Index AndAlso e.RowIndex >= 0 Then
@@ -15,19 +21,14 @@
             Dim cliente As Cliente = Cliente.obtenerClientes(e.RowIndex)
 
             ' le pasamos los datos del cliente a mi formulario
-            Dim formEditar As New FormEditarCliente(cliente)
+            Dim formEditar As New FormEditarCliente(cliente, New Action(
+                Sub()
+                    refrescarLista()
+                End Sub)
+            )
 
             ' abrimos el formulario
             formEditar.Show()
-
-            ' Actualizar el DataGridView después de editar
-            filaSeleccionada.Cells("C_Apellido").Value = cliente.Apellido
-            filaSeleccionada.Cells("C_Nombre").Value = cliente.Nombre
-            filaSeleccionada.Cells("C_DNI").Value = cliente.Dni
-            filaSeleccionada.Cells("C_Correo").Value = cliente.Correo
-            filaSeleccionada.Cells("C_Telefono").Value = cliente.Telefono
-
-
         End If
     End Sub
 
@@ -41,8 +42,9 @@
 
             If resultado = DialogResult.Yes Then
 
-                DGVListaClientes.Rows.RemoveAt(e.RowIndex)
                 Cliente.eliminarCliente(cliente)
+
+                refrescarLista()
 
             End If
         End If
@@ -56,7 +58,7 @@
 
         'traes todos tus clientes en tu array de Clientes
         For Each cliente In listaClientes
-            DGVListaClientes.Rows.Add(cliente.Apellido, cliente.Nombre, cliente.Dni, cliente.Correo, cliente.Telefono)
+            DGVListaClientes.Rows.Add(cliente.Apellido, cliente.Nombre, cliente.Dni, cliente.Correo, cliente.Telefono, cliente.Estado)
         Next
 
     End Sub

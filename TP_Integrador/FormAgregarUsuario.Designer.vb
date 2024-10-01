@@ -44,7 +44,7 @@ Partial Class FormAgregarUsuario
         LAgregarCliente.BackColor = Color.Transparent
         LAgregarCliente.Font = New Font("Bahnschrift Condensed", 36.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LAgregarCliente.ForeColor = Color.White
-        LAgregarCliente.Location = New Point(107, 140)
+        LAgregarCliente.Location = New Point(327, 166)
         LAgregarCliente.Name = "LAgregarCliente"
         LAgregarCliente.Size = New Size(283, 58)
         LAgregarCliente.TabIndex = 11
@@ -53,7 +53,7 @@ Partial Class FormAgregarUsuario
         ' PBAgregarCliente
         ' 
         PBAgregarCliente.Image = My.Resources.Resources.agregar_cliente
-        PBAgregarCliente.Location = New Point(189, 7)
+        PBAgregarCliente.Location = New Point(409, 33)
         PBAgregarCliente.Name = "PBAgregarCliente"
         PBAgregarCliente.Size = New Size(151, 130)
         PBAgregarCliente.TabIndex = 0
@@ -62,6 +62,7 @@ Partial Class FormAgregarUsuario
         ' PAgregarCliente
         ' 
         PAgregarCliente.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        PAgregarCliente.BorderStyle = BorderStyle.FixedSingle
         PAgregarCliente.Controls.Add(Label3)
         PAgregarCliente.Controls.Add(tNombre)
         PAgregarCliente.Controls.Add(ComboBoxTipoUsuario)
@@ -75,7 +76,7 @@ Partial Class FormAgregarUsuario
         PAgregarCliente.Controls.Add(PBAgregarCliente)
         PAgregarCliente.Location = New Point(0, 0)
         PAgregarCliente.Name = "PAgregarCliente"
-        PAgregarCliente.Size = New Size(500, 608)
+        PAgregarCliente.Size = New Size(931, 666)
         PAgregarCliente.TabIndex = 5
         ' 
         ' Label3
@@ -83,7 +84,7 @@ Partial Class FormAgregarUsuario
         Label3.AutoSize = True
         Label3.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label3.ForeColor = Color.Silver
-        Label3.Location = New Point(40, 253)
+        Label3.Location = New Point(260, 279)
         Label3.Name = "Label3"
         Label3.Size = New Size(65, 20)
         Label3.TabIndex = 19
@@ -95,7 +96,7 @@ Partial Class FormAgregarUsuario
         tNombre.BorderStyle = BorderStyle.None
         tNombre.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tNombre.ForeColor = Color.Silver
-        tNombre.Location = New Point(189, 253)
+        tNombre.Location = New Point(409, 279)
         tNombre.Margin = New Padding(3, 2, 3, 2)
         tNombre.Name = "tNombre"
         tNombre.Size = New Size(264, 17)
@@ -106,18 +107,17 @@ Partial Class FormAgregarUsuario
         ComboBoxTipoUsuario.BackColor = Color.White
         ComboBoxTipoUsuario.ForeColor = Color.Black
         ComboBoxTipoUsuario.FormattingEnabled = True
-        ComboBoxTipoUsuario.Location = New Point(189, 471)
+        ComboBoxTipoUsuario.Location = New Point(409, 497)
         ComboBoxTipoUsuario.Name = "ComboBoxTipoUsuario"
         ComboBoxTipoUsuario.Size = New Size(264, 23)
         ComboBoxTipoUsuario.TabIndex = 18
-        ComboBoxTipoUsuario.Text = "Seleccione el tipo"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
         Label2.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.Silver
-        Label2.Location = New Point(40, 471)
+        Label2.Location = New Point(260, 497)
         Label2.Name = "Label2"
         Label2.Size = New Size(117, 20)
         Label2.TabIndex = 15
@@ -128,7 +128,7 @@ Partial Class FormAgregarUsuario
         Label1.AutoSize = True
         Label1.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = Color.Silver
-        Label1.Location = New Point(40, 397)
+        Label1.Location = New Point(260, 423)
         Label1.Name = "Label1"
         Label1.Size = New Size(92, 20)
         Label1.TabIndex = 13
@@ -140,7 +140,7 @@ Partial Class FormAgregarUsuario
         tContrasena.BorderStyle = BorderStyle.None
         tContrasena.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tContrasena.ForeColor = Color.Silver
-        tContrasena.Location = New Point(189, 397)
+        tContrasena.Location = New Point(409, 423)
         tContrasena.Margin = New Padding(3, 2, 3, 2)
         tContrasena.Name = "tContrasena"
         tContrasena.Size = New Size(264, 17)
@@ -153,7 +153,7 @@ Partial Class FormAgregarUsuario
         BAgregarCliente.FlatStyle = FlatStyle.Flat
         BAgregarCliente.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BAgregarCliente.ForeColor = Color.White
-        BAgregarCliente.Location = New Point(75, 542)
+        BAgregarCliente.Location = New Point(295, 568)
         BAgregarCliente.Margin = New Padding(3, 2, 3, 2)
         BAgregarCliente.Name = "BAgregarCliente"
         BAgregarCliente.Size = New Size(350, 50)
@@ -166,7 +166,7 @@ Partial Class FormAgregarUsuario
         LApellido.AutoSize = True
         LApellido.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LApellido.ForeColor = Color.Silver
-        LApellido.Location = New Point(40, 329)
+        LApellido.Location = New Point(260, 355)
         LApellido.Name = "LApellido"
         LApellido.Size = New Size(64, 20)
         LApellido.TabIndex = 6
@@ -178,7 +178,7 @@ Partial Class FormAgregarUsuario
         tUsuario.BorderStyle = BorderStyle.None
         tUsuario.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tUsuario.ForeColor = Color.Silver
-        tUsuario.Location = New Point(189, 329)
+        tUsuario.Location = New Point(409, 355)
         tUsuario.Margin = New Padding(3, 2, 3, 2)
         tUsuario.Name = "tUsuario"
         tUsuario.Size = New Size(264, 17)
@@ -188,7 +188,7 @@ Partial Class FormAgregarUsuario
         ' 
         AutoScaleDimensions = New SizeF(7.0F, 15.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(500, 607)
+        ClientSize = New Size(931, 666)
         Controls.Add(PAgregarCliente)
         FormBorderStyle = FormBorderStyle.None
         Name = "FormAgregarUsuario"
@@ -197,8 +197,6 @@ Partial Class FormAgregarUsuario
         PAgregarCliente.ResumeLayout(False)
         PAgregarCliente.PerformLayout()
         ResumeLayout(False)
-
-        setTiposDeUsuario()
     End Sub
 
     Friend WithEvents LAgregarCliente As Label
@@ -212,11 +210,6 @@ Partial Class FormAgregarUsuario
     Friend WithEvents tContrasena As TextBox
 
     Friend WithEvents ComboBoxTipoUsuario As ComboBox
-
-    Private Sub setTiposDeUsuario()
-        ComboBoxTipoUsuario.Items.Add("Administrador")
-        ComboBoxTipoUsuario.Items.Add("Tecnico")
-    End Sub
 
     Friend WithEvents Label3 As Label
     Friend WithEvents tNombre As TextBox
