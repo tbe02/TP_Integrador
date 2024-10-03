@@ -1,5 +1,6 @@
 ﻿Imports System.Security.Cryptography.X509Certificates
 Imports System.Data.SqlClient
+Imports System.Text.RegularExpressions
 
 
 Public Class Cliente
@@ -169,6 +170,11 @@ Public Class Cliente
                 MessageBox.Show("Telefono solo acepta numeros", "Datos incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return False
             End If
+
+            If Not emailValido(correo) Then
+                MessageBox.Show("El correo electrónico no es válido.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return False
+            End If
         End If
 
         Return True
@@ -188,6 +194,13 @@ Public Class Cliente
             End If
         Next
         Return True
+    End Function
+
+    Private Function emailValido(email As String) As Boolean
+        ' Definir la expresión regular para validar el correo electrónico
+        Dim pattern As String = "^[^@\s]+@[^@\s]+\.[^@\s]+$"
+        Dim regex As New Regex(pattern)
+        Return regex.IsMatch(email)
     End Function
 
 End Class

@@ -58,7 +58,7 @@ Partial Class FormAgregarCliente
         PAgregarCliente.Controls.Add(PBAgregarCliente)
         PAgregarCliente.Location = New Point(1, 3)
         PAgregarCliente.Name = "PAgregarCliente"
-        PAgregarCliente.Size = New Size(500, 608)
+        PAgregarCliente.Size = New Size(496, 608)
         PAgregarCliente.TabIndex = 4
         ' 
         ' BAgregarCliente

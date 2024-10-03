@@ -1,4 +1,4 @@
-﻿Public Class FormListaClientes
+﻿Public Class FormListaClientesAdmin
 
 
     Private Sub FormListaClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load

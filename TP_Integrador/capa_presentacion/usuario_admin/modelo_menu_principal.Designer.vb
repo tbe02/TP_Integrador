@@ -113,9 +113,9 @@ Partial Class modelo_menu_principal
         IBMenuPrincipal.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBMenuPrincipal.IconSize = 40
         IBMenuPrincipal.ImageAlign = ContentAlignment.MiddleLeft
-        IBMenuPrincipal.Location = New Point(-3, 293)
+        IBMenuPrincipal.Location = New Point(0, 293)
         IBMenuPrincipal.Name = "IBMenuPrincipal"
-        IBMenuPrincipal.Size = New Size(250, 60)
+        IBMenuPrincipal.Size = New Size(247, 60)
         IBMenuPrincipal.TabIndex = 10
         IBMenuPrincipal.Text = "Menú principal"
         IBMenuPrincipal.UseVisualStyleBackColor = False
@@ -155,7 +155,7 @@ Partial Class modelo_menu_principal
         IBAgregarEquipo.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBAgregarEquipo.IconSize = 40
         IBAgregarEquipo.ImageAlign = ContentAlignment.MiddleLeft
-        IBAgregarEquipo.Location = New Point(3, 524)
+        IBAgregarEquipo.Location = New Point(0, 524)
         IBAgregarEquipo.Name = "IBAgregarEquipo"
         IBAgregarEquipo.Size = New Size(244, 60)
         IBAgregarEquipo.TabIndex = 10
