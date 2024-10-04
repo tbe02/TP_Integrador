@@ -1,4 +1,7 @@
 ﻿Imports System.Runtime.InteropServices 'Permite funcionalidades de API de Windows para poder trabajar con la funcion releaseCapture'
+Imports System.IO
+Imports System.Text.Json
+Imports TP_Integrador.Usuarios
 
 Public Class FormLogin
 
@@ -16,6 +19,21 @@ Public Class FormLogin
     Private Const HTCAPTION As Integer = &H2
     '-------------------------------------------------------------------------------------------------------------------------'
 
+    Public Sub New()
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        If File.Exists("usuario.json") Then
+            Dim json As String = File.ReadAllText("usuario.json")
+
+            Dim nombreUsuario As String = JsonSerializer.Deserialize(Of String)(json)
+
+            ' Rellenar los controles con los datos guardados
+            TBUsuario.Text = nombreUsuario
+            CBRecordarme.Checked = True
+        End If
+    End Sub
 
     Private Sub BIniciarSesion_Click(sender As Object, e As EventArgs) Handles BIniciarSesion.Click
         Dim autenticacion As New Autenticador()
@@ -48,28 +66,34 @@ Public Class FormLogin
 
         sesion.GuardarSesion(usuarioAutenticado)
 
+        If CBRecordarme.Checked Then
+            Dim json As String = JsonSerializer.Serialize(usuarioAutenticado.NombreUsuario)
+
+            File.WriteAllText("usuario.json", json)
+        End If
+
         Select Case usuarioAutenticado.Tipo
-                Case "maestro"
+            Case "maestro"
                 Dim menu As New modelo_menu_user_maestro()
 
                 menu.Show()
 
                 Me.Hide()
-                Case "tecnico"
+            Case "tecnico"
                 Dim menu As New modelo_menu_user_tecnico()
 
                 menu.Show()
 
                 Me.Hide()
-                Case "administrador"
+            Case "administrador"
                 Dim menu As New modelo_menu_principal()
 
                 menu.Show()
 
                 Me.Hide()
-                Case Else
-                    MessageBox.Show("Tipo de usuario no encontrado", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Select
+            Case Else
+                MessageBox.Show("Tipo de usuario no encontrado", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Select
     End Sub
 
     'Private Sub BIniciarSesion_Click(sender As Object, e As EventArgs) Handles BIniciarSesion.Click

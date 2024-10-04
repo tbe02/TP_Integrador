@@ -1,4 +1,8 @@
-﻿Public Class Sesion
+﻿Imports System.Text.Json
+Imports TP_Integrador.Usuarios
+Imports System.IO
+
+Public Class Sesion
     Private Shared instancia As Sesion = Nothing
 
     Private usuario As Usuarios.Usuario
@@ -9,6 +13,10 @@
 
     Public Sub EliminarSesion()
         Me.usuario = Nothing
+
+        If File.Exists("usuario.json") Then
+            File.Delete("usuario.json")
+        End If
     End Sub
 
     Public Function ObtenerUsuario() As Usuarios.Usuario
