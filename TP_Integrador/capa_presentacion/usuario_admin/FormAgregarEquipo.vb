@@ -1,6 +1,7 @@
 ﻿Public Class FormAgregarEquipo
     Private Sub FormAgregarEquipo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ListarClientes()
+        ListarTiposDeEquipo()
     End Sub
 
     Private Sub ListarClientes()
@@ -9,6 +10,12 @@
         For Each cliente In clientes
             ComboBAsociarCliente.Items.Add(cliente.Nombre)
         Next
+    End Sub
+
+    Private Sub ListarTiposDeEquipo()
+        ComboBTipoEquipo.Items.Add("Computadora")
+        ComboBTipoEquipo.Items.Add("Impresora")
+        ComboBTipoEquipo.Items.Add("Fotocopiadora")
     End Sub
 
     Private Sub BAgregarEquipo_Click(sender As Object, e As EventArgs) Handles BAgregarEquipo.Click
