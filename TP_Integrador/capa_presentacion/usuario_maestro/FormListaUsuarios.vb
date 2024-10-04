@@ -1,16 +1,10 @@
 ﻿Imports TP_Integrador.Usuarios
 
 Public Class FormListaUsuarios
-    Private usuarios As Usuarios
+    Private usuarios As Usuarios = Usuarios.ObtenerInstancia()
 
-
-    Public Sub New(usuarios As Usuarios)
-
+    Public Sub New()
         InitializeComponent()
-
-
-        Me.usuarios = usuarios
-
 
         CargarUsuarios()
     End Sub
@@ -61,14 +55,10 @@ Public Class FormListaUsuarios
     End Sub
 
     Private Sub DGVEditarUsuario_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVListaUsuarios.CellClick
-
         If e.ColumnIndex = DGVListaUsuarios.Columns("C_Editar").Index AndAlso e.RowIndex >= 0 Then
-
             Dim nombreUsuario As String = DGVListaUsuarios.Rows(e.RowIndex).Cells("C_Usuario").Value.ToString()
 
-
             Dim usuarioActual As Usuarios.Usuario = usuarios.obtenerTodos().Find(Function(u) u.NombreUsuario = nombreUsuario)
-
 
             Dim formEditar As New FormEditarUsuario(usuarioActual, usuarios)
             If formEditar.ShowDialog() = DialogResult.OK Then
@@ -85,12 +75,7 @@ Public Class FormListaUsuarios
                     ' Mostrar mensaje de éxito
                     MessageBox.Show("Usuario editado con éxito.", "Edición Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
-                End if
             End If
+        End If
     End Sub
-
-
-
-
-
 End Class

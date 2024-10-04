@@ -15,6 +15,24 @@ Public Class FormInfoEquipo
     Private Const HTCAPTION As Integer = &H2
     '-------------------------------------------------------------------------------------------------------------------------'
 
+    Dim equipo As Equipos.Equipo
+
+    Public Sub New(equipo As Equipos.Equipo)
+
+        ' Esta llamada es exigida por el diseñador.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        Me.equipo = equipo
+
+        InicializarCampos()
+    End Sub
+
+    Private Sub InicializarCampos()
+        TBRazonIngreso.Text = equipo.RazonDeIngreso
+        TBObservaciones.Text = equipo.Observaciones
+    End Sub
+
     Private Sub PMenuSuperior_MouseDown(sender As Object, e As MouseEventArgs) Handles PMenuSuperior.MouseDown
         If e.Button = MouseButtons.Left Then
             ReleaseCapture()

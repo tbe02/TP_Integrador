@@ -2,11 +2,9 @@
 Imports FontAwesome.Sharp
 Imports System.Runtime.InteropServices 'Permite funcionalidades de API de Windows para poder trabajar con la funcion releaseCapture'
 Public Class modelo_menu_user_maestro
-    Private usuarios As Usuarios
 
-    Public Sub New(usuarios As Usuarios)
+    Public Sub New()
         InitializeComponent()
-        Me.usuarios = usuarios ' Guarda la instancia de Usuarios
     End Sub
 
     '-------------------------------------------------------------------------------------------------------------------------'
@@ -25,24 +23,23 @@ Public Class modelo_menu_user_maestro
 
     Private bordeIzquierdo As Panel
     Private botonActual As IconButton
-    Private Sub modelo_menu_principal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+    Dim sesion As Sesion = Sesion.ObtenerInstancia()
+
+    Private Sub modelo_menu_principal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'creamos un panel izquierdo al iniciar el form que vamos a usar en nuestros botones'
         bordeIzquierdo = New Panel()
         bordeIzquierdo.Size = New Size(7, 60)
         PMenuIzquierdo.Controls.Add(bordeIzquierdo)
 
-
-
         ' Llama al método IBMenuPrincipal_Click desde el evento Load del formulario
         EjecutarIBMenuPrincipal()
 
-
-
+        IBSesion.Text = sesion.ObtenerUsuario().Nombre
     End Sub
 
     'funcion para activar boton seleccionado'
-    Private Function activarBoton(boton As Object, color As Color)
+    Private Sub activarBoton(boton As Object, color As Color)
 
         If (boton IsNot Nothing) Then
 
@@ -66,7 +63,7 @@ Public Class modelo_menu_user_maestro
 
         End If
 
-    End Function
+    End Sub
 
     'funcion para desactivar boton no seleccionado'
     Private Function desactivarBoton()
@@ -99,7 +96,7 @@ Public Class modelo_menu_user_maestro
         color = Color.FromArgb(173, 126, 241)
         activarBoton(sender, color)
 
-        PFondoPrincipal.Controls.Clear
+        PFondoPrincipal.Controls.Clear()
 
         Dim form As New FormEstadisticas
 
@@ -108,7 +105,7 @@ Public Class modelo_menu_user_maestro
 
 
         PFondoPrincipal.Controls.Add(form)
-        form.Show
+        form.Show()
 
 
     End Sub
@@ -120,7 +117,7 @@ Public Class modelo_menu_user_maestro
         color = Color.FromArgb(249, 88, 155)
         activarBoton(sender, color)
 
-        PFondoPrincipal.Controls.Clear
+        PFondoPrincipal.Controls.Clear()
 
         Dim form As New FormListaClientesMaestro
 
@@ -129,7 +126,7 @@ Public Class modelo_menu_user_maestro
         form.Dock = DockStyle.Fill
 
         PFondoPrincipal.Controls.Add(form)
-        form.Show
+        form.Show()
     End Sub
 
 
@@ -139,7 +136,7 @@ Public Class modelo_menu_user_maestro
         color = Color.FromArgb(249, 88, 155)
         activarBoton(sender, color)
 
-        PFondoPrincipal.Controls.Clear
+        PFondoPrincipal.Controls.Clear()
 
         Dim form As New FormListaEquiposMaestro
 
@@ -150,7 +147,7 @@ Public Class modelo_menu_user_maestro
 
 
         PFondoPrincipal.Controls.Add(form)
-        form.Show
+        form.Show()
     End Sub
 
 
@@ -192,7 +189,7 @@ Public Class modelo_menu_user_maestro
 
 
 
-        Dim form As New FormListaUsuarios(usuarios)
+        Dim form As New FormListaUsuarios()
 
         form.TopLevel = False
         form.FormBorderStyle = FormBorderStyle.None
@@ -236,5 +233,21 @@ Public Class modelo_menu_user_maestro
 
     Private Sub IB_Cerrar_Click(sender As Object, e As EventArgs) Handles IB_Cerrar.Click
         End
+    End Sub
+
+    Private Sub VerPerfil(sender As Object, e As EventArgs) Handles TSMMiPerfil.Click
+        Dim formPerfil = New FormPerfil()
+
+        formPerfil.Show()
+    End Sub
+
+    Private Sub CerrarSesion(sender As Object, e As EventArgs) Handles TSMCerrarSesion.Click
+        Sesion.EliminarSesion()
+
+        Me.Close()
+
+        Dim formLogin = New FormLogin()
+
+        formLogin.Show()
     End Sub
 End Class

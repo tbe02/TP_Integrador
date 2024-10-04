@@ -11,8 +11,6 @@
     Private Sub BAgregarUsuario_Click(sender As Object, e As EventArgs) Handles BAgregarUsuario.Click
         Dim apellido, nombre, dni, correo, telefono, nombreusuario, contrasenia, tipoUsuario As String
 
-
-
         apellido = TBApellido.Text
         nombre = tNombre.Text
         dni = TBDNI.Text
@@ -21,18 +19,17 @@
         nombreusuario = tUsuario.Text
         contrasenia = tContrasena.Text
 
-
         If ComboBoxTipoUsuario.SelectedItem IsNot Nothing Then
             tipoUsuario = ComboBoxTipoUsuario.SelectedItem.ToString()
         Else
             MessageBox.Show("Por favor, seleccione un tipo de usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+
             Return
         End If
 
-        Dim usuario As New Usuarios()
+        Dim usuarios As Usuarios = Usuarios.ObtenerInstancia()
 
-        If usuario.agregarUsuario(apellido, nombre, dni, telefono, correo, nombreusuario, contrasenia, tipoUsuario) Then
-
+        If usuarios.agregarUsuario(apellido, nombre, dni, telefono, correo, nombreusuario, contrasenia, tipoUsuario) Then
             TBApellido.Clear()
             tNombre.Clear()
             TBDNI.Clear()

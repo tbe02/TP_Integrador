@@ -18,6 +18,9 @@ Public Class modelo_menu_user_tecnico
 
     Private bordeIzquierdo As Panel
     Private botonActual As IconButton
+
+    Dim sesion As Sesion = Sesion.ObtenerInstancia()
+
     Private Sub modelo_menu_principal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'creamos un panel izquierdo al iniciar el form que vamos a usar en nuestros botones'
@@ -31,7 +34,7 @@ Public Class modelo_menu_user_tecnico
         IBMenuPrincipal_Click(IBMenuPrincipal, EventArgs.Empty)
 
 
-
+        IBSesion.Text = sesion.ObtenerUsuario().Nombre
     End Sub
 
     'funcion para activar boton seleccionado'
@@ -154,10 +157,17 @@ Public Class modelo_menu_user_tecnico
 
     End Sub
 
-
-
     Private Sub IBSesion_Click(sender As Object, e As EventArgs) Handles IBSesion.Click, IBSesion.Click
         MenuPerfil.Show(IBSesion, New Point(0, IBSesion.Height))
     End Sub
 
+    Private Sub CerrarSesion(sender As Object, e As EventArgs) Handles TSMCerrarSesion.Click
+        sesion.EliminarSesion()
+
+        Me.Close()
+
+        Dim formLogin = New FormLogin()
+
+        formLogin.Show()
+    End Sub
 End Class

@@ -45,6 +45,8 @@ Partial Class FormEditarEquipo
         LTipoEquipo = New Label()
         PictureBox2 = New PictureBox()
         LEditarEquipo = New Label()
+        IBMinimizar_EC = New FontAwesome.Sharp.IconButton()
+        IBCerrar_EC = New FontAwesome.Sharp.IconButton()
         PAsociarCliente.SuspendLayout()
         CType(PBAsociarCliente, ComponentModel.ISupportInitialize).BeginInit()
         PAgregarEquipo.SuspendLayout()
@@ -59,7 +61,7 @@ Partial Class FormEditarEquipo
         PAsociarCliente.Controls.Add(PBAsociarCliente)
         PAsociarCliente.Controls.Add(LEditarCliente)
         PAsociarCliente.Controls.Add(LSiNoEstaRegistrado)
-        PAsociarCliente.Location = New Point(31, 5)
+        PAsociarCliente.Location = New Point(30, 37)
         PAsociarCliente.Name = "PAsociarCliente"
         PAsociarCliente.Size = New Size(359, 321)
         PAsociarCliente.TabIndex = 33
@@ -141,7 +143,7 @@ Partial Class FormEditarEquipo
         PAgregarEquipo.Controls.Add(LTipoEquipo)
         PAgregarEquipo.Controls.Add(PictureBox2)
         PAgregarEquipo.Controls.Add(LEditarEquipo)
-        PAgregarEquipo.Location = New Point(417, 5)
+        PAgregarEquipo.Location = New Point(416, 37)
         PAgregarEquipo.Name = "PAgregarEquipo"
         PAgregarEquipo.Size = New Size(515, 644)
         PAgregarEquipo.TabIndex = 32
@@ -333,12 +335,56 @@ Partial Class FormEditarEquipo
         LEditarEquipo.TabIndex = 16
         LEditarEquipo.Text = "2. Editar equipo"
         ' 
+        ' IBMinimizar_EC
+        ' 
+        IBMinimizar_EC.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        IBMinimizar_EC.BackColor = Color.Transparent
+        IBMinimizar_EC.FlatAppearance.BorderSize = 0
+        IBMinimizar_EC.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        IBMinimizar_EC.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        IBMinimizar_EC.FlatStyle = FlatStyle.Flat
+        IBMinimizar_EC.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        IBMinimizar_EC.ForeColor = Color.White
+        IBMinimizar_EC.IconChar = FontAwesome.Sharp.IconChar.WindowMinimize
+        IBMinimizar_EC.IconColor = Color.Gray
+        IBMinimizar_EC.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IBMinimizar_EC.IconSize = 20
+        IBMinimizar_EC.Location = New Point(888, 11)
+        IBMinimizar_EC.Margin = New Padding(3, 2, 3, 2)
+        IBMinimizar_EC.Name = "IBMinimizar_EC"
+        IBMinimizar_EC.Size = New Size(19, 17)
+        IBMinimizar_EC.TabIndex = 35
+        IBMinimizar_EC.UseVisualStyleBackColor = False
+        ' 
+        ' IBCerrar_EC
+        ' 
+        IBCerrar_EC.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        IBCerrar_EC.BackColor = Color.Transparent
+        IBCerrar_EC.FlatAppearance.BorderSize = 0
+        IBCerrar_EC.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        IBCerrar_EC.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        IBCerrar_EC.FlatStyle = FlatStyle.Flat
+        IBCerrar_EC.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        IBCerrar_EC.ForeColor = Color.White
+        IBCerrar_EC.IconChar = FontAwesome.Sharp.IconChar.Close
+        IBCerrar_EC.IconColor = Color.Gray
+        IBCerrar_EC.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IBCerrar_EC.IconSize = 20
+        IBCerrar_EC.Location = New Point(912, 11)
+        IBCerrar_EC.Margin = New Padding(3, 2, 3, 2)
+        IBCerrar_EC.Name = "IBCerrar_EC"
+        IBCerrar_EC.Size = New Size(19, 17)
+        IBCerrar_EC.TabIndex = 34
+        IBCerrar_EC.UseVisualStyleBackColor = False
+        ' 
         ' FormEditarEquipo
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
-        ClientSize = New Size(929, 658)
+        ClientSize = New Size(943, 693)
+        Controls.Add(IBMinimizar_EC)
+        Controls.Add(IBCerrar_EC)
         Controls.Add(PAsociarCliente)
         Controls.Add(PAgregarEquipo)
         FormBorderStyle = FormBorderStyle.None
@@ -377,4 +423,6 @@ Partial Class FormEditarEquipo
     Friend WithEvents LTipoEquipo As Label
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents LEditarEquipo As Label
+    Friend WithEvents IBMinimizar_EC As FontAwesome.Sharp.IconButton
+    Friend WithEvents IBCerrar_EC As FontAwesome.Sharp.IconButton
 End Class

@@ -28,10 +28,6 @@ Partial Class FormListaEquiposMaestro
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         PListaEquipos = New Panel()
         DGVListaEquipos = New DataGridView()
-        LListaEquipos = New Label()
-        PBDevices = New PictureBox()
-        TBBuscarEquipo = New TextBox()
-        IPBBuscarEquipo = New FontAwesome.Sharp.IconPictureBox()
         C_Cliente = New DataGridViewTextBoxColumn()
         C_TipoEquipo = New DataGridViewTextBoxColumn()
         C_NroSerie = New DataGridViewTextBoxColumn()
@@ -39,6 +35,12 @@ Partial Class FormListaEquiposMaestro
         C_EquipoEnciende = New DataGridViewTextBoxColumn()
         C_EstadoEquipo = New DataGridViewTextBoxColumn()
         C_InfomacionEquipo = New DataGridViewButtonColumn()
+        LListaEquipos = New Label()
+        PBDevices = New PictureBox()
+        TBBuscarEquipo = New TextBox()
+        IPBBuscarEquipo = New FontAwesome.Sharp.IconPictureBox()
+        LFiltrar = New Label()
+        CBFiltro = New ComboBox()
         PListaEquipos.SuspendLayout()
         CType(DGVListaEquipos, ComponentModel.ISupportInitialize).BeginInit()
         CType(PBDevices, ComponentModel.ISupportInitialize).BeginInit()
@@ -65,7 +67,7 @@ Partial Class FormListaEquiposMaestro
         DGVListaEquipos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(109), CByte(122), CByte(224))
-        DataGridViewCellStyle1.Font = New Font("Arial Rounded MT Bold", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle1.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle1.ForeColor = Color.White
         DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(CByte(109), CByte(122), CByte(224))
         DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
@@ -75,7 +77,7 @@ Partial Class FormListaEquiposMaestro
         DGVListaEquipos.Columns.AddRange(New DataGridViewColumn() {C_Cliente, C_TipoEquipo, C_NroSerie, C_Marca, C_EquipoEnciende, C_EstadoEquipo, C_InfomacionEquipo})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        DataGridViewCellStyle3.Font = New Font("Arial Rounded MT Bold", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle3.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         DataGridViewCellStyle3.ForeColor = Color.White
         DataGridViewCellStyle3.SelectionBackColor = Color.MediumPurple
         DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
@@ -95,52 +97,6 @@ Partial Class FormListaEquiposMaestro
         DGVListaEquipos.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DGVListaEquipos.Size = New Size(921, 563)
         DGVListaEquipos.TabIndex = 0
-        ' 
-        ' LListaEquipos
-        ' 
-        LListaEquipos.AutoSize = True
-        LListaEquipos.BackColor = Color.Transparent
-        LListaEquipos.Font = New Font("Bahnschrift Condensed", 36F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        LListaEquipos.ForeColor = Color.White
-        LListaEquipos.Location = New Point(306, 7)
-        LListaEquipos.Name = "LListaEquipos"
-        LListaEquipos.Size = New Size(282, 58)
-        LListaEquipos.TabIndex = 12
-        LListaEquipos.Text = "Lista de Equipos"
-        ' 
-        ' PBDevices
-        ' 
-        PBDevices.Image = My.Resources.Resources.devices2
-        PBDevices.Location = New Point(225, 2)
-        PBDevices.Margin = New Padding(3, 2, 3, 2)
-        PBDevices.Name = "PBDevices"
-        PBDevices.Size = New Size(91, 73)
-        PBDevices.TabIndex = 13
-        PBDevices.TabStop = False
-        ' 
-        ' TBBuscarEquipo
-        ' 
-        TBBuscarEquipo.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        TBBuscarEquipo.ForeColor = SystemColors.Window
-        TBBuscarEquipo.Location = New Point(799, 72)
-        TBBuscarEquipo.Multiline = True
-        TBBuscarEquipo.Name = "TBBuscarEquipo"
-        TBBuscarEquipo.Size = New Size(108, 23)
-        TBBuscarEquipo.TabIndex = 14
-        ' 
-        ' IPBBuscarEquipo
-        ' 
-        IPBBuscarEquipo.BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
-        IPBBuscarEquipo.BackgroundImageLayout = ImageLayout.Stretch
-        IPBBuscarEquipo.IconChar = FontAwesome.Sharp.IconChar.Search
-        IPBBuscarEquipo.IconColor = Color.White
-        IPBBuscarEquipo.IconFont = FontAwesome.Sharp.IconFont.Auto
-        IPBBuscarEquipo.IconSize = 23
-        IPBBuscarEquipo.Location = New Point(913, 72)
-        IPBBuscarEquipo.Name = "IPBBuscarEquipo"
-        IPBBuscarEquipo.Size = New Size(24, 23)
-        IPBBuscarEquipo.TabIndex = 15
-        IPBBuscarEquipo.TabStop = False
         ' 
         ' C_Cliente
         ' 
@@ -205,12 +161,81 @@ Partial Class FormListaEquiposMaestro
         C_InfomacionEquipo.Text = "Info. Equipo"
         C_InfomacionEquipo.UseColumnTextForButtonValue = True
         ' 
+        ' LListaEquipos
+        ' 
+        LListaEquipos.AutoSize = True
+        LListaEquipos.BackColor = Color.Transparent
+        LListaEquipos.Font = New Font("Bahnschrift Condensed", 36F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LListaEquipos.ForeColor = Color.White
+        LListaEquipos.Location = New Point(306, 7)
+        LListaEquipos.Name = "LListaEquipos"
+        LListaEquipos.Size = New Size(282, 58)
+        LListaEquipos.TabIndex = 12
+        LListaEquipos.Text = "Lista de Equipos"
+        ' 
+        ' PBDevices
+        ' 
+        PBDevices.Image = My.Resources.Resources.devices2
+        PBDevices.Location = New Point(225, 2)
+        PBDevices.Margin = New Padding(3, 2, 3, 2)
+        PBDevices.Name = "PBDevices"
+        PBDevices.Size = New Size(91, 73)
+        PBDevices.TabIndex = 13
+        PBDevices.TabStop = False
+        ' 
+        ' TBBuscarEquipo
+        ' 
+        TBBuscarEquipo.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        TBBuscarEquipo.ForeColor = SystemColors.Window
+        TBBuscarEquipo.Location = New Point(799, 72)
+        TBBuscarEquipo.Multiline = True
+        TBBuscarEquipo.Name = "TBBuscarEquipo"
+        TBBuscarEquipo.Size = New Size(108, 23)
+        TBBuscarEquipo.TabIndex = 14
+        ' 
+        ' IPBBuscarEquipo
+        ' 
+        IPBBuscarEquipo.BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
+        IPBBuscarEquipo.BackgroundImageLayout = ImageLayout.Stretch
+        IPBBuscarEquipo.Cursor = Cursors.Hand
+        IPBBuscarEquipo.IconChar = FontAwesome.Sharp.IconChar.Search
+        IPBBuscarEquipo.IconColor = Color.White
+        IPBBuscarEquipo.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IPBBuscarEquipo.IconSize = 23
+        IPBBuscarEquipo.Location = New Point(913, 72)
+        IPBBuscarEquipo.Name = "IPBBuscarEquipo"
+        IPBBuscarEquipo.Size = New Size(24, 23)
+        IPBBuscarEquipo.TabIndex = 15
+        IPBBuscarEquipo.TabStop = False
+        ' 
+        ' LFiltrar
+        ' 
+        LFiltrar.AutoSize = True
+        LFiltrar.Font = New Font("Segoe UI", 10F)
+        LFiltrar.ForeColor = Color.White
+        LFiltrar.Location = New Point(594, 73)
+        LFiltrar.Name = "LFiltrar"
+        LFiltrar.Size = New Size(72, 19)
+        LFiltrar.TabIndex = 19
+        LFiltrar.Text = "Filtrar por:"
+        ' 
+        ' CBFiltro
+        ' 
+        CBFiltro.FormattingEnabled = True
+        CBFiltro.Location = New Point(672, 72)
+        CBFiltro.Name = "CBFiltro"
+        CBFiltro.Size = New Size(121, 23)
+        CBFiltro.TabIndex = 18
+        CBFiltro.Text = "Todos"
+        ' 
         ' FormListaEquiposMaestro
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
         ClientSize = New Size(948, 685)
+        Controls.Add(LFiltrar)
+        Controls.Add(CBFiltro)
         Controls.Add(IPBBuscarEquipo)
         Controls.Add(TBBuscarEquipo)
         Controls.Add(PBDevices)
@@ -241,4 +266,6 @@ Partial Class FormListaEquiposMaestro
     Friend WithEvents C_EquipoEnciende As DataGridViewTextBoxColumn
     Friend WithEvents C_EstadoEquipo As DataGridViewTextBoxColumn
     Friend WithEvents C_InfomacionEquipo As DataGridViewButtonColumn
+    Friend WithEvents LFiltrar As Label
+    Friend WithEvents CBFiltro As ComboBox
 End Class
