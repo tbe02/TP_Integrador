@@ -1,4 +1,6 @@
-﻿Public Class FormListaEquiposAdmin
+﻿Imports System.Net
+
+Public Class FormListaEquiposAdmin
     Dim equipos As Equipos = Equipos.ObtenerInstancia()
 
     Private Sub FormListaEquipos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -49,6 +51,26 @@
 
             ' abrimos el formulario
             formInfo.Show()
+        End If
+
+        If e.ColumnIndex = DGVListaEquipos.Columns("C_Eliminar").Index AndAlso e.RowIndex >= 0 Then
+            Dim filaSeleccionada As DataGridViewRow = DGVListaEquipos.Rows(e.RowIndex)
+
+            Dim equipoSeleccionado As Equipos.Equipo = equipos.ObtenerTodos(e.RowIndex)
+
+            Dim decision As DialogResult = MessageBox.Show("¿Está seguro que desea eliminar este equipo?", "Eliminar equipo", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+            If decision = DialogResult.Yes Then
+                Dim equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.NroSerie <> equipoSeleccionado.NroSerie).ToList()
+
+                DGVListaEquipos.Rows.Clear()
+
+                For Each equipo In equiposFiltrados
+                    DGVListaEquipos.Rows.Add(equipo.NombreDelCliente, equipo.TipoDeEquipo, equipo.NroSerie, equipo.Marca, equipo.EnciendeEnIngreso, equipo.Estado)
+                Next
+
+                MessageBox.Show("Equipo eliminado con éxito.", "Eliminación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
         End If
     End Sub
 
