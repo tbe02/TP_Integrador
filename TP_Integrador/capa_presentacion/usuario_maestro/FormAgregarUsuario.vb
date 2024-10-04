@@ -4,8 +4,8 @@
     End Sub
 
     Private Sub setTiposDeUsuario()
-        ComboBoxTipoUsuario.Items.Add("Administrador")
-        ComboBoxTipoUsuario.Items.Add("Tecnico")
+        ComboBoxTipoUsuario.Items.Add("administrador")
+        ComboBoxTipoUsuario.Items.Add("tecnico")
     End Sub
 
     Private Sub BAgregarUsuario_Click(sender As Object, e As EventArgs) Handles BAgregarUsuario.Click

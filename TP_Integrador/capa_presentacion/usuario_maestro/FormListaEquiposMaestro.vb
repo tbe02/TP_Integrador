@@ -66,7 +66,7 @@
     End Sub
 
     Private Sub ManejarFiltro(sender As Object, e As EventArgs) Handles CBFiltro.SelectedIndexChanged
-        TBBuscarEquipo.Text = ""
+        TBBuscarEquipo.Clear()
 
         Dim filtro = CBFiltro.Text
 

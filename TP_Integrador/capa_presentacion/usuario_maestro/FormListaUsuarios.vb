@@ -7,6 +7,19 @@ Public Class FormListaUsuarios
         InitializeComponent()
 
         CargarUsuarios()
+        ListarFiltros()
+    End Sub
+    Private Sub ListarFiltros()
+        CBFiltro.Items.Add("Todos")
+        CBFiltro.Items.Add("Apellido")
+        CBFiltro.Items.Add("Nombre")
+        CBFiltro.Items.Add("DNI")
+        CBFiltro.Items.Add("Correo")
+        CBFiltro.Items.Add("Telefono")
+        CBFiltro.Items.Add("Usuario")
+        CBFiltro.Items.Add("Administrador")
+        CBFiltro.Items.Add("Tecnico")
+        CBFiltro.Items.Add("Maestro")
     End Sub
 
     Private Sub refrescarLista()
@@ -77,5 +90,55 @@ Public Class FormListaUsuarios
                 End If
             End If
         End If
+    End Sub
+
+    Private Sub FiltrarClientes(sender As Object, e As EventArgs) Handles IPBBuscarUsuario.Click
+        Dim filtro = CBFiltro.Text
+        Dim busqueda = TBBuscarUsuario.Text
+
+        Dim usuariosFiltrados As List(Of Usuario)
+
+        DGVListaUsuarios.Rows.Clear()
+
+        Select Case filtro
+            Case "Apellido"
+                usuariosFiltrados = usuarios.obtenerTodos().Where(Function(usuario) usuario.Apellido.StartsWith(busqueda)).ToList()
+            Case "Nombre"
+                usuariosFiltrados = usuarios.obtenerTodos().Where(Function(usuario) usuario.Nombre.StartsWith(busqueda)).ToList()
+            Case "DNI"
+                usuariosFiltrados = usuarios.obtenerTodos().Where(Function(usuario) usuario.DNI.StartsWith(busqueda)).ToList()
+            Case "Correo"
+                usuariosFiltrados = usuarios.obtenerTodos().Where(Function(usuario) usuario.Correo.StartsWith(busqueda)).ToList()
+            Case "Telefono"
+                usuariosFiltrados = usuarios.obtenerTodos().Where(Function(usuario) usuario.Telefono.StartsWith(busqueda)).ToList()
+            Case "Usuario"
+                usuariosFiltrados = usuarios.obtenerTodos().Where(Function(usuario) usuario.NombreUsuario.StartsWith(busqueda)).ToList()
+            Case "Administrador"
+                usuariosFiltrados = usuarios.obtenerTodos().Where(Function(usuario) usuario.Tipo = "administrador").ToList()
+            Case "Tecnico"
+                usuariosFiltrados = usuarios.obtenerTodos().Where(Function(usuario) usuario.Tipo = "tecnico").ToList()
+            Case "Maestro"
+                usuariosFiltrados = usuarios.obtenerTodos().Where(Function(usuario) usuario.Tipo = "maestro").ToList()
+            Case Else
+                usuariosFiltrados = usuarios.obtenerTodos()
+        End Select
+
+        For Each usuario In usuariosFiltrados
+            DGVListaUsuarios.Rows.Add(usuario.Apellido, usuario.Nombre, usuario.DNI, usuario.Telefono, usuario.Correo, usuario.NombreUsuario, usuario.Tipo)
+        Next
+    End Sub
+
+    Private Sub ManejarFiltro(sender As Object, e As EventArgs) Handles CBFiltro.SelectedIndexChanged
+        TBBuscarUsuario.Clear()
+
+        Dim filtro = CBFiltro.Text
+
+        If filtro = "Administrador" Or filtro = "Tecnico" Or filtro = "Maestro" Then
+            FiltrarClientes(sender, e)
+
+            Return
+        End If
+
+        refrescarLista()
     End Sub
 End Class

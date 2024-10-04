@@ -27,8 +27,8 @@ Partial Class FormListaUsuarios
         Dim DataGridViewCellStyle10 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        IPBBuscarCliente = New FontAwesome.Sharp.IconPictureBox()
-        TBBuscarCliente = New TextBox()
+        IPBBuscarUsuario = New FontAwesome.Sharp.IconPictureBox()
+        TBBuscarUsuario = New TextBox()
         PBClientes = New PictureBox()
         LListaClientes = New Label()
         PListaEquipos = New Panel()
@@ -44,36 +44,36 @@ Partial Class FormListaUsuarios
         C_Eliminar = New DataGridViewButtonColumn()
         LFiltrar = New Label()
         CBFiltro = New ComboBox()
-        CType(IPBBuscarCliente, ComponentModel.ISupportInitialize).BeginInit()
+        CType(IPBBuscarUsuario, ComponentModel.ISupportInitialize).BeginInit()
         CType(PBClientes, ComponentModel.ISupportInitialize).BeginInit()
         PListaEquipos.SuspendLayout()
         CType(DGVListaUsuarios, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' IPBBuscarCliente
+        ' IPBBuscarUsuario
         ' 
-        IPBBuscarCliente.BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
-        IPBBuscarCliente.BackgroundImageLayout = ImageLayout.Stretch
-        IPBBuscarCliente.Cursor = Cursors.Hand
-        IPBBuscarCliente.IconChar = FontAwesome.Sharp.IconChar.Search
-        IPBBuscarCliente.IconColor = Color.White
-        IPBBuscarCliente.IconFont = FontAwesome.Sharp.IconFont.Auto
-        IPBBuscarCliente.IconSize = 23
-        IPBBuscarCliente.Location = New Point(912, 69)
-        IPBBuscarCliente.Name = "IPBBuscarCliente"
-        IPBBuscarCliente.Size = New Size(24, 23)
-        IPBBuscarCliente.TabIndex = 22
-        IPBBuscarCliente.TabStop = False
+        IPBBuscarUsuario.BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
+        IPBBuscarUsuario.BackgroundImageLayout = ImageLayout.Stretch
+        IPBBuscarUsuario.Cursor = Cursors.Hand
+        IPBBuscarUsuario.IconChar = FontAwesome.Sharp.IconChar.Search
+        IPBBuscarUsuario.IconColor = Color.White
+        IPBBuscarUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IPBBuscarUsuario.IconSize = 23
+        IPBBuscarUsuario.Location = New Point(912, 69)
+        IPBBuscarUsuario.Name = "IPBBuscarUsuario"
+        IPBBuscarUsuario.Size = New Size(24, 23)
+        IPBBuscarUsuario.TabIndex = 22
+        IPBBuscarUsuario.TabStop = False
         ' 
-        ' TBBuscarCliente
+        ' TBBuscarUsuario
         ' 
-        TBBuscarCliente.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        TBBuscarCliente.ForeColor = SystemColors.Window
-        TBBuscarCliente.Location = New Point(798, 69)
-        TBBuscarCliente.Multiline = True
-        TBBuscarCliente.Name = "TBBuscarCliente"
-        TBBuscarCliente.Size = New Size(108, 23)
-        TBBuscarCliente.TabIndex = 21
+        TBBuscarUsuario.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        TBBuscarUsuario.ForeColor = SystemColors.Window
+        TBBuscarUsuario.Location = New Point(798, 69)
+        TBBuscarUsuario.Multiline = True
+        TBBuscarUsuario.Name = "TBBuscarUsuario"
+        TBBuscarUsuario.Size = New Size(108, 23)
+        TBBuscarUsuario.TabIndex = 21
         ' 
         ' PBClientes
         ' 
@@ -255,14 +255,14 @@ Partial Class FormListaUsuarios
         ClientSize = New Size(948, 685)
         Controls.Add(LFiltrar)
         Controls.Add(CBFiltro)
-        Controls.Add(IPBBuscarCliente)
-        Controls.Add(TBBuscarCliente)
+        Controls.Add(IPBBuscarUsuario)
+        Controls.Add(TBBuscarUsuario)
         Controls.Add(PBClientes)
         Controls.Add(LListaClientes)
         Controls.Add(PListaEquipos)
         Name = "FormListaUsuarios"
         Text = "Form1"
-        CType(IPBBuscarCliente, ComponentModel.ISupportInitialize).EndInit()
+        CType(IPBBuscarUsuario, ComponentModel.ISupportInitialize).EndInit()
         CType(PBClientes, ComponentModel.ISupportInitialize).EndInit()
         PListaEquipos.ResumeLayout(False)
         CType(DGVListaUsuarios, ComponentModel.ISupportInitialize).EndInit()
@@ -270,8 +270,8 @@ Partial Class FormListaUsuarios
         PerformLayout()
     End Sub
 
-    Friend WithEvents IPBBuscarCliente As FontAwesome.Sharp.IconPictureBox
-    Friend WithEvents TBBuscarCliente As TextBox
+    Friend WithEvents IPBBuscarUsuario As FontAwesome.Sharp.IconPictureBox
+    Friend WithEvents TBBuscarUsuario As TextBox
     Friend WithEvents PBClientes As PictureBox
     Friend WithEvents LListaClientes As Label
     Friend WithEvents PListaEquipos As Panel

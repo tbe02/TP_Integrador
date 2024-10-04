@@ -207,6 +207,7 @@ Partial Class FormListaClientesAdmin
         ' 
         IPBBuscarCliente.BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
         IPBBuscarCliente.BackgroundImageLayout = ImageLayout.Stretch
+        IPBBuscarCliente.Cursor = Cursors.Hand
         IPBBuscarCliente.IconChar = FontAwesome.Sharp.IconChar.Search
         IPBBuscarCliente.IconColor = Color.White
         IPBBuscarCliente.IconFont = FontAwesome.Sharp.IconFont.Auto
