@@ -74,18 +74,21 @@ Public Class FormListaEquiposAdmin
 
             Dim decision As DialogResult = MessageBox.Show("¿Está seguro que desea eliminar este equipo?", "Eliminar equipo", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-            If decision = DialogResult.Yes Then
-                Dim equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.NumeroSerie <> equipoSeleccionado.NumeroSerie).ToList()
+            equipos.eliminar(equipoSeleccionado)
+            refrescarLista()
 
-                DGVListaEquipos.Rows.Clear()
-                equipos.eliminar(equipoSeleccionado)
+            'If decision = DialogResult.Yes Then
+            '    Dim equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.NumeroSerie <> equipoSeleccionado.NumeroSerie).ToList()
 
-                For Each equipo In equiposFiltrados
-                    DGVListaEquipos.Rows.Add(equipo.Cliente.Nombre, equipo.TipoEquipo.Nombre, equipo.NumeroSerie, equipo.Marca.nombre, equipo.Enciende, equipo.Estado)
-                Next
+            '    DGVListaEquipos.Rows.Clear()
+            '    equipos.eliminar(equipoSeleccionado)
 
-                MessageBox.Show("Equipo eliminado con éxito.", "Eliminación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End If
+            '    For Each equipo In equiposFiltrados
+            '        DGVListaEquipos.Rows.Add(equipo.Cliente.Nombre, equipo.TipoEquipo.Nombre, equipo.NumeroSerie, equipo.Marca.nombre, equipo.Enciende, equipo.Estado)
+            '    Next
+
+            '    MessageBox.Show("Equipo eliminado con éxito.", "Eliminación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            'End If
         End If
 
 
