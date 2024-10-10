@@ -33,7 +33,6 @@ Partial Class FormAgregarEquipo
         TBObservaciones = New TextBox()
         TBRazonIngreso = New TextBox()
         TBNroSerie = New TextBox()
-        TBModelo = New TextBox()
         LObservaciones = New Label()
         LRazonIngreso = New Label()
         LModelo = New Label()
@@ -41,10 +40,11 @@ Partial Class FormAgregarEquipo
         LNroSerie = New Label()
         CBEquipoEnciende = New CheckBox()
         ComboBTipoEquipo = New ComboBox()
-        TBMarca = New TextBox()
         LTipoEquipo = New Label()
         PBAgregarEquipo = New PictureBox()
         LAgregarEquipo = New Label()
+        ComboBMarca = New ComboBox()
+        ComboBModelo = New ComboBox()
         PAsociarCliente.SuspendLayout()
         CType(PBAsociarCliente, ComponentModel.ISupportInitialize).BeginInit()
         PAgregarEquipo.SuspendLayout()
@@ -59,9 +59,10 @@ Partial Class FormAgregarEquipo
         PAsociarCliente.Controls.Add(PBAsociarCliente)
         PAsociarCliente.Controls.Add(LAsociarCliente)
         PAsociarCliente.Controls.Add(LSiNoEstaRegistrado)
-        PAsociarCliente.Location = New Point(12, 5)
+        PAsociarCliente.Location = New Point(14, 7)
+        PAsociarCliente.Margin = New Padding(3, 4, 3, 4)
         PAsociarCliente.Name = "PAsociarCliente"
-        PAsociarCliente.Size = New Size(359, 321)
+        PAsociarCliente.Size = New Size(410, 428)
         PAsociarCliente.TabIndex = 33
         ' 
         ' BAgregarCliente
@@ -71,9 +72,10 @@ Partial Class FormAgregarEquipo
         BAgregarCliente.FlatStyle = FlatStyle.Flat
         BAgregarCliente.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BAgregarCliente.ForeColor = Color.White
-        BAgregarCliente.Location = New Point(192, 219)
+        BAgregarCliente.Location = New Point(219, 292)
+        BAgregarCliente.Margin = New Padding(3, 4, 3, 4)
         BAgregarCliente.Name = "BAgregarCliente"
-        BAgregarCliente.Size = New Size(156, 29)
+        BAgregarCliente.Size = New Size(178, 39)
         BAgregarCliente.TabIndex = 4
         BAgregarCliente.Text = "Agregar cliente"
         BAgregarCliente.UseVisualStyleBackColor = True
@@ -85,17 +87,19 @@ Partial Class FormAgregarEquipo
         ComboBAsociarCliente.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ComboBAsociarCliente.ForeColor = Color.Silver
         ComboBAsociarCliente.FormattingEnabled = True
-        ComboBAsociarCliente.Location = New Point(46, 134)
+        ComboBAsociarCliente.Location = New Point(53, 179)
+        ComboBAsociarCliente.Margin = New Padding(3, 4, 3, 4)
         ComboBAsociarCliente.Name = "ComboBAsociarCliente"
-        ComboBAsociarCliente.Size = New Size(264, 25)
+        ComboBAsociarCliente.Size = New Size(301, 30)
         ComboBAsociarCliente.TabIndex = 38
         ' 
         ' PBAsociarCliente
         ' 
         PBAsociarCliente.Image = My.Resources.Resources.cliente
-        PBAsociarCliente.Location = New Point(46, 13)
+        PBAsociarCliente.Location = New Point(53, 17)
+        PBAsociarCliente.Margin = New Padding(3, 4, 3, 4)
         PBAsociarCliente.Name = "PBAsociarCliente"
-        PBAsociarCliente.Size = New Size(69, 77)
+        PBAsociarCliente.Size = New Size(79, 103)
         PBAsociarCliente.TabIndex = 15
         PBAsociarCliente.TabStop = False
         ' 
@@ -105,9 +109,9 @@ Partial Class FormAgregarEquipo
         LAsociarCliente.BackColor = Color.Transparent
         LAsociarCliente.Font = New Font("Bahnschrift Condensed", 24F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LAsociarCliente.ForeColor = Color.White
-        LAsociarCliente.Location = New Point(121, 36)
+        LAsociarCliente.Location = New Point(138, 48)
         LAsociarCliente.Name = "LAsociarCliente"
-        LAsociarCliente.Size = New Size(194, 39)
+        LAsociarCliente.Size = New Size(245, 48)
         LAsociarCliente.TabIndex = 11
         LAsociarCliente.Text = "1. Asociar cliente"
         ' 
@@ -116,20 +120,21 @@ Partial Class FormAgregarEquipo
         LSiNoEstaRegistrado.AutoSize = True
         LSiNoEstaRegistrado.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LSiNoEstaRegistrado.ForeColor = Color.Silver
-        LSiNoEstaRegistrado.Location = New Point(33, 228)
+        LSiNoEstaRegistrado.Location = New Point(38, 304)
         LSiNoEstaRegistrado.Name = "LSiNoEstaRegistrado"
-        LSiNoEstaRegistrado.Size = New Size(128, 16)
+        LSiNoEstaRegistrado.Size = New Size(162, 20)
         LSiNoEstaRegistrado.TabIndex = 13
         LSiNoEstaRegistrado.Text = "si no esta registrado"
         ' 
         ' PAgregarEquipo
         ' 
         PAgregarEquipo.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        PAgregarEquipo.Controls.Add(ComboBModelo)
+        PAgregarEquipo.Controls.Add(ComboBMarca)
         PAgregarEquipo.Controls.Add(BAgregarEquipo)
         PAgregarEquipo.Controls.Add(TBObservaciones)
         PAgregarEquipo.Controls.Add(TBRazonIngreso)
         PAgregarEquipo.Controls.Add(TBNroSerie)
-        PAgregarEquipo.Controls.Add(TBModelo)
         PAgregarEquipo.Controls.Add(LObservaciones)
         PAgregarEquipo.Controls.Add(LRazonIngreso)
         PAgregarEquipo.Controls.Add(LModelo)
@@ -137,13 +142,13 @@ Partial Class FormAgregarEquipo
         PAgregarEquipo.Controls.Add(LNroSerie)
         PAgregarEquipo.Controls.Add(CBEquipoEnciende)
         PAgregarEquipo.Controls.Add(ComboBTipoEquipo)
-        PAgregarEquipo.Controls.Add(TBMarca)
         PAgregarEquipo.Controls.Add(LTipoEquipo)
         PAgregarEquipo.Controls.Add(PBAgregarEquipo)
         PAgregarEquipo.Controls.Add(LAgregarEquipo)
-        PAgregarEquipo.Location = New Point(396, 5)
+        PAgregarEquipo.Location = New Point(453, 7)
+        PAgregarEquipo.Margin = New Padding(3, 4, 3, 4)
         PAgregarEquipo.Name = "PAgregarEquipo"
-        PAgregarEquipo.Size = New Size(537, 644)
+        PAgregarEquipo.Size = New Size(614, 859)
         PAgregarEquipo.TabIndex = 32
         ' 
         ' BAgregarEquipo
@@ -153,9 +158,10 @@ Partial Class FormAgregarEquipo
         BAgregarEquipo.FlatStyle = FlatStyle.Flat
         BAgregarEquipo.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BAgregarEquipo.ForeColor = Color.White
-        BAgregarEquipo.Location = New Point(75, 573)
+        BAgregarEquipo.Location = New Point(86, 764)
+        BAgregarEquipo.Margin = New Padding(3, 4, 3, 4)
         BAgregarEquipo.Name = "BAgregarEquipo"
-        BAgregarEquipo.Size = New Size(350, 50)
+        BAgregarEquipo.Size = New Size(400, 67)
         BAgregarEquipo.TabIndex = 39
         BAgregarEquipo.Text = "Agregar equipo"
         BAgregarEquipo.UseVisualStyleBackColor = True
@@ -166,11 +172,10 @@ Partial Class FormAgregarEquipo
         TBObservaciones.BorderStyle = BorderStyle.None
         TBObservaciones.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBObservaciones.ForeColor = Color.Silver
-        TBObservaciones.Location = New Point(147, 405)
-        TBObservaciones.Margin = New Padding(3, 2, 3, 2)
+        TBObservaciones.Location = New Point(168, 540)
         TBObservaciones.Multiline = True
         TBObservaciones.Name = "TBObservaciones"
-        TBObservaciones.Size = New Size(345, 92)
+        TBObservaciones.Size = New Size(394, 123)
         TBObservaciones.TabIndex = 39
         ' 
         ' TBRazonIngreso
@@ -179,11 +184,10 @@ Partial Class FormAgregarEquipo
         TBRazonIngreso.BorderStyle = BorderStyle.None
         TBRazonIngreso.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBRazonIngreso.ForeColor = Color.Silver
-        TBRazonIngreso.Location = New Point(147, 295)
-        TBRazonIngreso.Margin = New Padding(3, 2, 3, 2)
+        TBRazonIngreso.Location = New Point(168, 393)
         TBRazonIngreso.Multiline = True
         TBRazonIngreso.Name = "TBRazonIngreso"
-        TBRazonIngreso.Size = New Size(345, 90)
+        TBRazonIngreso.Size = New Size(394, 120)
         TBRazonIngreso.TabIndex = 38
         ' 
         ' TBNroSerie
@@ -192,32 +196,19 @@ Partial Class FormAgregarEquipo
         TBNroSerie.BorderStyle = BorderStyle.None
         TBNroSerie.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBNroSerie.ForeColor = Color.Silver
-        TBNroSerie.Location = New Point(147, 164)
-        TBNroSerie.Margin = New Padding(3, 2, 3, 2)
+        TBNroSerie.Location = New Point(168, 219)
         TBNroSerie.Name = "TBNroSerie"
-        TBNroSerie.Size = New Size(345, 17)
+        TBNroSerie.Size = New Size(394, 21)
         TBNroSerie.TabIndex = 37
-        ' 
-        ' TBModelo
-        ' 
-        TBModelo.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
-        TBModelo.BorderStyle = BorderStyle.None
-        TBModelo.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TBModelo.ForeColor = Color.Silver
-        TBModelo.Location = New Point(147, 240)
-        TBModelo.Margin = New Padding(3, 2, 3, 2)
-        TBModelo.Name = "TBModelo"
-        TBModelo.Size = New Size(345, 17)
-        TBModelo.TabIndex = 36
         ' 
         ' LObservaciones
         ' 
         LObservaciones.AutoSize = True
         LObservaciones.Font = New Font("Microsoft Sans Serif", 9.75F)
         LObservaciones.ForeColor = Color.Silver
-        LObservaciones.Location = New Point(10, 440)
+        LObservaciones.Location = New Point(11, 587)
         LObservaciones.Name = "LObservaciones"
-        LObservaciones.Size = New Size(99, 16)
+        LObservaciones.Size = New Size(121, 20)
         LObservaciones.TabIndex = 35
         LObservaciones.Text = "Observaciones"
         ' 
@@ -226,9 +217,9 @@ Partial Class FormAgregarEquipo
         LRazonIngreso.AutoSize = True
         LRazonIngreso.Font = New Font("Microsoft Sans Serif", 9.75F)
         LRazonIngreso.ForeColor = Color.Silver
-        LRazonIngreso.Location = New Point(10, 329)
+        LRazonIngreso.Location = New Point(11, 439)
         LRazonIngreso.Name = "LRazonIngreso"
-        LRazonIngreso.Size = New Size(113, 16)
+        LRazonIngreso.Size = New Size(140, 20)
         LRazonIngreso.TabIndex = 34
         LRazonIngreso.Text = "Razon de ingreso"
         ' 
@@ -237,9 +228,9 @@ Partial Class FormAgregarEquipo
         LModelo.AutoSize = True
         LModelo.Font = New Font("Microsoft Sans Serif", 9.75F)
         LModelo.ForeColor = Color.Silver
-        LModelo.Location = New Point(10, 242)
+        LModelo.Location = New Point(11, 323)
         LModelo.Name = "LModelo"
-        LModelo.Size = New Size(53, 16)
+        LModelo.Size = New Size(63, 20)
         LModelo.TabIndex = 33
         LModelo.Text = "Modelo"
         ' 
@@ -248,9 +239,9 @@ Partial Class FormAgregarEquipo
         LMarca.AutoSize = True
         LMarca.Font = New Font("Microsoft Sans Serif", 9.75F)
         LMarca.ForeColor = Color.Silver
-        LMarca.Location = New Point(10, 206)
+        LMarca.Location = New Point(11, 275)
         LMarca.Name = "LMarca"
-        LMarca.Size = New Size(45, 16)
+        LMarca.Size = New Size(56, 20)
         LMarca.TabIndex = 32
         LMarca.Text = "Marca"
         ' 
@@ -259,9 +250,9 @@ Partial Class FormAgregarEquipo
         LNroSerie.AutoSize = True
         LNroSerie.Font = New Font("Microsoft Sans Serif", 9.75F)
         LNroSerie.ForeColor = Color.Silver
-        LNroSerie.Location = New Point(10, 164)
+        LNroSerie.Location = New Point(11, 219)
         LNroSerie.Name = "LNroSerie"
-        LNroSerie.Size = New Size(84, 16)
+        LNroSerie.Size = New Size(105, 20)
         LNroSerie.TabIndex = 31
         LNroSerie.Text = "Nro. de serie"
         ' 
@@ -270,9 +261,10 @@ Partial Class FormAgregarEquipo
         CBEquipoEnciende.AutoSize = True
         CBEquipoEnciende.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         CBEquipoEnciende.ForeColor = Color.Silver
-        CBEquipoEnciende.Location = New Point(10, 524)
+        CBEquipoEnciende.Location = New Point(11, 699)
+        CBEquipoEnciende.Margin = New Padding(3, 4, 3, 4)
         CBEquipoEnciende.Name = "CBEquipoEnciende"
-        CBEquipoEnciende.Size = New Size(325, 20)
+        CBEquipoEnciende.Size = New Size(405, 24)
         CBEquipoEnciende.TabIndex = 30
         CBEquipoEnciende.Text = "Marcar si el equipo enciende a la hora de ingresar"
         CBEquipoEnciende.UseVisualStyleBackColor = True
@@ -284,40 +276,30 @@ Partial Class FormAgregarEquipo
         ComboBTipoEquipo.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ComboBTipoEquipo.ForeColor = Color.Silver
         ComboBTipoEquipo.FormattingEnabled = True
-        ComboBTipoEquipo.Location = New Point(147, 114)
+        ComboBTipoEquipo.Location = New Point(168, 152)
+        ComboBTipoEquipo.Margin = New Padding(3, 4, 3, 4)
         ComboBTipoEquipo.Name = "ComboBTipoEquipo"
-        ComboBTipoEquipo.Size = New Size(345, 25)
+        ComboBTipoEquipo.Size = New Size(394, 30)
         ComboBTipoEquipo.TabIndex = 28
-        ' 
-        ' TBMarca
-        ' 
-        TBMarca.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
-        TBMarca.BorderStyle = BorderStyle.None
-        TBMarca.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TBMarca.ForeColor = Color.Silver
-        TBMarca.Location = New Point(147, 204)
-        TBMarca.Margin = New Padding(3, 2, 3, 2)
-        TBMarca.Name = "TBMarca"
-        TBMarca.Size = New Size(345, 17)
-        TBMarca.TabIndex = 5
         ' 
         ' LTipoEquipo
         ' 
         LTipoEquipo.AutoSize = True
         LTipoEquipo.Font = New Font("Microsoft Sans Serif", 9.75F)
         LTipoEquipo.ForeColor = Color.Silver
-        LTipoEquipo.Location = New Point(10, 118)
+        LTipoEquipo.Location = New Point(11, 157)
         LTipoEquipo.Name = "LTipoEquipo"
-        LTipoEquipo.Size = New Size(99, 16)
+        LTipoEquipo.Size = New Size(118, 20)
         LTipoEquipo.TabIndex = 7
         LTipoEquipo.Text = "Tipo de equipo"
         ' 
         ' PBAgregarEquipo
         ' 
         PBAgregarEquipo.Image = My.Resources.Resources.agregar_equipo
-        PBAgregarEquipo.Location = New Point(68, 13)
+        PBAgregarEquipo.Location = New Point(78, 17)
+        PBAgregarEquipo.Margin = New Padding(3, 4, 3, 4)
         PBAgregarEquipo.Name = "PBAgregarEquipo"
-        PBAgregarEquipo.Size = New Size(74, 71)
+        PBAgregarEquipo.Size = New Size(85, 95)
         PBAgregarEquipo.TabIndex = 17
         PBAgregarEquipo.TabStop = False
         ' 
@@ -327,22 +309,47 @@ Partial Class FormAgregarEquipo
         LAgregarEquipo.BackColor = Color.Transparent
         LAgregarEquipo.Font = New Font("Bahnschrift Condensed", 24F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LAgregarEquipo.ForeColor = Color.White
-        LAgregarEquipo.Location = New Point(155, 36)
+        LAgregarEquipo.Location = New Point(177, 48)
         LAgregarEquipo.Name = "LAgregarEquipo"
-        LAgregarEquipo.Size = New Size(203, 39)
+        LAgregarEquipo.Size = New Size(254, 48)
         LAgregarEquipo.TabIndex = 16
         LAgregarEquipo.Text = "2. Agregar equipo"
         ' 
+        ' ComboBMarca
+        ' 
+        ComboBMarca.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        ComboBMarca.FlatStyle = FlatStyle.Flat
+        ComboBMarca.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ComboBMarca.ForeColor = Color.Silver
+        ComboBMarca.FormattingEnabled = True
+        ComboBMarca.Location = New Point(168, 270)
+        ComboBMarca.Margin = New Padding(3, 4, 3, 4)
+        ComboBMarca.Name = "ComboBMarca"
+        ComboBMarca.Size = New Size(394, 30)
+        ComboBMarca.TabIndex = 40
+        ' 
+        ' ComboBModelo
+        ' 
+        ComboBModelo.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        ComboBModelo.FlatStyle = FlatStyle.Flat
+        ComboBModelo.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ComboBModelo.ForeColor = Color.Silver
+        ComboBModelo.FormattingEnabled = True
+        ComboBModelo.Location = New Point(168, 320)
+        ComboBModelo.Margin = New Padding(3, 4, 3, 4)
+        ComboBModelo.Name = "ComboBModelo"
+        ComboBModelo.Size = New Size(394, 30)
+        ComboBModelo.TabIndex = 41
+        ' 
         ' FormAgregarEquipo
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
-        ClientSize = New Size(951, 658)
+        ClientSize = New Size(1087, 877)
         Controls.Add(PAsociarCliente)
         Controls.Add(PAgregarEquipo)
         FormBorderStyle = FormBorderStyle.None
-        Margin = New Padding(3, 2, 3, 2)
         Name = "FormAgregarEquipo"
         Text = "FormAgregarEquipo"
         PAsociarCliente.ResumeLayout(False)
@@ -365,7 +372,6 @@ Partial Class FormAgregarEquipo
     Friend WithEvents TBObservaciones As TextBox
     Friend WithEvents TBRazonIngreso As TextBox
     Friend WithEvents TBNroSerie As TextBox
-    Friend WithEvents TBModelo As TextBox
     Friend WithEvents LObservaciones As Label
     Friend WithEvents LRazonIngreso As Label
     Friend WithEvents LModelo As Label
@@ -373,8 +379,9 @@ Partial Class FormAgregarEquipo
     Friend WithEvents LNroSerie As Label
     Friend WithEvents CBEquipoEnciende As CheckBox
     Friend WithEvents ComboBTipoEquipo As ComboBox
-    Friend WithEvents TBMarca As TextBox
     Friend WithEvents LTipoEquipo As Label
     Friend WithEvents PBAgregarEquipo As PictureBox
     Friend WithEvents LAgregarEquipo As Label
+    Friend WithEvents ComboBModelo As ComboBox
+    Friend WithEvents ComboBMarca As ComboBox
 End Class

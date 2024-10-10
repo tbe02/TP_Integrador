@@ -5,6 +5,7 @@ Imports System.Text.RegularExpressions
 
 Public Class Cliente
 
+    Public Property ID As Integer
     Public Property Nombre As String
     Public Property Apellido As String
     Public Property Dni As String
@@ -107,6 +108,7 @@ Public Class Cliente
                         clientes.Add(
                             New Cliente With {
                                 .Nombre = lector("nombres").ToString(),
+                                .ID = lector("idCliente").ToString(),
                                 .Apellido = lector("apellidos").ToString(),
                                 .Dni = lector("DNI").ToString(),
                                 .Correo = lector("correo").ToString(),
