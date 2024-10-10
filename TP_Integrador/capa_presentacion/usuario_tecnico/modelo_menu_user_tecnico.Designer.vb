@@ -37,6 +37,7 @@ Partial Class modelo_menu_user_tecnico
         IBCerrar = New FontAwesome.Sharp.IconButton()
         MenuPerfil = New ContextMenuStrip(components)
         TSMCerrarSesion = New ToolStripMenuItem()
+        TSMMiPerfil = New ToolStripMenuItem()
         PMenuIzquierdo.SuspendLayout()
         CType(PBIconoEmpresa, ComponentModel.ISupportInitialize).BeginInit()
         PMenuSuperior.SuspendLayout()
@@ -65,7 +66,7 @@ Partial Class modelo_menu_user_tecnico
         LGestionServicTec.ForeColor = Color.Silver
         LGestionServicTec.Location = New Point(37, 214)
         LGestionServicTec.Name = "LGestionServicTec"
-        LGestionServicTec.Size = New Size(165, 17)
+        LGestionServicTec.Size = New Size(196, 20)
         LGestionServicTec.TabIndex = 13
         LGestionServicTec.Text = "Gestión Servicio Técnico"
         ' 
@@ -85,11 +86,11 @@ Partial Class modelo_menu_user_tecnico
         ' 
         LGST.AutoSize = True
         LGST.BackColor = Color.Transparent
-        LGST.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
+        LGST.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
         LGST.ForeColor = Color.Silver
         LGST.Location = New Point(102, 190)
         LGST.Name = "LGST"
-        LGST.Size = New Size(42, 20)
+        LGST.Size = New Size(54, 25)
         LGST.TabIndex = 12
         LGST.Text = "GST"
         ' 
@@ -241,21 +242,28 @@ Partial Class modelo_menu_user_tecnico
         ' 
         MenuPerfil.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         MenuPerfil.ImageScalingSize = New Size(20, 20)
-        MenuPerfil.Items.AddRange(New ToolStripItem() {TSMCerrarSesion})
+        MenuPerfil.Items.AddRange(New ToolStripItem() {TSMMiPerfil, TSMCerrarSesion})
         MenuPerfil.Name = "ContextMenuStrip1"
         MenuPerfil.RenderMode = ToolStripRenderMode.System
-        MenuPerfil.Size = New Size(148, 33)
+        MenuPerfil.Size = New Size(211, 85)
         ' 
         ' TSMCerrarSesion
         ' 
         TSMCerrarSesion.AutoSize = False
         TSMCerrarSesion.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        TSMCerrarSesion.Font = New Font("Microsoft Sans Serif", 9.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        TSMCerrarSesion.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TSMCerrarSesion.ForeColor = Color.White
         TSMCerrarSesion.ImageTransparentColor = Color.Transparent
         TSMCerrarSesion.Name = "TSMCerrarSesion"
         TSMCerrarSesion.Size = New Size(160, 29)
         TSMCerrarSesion.Text = "Cerrar sesión"
+        ' 
+        ' TSMMiPerfil
+        ' 
+        TSMMiPerfil.ForeColor = Color.White
+        TSMMiPerfil.Name = "TSMMiPerfil"
+        TSMMiPerfil.Size = New Size(210, 24)
+        TSMMiPerfil.Text = "Mi Perfil"
         ' 
         ' modelo_menu_user_tecnico
         ' 
@@ -289,4 +297,5 @@ Partial Class modelo_menu_user_tecnico
     Friend WithEvents MenuPerfil As ContextMenuStrip
     Friend WithEvents TSMCerrarSesion As ToolStripMenuItem
     Friend WithEvents PFondoPrincipal As Panel
+    Friend WithEvents TSMMiPerfil As ToolStripMenuItem
 End Class

@@ -170,4 +170,10 @@ Public Class modelo_menu_user_tecnico
 
         formLogin.Show()
     End Sub
+
+    Private Sub VerPerfil(sender As Object, e As EventArgs) Handles TSMMiPerfil.Click
+        Dim formPerfil = New FormPerfil()
+
+        formPerfil.Show()
+    End Sub
 End Class
