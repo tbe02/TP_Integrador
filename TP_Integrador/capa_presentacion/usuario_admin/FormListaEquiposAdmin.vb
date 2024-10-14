@@ -20,11 +20,19 @@ Public Class FormListaEquiposAdmin
     End Sub
     Private Sub ListarEquipos()
         For Each equipo In equipos.ObtenerTodos()
-            DGVListaEquipos.Rows.Add(equipo.NombreDelCliente, equipo.TipoDeEquipo, equipo.NroSerie, equipo.Marca, equipo.EnciendeEnIngreso, equipo.Estado)
+            DGVListaEquipos.Rows.Add(equipo.Cliente.Nombre, equipo.TipoEquipo.Nombre, equipo.NumeroSerie, equipo.Marca.nombre, equipo.Modelo.nombre, equipo.Enciende, equipo.Estado, equipo.Baja)
         Next
     End Sub
 
+    Private Sub refrescarLista()
+        DGVListaEquipos.Rows.Clear()
+
+        ListarEquipos()
+    End Sub
+
+
     Private Sub AtraparEventosDeBotones(sender As Object, e As DataGridViewCellEventArgs) Handles DGVListaEquipos.CellContentClick
+
         If e.ColumnIndex = DGVListaEquipos.Columns("C_Editar").Index AndAlso e.RowIndex >= 0 Then
             Dim filaSeleccionada As DataGridViewRow = DGVListaEquipos.Rows(e.RowIndex)
 
@@ -33,13 +41,16 @@ Public Class FormListaEquiposAdmin
             ' le pasamos los datos del cliente a mi formulario
             Dim formEditar As New FormEditarEquipo(equipo, New Action(
                 Sub()
-                    'refrescarLista()
+                    refrescarLista()
                 End Sub)
             )
 
             ' abrimos el formulario
             formEditar.Show()
         End If
+
+
+
 
         If e.ColumnIndex = DGVListaEquipos.Columns("C_InfomacionEquipo").Index AndAlso e.RowIndex >= 0 Then
             Dim filaSeleccionada As DataGridViewRow = DGVListaEquipos.Rows(e.RowIndex)
@@ -53,6 +64,9 @@ Public Class FormListaEquiposAdmin
             formInfo.Show()
         End If
 
+
+
+
         If e.ColumnIndex = DGVListaEquipos.Columns("C_Eliminar").Index AndAlso e.RowIndex >= 0 Then
             Dim filaSeleccionada As DataGridViewRow = DGVListaEquipos.Rows(e.RowIndex)
 
@@ -60,18 +74,25 @@ Public Class FormListaEquiposAdmin
 
             Dim decision As DialogResult = MessageBox.Show("¿Está seguro que desea eliminar este equipo?", "Eliminar equipo", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-            If decision = DialogResult.Yes Then
-                Dim equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.NroSerie <> equipoSeleccionado.NroSerie).ToList()
+            equipos.eliminar(equipoSeleccionado)
+            refrescarLista()
 
-                DGVListaEquipos.Rows.Clear()
+            'If decision = DialogResult.Yes Then
+            '    Dim equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.NumeroSerie <> equipoSeleccionado.NumeroSerie).ToList()
 
-                For Each equipo In equiposFiltrados
-                    DGVListaEquipos.Rows.Add(equipo.NombreDelCliente, equipo.TipoDeEquipo, equipo.NroSerie, equipo.Marca, equipo.EnciendeEnIngreso, equipo.Estado)
-                Next
+            '    DGVListaEquipos.Rows.Clear()
+            '    equipos.eliminar(equipoSeleccionado)
 
-                MessageBox.Show("Equipo eliminado con éxito.", "Eliminación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            End If
+            '    For Each equipo In equiposFiltrados
+            '        DGVListaEquipos.Rows.Add(equipo.Cliente.Nombre, equipo.TipoEquipo.Nombre, equipo.NumeroSerie, equipo.Marca.nombre, equipo.Enciende, equipo.Estado)
+            '    Next
+
+            '    MessageBox.Show("Equipo eliminado con éxito.", "Eliminación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            'End If
         End If
+
+
+
     End Sub
 
     Private Sub FiltrarEquipos(sender As Object, e As EventArgs) Handles IPBBuscarEquipo.Click
@@ -84,21 +105,21 @@ Public Class FormListaEquiposAdmin
 
         Select Case filtro
             Case "Nombre cliente"
-                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.NombreDelCliente.StartsWith(busqueda)).ToList()
+                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.Cliente.Nombre.StartsWith(busqueda)).ToList()
             Case "Marca"
-                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.Marca.StartsWith(busqueda)).ToList()
+                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.Marca.nombre.StartsWith(busqueda)).ToList()
             Case "Nro de Serie"
-                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.NroSerie.StartsWith(busqueda)).ToList()
+                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.NumeroSerie.StartsWith(busqueda)).ToList()
             Case "Enciende"
-                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.EnciendeEnIngreso = "Si").ToList()
+                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.Enciende = "Si").ToList()
             Case "No enciende"
-                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.EnciendeEnIngreso = "No").ToList()
+                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.Enciende = "No").ToList()
             Case Else
                 equiposFiltrados = equipos.ObtenerTodos()
         End Select
 
         For Each equipo In equiposFiltrados
-            DGVListaEquipos.Rows.Add(equipo.NombreDelCliente, equipo.TipoDeEquipo, equipo.NroSerie, equipo.Marca, equipo.EnciendeEnIngreso, equipo.Estado)
+            DGVListaEquipos.Rows.Add(equipo.Cliente.Nombre, equipo.TipoEquipo.Nombre, equipo.NumeroSerie, equipo.Marca.nombre, equipo.Enciende, equipo.Estado)
         Next
     End Sub
 

@@ -33,7 +33,6 @@ Partial Class FormEditarEquipo
         TBObservaciones = New TextBox()
         TBRazonIngreso = New TextBox()
         TBNroSerie = New TextBox()
-        TBModelo = New TextBox()
         LObservaciones = New Label()
         LRazonIngreso = New Label()
         LModelo = New Label()
@@ -41,12 +40,13 @@ Partial Class FormEditarEquipo
         LNroSerie = New Label()
         CBEquipoEnciende = New CheckBox()
         ComboBTipoEquipo = New ComboBox()
-        TBMarca = New TextBox()
         LTipoEquipo = New Label()
         PictureBox2 = New PictureBox()
         LEditarEquipo = New Label()
         IBMinimizar_EC = New FontAwesome.Sharp.IconButton()
         IBCerrar_EC = New FontAwesome.Sharp.IconButton()
+        ComboBMarca = New ComboBox()
+        ComboBModelo = New ComboBox()
         PAsociarCliente.SuspendLayout()
         CType(PBAsociarCliente, ComponentModel.ISupportInitialize).BeginInit()
         PAgregarEquipo.SuspendLayout()
@@ -61,9 +61,10 @@ Partial Class FormEditarEquipo
         PAsociarCliente.Controls.Add(PBAsociarCliente)
         PAsociarCliente.Controls.Add(LEditarCliente)
         PAsociarCliente.Controls.Add(LSiNoEstaRegistrado)
-        PAsociarCliente.Location = New Point(30, 37)
+        PAsociarCliente.Location = New Point(34, 49)
+        PAsociarCliente.Margin = New Padding(3, 4, 3, 4)
         PAsociarCliente.Name = "PAsociarCliente"
-        PAsociarCliente.Size = New Size(359, 321)
+        PAsociarCliente.Size = New Size(410, 428)
         PAsociarCliente.TabIndex = 33
         ' 
         ' BEditarCliente
@@ -73,9 +74,10 @@ Partial Class FormEditarEquipo
         BEditarCliente.FlatStyle = FlatStyle.Flat
         BEditarCliente.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BEditarCliente.ForeColor = Color.White
-        BEditarCliente.Location = New Point(192, 219)
+        BEditarCliente.Location = New Point(219, 292)
+        BEditarCliente.Margin = New Padding(3, 4, 3, 4)
         BEditarCliente.Name = "BEditarCliente"
-        BEditarCliente.Size = New Size(156, 29)
+        BEditarCliente.Size = New Size(178, 39)
         BEditarCliente.TabIndex = 4
         BEditarCliente.Text = "Editar cliente"
         BEditarCliente.UseVisualStyleBackColor = True
@@ -87,17 +89,19 @@ Partial Class FormEditarEquipo
         ComboBAsociarCliente.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ComboBAsociarCliente.ForeColor = Color.Silver
         ComboBAsociarCliente.FormattingEnabled = True
-        ComboBAsociarCliente.Location = New Point(46, 134)
+        ComboBAsociarCliente.Location = New Point(53, 179)
+        ComboBAsociarCliente.Margin = New Padding(3, 4, 3, 4)
         ComboBAsociarCliente.Name = "ComboBAsociarCliente"
-        ComboBAsociarCliente.Size = New Size(264, 25)
+        ComboBAsociarCliente.Size = New Size(301, 30)
         ComboBAsociarCliente.TabIndex = 38
         ' 
         ' PBAsociarCliente
         ' 
         PBAsociarCliente.Image = My.Resources.Resources.cliente
-        PBAsociarCliente.Location = New Point(46, 13)
+        PBAsociarCliente.Location = New Point(53, 17)
+        PBAsociarCliente.Margin = New Padding(3, 4, 3, 4)
         PBAsociarCliente.Name = "PBAsociarCliente"
-        PBAsociarCliente.Size = New Size(69, 77)
+        PBAsociarCliente.Size = New Size(79, 103)
         PBAsociarCliente.TabIndex = 15
         PBAsociarCliente.TabStop = False
         ' 
@@ -107,9 +111,9 @@ Partial Class FormEditarEquipo
         LEditarCliente.BackColor = Color.Transparent
         LEditarCliente.Font = New Font("Bahnschrift Condensed", 24F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LEditarCliente.ForeColor = Color.White
-        LEditarCliente.Location = New Point(121, 36)
+        LEditarCliente.Location = New Point(138, 48)
         LEditarCliente.Name = "LEditarCliente"
-        LEditarCliente.Size = New Size(177, 39)
+        LEditarCliente.Size = New Size(225, 48)
         LEditarCliente.TabIndex = 11
         LEditarCliente.Text = "1. Editar cliente"
         ' 
@@ -118,20 +122,21 @@ Partial Class FormEditarEquipo
         LSiNoEstaRegistrado.AutoSize = True
         LSiNoEstaRegistrado.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LSiNoEstaRegistrado.ForeColor = Color.Silver
-        LSiNoEstaRegistrado.Location = New Point(33, 228)
+        LSiNoEstaRegistrado.Location = New Point(38, 304)
         LSiNoEstaRegistrado.Name = "LSiNoEstaRegistrado"
-        LSiNoEstaRegistrado.Size = New Size(128, 16)
+        LSiNoEstaRegistrado.Size = New Size(162, 20)
         LSiNoEstaRegistrado.TabIndex = 13
         LSiNoEstaRegistrado.Text = "si no esta registrado"
         ' 
         ' PAgregarEquipo
         ' 
         PAgregarEquipo.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        PAgregarEquipo.Controls.Add(ComboBModelo)
+        PAgregarEquipo.Controls.Add(ComboBMarca)
         PAgregarEquipo.Controls.Add(BEditarEquipo)
         PAgregarEquipo.Controls.Add(TBObservaciones)
         PAgregarEquipo.Controls.Add(TBRazonIngreso)
         PAgregarEquipo.Controls.Add(TBNroSerie)
-        PAgregarEquipo.Controls.Add(TBModelo)
         PAgregarEquipo.Controls.Add(LObservaciones)
         PAgregarEquipo.Controls.Add(LRazonIngreso)
         PAgregarEquipo.Controls.Add(LModelo)
@@ -139,13 +144,13 @@ Partial Class FormEditarEquipo
         PAgregarEquipo.Controls.Add(LNroSerie)
         PAgregarEquipo.Controls.Add(CBEquipoEnciende)
         PAgregarEquipo.Controls.Add(ComboBTipoEquipo)
-        PAgregarEquipo.Controls.Add(TBMarca)
         PAgregarEquipo.Controls.Add(LTipoEquipo)
         PAgregarEquipo.Controls.Add(PictureBox2)
         PAgregarEquipo.Controls.Add(LEditarEquipo)
-        PAgregarEquipo.Location = New Point(416, 37)
+        PAgregarEquipo.Location = New Point(475, 49)
+        PAgregarEquipo.Margin = New Padding(3, 4, 3, 4)
         PAgregarEquipo.Name = "PAgregarEquipo"
-        PAgregarEquipo.Size = New Size(515, 644)
+        PAgregarEquipo.Size = New Size(589, 859)
         PAgregarEquipo.TabIndex = 32
         ' 
         ' BEditarEquipo
@@ -155,9 +160,10 @@ Partial Class FormEditarEquipo
         BEditarEquipo.FlatStyle = FlatStyle.Flat
         BEditarEquipo.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BEditarEquipo.ForeColor = Color.White
-        BEditarEquipo.Location = New Point(75, 573)
+        BEditarEquipo.Location = New Point(86, 764)
+        BEditarEquipo.Margin = New Padding(3, 4, 3, 4)
         BEditarEquipo.Name = "BEditarEquipo"
-        BEditarEquipo.Size = New Size(350, 50)
+        BEditarEquipo.Size = New Size(400, 67)
         BEditarEquipo.TabIndex = 39
         BEditarEquipo.Text = "Editar equipo"
         BEditarEquipo.UseVisualStyleBackColor = True
@@ -168,11 +174,10 @@ Partial Class FormEditarEquipo
         TBObservaciones.BorderStyle = BorderStyle.None
         TBObservaciones.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBObservaciones.ForeColor = Color.Silver
-        TBObservaciones.Location = New Point(147, 405)
-        TBObservaciones.Margin = New Padding(3, 2, 3, 2)
+        TBObservaciones.Location = New Point(168, 540)
         TBObservaciones.Multiline = True
         TBObservaciones.Name = "TBObservaciones"
-        TBObservaciones.Size = New Size(345, 92)
+        TBObservaciones.Size = New Size(394, 123)
         TBObservaciones.TabIndex = 39
         ' 
         ' TBRazonIngreso
@@ -181,11 +186,10 @@ Partial Class FormEditarEquipo
         TBRazonIngreso.BorderStyle = BorderStyle.None
         TBRazonIngreso.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBRazonIngreso.ForeColor = Color.Silver
-        TBRazonIngreso.Location = New Point(147, 295)
-        TBRazonIngreso.Margin = New Padding(3, 2, 3, 2)
+        TBRazonIngreso.Location = New Point(168, 393)
         TBRazonIngreso.Multiline = True
         TBRazonIngreso.Name = "TBRazonIngreso"
-        TBRazonIngreso.Size = New Size(345, 90)
+        TBRazonIngreso.Size = New Size(394, 120)
         TBRazonIngreso.TabIndex = 38
         ' 
         ' TBNroSerie
@@ -194,32 +198,19 @@ Partial Class FormEditarEquipo
         TBNroSerie.BorderStyle = BorderStyle.None
         TBNroSerie.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBNroSerie.ForeColor = Color.Silver
-        TBNroSerie.Location = New Point(147, 164)
-        TBNroSerie.Margin = New Padding(3, 2, 3, 2)
+        TBNroSerie.Location = New Point(168, 219)
         TBNroSerie.Name = "TBNroSerie"
-        TBNroSerie.Size = New Size(345, 17)
+        TBNroSerie.Size = New Size(394, 21)
         TBNroSerie.TabIndex = 37
-        ' 
-        ' TBModelo
-        ' 
-        TBModelo.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
-        TBModelo.BorderStyle = BorderStyle.None
-        TBModelo.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TBModelo.ForeColor = Color.Silver
-        TBModelo.Location = New Point(147, 240)
-        TBModelo.Margin = New Padding(3, 2, 3, 2)
-        TBModelo.Name = "TBModelo"
-        TBModelo.Size = New Size(345, 17)
-        TBModelo.TabIndex = 36
         ' 
         ' LObservaciones
         ' 
         LObservaciones.AutoSize = True
         LObservaciones.Font = New Font("Microsoft Sans Serif", 9.75F)
         LObservaciones.ForeColor = Color.Silver
-        LObservaciones.Location = New Point(10, 440)
+        LObservaciones.Location = New Point(11, 587)
         LObservaciones.Name = "LObservaciones"
-        LObservaciones.Size = New Size(99, 16)
+        LObservaciones.Size = New Size(121, 20)
         LObservaciones.TabIndex = 35
         LObservaciones.Text = "Observaciones"
         ' 
@@ -228,9 +219,9 @@ Partial Class FormEditarEquipo
         LRazonIngreso.AutoSize = True
         LRazonIngreso.Font = New Font("Microsoft Sans Serif", 9.75F)
         LRazonIngreso.ForeColor = Color.Silver
-        LRazonIngreso.Location = New Point(10, 329)
+        LRazonIngreso.Location = New Point(11, 439)
         LRazonIngreso.Name = "LRazonIngreso"
-        LRazonIngreso.Size = New Size(113, 16)
+        LRazonIngreso.Size = New Size(140, 20)
         LRazonIngreso.TabIndex = 34
         LRazonIngreso.Text = "Razon de ingreso"
         ' 
@@ -239,9 +230,9 @@ Partial Class FormEditarEquipo
         LModelo.AutoSize = True
         LModelo.Font = New Font("Microsoft Sans Serif", 9.75F)
         LModelo.ForeColor = Color.Silver
-        LModelo.Location = New Point(10, 242)
+        LModelo.Location = New Point(11, 323)
         LModelo.Name = "LModelo"
-        LModelo.Size = New Size(53, 16)
+        LModelo.Size = New Size(63, 20)
         LModelo.TabIndex = 33
         LModelo.Text = "Modelo"
         ' 
@@ -250,9 +241,9 @@ Partial Class FormEditarEquipo
         LMarca.AutoSize = True
         LMarca.Font = New Font("Microsoft Sans Serif", 9.75F)
         LMarca.ForeColor = Color.Silver
-        LMarca.Location = New Point(10, 206)
+        LMarca.Location = New Point(11, 275)
         LMarca.Name = "LMarca"
-        LMarca.Size = New Size(45, 16)
+        LMarca.Size = New Size(56, 20)
         LMarca.TabIndex = 32
         LMarca.Text = "Marca"
         ' 
@@ -261,9 +252,9 @@ Partial Class FormEditarEquipo
         LNroSerie.AutoSize = True
         LNroSerie.Font = New Font("Microsoft Sans Serif", 9.75F)
         LNroSerie.ForeColor = Color.Silver
-        LNroSerie.Location = New Point(10, 164)
+        LNroSerie.Location = New Point(11, 219)
         LNroSerie.Name = "LNroSerie"
-        LNroSerie.Size = New Size(84, 16)
+        LNroSerie.Size = New Size(105, 20)
         LNroSerie.TabIndex = 31
         LNroSerie.Text = "Nro. de serie"
         ' 
@@ -272,9 +263,10 @@ Partial Class FormEditarEquipo
         CBEquipoEnciende.AutoSize = True
         CBEquipoEnciende.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         CBEquipoEnciende.ForeColor = Color.Silver
-        CBEquipoEnciende.Location = New Point(10, 524)
+        CBEquipoEnciende.Location = New Point(11, 699)
+        CBEquipoEnciende.Margin = New Padding(3, 4, 3, 4)
         CBEquipoEnciende.Name = "CBEquipoEnciende"
-        CBEquipoEnciende.Size = New Size(325, 20)
+        CBEquipoEnciende.Size = New Size(405, 24)
         CBEquipoEnciende.TabIndex = 30
         CBEquipoEnciende.Text = "Marcar si el equipo enciende a la hora de ingresar"
         CBEquipoEnciende.UseVisualStyleBackColor = True
@@ -286,40 +278,30 @@ Partial Class FormEditarEquipo
         ComboBTipoEquipo.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         ComboBTipoEquipo.ForeColor = Color.Silver
         ComboBTipoEquipo.FormattingEnabled = True
-        ComboBTipoEquipo.Location = New Point(147, 114)
+        ComboBTipoEquipo.Location = New Point(168, 152)
+        ComboBTipoEquipo.Margin = New Padding(3, 4, 3, 4)
         ComboBTipoEquipo.Name = "ComboBTipoEquipo"
-        ComboBTipoEquipo.Size = New Size(345, 25)
+        ComboBTipoEquipo.Size = New Size(394, 30)
         ComboBTipoEquipo.TabIndex = 28
-        ' 
-        ' TBMarca
-        ' 
-        TBMarca.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
-        TBMarca.BorderStyle = BorderStyle.None
-        TBMarca.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TBMarca.ForeColor = Color.Silver
-        TBMarca.Location = New Point(147, 204)
-        TBMarca.Margin = New Padding(3, 2, 3, 2)
-        TBMarca.Name = "TBMarca"
-        TBMarca.Size = New Size(345, 17)
-        TBMarca.TabIndex = 5
         ' 
         ' LTipoEquipo
         ' 
         LTipoEquipo.AutoSize = True
         LTipoEquipo.Font = New Font("Microsoft Sans Serif", 9.75F)
         LTipoEquipo.ForeColor = Color.Silver
-        LTipoEquipo.Location = New Point(10, 118)
+        LTipoEquipo.Location = New Point(11, 157)
         LTipoEquipo.Name = "LTipoEquipo"
-        LTipoEquipo.Size = New Size(99, 16)
+        LTipoEquipo.Size = New Size(118, 20)
         LTipoEquipo.TabIndex = 7
         LTipoEquipo.Text = "Tipo de equipo"
         ' 
         ' PictureBox2
         ' 
         PictureBox2.Image = My.Resources.Resources.agregar_equipo
-        PictureBox2.Location = New Point(68, 13)
+        PictureBox2.Location = New Point(78, 17)
+        PictureBox2.Margin = New Padding(3, 4, 3, 4)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(74, 71)
+        PictureBox2.Size = New Size(85, 95)
         PictureBox2.TabIndex = 17
         PictureBox2.TabStop = False
         ' 
@@ -329,9 +311,9 @@ Partial Class FormEditarEquipo
         LEditarEquipo.BackColor = Color.Transparent
         LEditarEquipo.Font = New Font("Bahnschrift Condensed", 24F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LEditarEquipo.ForeColor = Color.White
-        LEditarEquipo.Location = New Point(155, 36)
+        LEditarEquipo.Location = New Point(177, 48)
         LEditarEquipo.Name = "LEditarEquipo"
-        LEditarEquipo.Size = New Size(179, 39)
+        LEditarEquipo.Size = New Size(225, 48)
         LEditarEquipo.TabIndex = 16
         LEditarEquipo.Text = "2. Editar equipo"
         ' 
@@ -349,10 +331,9 @@ Partial Class FormEditarEquipo
         IBMinimizar_EC.IconColor = Color.Gray
         IBMinimizar_EC.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBMinimizar_EC.IconSize = 20
-        IBMinimizar_EC.Location = New Point(888, 11)
-        IBMinimizar_EC.Margin = New Padding(3, 2, 3, 2)
+        IBMinimizar_EC.Location = New Point(1015, 15)
         IBMinimizar_EC.Name = "IBMinimizar_EC"
-        IBMinimizar_EC.Size = New Size(19, 17)
+        IBMinimizar_EC.Size = New Size(22, 23)
         IBMinimizar_EC.TabIndex = 35
         IBMinimizar_EC.UseVisualStyleBackColor = False
         ' 
@@ -370,25 +351,49 @@ Partial Class FormEditarEquipo
         IBCerrar_EC.IconColor = Color.Gray
         IBCerrar_EC.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBCerrar_EC.IconSize = 20
-        IBCerrar_EC.Location = New Point(912, 11)
-        IBCerrar_EC.Margin = New Padding(3, 2, 3, 2)
+        IBCerrar_EC.Location = New Point(1042, 15)
         IBCerrar_EC.Name = "IBCerrar_EC"
-        IBCerrar_EC.Size = New Size(19, 17)
+        IBCerrar_EC.Size = New Size(22, 23)
         IBCerrar_EC.TabIndex = 34
         IBCerrar_EC.UseVisualStyleBackColor = False
         ' 
+        ' ComboBMarca
+        ' 
+        ComboBMarca.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        ComboBMarca.FlatStyle = FlatStyle.Flat
+        ComboBMarca.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ComboBMarca.ForeColor = Color.Silver
+        ComboBMarca.FormattingEnabled = True
+        ComboBMarca.Location = New Point(168, 272)
+        ComboBMarca.Margin = New Padding(3, 4, 3, 4)
+        ComboBMarca.Name = "ComboBMarca"
+        ComboBMarca.Size = New Size(394, 30)
+        ComboBMarca.TabIndex = 40
+        ' 
+        ' ComboBModelo
+        ' 
+        ComboBModelo.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        ComboBModelo.FlatStyle = FlatStyle.Flat
+        ComboBModelo.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ComboBModelo.ForeColor = Color.Silver
+        ComboBModelo.FormattingEnabled = True
+        ComboBModelo.Location = New Point(168, 320)
+        ComboBModelo.Margin = New Padding(3, 4, 3, 4)
+        ComboBModelo.Name = "ComboBModelo"
+        ComboBModelo.Size = New Size(394, 30)
+        ComboBModelo.TabIndex = 41
+        ' 
         ' FormEditarEquipo
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
-        ClientSize = New Size(943, 693)
+        ClientSize = New Size(1078, 924)
         Controls.Add(IBMinimizar_EC)
         Controls.Add(IBCerrar_EC)
         Controls.Add(PAsociarCliente)
         Controls.Add(PAgregarEquipo)
         FormBorderStyle = FormBorderStyle.None
-        Margin = New Padding(3, 2, 3, 2)
         Name = "FormEditarEquipo"
         Text = "FormAgregarEquipo"
         PAsociarCliente.ResumeLayout(False)
@@ -411,7 +416,6 @@ Partial Class FormEditarEquipo
     Friend WithEvents TBObservaciones As TextBox
     Friend WithEvents TBRazonIngreso As TextBox
     Friend WithEvents TBNroSerie As TextBox
-    Friend WithEvents TBModelo As TextBox
     Friend WithEvents LObservaciones As Label
     Friend WithEvents LRazonIngreso As Label
     Friend WithEvents LModelo As Label
@@ -419,10 +423,11 @@ Partial Class FormEditarEquipo
     Friend WithEvents LNroSerie As Label
     Friend WithEvents CBEquipoEnciende As CheckBox
     Friend WithEvents ComboBTipoEquipo As ComboBox
-    Friend WithEvents TBMarca As TextBox
     Friend WithEvents LTipoEquipo As Label
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents LEditarEquipo As Label
     Friend WithEvents IBMinimizar_EC As FontAwesome.Sharp.IconButton
     Friend WithEvents IBCerrar_EC As FontAwesome.Sharp.IconButton
+    Friend WithEvents ComboBModelo As ComboBox
+    Friend WithEvents ComboBMarca As ComboBox
 End Class

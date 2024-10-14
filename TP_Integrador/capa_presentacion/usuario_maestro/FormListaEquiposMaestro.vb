@@ -19,7 +19,7 @@
 
     Private Sub ListarEquipos()
         For Each equipo In equipos.ObtenerTodos()
-            DGVListaEquipos.Rows.Add(equipo.NombreDelCliente, equipo.TipoDeEquipo, equipo.NroSerie, equipo.Marca, equipo.EnciendeEnIngreso, equipo.Estado)
+            DGVListaEquipos.Rows.Add(equipo.Cliente.Nombre, equipo.TipoEquipo.Nombre, equipo.NumeroSerie, equipo.Marca.nombre, equipo.Modelo.nombre, equipo.Enciende, equipo.Estado, equipo.Baja)
         Next
     End Sub
 
@@ -47,21 +47,21 @@
 
         Select Case filtro
             Case "Nombre cliente"
-                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.NombreDelCliente.StartsWith(busqueda)).ToList()
+                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.Cliente.Nombre.StartsWith(busqueda)).ToList()
             Case "Marca"
-                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.Marca.StartsWith(busqueda)).ToList()
+                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.Marca.nombre.StartsWith(busqueda)).ToList()
             Case "Nro de Serie"
-                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.NroSerie.StartsWith(busqueda)).ToList()
+                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.NumeroSerie.StartsWith(busqueda)).ToList()
             Case "Enciende"
-                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.EnciendeEnIngreso = "Si").ToList()
+                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.Enciende = "Si").ToList()
             Case "No enciende"
-                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.EnciendeEnIngreso = "No").ToList()
+                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.Enciende = "No").ToList()
             Case Else
                 equiposFiltrados = equipos.ObtenerTodos()
         End Select
 
         For Each equipo In equiposFiltrados
-            DGVListaEquipos.Rows.Add(equipo.NombreDelCliente, equipo.TipoDeEquipo, equipo.NroSerie, equipo.Marca, equipo.EnciendeEnIngreso, equipo.Estado)
+            DGVListaEquipos.Rows.Add(equipo.Cliente.Nombre, equipo.TipoEquipo.Nombre, equipo.NumeroSerie, equipo.Marca, equipo.Enciende, equipo.Estado)
         Next
     End Sub
 

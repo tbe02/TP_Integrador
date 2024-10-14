@@ -1,41 +1,41 @@
-﻿Public Class TiposDeEquipo
+﻿Imports TP_Integrador.Modelos
+
+Public Class TiposDeEquipo
     Private Shared instancia As TiposDeEquipo = Nothing
 
     Class TipoDeEquipo
-        Public Property idTipoEquipo As Integer
-        Public Property nombre As String
+        Public Property IdTipoEquipo As Integer
+        Public Property Nombre As String
     End Class
 
-    Private tiposDeEquipo As List(Of TipoDeEquipo)
 
-    Public Sub Agregar(tipoDeEquipo As TipoDeEquipo)
-        tiposDeEquipo.Add(tipoDeEquipo)
-    End Sub
+    Public Shared Function ObtenerTiposDeEquipo() As List(Of TipoDeEquipo)
+        Dim tiposDeEquipo As New List(Of TipoDeEquipo)()
 
-    Public Sub New()
-        Agregar(New TipoDeEquipo With {
-            .idTipoEquipo = 1,
-            .nombre = "Computadora"
-        })
+        Dim conexion = New BaseDeDatos().obtenerConexion()
 
-        Agregar(New TipoDeEquipo With {
-            .idTipoEquipo = 2,
-            .nombre = "Impresora laser"
-        })
+        Dim comando = New SqlCommand("SELECT * FROM TiposDeEquipo;", conexion)
 
-        Agregar(New TipoDeEquipo With {
-            .idTipoEquipo = 3,
-            .nombre = "Impresora tinta"
-        })
+        conexion.Open()
 
-        Agregar(New TipoDeEquipo With {
-            .idTipoEquipo = 4,
-            .nombre = "Fotocopiadora"
-        })
-    End Sub
+        Using lector As SqlDataReader = comando.ExecuteReader()
 
-    Public Function ObtenerTodos() As List(Of TipoDeEquipo)
-        Return Me.tiposDeEquipo
+            If lector.HasRows Then
+                While lector.Read()
+                    tiposDeEquipo.Add(
+                        New TipoDeEquipo With {
+                        .IdTipoEquipo = lector("idTipoDeEquipo").ToString(),
+                        .Nombre = lector("nombre").ToString()
+                        }
+                    )
+                End While
+
+            End If
+        End Using
+
+        Return tiposDeEquipo
+
+
     End Function
 
     Private Shared Function ObtenerInstancia() As TiposDeEquipo

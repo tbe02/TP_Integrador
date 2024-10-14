@@ -1,52 +1,77 @@
-﻿Public Class FormAgregarEquipo
+﻿Imports TP_Integrador.Marcas
+Imports TP_Integrador.Modelos
+Imports TP_Integrador.TiposDeEquipo
+
+Public Class FormAgregarEquipo
     Private Sub FormAgregarEquipo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ListarClientes()
-        ListarTiposDeEquipo()
+        ListarTiposDeEquipos()
+        ListarMarcas()
+        ListarModelos()
     End Sub
 
     Private Sub ListarClientes()
         Dim clientes = Cliente.obtenerClientes()
 
-        For Each cliente In clientes
-            ComboBAsociarCliente.Items.Add(cliente.Nombre)
-        Next
+        ComboBAsociarCliente.DataSource = clientes
+        ComboBAsociarCliente.DisplayMember = "Nombre"
+        ComboBAsociarCliente.ValueMember = "ID"
     End Sub
 
-    Private Sub ListarTiposDeEquipo()
-        ComboBTipoEquipo.Items.Add("Computadora")
-        ComboBTipoEquipo.Items.Add("Impresora")
-        ComboBTipoEquipo.Items.Add("Fotocopiadora")
+    Private Sub ListarTiposDeEquipos()
+        Dim tiposEquipos = TiposDeEquipo.ObtenerTiposDeEquipo()
+
+        ComboBTipoEquipo.DataSource = tiposEquipos
+        ComboBTipoEquipo.DisplayMember = "Nombre"
+        ComboBTipoEquipo.ValueMember = "IdTipoEquipo"
     End Sub
+
+    Private Sub ListarMarcas()
+        Dim marcasEquipos = Marcas.ObtenerMarcas()
+
+        ComboBMarca.DataSource = marcasEquipos
+        ComboBMarca.DisplayMember = "nombre"
+        ComboBMarca.ValueMember = "idMarca"
+    End Sub
+
+    Private Sub ListarModelos()
+        Dim modelosEquipos = Modelos.ObtenerModelos()
+
+        ComboBModelo.DataSource = modelosEquipos
+        ComboBModelo.DisplayMember = "nombre"
+        ComboBModelo.ValueMember = "idModelo"
+    End Sub
+
 
     Private Sub BAgregarEquipo_Click(sender As Object, e As EventArgs) Handles BAgregarEquipo.Click
-        Dim tipoEquipo = ComboBTipoEquipo.Text
-        Dim numeroSerie = TBNroSerie.Text
-        Dim marca = TBMarca.Text
-        Dim modelo = TBModelo.Text
-        Dim razonIngreso = TBRazonIngreso.Text
-        Dim observaciones = TBObservaciones.Text
-        Dim enciende = CBEquipoEnciende.Checked
-        Dim cliente = ComboBAsociarCliente.Text
+        Dim equipo As New Equipos.Equipo()
 
-        If tipoEquipo = "" Or numeroSerie = "" Or marca = "" Or modelo = "" Or razonIngreso = "" Or observaciones = "" Or cliente = "" Then
-            MessageBox.Show("Por favor complete los campos", "Agregar equipo", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
-            Return
+        equipo.TipoEquipo = CType(ComboBTipoEquipo.SelectedItem, TipoDeEquipo)
+        equipo.NumeroSerie = TBNroSerie.Text
+        equipo.Marca = CType(ComboBMarca.SelectedItem, Marca)
+        equipo.Modelo = CType(ComboBModelo.SelectedItem, Modelo)
+        equipo.RazonIngreso = TBRazonIngreso.Text
+        equipo.Observaciones = TBObservaciones.Text
+        equipo.Enciende = If(CBEquipoEnciende.Checked, "Sí", "No")
+        equipo.Cliente = CType(ComboBAsociarCliente.SelectedItem, Cliente)
+        equipo.Estado = "Hola"
+        equipo.Baja = "No"
+
+
+        If Equipos.Agregar(equipo) Then
+
+            ComboBTipoEquipo.SelectedIndex = -1
+            TBNroSerie.Clear()
+            ComboBMarca.SelectedIndex = -1
+            ComboBModelo.SelectedIndex = -1
+            TBRazonIngreso.Clear()
+            TBObservaciones.Clear()
+            CBEquipoEnciende.Checked = False
+            ComboBAsociarCliente.SelectedIndex = -1
         End If
 
-        Equipos.ObtenerInstancia().Agregar(New Equipos.Equipo With {
-            .NombreDelCliente = cliente,
-            .TipoDeEquipo = tipoEquipo,
-            .NroSerie = numeroSerie,
-            .Marca = marca,
-            .EnciendeEnIngreso = If(enciende, "Si", "No"),
-            .RazonDeIngreso = razonIngreso,
-            .Observaciones = observaciones,
-            .Modelo = modelo,
-            .Estado = "Pendiente de revision"
-        })
 
-        MessageBox.Show("Equipo agregado exitosamente", "Agregar equipo", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
     Private Sub BAgregarCliente_Click(sender As Object, e As EventArgs) Handles BAgregarCliente.Click
@@ -60,4 +85,6 @@
 
         MessageBox.Show("Cliente asociado exitosamente", "Asociar cliente", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
+
+
 End Class

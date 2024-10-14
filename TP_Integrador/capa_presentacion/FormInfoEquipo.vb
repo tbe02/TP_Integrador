@@ -29,7 +29,7 @@ Public Class FormInfoEquipo
     End Sub
 
     Private Sub InicializarCampos()
-        TBRazonIngreso.Text = equipo.RazonDeIngreso
+        TBRazonIngreso.Text = equipo.RazonIngreso
         TBObservaciones.Text = equipo.Observaciones
     End Sub
 

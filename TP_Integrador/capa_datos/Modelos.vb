@@ -6,15 +6,42 @@
         Public Property nombre As String
     End Class
 
-    Private modelos As List(Of Modelo)
-
     Public Sub Agregar(modelo As Modelo)
-        modelos.Add(modelo)
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+
+        Dim comando = New SqlCommand("INSERT INTO Modelos (idModelo, nombre) values ('" & modelo.idModelo & "', '" & modelo.nombre & "')", conexion)
+
+        conexion.Open()
+
+        comando.ExecuteNonQuery()
+
+
     End Sub
 
-    Public Function ObtenerTodos() As List(Of Modelo)
-        Return Me.modelos
+    Public Shared Function ObtenerModelos() As List(Of Modelo)
+        Dim modelos As New List(Of Modelo)()
+
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+        Dim comando = New SqlCommand("SELECT * FROM Modelos;", conexion)
+
+        conexion.Open()
+
+        Using lector As SqlDataReader = comando.ExecuteReader()
+            If lector.HasRows Then
+                While lector.Read()
+                    modelos.Add(
+                    New Modelo With {
+                    .idModelo = lector("idModelo").ToString(),
+                    .nombre = lector("nombre").ToString()
+                    }
+                )
+                End While
+            End If
+        End Using
+
+        Return modelos
     End Function
+
 
     Public Shared Function ObtenerInstancia() As Modelos
         If instancia Is Nothing Then
