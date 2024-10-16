@@ -38,7 +38,7 @@ Public Class TiposDeEquipo
 
     End Function
 
-    Private Shared Function ObtenerInstancia() As TiposDeEquipo
+    Public Shared Function ObtenerInstancia() As TiposDeEquipo
         If instancia Is Nothing Then
             instancia = New TiposDeEquipo()
         End If

@@ -25,7 +25,7 @@ Public Class Equipos
     End Class
 
 
-    Public Shared Function Agregar(equipo As Equipo)
+    Public Function Agregar(equipo As Equipo)
 
         Dim conexion = New BaseDeDatos().obtenerConexion()
 
@@ -77,7 +77,7 @@ Public Class Equipos
         Return False
     End Function
 
-    Public Shared Function editarEquipo(IDEquipo As Integer, equipoEditado As Equipo)
+    Public Function editarEquipo(IDEquipo As Integer, equipoEditado As Equipo)
         Dim conexion = New BaseDeDatos().obtenerConexion()
 
 

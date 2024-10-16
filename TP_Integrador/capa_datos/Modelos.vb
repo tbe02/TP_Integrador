@@ -18,7 +18,7 @@
 
     End Sub
 
-    Public Shared Function ObtenerModelos() As List(Of Modelo)
+    Public Function ObtenerModelos() As List(Of Modelo)
         Dim modelos As New List(Of Modelo)()
 
         Dim conexion = New BaseDeDatos().obtenerConexion()
