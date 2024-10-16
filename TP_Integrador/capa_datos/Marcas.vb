@@ -9,7 +9,7 @@ Public Class Marcas
     End Class
 
 
-    Public Shared Function ObtenerMarcas() As List(Of Marca)
+    Public Function ObtenerMarcas() As List(Of Marca)
         Dim marcas As New List(Of Marca)()
 
         Dim conexion = New BaseDeDatos().obtenerConexion()

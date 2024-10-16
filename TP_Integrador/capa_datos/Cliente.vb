@@ -92,7 +92,7 @@ Public Class Cliente
 
     End Function
 
-    Public Shared Function obtenerClientes() As List(Of Cliente)
+    Public Function obtenerClientes() As List(Of Cliente)
         Dim clientes As New List(Of Cliente)()
 
         Try
@@ -126,7 +126,7 @@ Public Class Cliente
         Return clientes
     End Function
 
-    Public Shared Function eliminarCliente(clienteAEliminar As Cliente)
+    Public Function eliminarCliente(clienteAEliminar As Cliente)
 
         If clienteAEliminar IsNot Nothing Then
             Dim conexion = New BaseDeDatos().obtenerConexion()
