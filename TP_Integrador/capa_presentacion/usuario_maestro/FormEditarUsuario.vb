@@ -27,12 +27,21 @@ Public Class FormEditarUsuario
     Private Const HTCAPTION As Integer = &H2
     '-------------------------------------------------------------------------------------------------------------------------'
 
+    Private Sub SetTiposDeUsuario()
+        Dim todosLosTiposDeUsuario As List(Of TiposDeUsuario.TipoDeUsuario) = TiposDeUsuario.ObtenerInstancia().ObtenerTodos()
+
+        ComboBoxTipoUsuario.DisplayMember = "Key"
+        ComboBoxTipoUsuario.ValueMember = "Value"
+
+        For Each tipoDeUsuario In todosLosTiposDeUsuario
+            ComboBoxTipoUsuario.Items.Add(New DictionaryEntry(tipoDeUsuario.nombre, tipoDeUsuario.idTipoUsuario))
+        Next
+    End Sub
 
     ' Cargar los datos actuales del usuario en los campos del formulario
     Private Sub CargarDatosUsuario()
         ComboBoxTipoUsuario.Items.Clear()
-        ComboBoxTipoUsuario.Items.Add("administrador")
-        ComboBoxTipoUsuario.Items.Add("tecnico")
+        SetTiposDeUsuario()
 
         TBApellido.Text = usuario.Apellido
         tNombre.Text = usuario.Nombre

@@ -12,6 +12,7 @@ Public Class Usuarios
         Public NombreUsuario As String
         Public Password As String
         Public Tipo As String
+        Public idTipoUsuario As Integer
     End Class
 
     Private usuarios As New List(Of Usuario)()
@@ -22,15 +23,15 @@ Public Class Usuarios
         agregar("Pereira", "Rodrigo", "41098321", "3794887766", "rodrigox@gmail.com", "tecnico", "tecnico", "tecnico")
     End Sub
 
-    Sub agregar(apellido As String, nombre As String, dni As String, telefono As String, correo As String, nombreUsuario As String, password As String, tipo As String)
-        usuarios.Add(New Usuario With {.Apellido = apellido, .Nombre = nombre, .DNI = dni, .Telefono = telefono, .Correo = correo, .NombreUsuario = nombreUsuario, .Password = password, .Tipo = tipo})
+    Sub agregar(usuario As Usuario)
+        usuarios.Add(usuario)
     End Sub
 
     'hice 2 funciones diferentes pq me queria tirar errores cuando queria loguearme a la app si usaba solo esta
-    Function agregarUsuario(apellido As String, nombre As String, dni As String, telefono As String, correo As String, nombreUsuario As String, password As String, tipo As String)
+    Function agregarUsuario(usuario As Usuario)
         Dim resultado As DialogResult
 
-        If verificaciones(apellido, nombre, dni, correo, telefono) Then
+        If verificaciones(usuarioapellido, nombre, dni, correo, telefono) Then
             resultado = MessageBox.Show("Esta seguro que desea agregar un nuevo usuario?", "Insercion de usuario", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If resultado = DialogResult.Yes Then
                 agregar(apellido, nombre, dni, telefono, correo, nombreUsuario, password, tipo)

@@ -2,12 +2,18 @@
     Private _controladorUsuarios As ControladorUsuarios = New ControladorUsuarios()
 
     Private Sub FormAgregarUsuario_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ListarTiposDeUsuario()
+        SetTiposDeUsuario()
     End Sub
 
-    Private Sub ListarTiposDeUsuario()
-        ComboBoxTipoUsuario.Items.Add("administrador")
-        ComboBoxTipoUsuario.Items.Add("tecnico")
+    Private Sub SetTiposDeUsuario()
+        Dim todosLosTiposDeUsuario As List(Of TiposDeUsuario.TipoDeUsuario) = TiposDeUsuario.ObtenerInstancia().ObtenerTodos()
+
+        ComboBoxTipoUsuario.DisplayMember = "Key"
+        ComboBoxTipoUsuario.ValueMember = "Value"
+
+        For Each tipoDeUsuario In todosLosTiposDeUsuario
+            ComboBoxTipoUsuario.Items.Add(New DictionaryEntry(tipoDeUsuario.nombre, tipoDeUsuario.idTipoUsuario))
+        Next
     End Sub
 
     Private Sub BAgregarUsuario_Click(sender As Object, e As EventArgs) Handles BAgregarUsuario.Click
@@ -22,7 +28,7 @@
         contrasenia = tContrasena.Text
 
         If ComboBoxTipoUsuario.SelectedItem IsNot Nothing Then
-            tipoUsuario = ComboBoxTipoUsuario.SelectedItem.ToString()
+            tipoUsuario = ComboBoxTipoUsuario.SelectedItem.Value.ToString()
         Else
             MessageBox.Show("Por favor, seleccione un tipo de usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 
