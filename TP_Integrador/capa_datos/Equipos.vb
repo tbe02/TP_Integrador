@@ -1,9 +1,6 @@
-﻿Imports System.Net
-Imports System.Runtime.InteropServices.JavaScript.JSType
-Imports TP_Integrador.Marcas
+﻿Imports TP_Integrador.Marcas
 Imports TP_Integrador.Modelos
 Imports TP_Integrador.TiposDeEquipo
-Imports TP_Integrador.Equipos
 
 Public Class Equipos
     Private Shared instancia As Equipos = Nothing

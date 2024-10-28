@@ -25,9 +25,7 @@
     <Compile Update="capa_presentacion\usuario_admin\modelo_menu_principal.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="capa_presentacion\usuario_maestro\modelo_menu_user_maestro.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="capa_presentacion\usuario_maestro\modelo_menu_user_maestro.vb" />
     <Compile Update="My Project\Application.Designer.vb">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

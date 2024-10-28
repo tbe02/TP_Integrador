@@ -1,6 +1,4 @@
-﻿Imports System.Text.Json
-Imports TP_Integrador.Usuarios
-Imports System.IO
+﻿Imports System.IO
 
 Public Class Sesion
     Private Shared instancia As Sesion = Nothing

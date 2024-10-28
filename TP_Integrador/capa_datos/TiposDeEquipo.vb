@@ -1,6 +1,4 @@
-﻿Imports TP_Integrador.Modelos
-
-Public Class TiposDeEquipo
+﻿Public Class TiposDeEquipo
     Private Shared instancia As TiposDeEquipo = Nothing
 
     Class TipoDeEquipo

@@ -1,9 +1,6 @@
 ﻿Imports System.Runtime.InteropServices 'Permite funcionalidades de API de Windows para poder trabajar con la funcion releaseCapture'
 
-
-
 Public Class FormEditarCliente
-
     '-------------------------------------------------------------------------------------------------------------------------'
     'Declaraciones para poder utilizar la funcion releaseCapture, que permite mover el formulario desde el panel superior'
     <DllImport("user32.dll", CharSet:=CharSet.Auto)>
@@ -18,36 +15,32 @@ Public Class FormEditarCliente
     Private Const HTCAPTION As Integer = &H2
     '-------------------------------------------------------------------------------------------------------------------------'
 
-
     Private ClienteActual As Cliente
     Private alFinalizar As Action
 
     ' constructor que reciba un cliente
-    Public Sub New(cliente As Cliente, alFinalizar As Action)
+    Public Sub New(clienteActual As Cliente, alFinalizar As Action)
         ' Esta llamada es necesaria para el diseñador.
         InitializeComponent()
 
         ' Asigna el cliente al formulario
-        Me.ClienteActual = cliente
+        Me.ClienteActual = clienteActual
         Me.alFinalizar = alFinalizar
+    End Sub
+
+    Private Sub SetEstados()
+        ComboBoxEstado.Items.Add("inactivo")
+        ComboBoxEstado.Items.Add("activo")
     End Sub
 
     'le decimos que cargue la info del cliente a los textboxs
     Private Sub FormEditarCliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TBApellido.Text = ClienteActual.Apellido
-
         TBNombre.Text = ClienteActual.Nombre
-
         TBDNI.Text = ClienteActual.Dni
-
         TBCorreo.Text = ClienteActual.Correo
-
         TBTelefono.Text = ClienteActual.Telefono
-
         ComboBoxEstado.Text = ClienteActual.Estado
-
-        ComboBoxEstado.Items.Add("inactivo")
-        ComboBoxEstado.Items.Add("activo")
     End Sub
 
     'le decimos que guarde los cambios que le hicimos al cliente
@@ -75,9 +68,7 @@ Public Class FormEditarCliente
         })
 
         Me.alFinalizar()
-
         Me.Close()
-
     End Sub
 
     Private Sub PMenuSuperior_MouseDown(sender As Object, e As MouseEventArgs) Handles PMenuSuperior.MouseDown
@@ -94,5 +85,4 @@ Public Class FormEditarCliente
     Private Sub IBMinimizar_Click(sender As Object, e As EventArgs) Handles IBMinimizar_EC.Click
         WindowState = FormWindowState.Minimized
     End Sub
-
 End Class

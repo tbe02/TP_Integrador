@@ -2,7 +2,6 @@
 
 Public Class FormListaUsuarios
     Private usuarios As Usuarios = Usuarios.ObtenerInstancia()
-
     Public Sub New()
         InitializeComponent()
 

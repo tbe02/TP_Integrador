@@ -1,9 +1,11 @@
 ﻿Partial Public Class FormAgregarUsuario
+    Private _controladorUsuarios As ControladorUsuarios = New ControladorUsuarios()
+
     Private Sub FormAgregarUsuario_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        setTiposDeUsuario()
+        ListarTiposDeUsuario()
     End Sub
 
-    Private Sub setTiposDeUsuario()
+    Private Sub ListarTiposDeUsuario()
         ComboBoxTipoUsuario.Items.Add("administrador")
         ComboBoxTipoUsuario.Items.Add("tecnico")
     End Sub
@@ -27,9 +29,11 @@
             Return
         End If
 
-        Dim usuarios As Usuarios = Usuarios.ObtenerInstancia()
+        Dim usuarios = _controladorUsuarios.ObtenerTodos()
 
-        If usuarios.agregarUsuario(apellido, nombre, dni, telefono, correo, nombreusuario, contrasenia, tipoUsuario) Then
+        Try
+            _controladorUsuarios.AgregarUno(apellido, nombre, dni, telefono, correo, nombreusuario, contrasenia, tipoUsuario)
+
             TBApellido.Clear()
             tNombre.Clear()
             TBDNI.Clear()
@@ -38,8 +42,8 @@
             tUsuario.Clear()
             tContrasena.Clear()
             ComboBoxTipoUsuario.SelectedIndex = -1
-        End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
-
-
 End Class

@@ -1,5 +1,5 @@
 ﻿Public Class FormListaEquiposMaestro
-    Dim equipos As Equipos = Equipos.ObtenerInstancia()
+    Private _controladorEquipos As ControladorEquipos = New ControladorEquipos()
 
     Private Sub FormListaEquiposMaestro_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ListarEquipos()
@@ -18,7 +18,7 @@
     End Sub
 
     Private Sub ListarEquipos()
-        For Each equipo In equipos.ObtenerTodos()
+        For Each equipo In _controladorEquipos.ObtenerTodos()
             DGVListaEquipos.Rows.Add(equipo.Cliente.Nombre, equipo.TipoEquipo.Nombre, equipo.NumeroSerie, equipo.Marca.nombre, equipo.Modelo.nombre, equipo.Enciende, equipo.Estado, equipo.Baja)
         Next
     End Sub
@@ -27,7 +27,7 @@
         If e.ColumnIndex = DGVListaEquipos.Columns("C_InfomacionEquipo").Index AndAlso e.RowIndex >= 0 Then
             Dim filaSeleccionada As DataGridViewRow = DGVListaEquipos.Rows(e.RowIndex)
 
-            Dim equipo As Equipos.Equipo = equipos.ObtenerTodos(e.RowIndex)
+            Dim equipo As Equipos.Equipo = _controladorEquipos.ObtenerTodos(e.RowIndex)
 
             ' le pasamos los datos del cliente a mi formulario
             Dim formInfo As New FormInfoEquipo(equipo)
@@ -41,23 +41,24 @@
         Dim filtro = CBFiltro.Text
         Dim busqueda = TBBuscarEquipo.Text
 
+        Dim equipos = _controladorEquipos.ObtenerTodos()
         Dim equiposFiltrados As List(Of Equipos.Equipo)
 
         DGVListaEquipos.Rows.Clear()
 
         Select Case filtro
             Case "Nombre cliente"
-                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.Cliente.Nombre.StartsWith(busqueda)).ToList()
+                equiposFiltrados = equipos.Where(Function(equipo) equipo.Cliente.Nombre.StartsWith(busqueda)).ToList()
             Case "Marca"
-                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.Marca.nombre.StartsWith(busqueda)).ToList()
+                equiposFiltrados = equipos.Where(Function(equipo) equipo.Marca.nombre.StartsWith(busqueda)).ToList()
             Case "Nro de Serie"
-                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.NumeroSerie.StartsWith(busqueda)).ToList()
+                equiposFiltrados = equipos.Where(Function(equipo) equipo.NumeroSerie.StartsWith(busqueda)).ToList()
             Case "Enciende"
-                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.Enciende = "Si").ToList()
+                equiposFiltrados = equipos.Where(Function(equipo) equipo.Enciende = "Si").ToList()
             Case "No enciende"
-                equiposFiltrados = equipos.ObtenerTodos().Where(Function(equipo) equipo.Enciende = "No").ToList()
+                equiposFiltrados = equipos.Where(Function(equipo) equipo.Enciende = "No").ToList()
             Case Else
-                equiposFiltrados = equipos.ObtenerTodos()
+                equiposFiltrados = equipos
         End Select
 
         For Each equipo In equiposFiltrados

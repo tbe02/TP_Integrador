@@ -1,5 +1,5 @@
 ﻿Public Class FormListaClientesAdmin
-
+    Private _controladorClientes As ControladorClientes = New ControladorClientes()
 
     Private Sub FormListaClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         listarClientes()
@@ -26,20 +26,17 @@
     Private Sub DGVListaClientes_EditarCliente(sender As Object, e As DataGridViewCellEventArgs) Handles DGVListaClientes.CellContentClick
 
         If e.ColumnIndex = DGVListaClientes.Columns("C_Editar").Index AndAlso e.RowIndex >= 0 Then
-
             Dim filaSeleccionada As DataGridViewRow = DGVListaClientes.Rows(e.RowIndex)
 
-            ' obtenemos el cliente que queremos
-            Dim cliente As Cliente = Cliente.obtenerClientes(e.RowIndex)
+            Dim clienteSeleccionado As Cliente = _controladorClientes.ObtenerTodos().Find(Function(cliente) cliente.DNI = filaSeleccionada.Cells("DNI").ToString())
 
-            ' le pasamos los datos del cliente a mi formulario
-            Dim formEditar As New FormEditarCliente(cliente, New Action(
-                Sub()
-                    refrescarLista()
-                End Sub)
+            Dim formEditar As New FormEditarCliente(clienteSeleccionado, New Action(
+                    Sub()
+                        refrescarLista()
+                    End Sub
+                )
             )
 
-            ' abrimos el formulario
             formEditar.Show()
         End If
     End Sub
@@ -47,32 +44,28 @@
     Private Sub DGVListaClientes_EliminarCliente(sender As Object, e As DataGridViewCellEventArgs) Handles DGVListaClientes.CellContentClick
 
         If e.ColumnIndex = DGVListaClientes.Columns("C_Eliminar").Index AndAlso e.RowIndex >= 0 Then
+            Dim filaSeleccionada As DataGridViewRow = DGVListaClientes.Rows(e.RowIndex)
 
-            Dim cliente As Cliente = Cliente.obtenerClientes(e.RowIndex)
+            Dim clienteSeleccionado As Cliente = _controladorClientes.ObtenerTodos().Find(Function(cliente) cliente.Dni = filaSeleccionada.Cells("DNI").ToString())
 
             Dim resultado As DialogResult = MessageBox.Show("¿Está seguro que desea eliminar este cliente?", "Eliminar Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
             If resultado = DialogResult.Yes Then
-
-                Cliente.eliminarCliente(cliente)
+                _controladorClientes.EliminarUnoPorDNI(clienteSeleccionado.Dni)
 
                 refrescarLista()
-
             End If
         End If
     End Sub
 
     Private Sub listarClientes()
+        DGVListaClientes.AllowUserToAddRows = False
 
-        DGVListaClientes.AllowUserToAddRows = False 'se agregaba una fila demas cuando no habia ningun cliente entonces esto la quita
+        Dim listaClientes As List(Of Cliente) = _controladorClientes.ObtenerTodos()
 
-        Dim listaClientes As List(Of Cliente) = Cliente.obtenerClientes()
-
-        'traes todos tus clientes en tu array de Clientes
         For Each cliente In listaClientes
             DGVListaClientes.Rows.Add(cliente.Apellido, cliente.Nombre, cliente.Dni, cliente.Correo, cliente.Telefono, cliente.Estado)
         Next
-
     End Sub
 
     Private Sub FiltrarClientes(sender As Object, e As EventArgs) Handles IPBBuscarCliente.Click
@@ -83,7 +76,7 @@
 
         DGVListaClientes.Rows.Clear()
 
-        Dim clientes = Cliente.obtenerClientes()
+        Dim clientes = _controladorClientes.ObtenerTodos()
 
         Select Case filtro
             Case "Apellido"
@@ -122,5 +115,4 @@
 
         refrescarLista()
     End Sub
-
 End Class

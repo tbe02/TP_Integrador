@@ -1,6 +1,5 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Window
+﻿Imports System.Runtime.InteropServices 'Permite funcionalidades de API de Windows para poder trabajar con la funcion releaseCapture'
 Imports FontAwesome.Sharp
-Imports System.Runtime.InteropServices 'Permite funcionalidades de API de Windows para poder trabajar con la funcion releaseCapture'
 Public Class modelo_menu_user_tecnico
     '-------------------------------------------------------------------------------------------------------------------------'
     'Declaraciones para poder utilizar la funcion releaseCapture, que permite mover el formulario desde el panel superior'
@@ -22,26 +21,20 @@ Public Class modelo_menu_user_tecnico
     Dim sesion As Sesion = Sesion.ObtenerInstancia()
 
     Private Sub modelo_menu_principal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         'creamos un panel izquierdo al iniciar el form que vamos a usar en nuestros botones'
         bordeIzquierdo = New Panel()
         bordeIzquierdo.Size = New Size(7, 60)
         PMenuIzquierdo.Controls.Add(bordeIzquierdo)
 
-
-
         ' Llama al método IBMenuPrincipal_Click desde el evento Load del formulario
         IBMenuPrincipal_Click(IBMenuPrincipal, EventArgs.Empty)
-
 
         IBSesion.Text = sesion.ObtenerUsuario().Nombre
     End Sub
 
     'funcion para activar boton seleccionado'
-    Private Function activarBoton(boton As Object, color As Color)
-
+    Private Sub activarBoton(boton As Object, color As Color)
         If (boton IsNot Nothing) Then
-
             'si hay un boton seleccionado se desactiva'
             desactivarBoton()
 
@@ -59,14 +52,11 @@ Public Class modelo_menu_user_tecnico
             bordeIzquierdo.Location = New Point(0, botonActual.Location.Y)
             bordeIzquierdo.Visible = True
             bordeIzquierdo.BringToFront()
-
         End If
-
-    End Function
+    End Sub
 
     'funcion para desactivar boton no seleccionado'
-    Private Function desactivarBoton()
-
+    Private Sub desactivarBoton()
         If (botonActual IsNot Nothing) Then
             botonActual.BackColor = Color.Transparent
             botonActual.ForeColor = Color.White
@@ -75,20 +65,16 @@ Public Class modelo_menu_user_tecnico
             botonActual.TextImageRelation = TextImageRelation.Overlay
             botonActual.ImageAlign = ContentAlignment.MiddleLeft
         End If
+    End Sub
 
-    End Function
-
-    Private Function RGBColors()
-
+    Private Sub RGBColors()
         Dim color1, color2, color3, color4, color5 As Color
         color1 = Color.FromArgb(173, 126, 241)
         color2 = Color.FromArgb(249, 118, 176)
         color3 = Color.FromArgb(253, 138, 114)
         color4 = Color.FromArgb(95, 77, 221)
         color5 = Color.FromArgb(249, 88, 155)
-
-    End Function
-
+    End Sub
 
     Private Sub IBMenuPrincipal_Click(sender As Object, e As EventArgs) Handles IBMenuPrincipal.Click
         Dim color As Color
@@ -103,12 +89,8 @@ Public Class modelo_menu_user_tecnico
         form.TopLevel = False
         form.FormBorderStyle = FormBorderStyle.None
 
-
-
         Me.PFondoPrincipal.Controls.Add(form)
         form.Show()
-
-
     End Sub
 
     Private Sub IBListaEquipos_Click(sender As Object, e As EventArgs) Handles IBListaEquipos.Click
@@ -125,15 +107,13 @@ Public Class modelo_menu_user_tecnico
         form.FormBorderStyle = FormBorderStyle.None
         form.Dock = DockStyle.Fill
 
-
-
         Me.PFondoPrincipal.Controls.Add(form)
         form.Show()
     End Sub
 
     Private Sub PMenuSuperior_MouseDown(sender As Object, e As MouseEventArgs) Handles PMenuSuperior.MouseDown, PMenuSuperior.MouseDown
         If e.Button = MouseButtons.Left Then
-            ReleaseCapture
+            ReleaseCapture()
             SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0)
         End If
     End Sub
@@ -147,14 +127,11 @@ Public Class modelo_menu_user_tecnico
     End Sub
 
     Private Sub BMaximizar_Click(sender As Object, e As EventArgs) Handles IBMaximizar.Click
-
         If WindowState = FormWindowState.Normal Then
             WindowState = FormWindowState.Maximized
         Else
             WindowState = FormWindowState.Normal
-
         End If
-
     End Sub
 
     Private Sub IBSesion_Click(sender As Object, e As EventArgs) Handles IBSesion.Click, IBSesion.Click

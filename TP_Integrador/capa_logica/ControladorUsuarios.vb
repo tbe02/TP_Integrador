@@ -22,6 +22,8 @@ Public Class ControladorUsuarios
 
     Public Sub AgregarUno(apellido As String, nombre As String, dni As String, telefono As String, correo As String, nombreUsuario As String, password As String, tipo As String)
         Try
+            ObtenerLosCamposSonValidos(apellido, nombre, dni, correo, telefono)
+
             usuarios.agregarUsuario(apellido, nombre, dni, telefono, correo, nombreUsuario, password, tipo)
         Catch ex As Exception
 
@@ -74,38 +76,26 @@ Public Class ControladorUsuarios
 
     Public Function ObtenerLosCamposSonValidos(apellido As String, nombre As String, dni As String, correo As String, telefono As String)
         If (apellido = "" Or nombre = "" Or dni = "" Or correo = "" Or telefono = "") Then
-            MessageBox.Show("Debe completar todos los campos", "Falta de datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
             Throw New Exception(ErroresAlAgregarUno.CAMPOS_INCOMPLETOS)
         End If
 
         If Not ObtenerSoloContieneLetras(apellido) Then
-            MessageBox.Show("Apellido solo acepta letras", "Datos incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
             Throw New Exception(ErroresAlAgregarUno.APELLIDO_SOLO_LETRAS)
         End If
 
         If Not ObtenerSoloContieneLetras(nombre) Then
-            MessageBox.Show("Nombre solo acepta letras", "Datos incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
             Throw New Exception(ErroresAlAgregarUno.NOMBRE_SOLO_LETRAS)
         End If
 
         If Not IsNumeric(dni) Then
-            MessageBox.Show("DNI solo acepta numeros", "Datos incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
             Throw New Exception(ErroresAlAgregarUno.DNI_SOLO_NUMEROS)
         End If
 
         If Not IsNumeric(telefono) Then
-            MessageBox.Show("Telefono solo acepta numeros", "Datos incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
             Throw New Exception(ErroresAlAgregarUno.TELEFONO_SOLO_NUMEROS)
         End If
 
         If Not ObtenerElEmailEsValido(correo) Then
-            MessageBox.Show("El correo electrónico no es válido.", "Error de Validación", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
             Throw New Exception(ErroresAlAgregarUno.CORREO_INVALIDO)
         End If
 

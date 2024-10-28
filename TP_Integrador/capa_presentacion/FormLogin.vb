@@ -1,10 +1,8 @@
-﻿Imports System.Runtime.InteropServices 'Permite funcionalidades de API de Windows para poder trabajar con la funcion releaseCapture'
-Imports System.IO
+﻿Imports System.IO
+Imports System.Runtime.InteropServices 'Permite funcionalidades de API de Windows para poder trabajar con la funcion releaseCapture'
 Imports System.Text.Json
-Imports TP_Integrador.Usuarios
 
 Public Class FormLogin
-
     '-------------------------------------------------------------------------------------------------------------------------'
     'Declaraciones para poder utilizar la funcion releaseCapture, que permite mover el formulario desde el panel superior'
     <DllImport("user32.dll", CharSet:=CharSet.Auto)>
@@ -95,54 +93,6 @@ Public Class FormLogin
                 MessageBox.Show("Tipo de usuario no encontrado", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Select
     End Sub
-
-    'Private Sub BIniciarSesion_Click(sender As Object, e As EventArgs) Handles BIniciarSesion.Click
-    '    Dim autenticador As New Autenticador
-
-    '    Dim usuario, password As String
-
-    '    usuario = TBUsuario.Text
-    '    password = TBContrasena.Text
-
-    '    If (usuario = "" Or password = "") Then
-    '        MessageBox.Show("Debe completar todos los campos", "Falta de datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '    Else
-    '        If autenticador.autenticarUsuario(usuario, password) Then
-    '            MessageBox.Show("Ingreso exitoso", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-    '            Dim usuarioAutenticado = autenticador.obtenerUsuarioAutenticado(usuario, password)
-
-    '            If usuarioAutenticado.Tipo = "maestro" Then
-
-    '                Dim menu = New modelo_menu_user_maestro()
-
-    '                menu.Show()
-
-    '                Me.Hide()
-    '            ElseIf usuarioAutenticado.Tipo = "tecnico" Then
-    '                Dim menu = New modelo_menu_user_tecnico()
-
-    '                menu.Show()
-
-    '                Me.Hide()
-    '            ElseIf usuarioAutenticado.Tipo = "administrador" Then
-    '                Dim menu = New modelo_menu_principal()
-
-    '                menu.Show()
-
-    '                Me.Hide()
-    '            Else
-    '                MessageBox.Show("Tipo de usuario no encontrado", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '            End If
-
-    '        Else
-    '            MessageBox.Show("Ingreso fallido", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '        End If
-    '    End If
-
-
-    'End Sub
-
 
     Private Sub PBCerrar_Click(sender As Object, e As EventArgs) Handles PBCerrar.Click
         End

@@ -1,5 +1,4 @@
 ﻿Imports System.Runtime.InteropServices
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Window
 
 Public Class FormEditarUsuario
     Private usuario As Usuarios.Usuario
@@ -31,11 +30,9 @@ Public Class FormEditarUsuario
 
     ' Cargar los datos actuales del usuario en los campos del formulario
     Private Sub CargarDatosUsuario()
-
         ComboBoxTipoUsuario.Items.Clear()
         ComboBoxTipoUsuario.Items.Add("administrador")
         ComboBoxTipoUsuario.Items.Add("tecnico")
-
 
         TBApellido.Text = usuario.Apellido
         tNombre.Text = usuario.Nombre
@@ -45,14 +42,11 @@ Public Class FormEditarUsuario
         tUsuario.Text = usuario.NombreUsuario
         tContrasena.Text = usuario.Password
 
-
         ComboBoxTipoUsuario.SelectedItem = usuario.Tipo
     End Sub
 
-
     ' Devolver el usuario editado
     Public Function ObtenerUsuarioEditado() As Usuarios.Usuario
-
         usuario.Apellido = TBApellido.Text
         usuario.Nombre = tNombre.Text
         usuario.DNI = TBDNI.Text
@@ -90,5 +84,4 @@ Public Class FormEditarUsuario
             SendMessage(Me.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0)
         End If
     End Sub
-
 End Class

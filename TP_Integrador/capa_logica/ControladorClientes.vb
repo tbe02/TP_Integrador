@@ -1,9 +1,9 @@
 ﻿Public Class ControladorClientes
-    Private clientes As Cliente = New Cliente()
+    Private _clientes As Cliente = New Cliente()
 
-    Public Sub AgregarUno(apellido As String, nombre As String, dni As String, correo As String, telefono As String)
+    Public Sub AgregarUno(cliente As Cliente)
         Try
-            clientes.agregarCliente(apellido, nombre, dni, correo, telefono)
+            _clientes.agregarCliente(cliente.Apellido, cliente.Nombre, cliente.Dni, cliente.Correo, cliente.Telefono)
         Catch ex As Exception
             Throw New Exception(ex.Message)
         End Try
@@ -11,23 +11,35 @@
 
     Public Function ObtenerTodos() As List(Of Cliente)
         Try
-            Return clientes.obtenerClientes()
+            Return _clientes.obtenerClientes().Select(
+                Function(cliente)
+                    Return New Cliente With {
+                        .ID = cliente.ID,
+                        .Nombre = cliente.Nombre,
+                        .Apellido = cliente.Apellido,
+                        .Dni = cliente.Dni,
+                        .Correo = cliente.Correo,
+                        .Telefono = cliente.Telefono,
+                        .Estado = cliente.Estado
+                    }
+                End Function
+            ).ToList()
         Catch ex As Exception
             Throw New Exception(ex.Message)
         End Try
     End Function
 
-    Public Sub ActualizarUnoPorDNI(dni As String, actualizado As Cliente)
+    Public Sub ActualizarUnoPorDNI(DNI As String, clienteActualizado As Cliente)
         Try
-            clientes.editarCliente(dni, actualizado)
+            _clientes.editarCliente(DNI, clienteActualizado)
         Catch ex As Exception
             Throw New Exception(ex.Message)
         End Try
     End Sub
 
-    Public Sub EliminarUnoPorDNI(dni As String)
+    Public Sub EliminarUnoPorDNI(DNI As String)
         Try
-            clientes.eliminarCliente(New Cliente With {.Dni = dni})
+            _clientes.eliminarCliente(New Cliente With {.Dni = DNI})
         Catch ex As Exception
             Throw New Exception(ex.Message)
         End Try

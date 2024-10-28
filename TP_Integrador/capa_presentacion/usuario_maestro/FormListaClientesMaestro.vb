@@ -1,13 +1,15 @@
 ﻿Public Class FormListaClientesMaestro
+    Private _controladorClientes As ControladorClientes = New ControladorClientes()
+
     Private Sub FormListaClientes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        listarClientes()
+        ListarClientes()
         ListarFiltros()
     End Sub
 
-    Private Sub refrescarLista()
+    Private Sub RefrescarLista()
         DGVListaClientes.Rows.Clear()
 
-        listarClientes()
+        ListarClientes()
     End Sub
 
     Private Sub ListarFiltros()
@@ -21,11 +23,10 @@
         CBFiltro.Items.Add("Inactivo")
     End Sub
 
-    Private Sub listarClientes()
-
+    Private Sub ListarClientes()
         DGVListaClientes.AllowUserToAddRows = False 'se agregaba una fila demas cuando no habia ningun cliente entonces esto la quita
 
-        Dim listaClientes As List(Of Cliente) = Cliente.obtenerClientes()
+        Dim listaClientes As List(Of Cliente) = _controladorClientes.ObtenerTodos()
 
         'traes todos tus clientes en tu array de Clientes
         For Each cliente In listaClientes
@@ -38,11 +39,10 @@
         Dim filtro = CBFiltro.Text
         Dim busqueda = TBBuscarCliente.Text
 
+        Dim clientes = _controladorClientes.ObtenerTodos()
         Dim clientesFiltrados As List(Of Cliente)
 
         DGVListaClientes.Rows.Clear()
-
-        Dim clientes = Cliente.obtenerClientes()
 
         Select Case filtro
             Case "Apellido"
@@ -79,6 +79,6 @@
             Return
         End If
 
-        refrescarLista()
+        RefrescarLista()
     End Sub
 End Class

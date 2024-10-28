@@ -1,9 +1,7 @@
-﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.Window
+﻿Imports System.Runtime.InteropServices 'Permite funcionalidades de API de Windows para poder trabajar con la funcion releaseCapture'
 Imports FontAwesome.Sharp
-Imports System.Runtime.InteropServices 'Permite funcionalidades de API de Windows para poder trabajar con la funcion releaseCapture'
 
 Public Class modelo_menu_principal
-
     '-------------------------------------------------------------------------------------------------------------------------'
     'Declaraciones para poder utilizar la funcion releaseCapture, que permite mover el formulario desde el panel superior'
     <DllImport("user32.dll", CharSet:=CharSet.Auto)>
@@ -21,28 +19,21 @@ Public Class modelo_menu_principal
     Private bordeIzquierdo As Panel
     Private botonActual As IconButton
 
-    Dim sesion As Sesion = Sesion.ObtenerInstancia()
+    Private _sesion As Sesion = Sesion.ObtenerInstancia()
 
     Private Sub modelo_menu_principal_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        'creamos un panel izquierdo al iniciar el form que vamos a usar en nuestros botones'
         bordeIzquierdo = New Panel()
         bordeIzquierdo.Size = New Size(7, 60)
         PMenuIzquierdo.Controls.Add(bordeIzquierdo)
 
-
-
-        ' Llama al método IBMenuPrincipal_Click desde el evento Load del formulario
         EjecutarIBMenuPrincipal()
 
-        IBSesion.Text = sesion.ObtenerUsuario().Nombre
+        IBSesion.Text = _sesion.ObtenerUsuario().Nombre
     End Sub
 
     'funcion para activar boton seleccionado'
-    Private Function activarBoton(boton As Object, color As Color)
-
+    Private Sub activarBoton(boton As Object, color As Color)
         If (boton IsNot Nothing) Then
-
             'si hay un boton seleccionado se desactiva'
             desactivarBoton()
 
@@ -60,14 +51,11 @@ Public Class modelo_menu_principal
             bordeIzquierdo.Location = New Point(0, botonActual.Location.Y)
             bordeIzquierdo.Visible = True
             bordeIzquierdo.BringToFront()
-
         End If
-
-    End Function
+    End Sub
 
     'funcion para desactivar boton no seleccionado'
-    Private Function desactivarBoton()
-
+    Private Sub desactivarBoton()
         If (botonActual IsNot Nothing) Then
             botonActual.BackColor = Color.Transparent
             botonActual.ForeColor = Color.White
@@ -76,10 +64,7 @@ Public Class modelo_menu_principal
             botonActual.TextImageRelation = TextImageRelation.Overlay
             botonActual.ImageAlign = ContentAlignment.MiddleLeft
         End If
-
-    End Function
-
-
+    End Sub
 
     Private Sub IBMenuPrincipal_Click(sender As Object, e As EventArgs) Handles IBMenuPrincipal.Click
         Dim color As Color
@@ -94,12 +79,8 @@ Public Class modelo_menu_principal
         form.TopLevel = False
         form.FormBorderStyle = FormBorderStyle.None
 
-
-
         Me.PFondoPrincipal.Controls.Add(form)
         form.Show()
-
-
     End Sub
 
     Private Sub IBAgregarCliente_Click(sender As Object, e As EventArgs) Handles IBAgregarCliente.Click
@@ -123,14 +104,9 @@ Public Class modelo_menu_principal
         Dim y As Integer = form.Location.Y
         form.Location = New Point(x + 250, y + 40)
 
-
         ' Añadir el formulario al Panel y mostrarlo
         Me.PFondoPrincipal.Controls.Add(form)
         form.Show()
-
-
-
-
     End Sub
 
     Private Sub IBListaClientes_Click(sender As Object, e As EventArgs) Handles IBListaClientes.Click
@@ -142,7 +118,6 @@ Public Class modelo_menu_principal
         Me.PFondoPrincipal.Controls.Clear()
 
         Dim form As New FormListaClientesAdmin()
-
 
         form.FormBorderStyle = FormBorderStyle.None
         form.TopLevel = False
@@ -167,8 +142,6 @@ Public Class modelo_menu_principal
         form.FormBorderStyle = FormBorderStyle.None
         form.Dock = DockStyle.Fill
 
-
-
         Me.PFondoPrincipal.Controls.Add(form)
         form.Show()
 
@@ -189,8 +162,6 @@ Public Class modelo_menu_principal
         form.FormBorderStyle = FormBorderStyle.None
         form.Dock = DockStyle.Fill
 
-
-
         Me.PFondoPrincipal.Controls.Add(form)
         form.Show()
     End Sub
@@ -198,7 +169,6 @@ Public Class modelo_menu_principal
     Private Sub EjecutarIBMenuPrincipal()
         ' Llama al método IBMenuPrincipal_Click, pasando un valor predeterminado para sender y e
         IBMenuPrincipal_Click(IBMenuPrincipal, EventArgs.Empty)
-
     End Sub
 
     Private Sub PMenuSuperior_MouseDown(sender As Object, e As MouseEventArgs) Handles PMenuSuperior.MouseDown
@@ -217,24 +187,19 @@ Public Class modelo_menu_principal
     End Sub
 
     Private Sub IBMaximizar_Click(sender As Object, e As EventArgs) Handles IBMaximizar.Click
-
         If (Me.WindowState = FormWindowState.Normal) Then
             Me.WindowState = FormWindowState.Maximized
         Else
             Me.WindowState = FormWindowState.Normal
-
         End If
-
     End Sub
-
-
 
     Private Sub IBSesion_Click(sender As Object, e As EventArgs) Handles IBSesion.Click
         MenuPerfil.Show(IBSesion, New Point(0, IBSesion.Height))
     End Sub
 
     Private Sub CerrarSesion(sender As Object, e As EventArgs) Handles TSMCerrarSesion.Click
-        sesion.EliminarSesion()
+        _sesion.EliminarSesion()
 
         Me.Close()
 
@@ -248,5 +213,4 @@ Public Class modelo_menu_principal
 
         formPerfil.Show()
     End Sub
-
 End Class

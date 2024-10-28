@@ -1,6 +1,4 @@
-﻿Imports System.Security.Cryptography.X509Certificates
-Imports System.Data.SqlClient
-Imports System.Text.RegularExpressions
+﻿Imports System.Text.RegularExpressions
 
 
 Public Class Cliente

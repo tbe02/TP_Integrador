@@ -15,22 +15,21 @@ Public Class FormInfoEquipo
     Private Const HTCAPTION As Integer = &H2
     '-------------------------------------------------------------------------------------------------------------------------'
 
-    Dim equipo As Equipos.Equipo
+    Private _equipo As Equipos.Equipo
 
     Public Sub New(equipo As Equipos.Equipo)
-
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-        Me.equipo = equipo
+        Me._equipo = equipo
 
         InicializarCampos()
     End Sub
 
     Private Sub InicializarCampos()
-        TBRazonIngreso.Text = equipo.RazonIngreso
-        TBObservaciones.Text = equipo.Observaciones
+        TBRazonIngreso.Text = _equipo.RazonIngreso
+        TBObservaciones.Text = _equipo.Observaciones
     End Sub
 
     Private Sub PMenuSuperior_MouseDown(sender As Object, e As MouseEventArgs) Handles PMenuSuperior.MouseDown
@@ -40,7 +39,6 @@ Public Class FormInfoEquipo
         End If
     End Sub
 
-
     Private Sub IBCerrar_Click(sender As Object, e As EventArgs) Handles IBCerrar.Click
         Close()
     End Sub
@@ -48,5 +46,4 @@ Public Class FormInfoEquipo
     Private Sub IBMinimizar_Click(sender As Object, e As EventArgs) Handles IBMinimizar.Click
         WindowState = FormWindowState.Minimized
     End Sub
-
 End Class

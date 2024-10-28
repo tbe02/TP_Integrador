@@ -3,6 +3,12 @@ Imports TP_Integrador.Modelos
 Imports TP_Integrador.TiposDeEquipo
 
 Public Class FormAgregarEquipo
+    Private _controladorClientes As ControladorClientes = New ControladorClientes()
+    Private _controladorTiposDeEquipo As ControladorTiposDeEquipo = New ControladorTiposDeEquipo()
+    Private _controladorMarcas As ControladorMarcas = New ControladorMarcas()
+    Private _controladorModelos As ControladorModelos = New ControladorModelos()
+    Private _controladorEquipos As ControladorEquipos = New ControladorEquipos()
+
     Private Sub FormAgregarEquipo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ListarClientes()
         ListarTiposDeEquipos()
@@ -11,7 +17,7 @@ Public Class FormAgregarEquipo
     End Sub
 
     Private Sub ListarClientes()
-        Dim clientes = Cliente.obtenerClientes()
+        Dim clientes = _controladorClientes.ObtenerTodos()
 
         ComboBAsociarCliente.DataSource = clientes
         ComboBAsociarCliente.DisplayMember = "Nombre"
@@ -19,25 +25,25 @@ Public Class FormAgregarEquipo
     End Sub
 
     Private Sub ListarTiposDeEquipos()
-        Dim tiposEquipos = TiposDeEquipo.ObtenerTiposDeEquipo()
+        Dim tiposDeEquipo = _controladorTiposDeEquipo.ObtenerTodos()
 
-        ComboBTipoEquipo.DataSource = tiposEquipos
+        ComboBTipoEquipo.DataSource = tiposDeEquipo
         ComboBTipoEquipo.DisplayMember = "Nombre"
         ComboBTipoEquipo.ValueMember = "IdTipoEquipo"
     End Sub
 
     Private Sub ListarMarcas()
-        Dim marcasEquipos = Marcas.ObtenerMarcas()
+        Dim marcas = _controladorMarcas.ObtenerTodas()
 
-        ComboBMarca.DataSource = marcasEquipos
+        ComboBMarca.DataSource = marcas
         ComboBMarca.DisplayMember = "nombre"
         ComboBMarca.ValueMember = "idMarca"
     End Sub
 
     Private Sub ListarModelos()
-        Dim modelosEquipos = Modelos.ObtenerModelos()
+        Dim modelos = _controladorModelos.ObtenerTodos()
 
-        ComboBModelo.DataSource = modelosEquipos
+        ComboBModelo.DataSource = modelos
         ComboBModelo.DisplayMember = "nombre"
         ComboBModelo.ValueMember = "idModelo"
     End Sub
@@ -45,7 +51,6 @@ Public Class FormAgregarEquipo
 
     Private Sub BAgregarEquipo_Click(sender As Object, e As EventArgs) Handles BAgregarEquipo.Click
         Dim equipo As New Equipos.Equipo()
-
 
         equipo.TipoEquipo = CType(ComboBTipoEquipo.SelectedItem, TipoDeEquipo)
         equipo.NumeroSerie = TBNroSerie.Text
@@ -58,9 +63,9 @@ Public Class FormAgregarEquipo
         equipo.Estado = "Hola"
         equipo.Baja = "No"
 
-
-        If Equipos.Agregar(equipo) Then
-
+        Try
+            _controladorEquipos.AgregarUno(equipo)
+        Catch ex As Exception
             ComboBTipoEquipo.SelectedIndex = -1
             TBNroSerie.Clear()
             ComboBMarca.SelectedIndex = -1
@@ -69,9 +74,7 @@ Public Class FormAgregarEquipo
             TBObservaciones.Clear()
             CBEquipoEnciende.Checked = False
             ComboBAsociarCliente.SelectedIndex = -1
-        End If
-
-
+        End Try
     End Sub
 
     Private Sub BAgregarCliente_Click(sender As Object, e As EventArgs) Handles BAgregarCliente.Click
@@ -85,6 +88,4 @@ Public Class FormAgregarEquipo
 
         MessageBox.Show("Cliente asociado exitosamente", "Asociar cliente", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
-
-
 End Class

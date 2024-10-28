@@ -1,9 +1,9 @@
 ﻿Public Class ControladorEquipos
-    Private equipos As Equipos = Equipos.ObtenerInstancia()
+    Private _equipos As Equipos = Equipos.ObtenerInstancia()
 
     Public Sub AgregarUno(equipo As Equipos.Equipo)
         Try
-            equipos.Agregar(equipo)
+            _equipos.Agregar(equipo)
         Catch ex As Exception
             Throw New Exception(ex.Message)
         End Try
@@ -11,7 +11,7 @@
 
     Public Function ObtenerTodos() As List(Of Equipos.Equipo)
         Try
-            Return equipos.ObtenerTodos()
+            Return _equipos.ObtenerTodos()
         Catch ex As Exception
             Throw New Exception(ex.Message)
         End Try
@@ -19,7 +19,7 @@
 
     Public Sub ActualizarUnoPorId(id As Integer, actualizado As Equipos.Equipo)
         Try
-            equipos.editarEquipo(id, actualizado)
+            _equipos.editarEquipo(id, actualizado)
         Catch ex As Exception
             Throw New Exception(ex.Message)
         End Try
@@ -27,9 +27,27 @@
 
     Public Sub EliminarUnoPorId(id As Integer)
         Try
-            equipos.eliminar(New Equipos.Equipo With {.IDEquipo = id})
+            _equipos.eliminar(New Equipos.Equipo With {.IDEquipo = id})
         Catch ex As Exception
             Throw New Exception(ex.Message)
         End Try
     End Sub
+
+    Private Shared Function ObtenerlosCamposSonValidos(idCliente As Integer, idTipoEquipo As Integer, numeroSerie As String, idMarca As Integer, idModelo As Integer, razon As String, observacion As String, enciende As String, estado As String)
+        If (IsNothing(idCliente) OrElse idCliente = 0 OrElse
+           IsNothing(idTipoEquipo) OrElse idTipoEquipo = 0 OrElse
+           String.IsNullOrWhiteSpace(numeroSerie) OrElse
+           IsNothing(idMarca) OrElse idMarca = 0 OrElse
+           IsNothing(idModelo) OrElse idModelo = 0 OrElse
+           String.IsNullOrWhiteSpace(razon) OrElse
+           String.IsNullOrWhiteSpace(observacion) OrElse
+           String.IsNullOrWhiteSpace(enciende) OrElse
+           String.IsNullOrWhiteSpace(estado)) Then
+            MessageBox.Show("Debe completar todos los campos", "Falta de datos", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+            Return False
+        End If
+
+        Return True
+    End Function
 End Class

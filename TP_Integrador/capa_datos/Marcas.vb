@@ -1,6 +1,4 @@
-﻿Imports TP_Integrador.TiposDeEquipo
-
-Public Class Marcas
+﻿Public Class Marcas
     Private Shared instancia As Marcas = Nothing
 
     Class Marca
