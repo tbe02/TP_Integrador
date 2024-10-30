@@ -19,7 +19,7 @@ Public Class Equipos
         Public Property RazonIngreso As String
         Public Property Observaciones As String
         Public Property Modelo As Modelo
-        Public Property Estado As String
+        Public Property Estado As Integer
 
         Public Property Baja As String
     End Class
@@ -120,6 +120,55 @@ Public Class Equipos
         End Try
 
         Return False
+    End Function
+
+    Public Shared Function ObtenerDescripcionEstado(estado As Integer) As String
+        Dim descripcion As String = String.Empty
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+
+        Try
+            Dim comando = New SqlCommand("SELECT descripcion FROM Estados WHERE idEstado = @estado", conexion)
+            comando.Parameters.AddWithValue("@estado", estado)
+
+            conexion.Open()
+            Dim reader As SqlDataReader = comando.ExecuteReader()
+
+            If reader.Read() Then
+                descripcion = reader("descripcion").ToString()
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show("Error al obtener la descripción del estado: " & ex.Message)
+        Finally
+            conexion.Close()
+        End Try
+
+        Return descripcion
+    End Function
+
+    Public Shared Function darDeBajaEquipo(IDEquipo As Integer)
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+
+        Try
+            Dim comando = New SqlCommand("UPDATE Equipos SET 
+                                        baja = 'Si' 
+                                      WHERE idEquipo = @idEquipo;", conexion)
+
+            ' Añadir el parámetro @idEquipo
+            comando.Parameters.AddWithValue("@idEquipo", IDEquipo)
+
+            ' Abrir la conexión y ejecutar el comando
+            conexion.Open()
+            comando.ExecuteNonQuery()
+
+            MessageBox.Show("Equipo dado de baja correctamente", "Dar de baja equipo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return True
+        Catch ex As Exception
+            MessageBox.Show("Error al dar de baja el equipo: " & ex.Message)
+            Return False
+        Finally
+            conexion.Close()
+        End Try
     End Function
 
 
@@ -228,6 +277,34 @@ Public Class Equipos
         End If
         Return True
     End Function
+
+    Public Shared Function ModificarEstadoEquipo(IDEquipo As Integer, IDEstado As Integer)
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+
+
+        Try
+            Dim comando = New SqlCommand("UPDATE Equipos SET 
+                                                estado = @idEstado
+                                              WHERE idEquipo = @idEquipo;", conexion)
+
+            comando.Parameters.AddWithValue("@idEquipo", IDEquipo)
+            comando.Parameters.AddWithValue("@idEstado", IDEstado)
+
+            conexion.Open()
+            comando.ExecuteNonQuery()
+
+            MessageBox.Show("Equipo editado correctamente", "Confirmación de equipo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return True
+        Catch ex As Exception
+            MessageBox.Show("Error al editar el equipo: " & ex.Message)
+            Return False
+        Finally
+            conexion.Close()
+        End Try
+
+        Return False
+    End Function
+
 
 
 End Class

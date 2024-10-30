@@ -16,6 +16,12 @@ Public Class Cliente
 
     Public Shared Clientes As New List(Of Cliente)()
 
+    Public ReadOnly Property DNI_Nombre As String
+        Get
+            Return $"{Dni} - {Nombre}"
+        End Get
+    End Property
+
 
     Public Sub editarCliente(DNICliente As String, clienteEditado As Cliente)
         Try

@@ -11,6 +11,10 @@ Public Class FormEditarEquipo
         Me.equipo = equipo
         Me.alFinalizar = alFinalizar
 
+        Me.AutoSize = True
+        Me.AutoSizeMode = AutoSizeMode.GrowAndShrink
+        Me.MinimumSize = New Size(900, 700)
+
 
     End Sub
 
@@ -27,7 +31,7 @@ Public Class FormEditarEquipo
     Private Sub ListarClientes()
         Dim clientes = Cliente.obtenerClientes()
         ComboBAsociarCliente.DataSource = clientes
-        ComboBAsociarCliente.DisplayMember = "Nombre"
+        ComboBAsociarCliente.DisplayMember = "DNI_Nombre"
         ComboBAsociarCliente.ValueMember = "ID"
         ComboBAsociarCliente.Refresh()
     End Sub
@@ -124,4 +128,10 @@ Public Class FormEditarEquipo
         WindowState = FormWindowState.Minimized
     End Sub
 
+    Private Sub BEstadoEquipo_Click(sender As Object, e As EventArgs) Handles BEstadoEquipo.Click
+
+        Dim form As New FormEstadosEquiposAdmin(equipo)
+
+        form.Show()
+    End Sub
 End Class
