@@ -23,12 +23,12 @@ Partial Class FormEditarEquipo
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         PAsociarCliente = New Panel()
-        BEditarCliente = New Button()
         ComboBAsociarCliente = New ComboBox()
         PBAsociarCliente = New PictureBox()
         LEditarCliente = New Label()
-        LSiNoEstaRegistrado = New Label()
         PAgregarEquipo = New Panel()
+        ComboBModelo = New ComboBox()
+        ComboBMarca = New ComboBox()
         BEditarEquipo = New Button()
         TBObservaciones = New TextBox()
         TBRazonIngreso = New TextBox()
@@ -45,8 +45,7 @@ Partial Class FormEditarEquipo
         LEditarEquipo = New Label()
         IBMinimizar_EC = New FontAwesome.Sharp.IconButton()
         IBCerrar_EC = New FontAwesome.Sharp.IconButton()
-        ComboBMarca = New ComboBox()
-        ComboBModelo = New ComboBox()
+        BEstadoEquipo = New Button()
         PAsociarCliente.SuspendLayout()
         CType(PBAsociarCliente, ComponentModel.ISupportInitialize).BeginInit()
         PAgregarEquipo.SuspendLayout()
@@ -56,31 +55,14 @@ Partial Class FormEditarEquipo
         ' PAsociarCliente
         ' 
         PAsociarCliente.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        PAsociarCliente.Controls.Add(BEditarCliente)
         PAsociarCliente.Controls.Add(ComboBAsociarCliente)
         PAsociarCliente.Controls.Add(PBAsociarCliente)
         PAsociarCliente.Controls.Add(LEditarCliente)
-        PAsociarCliente.Controls.Add(LSiNoEstaRegistrado)
         PAsociarCliente.Location = New Point(34, 49)
         PAsociarCliente.Margin = New Padding(3, 4, 3, 4)
         PAsociarCliente.Name = "PAsociarCliente"
-        PAsociarCliente.Size = New Size(410, 428)
+        PAsociarCliente.Size = New Size(410, 295)
         PAsociarCliente.TabIndex = 33
-        ' 
-        ' BEditarCliente
-        ' 
-        BEditarCliente.BackColor = Color.FromArgb(CByte(128), CByte(128), CByte(255))
-        BEditarCliente.FlatAppearance.BorderSize = 0
-        BEditarCliente.FlatStyle = FlatStyle.Flat
-        BEditarCliente.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        BEditarCliente.ForeColor = Color.White
-        BEditarCliente.Location = New Point(219, 292)
-        BEditarCliente.Margin = New Padding(3, 4, 3, 4)
-        BEditarCliente.Name = "BEditarCliente"
-        BEditarCliente.Size = New Size(178, 39)
-        BEditarCliente.TabIndex = 4
-        BEditarCliente.Text = "Editar cliente"
-        BEditarCliente.UseVisualStyleBackColor = True
         ' 
         ' ComboBAsociarCliente
         ' 
@@ -117,17 +99,6 @@ Partial Class FormEditarEquipo
         LEditarCliente.TabIndex = 11
         LEditarCliente.Text = "1. Editar cliente"
         ' 
-        ' LSiNoEstaRegistrado
-        ' 
-        LSiNoEstaRegistrado.AutoSize = True
-        LSiNoEstaRegistrado.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        LSiNoEstaRegistrado.ForeColor = Color.Silver
-        LSiNoEstaRegistrado.Location = New Point(38, 304)
-        LSiNoEstaRegistrado.Name = "LSiNoEstaRegistrado"
-        LSiNoEstaRegistrado.Size = New Size(162, 20)
-        LSiNoEstaRegistrado.TabIndex = 13
-        LSiNoEstaRegistrado.Text = "si no esta registrado"
-        ' 
         ' PAgregarEquipo
         ' 
         PAgregarEquipo.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
@@ -152,6 +123,32 @@ Partial Class FormEditarEquipo
         PAgregarEquipo.Name = "PAgregarEquipo"
         PAgregarEquipo.Size = New Size(589, 859)
         PAgregarEquipo.TabIndex = 32
+        ' 
+        ' ComboBModelo
+        ' 
+        ComboBModelo.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        ComboBModelo.FlatStyle = FlatStyle.Flat
+        ComboBModelo.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ComboBModelo.ForeColor = Color.Silver
+        ComboBModelo.FormattingEnabled = True
+        ComboBModelo.Location = New Point(168, 320)
+        ComboBModelo.Margin = New Padding(3, 4, 3, 4)
+        ComboBModelo.Name = "ComboBModelo"
+        ComboBModelo.Size = New Size(394, 30)
+        ComboBModelo.TabIndex = 41
+        ' 
+        ' ComboBMarca
+        ' 
+        ComboBMarca.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        ComboBMarca.FlatStyle = FlatStyle.Flat
+        ComboBMarca.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ComboBMarca.ForeColor = Color.Silver
+        ComboBMarca.FormattingEnabled = True
+        ComboBMarca.Location = New Point(168, 272)
+        ComboBMarca.Margin = New Padding(3, 4, 3, 4)
+        ComboBMarca.Name = "ComboBMarca"
+        ComboBMarca.Size = New Size(394, 30)
+        ComboBMarca.TabIndex = 40
         ' 
         ' BEditarEquipo
         ' 
@@ -331,7 +328,7 @@ Partial Class FormEditarEquipo
         IBMinimizar_EC.IconColor = Color.Gray
         IBMinimizar_EC.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBMinimizar_EC.IconSize = 20
-        IBMinimizar_EC.Location = New Point(1015, 15)
+        IBMinimizar_EC.Location = New Point(1042, 15)
         IBMinimizar_EC.Name = "IBMinimizar_EC"
         IBMinimizar_EC.Size = New Size(22, 23)
         IBMinimizar_EC.TabIndex = 35
@@ -351,44 +348,28 @@ Partial Class FormEditarEquipo
         IBCerrar_EC.IconColor = Color.Gray
         IBCerrar_EC.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBCerrar_EC.IconSize = 20
-        IBCerrar_EC.Location = New Point(1042, 15)
+        IBCerrar_EC.Location = New Point(1069, 15)
         IBCerrar_EC.Name = "IBCerrar_EC"
         IBCerrar_EC.Size = New Size(22, 23)
         IBCerrar_EC.TabIndex = 34
         IBCerrar_EC.UseVisualStyleBackColor = False
         ' 
-        ' ComboBMarca
+        ' BEstadoEquipo
         ' 
-        ComboBMarca.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
-        ComboBMarca.FlatStyle = FlatStyle.Flat
-        ComboBMarca.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        ComboBMarca.ForeColor = Color.Silver
-        ComboBMarca.FormattingEnabled = True
-        ComboBMarca.Location = New Point(168, 272)
-        ComboBMarca.Margin = New Padding(3, 4, 3, 4)
-        ComboBMarca.Name = "ComboBMarca"
-        ComboBMarca.Size = New Size(394, 30)
-        ComboBMarca.TabIndex = 40
-        ' 
-        ' ComboBModelo
-        ' 
-        ComboBModelo.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
-        ComboBModelo.FlatStyle = FlatStyle.Flat
-        ComboBModelo.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        ComboBModelo.ForeColor = Color.Silver
-        ComboBModelo.FormattingEnabled = True
-        ComboBModelo.Location = New Point(168, 320)
-        ComboBModelo.Margin = New Padding(3, 4, 3, 4)
-        ComboBModelo.Name = "ComboBModelo"
-        ComboBModelo.Size = New Size(394, 30)
-        ComboBModelo.TabIndex = 41
+        BEstadoEquipo.Location = New Point(166, 637)
+        BEstadoEquipo.Name = "BEstadoEquipo"
+        BEstadoEquipo.Size = New Size(94, 29)
+        BEstadoEquipo.TabIndex = 36
+        BEstadoEquipo.Text = "Estado"
+        BEstadoEquipo.UseVisualStyleBackColor = True
         ' 
         ' FormEditarEquipo
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
-        ClientSize = New Size(1078, 924)
+        ClientSize = New Size(1105, 943)
+        Controls.Add(BEstadoEquipo)
         Controls.Add(IBMinimizar_EC)
         Controls.Add(IBCerrar_EC)
         Controls.Add(PAsociarCliente)
@@ -406,11 +387,9 @@ Partial Class FormEditarEquipo
     End Sub
 
     Friend WithEvents PAsociarCliente As Panel
-    Friend WithEvents BEditarCliente As Button
     Friend WithEvents ComboBAsociarCliente As ComboBox
     Friend WithEvents PBAsociarCliente As PictureBox
     Friend WithEvents LEditarCliente As Label
-    Friend WithEvents LSiNoEstaRegistrado As Label
     Friend WithEvents PAgregarEquipo As Panel
     Friend WithEvents BEditarEquipo As Button
     Friend WithEvents TBObservaciones As TextBox
@@ -430,4 +409,5 @@ Partial Class FormEditarEquipo
     Friend WithEvents IBCerrar_EC As FontAwesome.Sharp.IconButton
     Friend WithEvents ComboBModelo As ComboBox
     Friend WithEvents ComboBMarca As ComboBox
+    Friend WithEvents BEstadoEquipo As Button
 End Class

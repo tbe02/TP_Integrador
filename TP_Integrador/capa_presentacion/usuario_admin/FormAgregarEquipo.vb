@@ -20,7 +20,7 @@ Public Class FormAgregarEquipo
         Dim clientes = _controladorClientes.ObtenerTodos()
 
         ComboBAsociarCliente.DataSource = clientes
-        ComboBAsociarCliente.DisplayMember = "Nombre"
+        ComboBAsociarCliente.DisplayMember = "DNI_Nombre"
         ComboBAsociarCliente.ValueMember = "ID"
     End Sub
 
@@ -60,7 +60,7 @@ Public Class FormAgregarEquipo
         equipo.Observaciones = TBObservaciones.Text
         equipo.Enciende = If(CBEquipoEnciende.Checked, "Sí", "No")
         equipo.Cliente = CType(ComboBAsociarCliente.SelectedItem, Cliente)
-        equipo.Estado = "Hola"
+        equipo.Estado = 1
         equipo.Baja = "No"
 
         Try
@@ -77,7 +77,7 @@ Public Class FormAgregarEquipo
         End Try
     End Sub
 
-    Private Sub BAgregarCliente_Click(sender As Object, e As EventArgs) Handles BAgregarCliente.Click
+    Private Sub BAgregarCliente_Click(sender As Object, e As EventArgs)
         Dim cliente = ComboBAsociarCliente.Text
 
         If cliente = "" Then

@@ -11,8 +11,13 @@
     Public Sub New(equipoActual As Equipos.Equipo, alFinalizar As Action)
         InitializeComponent()
 
+        Me.AutoSize = True
+        Me.AutoSizeMode = AutoSizeMode.GrowAndShrink
+        Me.MinimumSize = New Size(900, 700)
+
         Me._equipoActual = equipoActual
         Me._alFinalizar = alFinalizar
+
     End Sub
 
     Private Sub FormEditarEquipo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -27,7 +32,7 @@
         Dim clientes = _controladorClientes.ObtenerTodos()
 
         ComboBAsociarCliente.DataSource = clientes
-        ComboBAsociarCliente.DisplayMember = "Nombre"
+        ComboBAsociarCliente.DisplayMember = "DNI_Nombre"
         ComboBAsociarCliente.ValueMember = "ID"
         ComboBAsociarCliente.Refresh()
     End Sub
@@ -113,5 +118,12 @@
 
     Private Sub IBMinimizar_EC_Click(sender As Object, e As EventArgs) Handles IBMinimizar_EC.Click
         WindowState = FormWindowState.Minimized
+    End Sub
+
+    Private Sub BEstadoEquipo_Click(sender As Object, e As EventArgs) Handles BEstadoEquipo.Click
+
+        Dim form As New FormEstadosEquiposAdmin(equipo)
+
+        form.Show()
     End Sub
 End Class
