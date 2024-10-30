@@ -15,8 +15,11 @@
         Me.AutoSizeMode = AutoSizeMode.GrowAndShrink
         Me.MinimumSize = New Size(900, 700)
 
+<<<<<<< HEAD
         Me._equipoActual = equipoActual
         Me._alFinalizar = alFinalizar
+=======
+>>>>>>> 7b4b34d50f7564453474884ce874c57ec423cc18
 
     End Sub
 
@@ -122,7 +125,11 @@
 
     Private Sub BEstadoEquipo_Click(sender As Object, e As EventArgs) Handles BEstadoEquipo.Click
 
+<<<<<<< HEAD
         Dim form As New FormEstadosEquiposAdmin(_equipoActual)
+=======
+        Dim form As New FormEstadosEquiposAdmin(equipo)
+>>>>>>> 7b4b34d50f7564453474884ce874c57ec423cc18
 
         form.Show()
     End Sub
