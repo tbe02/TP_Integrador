@@ -20,7 +20,8 @@ Public Class FormListaEquiposAdmin
     End Sub
     Private Sub ListarEquipos()
         For Each equipo In equipos.ObtenerTodos()
-            DGVListaEquipos.Rows.Add(equipo.Cliente.Nombre, equipo.TipoEquipo.Nombre, equipo.NumeroSerie, equipo.Marca.nombre, equipo.Modelo.nombre, equipo.Enciende, equipo.Estado, equipo.Baja)
+            Dim descripcionEstado As String = Equipos.ObtenerDescripcionEstado(equipo.Estado)
+            DGVListaEquipos.Rows.Add(equipo.Cliente.Nombre, equipo.TipoEquipo.Nombre, equipo.NumeroSerie, equipo.Marca.nombre, equipo.Modelo.nombre, equipo.Enciende, descripcionEstado, equipo.Baja)
         Next
     End Sub
 
