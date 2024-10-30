@@ -44,7 +44,7 @@ Public Class Reparaciones
     End Function
 
 
-    Public Shared Function RepararEquipo(equipo As Equipo, nuevoEstado As Integer)
+    Public Shared Function RepararEquipo(equipo As Equipo, nuevoEstado As Integer) As Boolean
         Dim conexion = New BaseDeDatos().obtenerConexion()
 
         Try
@@ -56,6 +56,8 @@ Public Class Reparaciones
         Finally
             conexion.Close()
         End Try
+
+        Return True
 
     End Function
 

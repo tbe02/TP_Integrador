@@ -122,7 +122,7 @@
 
     Private Sub BEstadoEquipo_Click(sender As Object, e As EventArgs) Handles BEstadoEquipo.Click
 
-        Dim form As New FormEstadosEquiposAdmin(equipo)
+        Dim form As New FormEstadosEquiposAdmin(_equipoActual)
 
         form.Show()
     End Sub
