@@ -3,7 +3,7 @@ Imports TP_Integrador.Modelos
 Imports TP_Integrador.TiposDeEquipo
 
 Public Class Equipos
-    Private Shared instancia As Equipos = Nothing
+    Private Shared instancia As Equipos
 
     Class Equipo
 
@@ -230,13 +230,18 @@ Public Class Equipos
         Return equipos
     End Function
 
+
+
+
     Public Shared Function ObtenerInstancia() As Equipos
         If instancia Is Nothing Then
             instancia = New Equipos()
-        End If
 
+        End If
         Return instancia
     End Function
+
+
 
     Public Function eliminar(equipo As Equipo)
 

@@ -36,7 +36,7 @@ Partial Class FormEditarCliente
         TBNombre = New TextBox()
         TBApellido = New TextBox()
         PBEditarCliente = New PictureBox()
-        IBCerrar_EC = New FontAwesome.Sharp.IconButton()
+
         IBMinimizar_EC = New FontAwesome.Sharp.IconButton()
         PMenuSuperior = New Panel()
         Label1 = New Label()
@@ -220,27 +220,7 @@ Partial Class FormEditarCliente
         PBEditarCliente.TabIndex = 0
         PBEditarCliente.TabStop = False
         ' 
-        ' IBCerrar_EC
-        ' 
-        IBCerrar_EC.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        IBCerrar_EC.BackColor = Color.Transparent
-        IBCerrar_EC.FlatAppearance.BorderSize = 0
-        IBCerrar_EC.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        IBCerrar_EC.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        IBCerrar_EC.FlatStyle = FlatStyle.Flat
-        IBCerrar_EC.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        IBCerrar_EC.ForeColor = Color.White
-        IBCerrar_EC.IconChar = FontAwesome.Sharp.IconChar.Close
-        IBCerrar_EC.IconColor = Color.Gray
-        IBCerrar_EC.IconFont = FontAwesome.Sharp.IconFont.Auto
-        IBCerrar_EC.IconSize = 20
-        IBCerrar_EC.Location = New Point(476, 7)
-        IBCerrar_EC.Margin = New Padding(3, 2, 3, 2)
-        IBCerrar_EC.Name = "IBCerrar_EC"
-        IBCerrar_EC.Size = New Size(19, 17)
-        IBCerrar_EC.TabIndex = 16
-        IBCerrar_EC.UseVisualStyleBackColor = False
-        ' 
+
         ' IBMinimizar_EC
         ' 
         IBMinimizar_EC.Anchor = AnchorStyles.Top Or AnchorStyles.Right

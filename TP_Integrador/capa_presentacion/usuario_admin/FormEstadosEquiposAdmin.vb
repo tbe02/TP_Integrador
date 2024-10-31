@@ -1,4 +1,25 @@
-﻿Public Class FormEstadosEquiposAdmin
+﻿Imports System.Runtime.InteropServices 'Permite funcionalidades de API de Windows para poder trabajar con la funcion releaseCapture'
+Public Class FormEstadosEquiposAdmin
+
+    '-------------------------------------------------------------------------------------------------------------------------'
+    'Declaraciones para poder utilizar la funcion releaseCapture, que permite mover el formulario desde el panel superior'
+    <DllImport("user32.dll", CharSet:=CharSet.Auto)>
+    Private Shared Sub ReleaseCapture()
+    End Sub
+
+    <DllImport("user32.dll", CharSet:=CharSet.Auto)>
+    Private Shared Sub SendMessage(hWnd As IntPtr, msg As Integer, wParam As Integer, lParam As Integer)
+    End Sub
+
+    Private Const WM_NCLBUTTONDOWN As Integer = &HA1
+    Private Const HTCAPTION As Integer = &H2
+    '-------------------------------------------------------------------------------------------------------------------------'
+
+
+
+
+
+
     Private WithEvents TimerEstados As New Timer
     Private EstadoActual As Integer
     Private Equipo As Equipos.Equipo
@@ -217,7 +238,7 @@
         BDevolverEquipo.Visible = False
         BInfoRevision.Visible = False
         BInfoPresupuesto.Visible = False
-        BInfoReparacion.visible = False
+        BInfoReparacion.Visible = False
         ' Mostrar solo el botón correspondiente al estado actual
         Select Case estado
             Case 1
@@ -249,7 +270,7 @@
                 BInfoRevision.Visible = True
                 BInfoPresupuesto.Visible = True
                 BDevolverEquipo.Visible = True
-                If Reparaciones.ReparacionAprobada(Equipo.IDEquipo) Then
+                If Reparaciones.reparacionAprobada(Equipo.IDEquipo) Then
                     BInfoReparacion.Visible = True
                 Else
                     BInfoReparacion.Visible = False
@@ -267,5 +288,14 @@
         TimerEstados.Start()
     End Sub
 
+    Private Sub BCerrar_Click(sender As Object, e As EventArgs) Handles BCerrar.Click
+        Me.Close()
+    End Sub
 
+    Private Sub PBordeSuperior_MouseDown(sender As Object, e As MouseEventArgs) Handles PBordeSuperior.MouseDown
+        If e.Button = MouseButtons.Left Then
+            ReleaseCapture()
+            SendMessage(Me.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0)
+        End If
+    End Sub
 End Class

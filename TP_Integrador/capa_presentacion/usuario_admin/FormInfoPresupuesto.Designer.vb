@@ -24,17 +24,20 @@ Partial Class FormInfoPresupuesto
     Private Sub InitializeComponent()
         TBMonto = New TextBox()
         TBDetalles = New TextBox()
-        LMonto = New Label()
         LDetalles = New Label()
+        LMonto = New Label()
+        IBCerrar = New FontAwesome.Sharp.IconButton()
+        PBordeSuperior = New Panel()
+        PBordeSuperior.SuspendLayout()
         SuspendLayout()
         ' 
         ' TBMonto
         ' 
-        TBMonto.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        TBMonto.BackColor = Color.FromArgb(CByte(90), CByte(90), CByte(90))
         TBMonto.BorderStyle = BorderStyle.None
         TBMonto.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBMonto.ForeColor = Color.Silver
-        TBMonto.Location = New Point(163, 386)
+        TBMonto.Location = New Point(146, 440)
         TBMonto.Multiline = True
         TBMonto.Name = "TBMonto"
         TBMonto.Size = New Size(248, 33)
@@ -42,51 +45,94 @@ Partial Class FormInfoPresupuesto
         ' 
         ' TBDetalles
         ' 
-        TBDetalles.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        TBDetalles.BackColor = Color.FromArgb(CByte(90), CByte(90), CByte(90))
         TBDetalles.BorderStyle = BorderStyle.None
         TBDetalles.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBDetalles.ForeColor = Color.Silver
-        TBDetalles.Location = New Point(163, 32)
+        TBDetalles.Location = New Point(146, 83)
         TBDetalles.Multiline = True
         TBDetalles.Name = "TBDetalles"
         TBDetalles.Size = New Size(597, 323)
         TBDetalles.TabIndex = 44
         ' 
-        ' LMonto
-        ' 
-        LMonto.AutoSize = True
-        LMonto.Location = New Point(40, 388)
-        LMonto.Name = "LMonto"
-        LMonto.Size = New Size(53, 20)
-        LMonto.TabIndex = 43
-        LMonto.Text = "Monto"
-        ' 
         ' LDetalles
         ' 
         LDetalles.AutoSize = True
-        LDetalles.Location = New Point(40, 32)
+        LDetalles.Font = New Font("Arial Rounded MT Bold", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LDetalles.ForeColor = Color.White
+        LDetalles.Location = New Point(37, 86)
         LDetalles.Name = "LDetalles"
-        LDetalles.Size = New Size(63, 20)
-        LDetalles.TabIndex = 42
+        LDetalles.Size = New Size(103, 27)
+        LDetalles.TabIndex = 48
         LDetalles.Text = "Detalles"
+        ' 
+        ' LMonto
+        ' 
+        LMonto.AutoSize = True
+        LMonto.Font = New Font("Arial Rounded MT Bold", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LMonto.ForeColor = Color.White
+        LMonto.Location = New Point(37, 440)
+        LMonto.Name = "LMonto"
+        LMonto.Size = New Size(81, 27)
+        LMonto.TabIndex = 49
+        LMonto.Text = "Monto"
+        ' 
+        ' IBCerrar
+        ' 
+        IBCerrar.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        IBCerrar.BackColor = Color.Transparent
+        IBCerrar.FlatAppearance.BorderSize = 0
+        IBCerrar.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        IBCerrar.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        IBCerrar.FlatStyle = FlatStyle.Flat
+        IBCerrar.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        IBCerrar.ForeColor = Color.White
+        IBCerrar.IconChar = FontAwesome.Sharp.IconChar.Close
+        IBCerrar.IconColor = Color.Gray
+        IBCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IBCerrar.IconSize = 25
+        IBCerrar.Location = New Point(819, 3)
+        IBCerrar.Name = "IBCerrar"
+        IBCerrar.Size = New Size(32, 30)
+        IBCerrar.TabIndex = 14
+        IBCerrar.UseVisualStyleBackColor = False
+        ' 
+        ' PBordeSuperior
+        ' 
+        PBordeSuperior.BackColor = Color.FromArgb(CByte(60), CByte(60), CByte(60))
+        PBordeSuperior.Controls.Add(IBCerrar)
+        PBordeSuperior.Location = New Point(0, 0)
+        PBordeSuperior.Name = "PBordeSuperior"
+        PBordeSuperior.Size = New Size(854, 46)
+        PBordeSuperior.TabIndex = 45
         ' 
         ' FormInfoPresupuesto
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
-        Controls.Add(TBMonto)
-        Controls.Add(TBDetalles)
+        BackColor = Color.FromArgb(CByte(75), CByte(75), CByte(75))
+        ClientSize = New Size(853, 503)
+        Controls.Add(PBordeSuperior)
         Controls.Add(LMonto)
         Controls.Add(LDetalles)
+        Controls.Add(TBMonto)
+        Controls.Add(TBDetalles)
+        FormBorderStyle = FormBorderStyle.None
         Name = "FormInfoPresupuesto"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FormInfoPresupuesto"
+        PBordeSuperior.ResumeLayout(False)
         ResumeLayout(False)
         PerformLayout()
     End Sub
 
     Friend WithEvents TBMonto As TextBox
     Friend WithEvents TBDetalles As TextBox
-    Friend WithEvents LMonto As Label
+
+
     Friend WithEvents LDetalles As Label
+    Friend WithEvents LMonto As Label
+    Friend WithEvents IBCerrar As FontAwesome.Sharp.IconButton
+    Friend WithEvents PBordeSuperior As Panel
+
 End Class

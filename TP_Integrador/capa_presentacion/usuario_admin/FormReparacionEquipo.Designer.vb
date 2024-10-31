@@ -23,48 +23,67 @@ Partial Class FormReparacionEquipo
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         TBObservaciones = New TextBox()
-        Lobservaciones = New Label()
         BCargarObservacion = New Button()
+        LObservaciones = New Label()
+        PBordeSuperior = New Panel()
         SuspendLayout()
         ' 
         ' TBObservaciones
         ' 
-        TBObservaciones.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        TBObservaciones.BackColor = Color.FromArgb(CByte(90), CByte(90), CByte(90))
         TBObservaciones.BorderStyle = BorderStyle.None
         TBObservaciones.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBObservaciones.ForeColor = Color.White
-        TBObservaciones.Location = New Point(239, 49)
+        TBObservaciones.Location = New Point(240, 72)
         TBObservaciones.Multiline = True
         TBObservaciones.Name = "TBObservaciones"
         TBObservaciones.Size = New Size(502, 293)
         TBObservaciones.TabIndex = 42
         ' 
-        ' Lobservaciones
-        ' 
-        Lobservaciones.AutoSize = True
-        Lobservaciones.Location = New Point(12, 49)
-        Lobservaciones.Name = "Lobservaciones"
-        Lobservaciones.Size = New Size(221, 20)
-        Lobservaciones.TabIndex = 43
-        Lobservaciones.Text = "Que se realizo en la reparacion?"
-        ' 
         ' BCargarObservacion
         ' 
-        BCargarObservacion.Location = New Point(337, 374)
+        BCargarObservacion.BackColor = Color.Black
+        BCargarObservacion.FlatAppearance.BorderSize = 0
+        BCargarObservacion.FlatStyle = FlatStyle.Flat
+        BCargarObservacion.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BCargarObservacion.ForeColor = Color.White
+        BCargarObservacion.Location = New Point(388, 392)
+        BCargarObservacion.Margin = New Padding(2, 3, 2, 3)
         BCargarObservacion.Name = "BCargarObservacion"
-        BCargarObservacion.Size = New Size(148, 29)
-        BCargarObservacion.TabIndex = 44
-        BCargarObservacion.Text = "Cargar observacion"
-        BCargarObservacion.UseVisualStyleBackColor = True
+        BCargarObservacion.Size = New Size(197, 37)
+        BCargarObservacion.TabIndex = 45
+        BCargarObservacion.Text = "Cargar observación"
+        BCargarObservacion.UseVisualStyleBackColor = False
+        ' 
+        ' LObservaciones
+        ' 
+        LObservaciones.Font = New Font("Arial Rounded MT Bold", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LObservaciones.ForeColor = Color.White
+        LObservaciones.Location = New Point(15, 178)
+        LObservaciones.Name = "LObservaciones"
+        LObservaciones.Size = New Size(219, 77)
+        LObservaciones.TabIndex = 46
+        LObservaciones.Text = "Qué se realizó en la reparación?"
+        ' 
+        ' PBordeSuperior
+        ' 
+        PBordeSuperior.BackColor = Color.FromArgb(CByte(60), CByte(60), CByte(60))
+        PBordeSuperior.Location = New Point(1, 1)
+        PBordeSuperior.Name = "PBordeSuperior"
+        PBordeSuperior.Size = New Size(800, 46)
+        PBordeSuperior.TabIndex = 47
         ' 
         ' FormReparacionEquipo
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.FromArgb(CByte(75), CByte(75), CByte(75))
         ClientSize = New Size(800, 450)
+        Controls.Add(PBordeSuperior)
+        Controls.Add(LObservaciones)
         Controls.Add(BCargarObservacion)
-        Controls.Add(Lobservaciones)
         Controls.Add(TBObservaciones)
+        FormBorderStyle = FormBorderStyle.None
         Name = "FormReparacionEquipo"
         Text = "FormReparacionEquipo"
         ResumeLayout(False)
@@ -72,6 +91,7 @@ Partial Class FormReparacionEquipo
     End Sub
 
     Friend WithEvents TBObservaciones As TextBox
-    Friend WithEvents Lobservaciones As Label
     Friend WithEvents BCargarObservacion As Button
+    Friend WithEvents LObservaciones As Label
+    Friend WithEvents PBordeSuperior As Panel
 End Class

@@ -32,12 +32,11 @@ Partial Class modelo_menu_user_tecnico
         PFondoPrincipal = New Panel()
         PMenuSuperior = New Panel()
         IBMinimizar = New FontAwesome.Sharp.IconButton()
-        IBMaximizar = New FontAwesome.Sharp.IconButton()
         IBSesion = New FontAwesome.Sharp.IconButton()
         IBCerrar = New FontAwesome.Sharp.IconButton()
         MenuPerfil = New ContextMenuStrip(components)
-        TSMCerrarSesion = New ToolStripMenuItem()
         TSMMiPerfil = New ToolStripMenuItem()
+        TSMCerrarSesion = New ToolStripMenuItem()
         PMenuIzquierdo.SuspendLayout()
         CType(PBIconoEmpresa, ComponentModel.ISupportInitialize).BeginInit()
         PMenuSuperior.SuspendLayout()
@@ -148,7 +147,6 @@ Partial Class modelo_menu_user_tecnico
         ' 
         PMenuSuperior.BackColor = Color.FromArgb(CByte(26), CByte(25), CByte(72))
         PMenuSuperior.Controls.Add(IBMinimizar)
-        PMenuSuperior.Controls.Add(IBMaximizar)
         PMenuSuperior.Controls.Add(IBSesion)
         PMenuSuperior.Controls.Add(IBCerrar)
         PMenuSuperior.Dock = DockStyle.Top
@@ -171,31 +169,11 @@ Partial Class modelo_menu_user_tecnico
         IBMinimizar.IconColor = Color.Gray
         IBMinimizar.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBMinimizar.IconSize = 20
-        IBMinimizar.Location = New Point(869, 3)
+        IBMinimizar.Location = New Point(897, 0)
         IBMinimizar.Name = "IBMinimizar"
         IBMinimizar.Size = New Size(22, 23)
         IBMinimizar.TabIndex = 15
         IBMinimizar.UseVisualStyleBackColor = False
-        ' 
-        ' IBMaximizar
-        ' 
-        IBMaximizar.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        IBMaximizar.BackColor = Color.Transparent
-        IBMaximizar.FlatAppearance.BorderSize = 0
-        IBMaximizar.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        IBMaximizar.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        IBMaximizar.FlatStyle = FlatStyle.Flat
-        IBMaximizar.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        IBMaximizar.ForeColor = Color.White
-        IBMaximizar.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize
-        IBMaximizar.IconColor = Color.Gray
-        IBMaximizar.IconFont = FontAwesome.Sharp.IconFont.Auto
-        IBMaximizar.IconSize = 20
-        IBMaximizar.Location = New Point(897, 3)
-        IBMaximizar.Name = "IBMaximizar"
-        IBMaximizar.Size = New Size(22, 23)
-        IBMaximizar.TabIndex = 14
-        IBMaximizar.UseVisualStyleBackColor = False
         ' 
         ' IBSesion
         ' 
@@ -245,7 +223,14 @@ Partial Class modelo_menu_user_tecnico
         MenuPerfil.Items.AddRange(New ToolStripItem() {TSMMiPerfil, TSMCerrarSesion})
         MenuPerfil.Name = "ContextMenuStrip1"
         MenuPerfil.RenderMode = ToolStripRenderMode.System
-        MenuPerfil.Size = New Size(211, 85)
+        MenuPerfil.Size = New Size(168, 57)
+        ' 
+        ' TSMMiPerfil
+        ' 
+        TSMMiPerfil.ForeColor = Color.White
+        TSMMiPerfil.Name = "TSMMiPerfil"
+        TSMMiPerfil.Size = New Size(167, 24)
+        TSMMiPerfil.Text = "Mi Perfil"
         ' 
         ' TSMCerrarSesion
         ' 
@@ -257,13 +242,6 @@ Partial Class modelo_menu_user_tecnico
         TSMCerrarSesion.Name = "TSMCerrarSesion"
         TSMCerrarSesion.Size = New Size(160, 29)
         TSMCerrarSesion.Text = "Cerrar sesión"
-        ' 
-        ' TSMMiPerfil
-        ' 
-        TSMMiPerfil.ForeColor = Color.White
-        TSMMiPerfil.Name = "TSMMiPerfil"
-        TSMMiPerfil.Size = New Size(210, 24)
-        TSMMiPerfil.Text = "Mi Perfil"
         ' 
         ' modelo_menu_user_tecnico
         ' 
@@ -290,7 +268,6 @@ Partial Class modelo_menu_user_tecnico
     Friend WithEvents PBIconoEmpresa As PictureBox
     Friend WithEvents IBCerrar As FontAwesome.Sharp.IconButton
     Friend WithEvents IBMinimizar As FontAwesome.Sharp.IconButton
-    Friend WithEvents IBMaximizar As FontAwesome.Sharp.IconButton
     Friend WithEvents LGestionServicTec As Label
     Friend WithEvents LGST As Label
     Friend WithEvents IBSesion As FontAwesome.Sharp.IconButton

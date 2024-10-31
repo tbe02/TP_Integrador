@@ -33,7 +33,7 @@ Partial Class FormAgregarEquipo
         TBObservaciones = New TextBox()
         TBRazonIngreso = New TextBox()
         TBNroSerie = New TextBox()
-        LObservaciones = New Label()
+
         LRazonIngreso = New Label()
         LModelo = New Label()
         LMarca = New Label()

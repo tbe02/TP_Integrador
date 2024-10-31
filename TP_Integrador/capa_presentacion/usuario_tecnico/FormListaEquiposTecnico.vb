@@ -18,14 +18,11 @@
     End Sub
 
     Private Sub ListarEquipos()
-<<<<<<< HEAD
-        For Each equipo In _controladorEquipos.ObtenerTodos()
-            DGVListaEquipos.Rows.Add(equipo.Cliente.Nombre, equipo.TipoEquipo.Nombre, equipo.NumeroSerie, equipo.Marca.nombre, equipo.Modelo.nombre, equipo.Enciende, equipo.Estado, equipo.Baja)
-=======
-        For Each equipo In equipos.ObtenerTodos()
+
+        For Each equipo In  _controladorEquipos.ObtenerTodos()
             Dim descripcionEstado As String = Equipos.ObtenerDescripcionEstado(equipo.Estado)
             DGVListaEquipos.Rows.Add(equipo.Cliente.Nombre, equipo.TipoEquipo.Nombre, equipo.NumeroSerie, equipo.Marca.nombre, equipo.Modelo.nombre, equipo.Enciende, descripcionEstado, equipo.Baja)
->>>>>>> 7b4b34d50f7564453474884ce874c57ec423cc18
+
         Next
     End Sub
 

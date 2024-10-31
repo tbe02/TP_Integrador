@@ -22,38 +22,21 @@ Partial Class FormCargarPresupuesto
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        LDetalles = New Label()
-        LMonto = New Label()
         TBDetalles = New TextBox()
         TBMonto = New TextBox()
         BCargarPresupuesto = New Button()
+        LMonto = New Label()
+        LDetalles = New Label()
+        PBordeSuperior = New Panel()
         SuspendLayout()
-        ' 
-        ' LDetalles
-        ' 
-        LDetalles.AutoSize = True
-        LDetalles.Location = New Point(74, 59)
-        LDetalles.Name = "LDetalles"
-        LDetalles.Size = New Size(63, 20)
-        LDetalles.TabIndex = 0
-        LDetalles.Text = "Detalles"
-        ' 
-        ' LMonto
-        ' 
-        LMonto.AutoSize = True
-        LMonto.Location = New Point(74, 415)
-        LMonto.Name = "LMonto"
-        LMonto.Size = New Size(53, 20)
-        LMonto.TabIndex = 1
-        LMonto.Text = "Monto"
         ' 
         ' TBDetalles
         ' 
-        TBDetalles.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        TBDetalles.BackColor = Color.FromArgb(CByte(90), CByte(90), CByte(90))
         TBDetalles.BorderStyle = BorderStyle.None
         TBDetalles.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TBDetalles.ForeColor = Color.Silver
-        TBDetalles.Location = New Point(197, 59)
+        TBDetalles.ForeColor = Color.White
+        TBDetalles.Location = New Point(235, 92)
         TBDetalles.Multiline = True
         TBDetalles.Name = "TBDetalles"
         TBDetalles.Size = New Size(597, 323)
@@ -61,11 +44,11 @@ Partial Class FormCargarPresupuesto
         ' 
         ' TBMonto
         ' 
-        TBMonto.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        TBMonto.BackColor = Color.FromArgb(CByte(90), CByte(90), CByte(90))
         TBMonto.BorderStyle = BorderStyle.None
         TBMonto.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TBMonto.ForeColor = Color.Silver
-        TBMonto.Location = New Point(197, 413)
+        TBMonto.ForeColor = Color.White
+        TBMonto.Location = New Point(235, 446)
         TBMonto.Multiline = True
         TBMonto.Name = "TBMonto"
         TBMonto.Size = New Size(248, 33)
@@ -73,32 +56,71 @@ Partial Class FormCargarPresupuesto
         ' 
         ' BCargarPresupuesto
         ' 
-        BCargarPresupuesto.Location = New Point(436, 494)
+        BCargarPresupuesto.BackColor = Color.Black
+        BCargarPresupuesto.FlatAppearance.BorderSize = 0
+        BCargarPresupuesto.FlatStyle = FlatStyle.Flat
+        BCargarPresupuesto.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BCargarPresupuesto.ForeColor = Color.White
+        BCargarPresupuesto.Location = New Point(425, 520)
+        BCargarPresupuesto.Margin = New Padding(2, 3, 2, 3)
         BCargarPresupuesto.Name = "BCargarPresupuesto"
-        BCargarPresupuesto.Size = New Size(181, 29)
+        BCargarPresupuesto.Size = New Size(197, 37)
         BCargarPresupuesto.TabIndex = 42
         BCargarPresupuesto.Text = "Cargar presupuesto"
-        BCargarPresupuesto.UseVisualStyleBackColor = True
+        BCargarPresupuesto.UseVisualStyleBackColor = False
+        ' 
+        ' LMonto
+        ' 
+        LMonto.AutoSize = True
+        LMonto.Font = New Font("Arial Rounded MT Bold", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LMonto.ForeColor = Color.White
+        LMonto.Location = New Point(112, 446)
+        LMonto.Name = "LMonto"
+        LMonto.Size = New Size(81, 27)
+        LMonto.TabIndex = 43
+        LMonto.Text = "Monto"
+        ' 
+        ' LDetalles
+        ' 
+        LDetalles.AutoSize = True
+        LDetalles.Font = New Font("Arial Rounded MT Bold", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LDetalles.ForeColor = Color.White
+        LDetalles.Location = New Point(90, 92)
+        LDetalles.Name = "LDetalles"
+        LDetalles.Size = New Size(103, 27)
+        LDetalles.TabIndex = 44
+        LDetalles.Text = "Detalles"
+        ' 
+        ' PBordeSuperior
+        ' 
+        PBordeSuperior.BackColor = Color.FromArgb(CByte(60), CByte(60), CByte(60))
+        PBordeSuperior.Location = New Point(1, 1)
+        PBordeSuperior.Name = "PBordeSuperior"
+        PBordeSuperior.Size = New Size(1007, 46)
+        PBordeSuperior.TabIndex = 45
         ' 
         ' FormCargarPresupuesto
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.FromArgb(CByte(75), CByte(75), CByte(75))
         ClientSize = New Size(1007, 594)
+        Controls.Add(PBordeSuperior)
+        Controls.Add(LDetalles)
+        Controls.Add(LMonto)
         Controls.Add(BCargarPresupuesto)
         Controls.Add(TBMonto)
         Controls.Add(TBDetalles)
-        Controls.Add(LMonto)
-        Controls.Add(LDetalles)
+        FormBorderStyle = FormBorderStyle.None
         Name = "FormCargarPresupuesto"
         Text = "FormCargarPresupuesto"
         ResumeLayout(False)
         PerformLayout()
     End Sub
-
-    Friend WithEvents LDetalles As Label
-    Friend WithEvents LMonto As Label
     Friend WithEvents TBDetalles As TextBox
     Friend WithEvents TBMonto As TextBox
     Friend WithEvents BCargarPresupuesto As Button
+    Friend WithEvents LMonto As Label
+    Friend WithEvents LDetalles As Label
+    Friend WithEvents PBordeSuperior As Panel
 End Class

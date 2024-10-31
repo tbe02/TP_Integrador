@@ -356,16 +356,22 @@ Partial Class FormEditarEquipo
         ' 
         ' BEstadoEquipo
         ' 
-        BEstadoEquipo.Location = New Point(166, 637)
+        BEstadoEquipo.BackColor = Color.FromArgb(CByte(128), CByte(128), CByte(255))
+        BEstadoEquipo.FlatAppearance.BorderSize = 0
+        BEstadoEquipo.FlatStyle = FlatStyle.Flat
+        BEstadoEquipo.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BEstadoEquipo.ForeColor = Color.White
+        BEstadoEquipo.Location = New Point(34, 611)
+        BEstadoEquipo.Margin = New Padding(3, 4, 3, 4)
         BEstadoEquipo.Name = "BEstadoEquipo"
-        BEstadoEquipo.Size = New Size(94, 29)
-        BEstadoEquipo.TabIndex = 36
-        BEstadoEquipo.Text = "Estado"
+        BEstadoEquipo.Size = New Size(400, 67)
+        BEstadoEquipo.TabIndex = 42
+        BEstadoEquipo.Text = "Estado equipo"
         BEstadoEquipo.UseVisualStyleBackColor = True
         ' 
         ' FormEditarEquipo
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
         ClientSize = New Size(1105, 943)

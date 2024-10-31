@@ -186,13 +186,6 @@ Public Class modelo_menu_principal
         Me.WindowState = FormWindowState.Minimized
     End Sub
 
-    Private Sub IBMaximizar_Click(sender As Object, e As EventArgs) Handles IBMaximizar.Click
-        If (Me.WindowState = FormWindowState.Normal) Then
-            Me.WindowState = FormWindowState.Maximized
-        Else
-            Me.WindowState = FormWindowState.Normal
-        End If
-    End Sub
 
     Private Sub IBSesion_Click(sender As Object, e As EventArgs) Handles IBSesion.Click
         MenuPerfil.Show(IBSesion, New Point(0, IBSesion.Height))
