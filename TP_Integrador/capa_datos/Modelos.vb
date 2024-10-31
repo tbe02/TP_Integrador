@@ -50,4 +50,29 @@
 
         Return instancia
     End Function
+
+    Public Shared Function agregarModelo(modelo As Modelos.Modelo)
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+
+        Try
+            Dim comando = New SqlCommand("INSERT INTO Modelos (nombre) VALUES (@nombre)", conexion)
+            comando.Parameters.AddWithValue("@nombre", modelo.nombre)
+
+            ' Abre la conexión antes de ejecutar el comando
+            conexion.Open()
+
+            ' Ejecuta el comando
+            comando.ExecuteNonQuery()
+
+            ' Cambia el estado del equipo después de insertar la revisión
+            MessageBox.Show("Modelo agregado correctamente", "Confirmación de agregado de modelo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return True
+        Catch ex As Exception
+            MessageBox.Show("Error al agregar modelo: " & ex.Message)
+            Return False
+        Finally
+            conexion.Close()
+        End Try
+    End Function
+
 End Class

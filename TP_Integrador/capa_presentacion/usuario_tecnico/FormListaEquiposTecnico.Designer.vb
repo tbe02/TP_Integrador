@@ -36,6 +36,7 @@ Partial Class FormListaEquiposTecnico
         LFiltrar = New Label()
         CBFiltro = New ComboBox()
         C_Cliente = New DataGridViewTextBoxColumn()
+        C_DNI = New DataGridViewTextBoxColumn()
         C_TipoEquipo = New DataGridViewTextBoxColumn()
         C_NroSerie = New DataGridViewTextBoxColumn()
         C_Marca = New DataGridViewTextBoxColumn()
@@ -77,7 +78,7 @@ Partial Class FormListaEquiposTecnico
         DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
         DGVListaEquipos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         DGVListaEquipos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DGVListaEquipos.Columns.AddRange(New DataGridViewColumn() {C_Cliente, C_TipoEquipo, C_NroSerie, C_Marca, C_Modelo, C_EquipoEnciende, C_EstadoEquipo, C_Baja, C_InfomacionEquipo, C_Editar})
+        DGVListaEquipos.Columns.AddRange(New DataGridViewColumn() {C_Cliente, C_DNI, C_TipoEquipo, C_NroSerie, C_Marca, C_Modelo, C_EquipoEnciende, C_EstadoEquipo, C_Baja, C_InfomacionEquipo, C_Editar})
         DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         DataGridViewCellStyle4.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
@@ -175,6 +176,13 @@ Partial Class FormListaEquiposTecnico
         C_Cliente.Name = "C_Cliente"
         C_Cliente.ReadOnly = True
         C_Cliente.Resizable = DataGridViewTriState.False
+        ' 
+        ' C_DNI
+        ' 
+        C_DNI.HeaderText = "DNI"
+        C_DNI.MinimumWidth = 6
+        C_DNI.Name = "C_DNI"
+        C_DNI.ReadOnly = True
         ' 
         ' C_TipoEquipo
         ' 
@@ -296,6 +304,7 @@ Partial Class FormListaEquiposTecnico
     Friend WithEvents LFiltrar As Label
     Friend WithEvents CBFiltro As ComboBox
     Friend WithEvents C_Cliente As DataGridViewTextBoxColumn
+    Friend WithEvents C_DNI As DataGridViewTextBoxColumn
     Friend WithEvents C_TipoEquipo As DataGridViewTextBoxColumn
     Friend WithEvents C_NroSerie As DataGridViewTextBoxColumn
     Friend WithEvents C_Marca As DataGridViewTextBoxColumn

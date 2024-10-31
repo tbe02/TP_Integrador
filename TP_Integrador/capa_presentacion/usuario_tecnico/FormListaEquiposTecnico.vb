@@ -9,21 +9,27 @@
     End Sub
 
     Private Sub ListarFiltros()
+        CBFiltro.Items.Add("Activos")
+        CBFiltro.Items.Add("Eliminados")
         CBFiltro.Items.Add("Todos")
-        CBFiltro.Items.Add("Nombre cliente")
-        CBFiltro.Items.Add("Marca")
-        CBFiltro.Items.Add("Nro de Serie")
-        CBFiltro.Items.Add("Enciende")
-        CBFiltro.Items.Add("No enciende")
+    End Sub
+
+    Private Sub RefrescarLista()
+        DGVListaEquipos.Rows.Clear()
+
+        ListarEquipos()
     End Sub
 
     Private Sub ListarEquipos()
+        DGVListaEquipos.Rows.Clear() ' Asegúrate de limpiar filas antes de listar
 
-        For Each equipo In  _controladorEquipos.ObtenerTodos()
+        For Each equipo In _controladorEquipos.ObtenerTodos()
             Dim descripcionEstado As String = Equipos.ObtenerDescripcionEstado(equipo.Estado)
-            DGVListaEquipos.Rows.Add(equipo.Cliente.Nombre, equipo.TipoEquipo.Nombre, equipo.NumeroSerie, equipo.Marca.nombre, equipo.Modelo.nombre, equipo.Enciende, descripcionEstado, equipo.Baja)
-
+            DGVListaEquipos.Rows.Add(equipo.Cliente.Nombre, equipo.Cliente.Dni, equipo.TipoEquipo.Nombre, equipo.NumeroSerie, equipo.Marca.nombre, equipo.Modelo.nombre, equipo.Enciende, descripcionEstado, equipo.Baja)
         Next
+
+        ' Ordena el DataGridView por Nombre Cliente (suponiendo que el nombre del cliente es la primera columna)
+        DGVListaEquipos.Sort(DGVListaEquipos.Columns(0), System.ComponentModel.ListSortDirection.Ascending)
     End Sub
 
     Private Sub AtraparEventosDeBotones(sender As Object, e As DataGridViewCellEventArgs) Handles DGVListaEquipos.CellContentClick
@@ -56,48 +62,84 @@
         End If
     End Sub
 
-    Private Sub FiltrarEquipos(sender As Object, e As EventArgs) Handles IPBBuscarEquipo.Click
-        Dim filtro = CBFiltro.Text
-        Dim busqueda = TBBuscarEquipo.Text
+    Private Sub FiltrarBusqueda()
+        Dim filtro As String = TBBuscarEquipo.Text.Trim()
+        Dim estadoFiltro As String = If(CBFiltro.SelectedItem IsNot Nothing, CBFiltro.SelectedItem.ToString(), "Todos")
 
-        Dim equipos = _controladorEquipos.ObtenerTodos()
-        Dim equiposFiltrados As List(Of Equipos.Equipo)
+        ' Primero, oculta todas las filas
+        For Each r As DataGridViewRow In DGVListaEquipos.Rows
+            r.Visible = False
+        Next
 
-        DGVListaEquipos.Rows.Clear()
+        ' Luego, muestra solo las filas que coinciden con el filtro del ComboBox y la búsqueda
+        For Each r As DataGridViewRow In DGVListaEquipos.Rows
+            Dim estado As String = r.Cells("C_Baja").Value.ToString() ' Asegúrate de que "Baja" es el nombre correcto de la columna
+            Dim mostrar As Boolean = False
 
-        Select Case filtro
-            Case "Nombre cliente"
-                equiposFiltrados = equipos.Where(Function(equipo) equipo.Cliente.Nombre.StartsWith(busqueda)).ToList()
-            Case "Marca"
-                equiposFiltrados = equipos.Where(Function(equipo) equipo.Marca.nombre.StartsWith(busqueda)).ToList()
-            Case "Nro de Serie"
-                equiposFiltrados = equipos.Where(Function(equipo) equipo.NumeroSerie.StartsWith(busqueda)).ToList()
-            Case "Enciende"
-                equiposFiltrados = equipos.Where(Function(equipo) equipo.Enciende = "Si").ToList()
-            Case "No enciende"
-                equiposFiltrados = equipos.Where(Function(equipo) equipo.Enciende = "No").ToList()
-            Case Else
-                equiposFiltrados = equipos
-        End Select
+            ' Filtrar según el ComboBox
+            If estadoFiltro = "Activos" And estado = "No" Then
+                mostrar = True ' Filtrar activos (baja = No)
+            ElseIf estadoFiltro = "Eliminados" And estado = "Si" Then
+                mostrar = True ' Filtrar eliminados (baja = Si)
+            ElseIf estadoFiltro = "Todos" Then
+                mostrar = True ' Mostrar todos los equipos
+            End If
 
-        For Each equipo In equiposFiltrados
-            DGVListaEquipos.Rows.Add(equipo.Cliente.Nombre, equipo.TipoEquipo.Nombre, equipo.NumeroSerie, equipo.Marca.nombre, equipo.Enciende, equipo.Estado)
+            ' Verificar si coincide con la búsqueda
+            If mostrar Then
+                If String.IsNullOrEmpty(filtro) OrElse r.Cells.Cast(Of DataGridViewCell)().Any(Function(c) c.Value IsNot Nothing AndAlso c.Value.ToString().ToUpper().Contains(filtro.ToUpper())) Then
+                    r.Visible = True ' Si cumple con la búsqueda, mostrar la fila
+                End If
+            End If
         Next
     End Sub
 
-    Private Sub ManejarFiltro(sender As Object, e As EventArgs) Handles CBFiltro.SelectedIndexChanged
-        TBBuscarEquipo.Clear()
 
-        Dim filtro = CBFiltro.Text
 
-        If filtro = "Enciende" Or filtro = "No enciende" Then
-            FiltrarEquipos(sender, e)
 
-            Return
+
+    Private Sub IPBBuscarEquipo_Click(sender As Object, e As EventArgs) Handles IPBBuscarEquipo.Click
+        Dim filtro As String = TBBuscarEquipo.Text.Trim()
+        Dim estadoFiltro As String = If(CBFiltro.SelectedItem IsNot Nothing, CBFiltro.SelectedItem.ToString(), "Todos")
+
+        ' Primero, oculta todas las filas
+        For Each r As DataGridViewRow In DGVListaEquipos.Rows
+            r.Visible = False
+        Next
+
+        ' Luego, muestra solo las filas que coinciden con la búsqueda y el estado
+        For Each r As DataGridViewRow In DGVListaEquipos.Rows
+            Dim estado As String = r.Cells("C_Baja").Value.ToString() ' Asegúrate de que "Baja" es el nombre correcto de la columna
+            Dim mostrar As Boolean = False
+
+            ' Filtrar según el ComboBox
+            If estadoFiltro = "Activos" And estado = "No" Then
+                mostrar = True ' Filtrar activos (baja = No)
+            ElseIf estadoFiltro = "Eliminados" And estado = "Si" Then
+                mostrar = True ' Filtrar eliminados (baja = Si)
+            ElseIf estadoFiltro = "Todos" Then
+                mostrar = True ' Mostrar todos los equipos
+            End If
+
+            ' Verificar si coincide con la búsqueda
+            If mostrar Then
+                If String.IsNullOrEmpty(filtro) OrElse r.Cells.Cast(Of DataGridViewCell)().Any(Function(c) c.Value IsNot Nothing AndAlso c.Value.ToString().ToUpper().Contains(filtro.ToUpper())) Then
+                    r.Visible = True ' Si cumple con la búsqueda, mostrar la fila
+                End If
+            End If
+        Next
+    End Sub
+
+
+    Private Sub TBBuscarEquipo_KeyDown(sender As Object, e As KeyEventArgs) Handles TBBuscarEquipo.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            ' Simula un clic en el botón de búsqueda
+            IPBBuscarEquipo_Click(sender, e)
+            e.SuppressKeyPress = True ' Evita el sonido de "beep" al presionar Enter
         End If
+    End Sub
 
-        DGVListaEquipos.Rows.Clear()
-
-        ListarEquipos()
+    Private Sub CBFiltro_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBFiltro.SelectedIndexChanged
+        FiltrarBusqueda()
     End Sub
 End Class

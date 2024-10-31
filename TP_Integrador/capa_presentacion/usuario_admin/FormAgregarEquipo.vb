@@ -88,4 +88,20 @@ Public Class FormAgregarEquipo
 
         MessageBox.Show("Cliente asociado exitosamente", "Asociar cliente", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
+
+    Private Sub IBAgregarMarca_Click(sender As Object, e As EventArgs) Handles IBAgregarMarca.Click
+        Dim form As New FormAgregarMarca
+
+        AddHandler form.FormClosed, AddressOf ListarMarcas
+
+        form.Show()
+    End Sub
+
+    Private Sub IBAgregarModelo_Click(sender As Object, e As EventArgs) Handles IBAgregarModelo.Click
+        Dim form As New FormAgregarModelo
+
+        AddHandler form.FormClosed, AddressOf ListarModelos
+
+        form.Show()
+    End Sub
 End Class

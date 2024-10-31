@@ -180,6 +180,7 @@ Public Class Equipos
         Dim comando = New SqlCommand("
     SELECT 
         e.*, 
+        c.dni AS ClienteDni,
         c.nombres AS ClienteNombre, 
         m.nombre AS ModeloNombre, 
         t.nombre AS TipoEquipoNombre, 
@@ -205,7 +206,7 @@ Public Class Equipos
                     While lector.Read()
                         Dim equipo As New Equipo() With {
                         .IDEquipo = lector("idEquipo").ToString(),
-                        .Cliente = New Cliente() With {.ID = lector("idCliente").ToString(), .Nombre = lector("ClienteNombre").ToString()},
+                        .Cliente = New Cliente() With {.ID = lector("idCliente").ToString(), .Nombre = lector("ClienteNombre").ToString(), .Dni = lector("ClienteDni").ToString()},
                         .TipoEquipo = New TipoDeEquipo() With {.IdTipoEquipo = lector("idTipoDeEquipo").ToString(), .Nombre = lector("TipoEquipoNombre").ToString()},
                         .NumeroSerie = lector("numeroDeSerie").ToString(),
                         .Marca = New Marca() With {.idMarca = lector("idMarca").ToString(), .nombre = lector("MarcaNombre").ToString()},
