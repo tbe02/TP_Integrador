@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class FormAgregarEquipo
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,20 +20,20 @@ Partial Class FormAgregarEquipo
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         PAsociarCliente = New Panel()
+        BAgregarCliente = New Button()
         ComboBAsociarCliente = New ComboBox()
         PBAsociarCliente = New PictureBox()
         LAsociarCliente = New Label()
+        LSiNoEstaRegistrado = New Label()
         PAgregarEquipo = New Panel()
-        ComboBModelo = New ComboBox()
-        ComboBMarca = New ComboBox()
         BAgregarEquipo = New Button()
         TBObservaciones = New TextBox()
         TBRazonIngreso = New TextBox()
         TBNroSerie = New TextBox()
-
+        LObservaciones = New Label()
         LRazonIngreso = New Label()
         LModelo = New Label()
         LMarca = New Label()
@@ -43,6 +43,8 @@ Partial Class FormAgregarEquipo
         LTipoEquipo = New Label()
         PBAgregarEquipo = New PictureBox()
         LAgregarEquipo = New Label()
+        ComboBMarca = New ComboBox()
+        ComboBModelo = New ComboBox()
         PAsociarCliente.SuspendLayout()
         CType(PBAsociarCliente, ComponentModel.ISupportInitialize).BeginInit()
         PAgregarEquipo.SuspendLayout()
@@ -52,14 +54,31 @@ Partial Class FormAgregarEquipo
         ' PAsociarCliente
         ' 
         PAsociarCliente.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        PAsociarCliente.Controls.Add(BAgregarCliente)
         PAsociarCliente.Controls.Add(ComboBAsociarCliente)
         PAsociarCliente.Controls.Add(PBAsociarCliente)
         PAsociarCliente.Controls.Add(LAsociarCliente)
+        PAsociarCliente.Controls.Add(LSiNoEstaRegistrado)
         PAsociarCliente.Location = New Point(14, 7)
         PAsociarCliente.Margin = New Padding(3, 4, 3, 4)
         PAsociarCliente.Name = "PAsociarCliente"
-        PAsociarCliente.Size = New Size(410, 300)
+        PAsociarCliente.Size = New Size(410, 428)
         PAsociarCliente.TabIndex = 33
+        ' 
+        ' BAgregarCliente
+        ' 
+        BAgregarCliente.BackColor = Color.FromArgb(CByte(128), CByte(128), CByte(255))
+        BAgregarCliente.FlatAppearance.BorderSize = 0
+        BAgregarCliente.FlatStyle = FlatStyle.Flat
+        BAgregarCliente.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BAgregarCliente.ForeColor = Color.White
+        BAgregarCliente.Location = New Point(219, 292)
+        BAgregarCliente.Margin = New Padding(3, 4, 3, 4)
+        BAgregarCliente.Name = "BAgregarCliente"
+        BAgregarCliente.Size = New Size(178, 39)
+        BAgregarCliente.TabIndex = 4
+        BAgregarCliente.Text = "Agregar cliente"
+        BAgregarCliente.UseVisualStyleBackColor = True
         ' 
         ' ComboBAsociarCliente
         ' 
@@ -88,13 +107,24 @@ Partial Class FormAgregarEquipo
         ' 
         LAsociarCliente.AutoSize = True
         LAsociarCliente.BackColor = Color.Transparent
-        LAsociarCliente.Font = New Font("Bahnschrift Condensed", 24F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LAsociarCliente.Font = New Font("Bahnschrift Condensed", 24.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LAsociarCliente.ForeColor = Color.White
         LAsociarCliente.Location = New Point(138, 48)
         LAsociarCliente.Name = "LAsociarCliente"
         LAsociarCliente.Size = New Size(245, 48)
         LAsociarCliente.TabIndex = 11
         LAsociarCliente.Text = "1. Asociar cliente"
+        ' 
+        ' LSiNoEstaRegistrado
+        ' 
+        LSiNoEstaRegistrado.AutoSize = True
+        LSiNoEstaRegistrado.Font = New Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LSiNoEstaRegistrado.ForeColor = Color.Silver
+        LSiNoEstaRegistrado.Location = New Point(38, 304)
+        LSiNoEstaRegistrado.Name = "LSiNoEstaRegistrado"
+        LSiNoEstaRegistrado.Size = New Size(162, 20)
+        LSiNoEstaRegistrado.TabIndex = 13
+        LSiNoEstaRegistrado.Text = "si no esta registrado"
         ' 
         ' PAgregarEquipo
         ' 
@@ -121,38 +151,12 @@ Partial Class FormAgregarEquipo
         PAgregarEquipo.Size = New Size(614, 859)
         PAgregarEquipo.TabIndex = 32
         ' 
-        ' ComboBModelo
-        ' 
-        ComboBModelo.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
-        ComboBModelo.FlatStyle = FlatStyle.Flat
-        ComboBModelo.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        ComboBModelo.ForeColor = Color.Silver
-        ComboBModelo.FormattingEnabled = True
-        ComboBModelo.Location = New Point(168, 320)
-        ComboBModelo.Margin = New Padding(3, 4, 3, 4)
-        ComboBModelo.Name = "ComboBModelo"
-        ComboBModelo.Size = New Size(394, 30)
-        ComboBModelo.TabIndex = 41
-        ' 
-        ' ComboBMarca
-        ' 
-        ComboBMarca.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
-        ComboBMarca.FlatStyle = FlatStyle.Flat
-        ComboBMarca.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        ComboBMarca.ForeColor = Color.Silver
-        ComboBMarca.FormattingEnabled = True
-        ComboBMarca.Location = New Point(168, 270)
-        ComboBMarca.Margin = New Padding(3, 4, 3, 4)
-        ComboBMarca.Name = "ComboBMarca"
-        ComboBMarca.Size = New Size(394, 30)
-        ComboBMarca.TabIndex = 40
-        ' 
         ' BAgregarEquipo
         ' 
         BAgregarEquipo.BackColor = Color.FromArgb(CByte(128), CByte(128), CByte(255))
         BAgregarEquipo.FlatAppearance.BorderSize = 0
         BAgregarEquipo.FlatStyle = FlatStyle.Flat
-        BAgregarEquipo.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BAgregarEquipo.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BAgregarEquipo.ForeColor = Color.White
         BAgregarEquipo.Location = New Point(86, 764)
         BAgregarEquipo.Margin = New Padding(3, 4, 3, 4)
@@ -303,7 +307,7 @@ Partial Class FormAgregarEquipo
         ' 
         LAgregarEquipo.AutoSize = True
         LAgregarEquipo.BackColor = Color.Transparent
-        LAgregarEquipo.Font = New Font("Bahnschrift Condensed", 24F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LAgregarEquipo.Font = New Font("Bahnschrift Condensed", 24.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LAgregarEquipo.ForeColor = Color.White
         LAgregarEquipo.Location = New Point(177, 48)
         LAgregarEquipo.Name = "LAgregarEquipo"
@@ -311,9 +315,35 @@ Partial Class FormAgregarEquipo
         LAgregarEquipo.TabIndex = 16
         LAgregarEquipo.Text = "2. Agregar equipo"
         ' 
+        ' ComboBMarca
+        ' 
+        ComboBMarca.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        ComboBMarca.FlatStyle = FlatStyle.Flat
+        ComboBMarca.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ComboBMarca.ForeColor = Color.Silver
+        ComboBMarca.FormattingEnabled = True
+        ComboBMarca.Location = New Point(168, 270)
+        ComboBMarca.Margin = New Padding(3, 4, 3, 4)
+        ComboBMarca.Name = "ComboBMarca"
+        ComboBMarca.Size = New Size(394, 30)
+        ComboBMarca.TabIndex = 40
+        ' 
+        ' ComboBModelo
+        ' 
+        ComboBModelo.BackColor = Color.FromArgb(CByte(80), CByte(96), CByte(130))
+        ComboBModelo.FlatStyle = FlatStyle.Flat
+        ComboBModelo.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        ComboBModelo.ForeColor = Color.Silver
+        ComboBModelo.FormattingEnabled = True
+        ComboBModelo.Location = New Point(168, 320)
+        ComboBModelo.Margin = New Padding(3, 4, 3, 4)
+        ComboBModelo.Name = "ComboBModelo"
+        ComboBModelo.Size = New Size(394, 30)
+        ComboBModelo.TabIndex = 41
+        ' 
         ' FormAgregarEquipo
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
         ClientSize = New Size(1087, 877)
@@ -332,9 +362,11 @@ Partial Class FormAgregarEquipo
     End Sub
 
     Friend WithEvents PAsociarCliente As Panel
+    Friend WithEvents BAgregarCliente As Button
     Friend WithEvents ComboBAsociarCliente As ComboBox
     Friend WithEvents PBAsociarCliente As PictureBox
     Friend WithEvents LAsociarCliente As Label
+    Friend WithEvents LSiNoEstaRegistrado As Label
     Friend WithEvents PAgregarEquipo As Panel
     Friend WithEvents BAgregarEquipo As Button
     Friend WithEvents TBObservaciones As TextBox
