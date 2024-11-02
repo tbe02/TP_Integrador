@@ -102,6 +102,7 @@ Public Class Presupuestos
         Dim presupuesto As Presupuestos.Presupuesto = Presupuestos.obtenerPresupuestoPorID(IDEquipo)
         reparacion.Presupuesto = presupuesto
         reparacion.observaciones = "El presupuesto del equipo no fue aprobado, por ende no se realizó ninguna reparación"
+        reparacion.fechaDeFinalizacion = DateTime.Now
 
         Try
             Dim comando As New SqlCommand("UPDATE Presupuestos SET aprobado = 0 WHERE idRevision = @idRevision", conexion)
@@ -149,6 +150,53 @@ Public Class Presupuestos
         Finally
             conexion.Close()
         End Try
+    End Function
+
+    Public Shared Function obtenerPresupuestoParaInforme(IDEquipo As Integer) As Presupuesto
+        Dim presupuesto As New Presupuesto()
+
+
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+
+        Try
+            Dim comando As New SqlCommand("SELECT * FROM Presupuestos WHERE idRevision = @idRevision", conexion)
+            comando.Parameters.AddWithValue("@idRevision", IDEquipo)
+
+
+            conexion.Open()
+            Dim reader As SqlDataReader = comando.ExecuteReader()
+
+            If reader.Read() Then
+                presupuesto.Revision = New Revision()
+                presupuesto.Revision.Equipo = New Equipos.Equipo()
+
+                presupuesto.IdPresupuesto = reader("idPresupuesto")
+                presupuesto.Revision.Equipo.IDEquipo = reader("idRevision")
+                presupuesto.Aprobado = reader("aprobado")
+
+
+
+                If (presupuesto.Aprobado = False) Then
+                    presupuesto.Detalles = "El presupuesto del equipo no fue aprobado"
+                    presupuesto.Monto = 0
+                End If
+
+                If (presupuesto.Aprobado = True) Then
+                    presupuesto.Detalles = reader("detalles").ToString()
+                    presupuesto.Monto = reader("monto")
+                End If
+            End If
+
+
+        Catch ex As Exception
+            MessageBox.Show("Error al traer el presupuesto: " & ex.Message)
+
+        Finally
+            conexion.Close()
+        End Try
+
+        Return presupuesto
+
     End Function
 
 End Class

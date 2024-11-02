@@ -28,8 +28,7 @@
             DGVListaEquipos.Rows.Add(equipo.Cliente.Nombre, equipo.Cliente.Dni, equipo.TipoEquipo.Nombre, equipo.NumeroSerie, equipo.Marca.nombre, equipo.Modelo.nombre, equipo.Enciende, descripcionEstado, equipo.Baja)
         Next
 
-        ' Ordena el DataGridView por Nombre Cliente (suponiendo que el nombre del cliente es la primera columna)
-        DGVListaEquipos.Sort(DGVListaEquipos.Columns(0), System.ComponentModel.ListSortDirection.Ascending)
+
     End Sub
 
     Private Sub AtraparEventosDeBotones(sender As Object, e As DataGridViewCellEventArgs) Handles DGVListaEquipos.CellContentClick

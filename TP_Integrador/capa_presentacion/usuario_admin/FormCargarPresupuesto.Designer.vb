@@ -74,11 +74,11 @@ Partial Class FormCargarPresupuesto
         LMonto.AutoSize = True
         LMonto.Font = New Font("Arial Rounded MT Bold", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LMonto.ForeColor = Color.White
-        LMonto.Location = New Point(112, 446)
+        LMonto.Location = New Point(58, 446)
         LMonto.Name = "LMonto"
-        LMonto.Size = New Size(81, 27)
+        LMonto.Size = New Size(137, 27)
         LMonto.TabIndex = 43
-        LMonto.Text = "Monto"
+        LMonto.Text = "Monto total"
         ' 
         ' LDetalles
         ' 
@@ -87,9 +87,9 @@ Partial Class FormCargarPresupuesto
         LDetalles.ForeColor = Color.White
         LDetalles.Location = New Point(90, 92)
         LDetalles.Name = "LDetalles"
-        LDetalles.Size = New Size(103, 27)
+        LDetalles.Size = New Size(105, 27)
         LDetalles.TabIndex = 44
-        LDetalles.Text = "Detalles"
+        LDetalles.Text = "Subtotal"
         ' 
         ' PBordeSuperior
         ' 

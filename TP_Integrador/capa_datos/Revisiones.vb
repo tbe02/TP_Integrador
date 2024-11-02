@@ -88,7 +88,42 @@ Public Class Revisiones
         Return revision
     End Function
 
+    Public Shared Function obtenerRevisionStringPorID(IDEquipo As Integer) As String
 
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+
+        Dim revision As Revision = Nothing
+        Dim observaciones As String = Nothing
+
+        Try
+
+            Dim comando = New SqlCommand("SELECT * FROM Revisiones WHERE idEquipo = @idEquipo", conexion)
+            comando.Parameters.AddWithValue("@idEquipo", IDEquipo)
+
+            conexion.Open()
+            Dim reader As SqlDataReader = comando.ExecuteReader()
+
+            If reader.Read() Then
+                revision = New Revision()
+
+
+                revision.Equipo = New Equipos.Equipo()
+
+                revision.Equipo.IDEquipo = reader("idEquipo")
+                revision.Observaciones = reader("observaciones").ToString()
+                observaciones = revision.Observaciones
+
+            End If
+
+
+        Catch ex As Exception
+            MessageBox.Show("Error al traer la revisión: " & ex.Message)
+        Finally
+            conexion.Close()
+        End Try
+
+        Return observaciones
+    End Function
 
 
 End Class

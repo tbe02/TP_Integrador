@@ -1,4 +1,5 @@
-﻿Imports TP_Integrador.Marcas
+﻿Imports TP_Integrador.Equipos
+Imports TP_Integrador.Marcas
 Imports TP_Integrador.Modelos
 Imports TP_Integrador.TiposDeEquipo
 
@@ -17,6 +18,8 @@ Public Class Equipos
         Public Property Observaciones As String
         Public Property Modelo As Modelo
         Public Property Estado As Integer
+
+        Public Property fechaIngreso As DateTime
 
         Public Property Baja As String
     End Class
@@ -215,7 +218,8 @@ Public Class Equipos
                         .Observaciones = lector("observaciones").ToString(),
                         .Modelo = New Modelo() With {.idModelo = lector("idModelo").ToString(), .nombre = lector("ModeloNombre").ToString()},
                         .Estado = lector("estado").ToString(),
-                        .Baja = lector("baja").ToString()
+                        .Baja = lector("baja").ToString(),
+                        .fechaIngreso = lector("fechaDeIngreso")
                     }
 
                         equipos.Add(equipo)
@@ -307,6 +311,106 @@ Public Class Equipos
 
         Return False
     End Function
+
+    Public Function obtenerCliente(IDEquipo As Integer) As Cliente
+        Dim cliente As New Cliente()
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+
+        Try
+
+            Dim comando As New SqlCommand("SELECT clientes.* FROM Equipos JOIN clientes ON clientes.idcliente = Equipos.idCliente WHERE Equipos.IDEquipo = @idEquipo", conexion)
+            comando.Parameters.AddWithValue("@idEquipo", IDEquipo)
+
+
+            conexion.Open()
+
+
+            Dim lector As SqlDataReader = comando.ExecuteReader()
+
+            If lector.Read() Then
+
+                cliente.ID = Convert.ToInt32(lector("idCliente"))
+                cliente.Nombre = lector("nombres").ToString()
+                cliente.Apellido = lector("apellidos").ToString()
+                cliente.Telefono = lector("telefono").ToString()
+                cliente.Correo = lector("correo").ToString()
+                cliente.Dni = lector("DNI").ToString()
+
+            End If
+
+            lector.Close()
+
+        Catch ex As Exception
+            MessageBox.Show("Error al obtener el cliente: " & ex.Message)
+        Finally
+            conexion.Close()
+        End Try
+
+
+        Return cliente
+    End Function
+
+    Public Shared Function obtenerEquipo(IDEquipo As Integer) As Equipo
+        Dim equipo As New Equipo()
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+
+        Try
+            Dim comando As New SqlCommand("SELECT * FROM Equipos WHERE Equipos.IDEquipo = @idEquipo", conexion)
+            comando.Parameters.AddWithValue("@idEquipo", IDEquipo)
+
+            conexion.Open()
+
+            Dim lector As SqlDataReader = comando.ExecuteReader()
+
+            If lector.Read() Then
+                equipo.IDEquipo = Convert.ToInt32(lector("idEquipo"))
+
+                ' Inicializa el objeto Cliente
+                Dim cliente As New Cliente()
+                cliente.ID = Convert.ToInt32(lector("idCliente"))
+                equipo.Cliente = cliente
+
+                equipo.NumeroSerie = lector("numeroDeSerie").ToString()
+                equipo.Observaciones = lector("observaciones").ToString()
+                equipo.RazonIngreso = lector("razonDeIngreso").ToString()
+                equipo.Enciende = lector("enciende").ToString()
+                equipo.fechaIngreso = Convert.ToDateTime(lector("fechaDeIngreso"))
+
+                ' Inicializa el objeto TipoEquipo con conexión cerrada
+                Dim tipoEquipo As New TipoDeEquipo()
+                tipoEquipo.IdTipoEquipo = Convert.ToInt32(lector("idTipoDeEquipo"))
+                tipoEquipo.Nombre = ObtenerDescripcionTipoEquipo(tipoEquipo.IdTipoEquipo)
+                equipo.TipoEquipo = tipoEquipo
+
+                ' Inicializa el objeto Marca con conexión cerrada
+                Dim marca As New Marca()
+                marca.idMarca = Convert.ToInt32(lector("idMarca"))
+                marca.nombre = ObtenerDescripcionMarca(marca.idMarca)
+                equipo.Marca = marca
+
+                ' Inicializa el objeto Modelo con conexión cerrada
+                Dim modelo As New Modelo()
+                modelo.idModelo = Convert.ToInt32(lector("idModelo"))
+                modelo.nombre = ObtenerDescripcionModelo(modelo.idModelo)
+                equipo.Modelo = modelo
+
+                equipo.Estado = lector("estado")
+                equipo.Baja = lector("baja")
+            End If
+
+            lector.Close()
+
+        Catch ex As Exception
+            MessageBox.Show("Error al obtener el equipo: " & ex.Message)
+        Finally
+            conexion.Close()
+        End Try
+
+        Return equipo
+    End Function
+
+
+
 
 
 

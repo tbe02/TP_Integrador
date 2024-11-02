@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class FormAgregarModelo
+Partial Class FormDevolverEquipo
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -24,9 +24,9 @@ Partial Class FormAgregarModelo
     Private Sub InitializeComponent()
         PBordeSuperior = New Panel()
         IBCerrar = New FontAwesome.Sharp.IconButton()
-        TBAgregarModelo = New TextBox()
-        LModelo = New Label()
-        BAgregarModelo = New Button()
+        LMetodoPago = New Label()
+        BAgregarMetodoPago = New Button()
+        ComboBMetodosPago = New ComboBox()
         PBordeSuperior.SuspendLayout()
         SuspendLayout()
         ' 
@@ -59,53 +59,54 @@ Partial Class FormAgregarModelo
         IBCerrar.TabIndex = 15
         IBCerrar.UseVisualStyleBackColor = False
         ' 
-        ' TBAgregarModelo
+        ' LMetodoPago
         ' 
-        TBAgregarModelo.BackColor = Color.FromArgb(CByte(75), CByte(75), CByte(75))
-        TBAgregarModelo.ForeColor = Color.White
-        TBAgregarModelo.Location = New Point(182, 59)
-        TBAgregarModelo.Name = "TBAgregarModelo"
-        TBAgregarModelo.Size = New Size(330, 27)
-        TBAgregarModelo.TabIndex = 1
+        LMetodoPago.AutoSize = True
+        LMetodoPago.Font = New Font("Arial Rounded MT Bold", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LMetodoPago.ForeColor = Color.White
+        LMetodoPago.Location = New Point(18, 59)
+        LMetodoPago.Name = "LMetodoPago"
+        LMetodoPago.Size = New Size(158, 27)
+        LMetodoPago.TabIndex = 2
+        LMetodoPago.Text = "Metodo Pago"
         ' 
-        ' LModelo
+        ' BAgregarMetodoPago
         ' 
-        LModelo.AutoSize = True
-        LModelo.Font = New Font("Arial Rounded MT Bold", 13.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        LModelo.ForeColor = Color.White
-        LModelo.Location = New Point(50, 59)
-        LModelo.Name = "LModelo"
-        LModelo.Size = New Size(93, 27)
-        LModelo.TabIndex = 2
-        LModelo.Text = "Modelo"
+        BAgregarMetodoPago.BackColor = Color.Black
+        BAgregarMetodoPago.FlatAppearance.BorderSize = 0
+        BAgregarMetodoPago.FlatStyle = FlatStyle.Flat
+        BAgregarMetodoPago.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BAgregarMetodoPago.ForeColor = Color.White
+        BAgregarMetodoPago.Location = New Point(245, 120)
+        BAgregarMetodoPago.Margin = New Padding(3, 4, 3, 4)
+        BAgregarMetodoPago.Name = "BAgregarMetodoPago"
+        BAgregarMetodoPago.Size = New Size(212, 39)
+        BAgregarMetodoPago.TabIndex = 5
+        BAgregarMetodoPago.Text = "Agregar metodo pago"
+        BAgregarMetodoPago.UseVisualStyleBackColor = False
         ' 
-        ' BAgregarModelo
+        ' ComboBMetodosPago
         ' 
-        BAgregarModelo.BackColor = Color.Black
-        BAgregarModelo.FlatAppearance.BorderSize = 0
-        BAgregarModelo.FlatStyle = FlatStyle.Flat
-        BAgregarModelo.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        BAgregarModelo.ForeColor = Color.White
-        BAgregarModelo.Location = New Point(245, 120)
-        BAgregarModelo.Margin = New Padding(3, 4, 3, 4)
-        BAgregarModelo.Name = "BAgregarModelo"
-        BAgregarModelo.Size = New Size(178, 39)
-        BAgregarModelo.TabIndex = 5
-        BAgregarModelo.Text = "Agregar modelo"
-        BAgregarModelo.UseVisualStyleBackColor = False
+        ComboBMetodosPago.BackColor = Color.FromArgb(CByte(75), CByte(75), CByte(75))
+        ComboBMetodosPago.ForeColor = Color.White
+        ComboBMetodosPago.FormattingEnabled = True
+        ComboBMetodosPago.Location = New Point(204, 62)
+        ComboBMetodosPago.Name = "ComboBMetodosPago"
+        ComboBMetodosPago.Size = New Size(302, 28)
+        ComboBMetodosPago.TabIndex = 6
         ' 
-        ' FormAgregarModelo
+        ' FormDevolverEquipo
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(90), CByte(90), CByte(90))
         ClientSize = New Size(594, 187)
-        Controls.Add(BAgregarModelo)
-        Controls.Add(LModelo)
-        Controls.Add(TBAgregarModelo)
+        Controls.Add(ComboBMetodosPago)
+        Controls.Add(BAgregarMetodoPago)
+        Controls.Add(LMetodoPago)
         Controls.Add(PBordeSuperior)
         FormBorderStyle = FormBorderStyle.None
-        Name = "FormAgregarModelo"
+        Name = "FormDevolverEquipo"
         StartPosition = FormStartPosition.CenterScreen
         Text = "FormAgregarMarca"
         PBordeSuperior.ResumeLayout(False)
@@ -114,8 +115,8 @@ Partial Class FormAgregarModelo
     End Sub
 
     Friend WithEvents PBordeSuperior As Panel
-    Friend WithEvents TBAgregarModelo As TextBox
-    Friend WithEvents LModelo As Label
-    Friend WithEvents BAgregarModelo As Button
+    Friend WithEvents LMetodoPago As Label
+    Friend WithEvents BAgregarMetodoPago As Button
     Friend WithEvents IBCerrar As FontAwesome.Sharp.IconButton
+    Friend WithEvents ComboBMetodosPago As ComboBox
 End Class

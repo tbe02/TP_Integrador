@@ -40,6 +40,9 @@ Partial Class FormEstadosEquiposAdmin
         LEstadosEquipo = New Label()
         PBordeSuperior = New Panel()
         BCerrar = New Button()
+        BGenerarIngreso = New Button()
+        BGenerarInforme = New Button()
+        BFactura = New Button()
         SuspendLayout()
         ' 
         ' ProgressBarEstadosEquipos
@@ -264,12 +267,60 @@ Partial Class FormEstadosEquiposAdmin
         BCerrar.Text = "Cerrar"
         BCerrar.UseVisualStyleBackColor = False
         ' 
+        ' BGenerarIngreso
+        ' 
+        BGenerarIngreso.BackColor = Color.FromArgb(CByte(128), CByte(128), CByte(255))
+        BGenerarIngreso.FlatAppearance.BorderSize = 0
+        BGenerarIngreso.FlatStyle = FlatStyle.Flat
+        BGenerarIngreso.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BGenerarIngreso.ForeColor = Color.White
+        BGenerarIngreso.Location = New Point(68, 418)
+        BGenerarIngreso.Margin = New Padding(2, 3, 2, 3)
+        BGenerarIngreso.Name = "BGenerarIngreso"
+        BGenerarIngreso.Size = New Size(179, 37)
+        BGenerarIngreso.TabIndex = 42
+        BGenerarIngreso.Text = "Constancia de ingreso"
+        BGenerarIngreso.UseVisualStyleBackColor = False
+        ' 
+        ' BGenerarInforme
+        ' 
+        BGenerarInforme.BackColor = Color.FromArgb(CByte(128), CByte(128), CByte(255))
+        BGenerarInforme.FlatAppearance.BorderSize = 0
+        BGenerarInforme.FlatStyle = FlatStyle.Flat
+        BGenerarInforme.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BGenerarInforme.ForeColor = Color.White
+        BGenerarInforme.Location = New Point(271, 418)
+        BGenerarInforme.Margin = New Padding(2, 3, 2, 3)
+        BGenerarInforme.Name = "BGenerarInforme"
+        BGenerarInforme.Size = New Size(179, 37)
+        BGenerarInforme.TabIndex = 43
+        BGenerarInforme.Text = "Informe de equipo"
+        BGenerarInforme.UseVisualStyleBackColor = False
+        ' 
+        ' BFactura
+        ' 
+        BFactura.BackColor = Color.FromArgb(CByte(128), CByte(128), CByte(255))
+        BFactura.FlatAppearance.BorderSize = 0
+        BFactura.FlatStyle = FlatStyle.Flat
+        BFactura.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BFactura.ForeColor = Color.White
+        BFactura.Location = New Point(478, 418)
+        BFactura.Margin = New Padding(2, 3, 2, 3)
+        BFactura.Name = "BFactura"
+        BFactura.Size = New Size(179, 37)
+        BFactura.TabIndex = 44
+        BFactura.Text = "Factura"
+        BFactura.UseVisualStyleBackColor = False
+        ' 
         ' FormEstadosEquiposAdmin
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
         ClientSize = New Size(1340, 639)
+        Controls.Add(BFactura)
+        Controls.Add(BGenerarInforme)
+        Controls.Add(BGenerarIngreso)
         Controls.Add(BCerrar)
         Controls.Add(PBordeSuperior)
         Controls.Add(LEstadosEquipo)
@@ -310,4 +361,7 @@ Partial Class FormEstadosEquiposAdmin
     Friend WithEvents LEstadosEquipo As Label
     Friend WithEvents PBordeSuperior As Panel
     Friend WithEvents BCerrar As Button
+    Friend WithEvents BGenerarIngreso As Button
+    Friend WithEvents BGenerarInforme As Button
+    Friend WithEvents BFactura As Button
 End Class

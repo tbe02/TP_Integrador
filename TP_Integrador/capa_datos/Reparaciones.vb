@@ -7,6 +7,7 @@ Public Class Reparaciones
         Public Property Presupuesto As Presupuesto
         Public Property reparado As Boolean?
         Public Property observaciones As String
+        Public Property fechaDeFinalizacion As DateTime
 
     End Class
 
@@ -26,6 +27,8 @@ Public Class Reparaciones
             End If
 
             comando.Parameters.AddWithValue("@observaciones", reparacion.observaciones)
+
+            comando.Parameters.AddWithValue("@fechaDeFinalizacion", DateTime.Now)
 
             conexion.Open()
 
@@ -107,30 +110,81 @@ Public Class Reparaciones
         Return reparacion
     End Function
 
-    Public Shared Function reparacionAprobada(IDEquipo As Integer) As Boolean
+    Public Shared Function reparacionAprobada(IDEquipo As Integer) As Nullable(Of Boolean)
         Dim conexion = New BaseDeDatos().obtenerConexion()
 
         Try
-            Dim comando = New SqlCommand("SELECT * FROM Reparaciones r JOIN Presupuestos p ON r.idPresupuesto = p.idPresupuesto WHERE p.aprobado = 1 AND p.idRevision = @idEquipo", conexion)
+            Dim comando = New SqlCommand("SELECT r.reparado FROM Reparaciones r JOIN Presupuestos p ON r.idPresupuesto = p.idPresupuesto WHERE p.aprobado = 1 AND p.idRevision = @idEquipo", conexion)
             comando.Parameters.AddWithValue("@idEquipo", IDEquipo)
 
             conexion.Open()
             Dim reader As SqlDataReader = comando.ExecuteReader()
 
             If reader.Read() Then
-                ' Aquí se encontró una reparación aprobada
-                Return True
+                ' Aquí se obtuvo el valor de reparado
+                Dim reparadoValue As Object = reader("reparado")
+                If IsDBNull(reparadoValue) Then
+                    ' Si el valor es null
+                    Return Nothing
+                ElseIf CBool(reparadoValue) Then
+                    ' Si reparado es 1 (True)
+                    Return True
+                Else
+                    ' Si reparado es 0 (False)
+                    Return False
+                End If
             Else
                 ' No se encontró ninguna reparación aprobada
-                Return False
+                Return Nothing
             End If
         Catch ex As Exception
             MessageBox.Show("Error al obtener la reparación: " & ex.Message)
-            Return False
+            Return Nothing
         Finally
             conexion.Close()
         End Try
     End Function
+
+
+    Public Shared Function devolverReparacion(IDEquipo As Integer) As Reparacion
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+        Dim reparacion As New Reparacion()
+
+        Try
+            Dim comando = New SqlCommand("SELECT * FROM Reparaciones r JOIN Presupuestos p ON r.idPresupuesto = p.idPresupuesto WHERE p.idRevision = @idEquipo", conexion)
+            comando.Parameters.AddWithValue("@idEquipo", IDEquipo)
+
+            conexion.Open()
+            Dim reader As SqlDataReader = comando.ExecuteReader()
+
+            If reader.Read() Then
+                reparacion.fechaDeFinalizacion = reader("fechaDeFinalizacion")
+                reparacion.observaciones = reader("observaciones")
+                If reader("reparado") Is DBNull.Value Then
+                    reparacion.reparado = Nothing
+
+                Else
+                    If reader("reparado") = True Then
+                        reparacion.reparado = Convert.ToBoolean(reader("reparado"))
+                    Else
+                        reparacion.reparado = Convert.ToBoolean(reader("reparado"))
+                        reparacion.observaciones = reader("observaciones").ToString()
+                    End If
+                    reparacion.Presupuesto = New Presupuesto()
+                    reparacion.Presupuesto.IdPresupuesto = reader("idPresupuesto")
+
+
+                End If
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error al obtener la reparación: " & ex.Message)
+        Finally
+            conexion.Close()
+        End Try
+
+        Return reparacion
+    End Function
+
 
 
 End Class

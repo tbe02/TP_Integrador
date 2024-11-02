@@ -43,4 +43,25 @@
 
         Return instancia
     End Function
+
+    Public Shared Function ObtenerDescripcionTipoEquipo(IDTipoEquipo As Integer) As String
+        Dim descripcion As String = String.Empty
+        Using conexion As SqlConnection = New BaseDeDatos().obtenerConexion()
+            Try
+                conexion.Open()
+                Dim comando As New SqlCommand("SELECT nombre FROM TiposDeEquipo WHERE idTipoDeEquipo = @idTipoEquipo", conexion)
+                comando.Parameters.AddWithValue("@idTipoEquipo", IDTipoEquipo)
+
+                Using lector As SqlDataReader = comando.ExecuteReader()
+                    If lector.Read() Then
+                        descripcion = lector("nombre").ToString()
+                    End If
+                End Using
+            Catch ex As Exception
+                MessageBox.Show("Error al obtener el tipo de equipo: " & ex.Message)
+            End Try
+        End Using
+        Return descripcion
+    End Function
+
 End Class
