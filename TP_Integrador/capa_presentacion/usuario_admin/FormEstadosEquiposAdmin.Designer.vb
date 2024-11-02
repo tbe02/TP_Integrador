@@ -40,6 +40,8 @@ Partial Class FormEstadosEquiposAdmin
         LEstadosEquipo = New Label()
         PBordeSuperior = New Panel()
         BCerrar = New Button()
+        BGenerarIngreso = New Button()
+        BGenerarInforme = New Button()
         SuspendLayout()
         ' 
         ' ProgressBarEstadosEquipos
@@ -264,12 +266,32 @@ Partial Class FormEstadosEquiposAdmin
         BCerrar.Text = "Cerrar"
         BCerrar.UseVisualStyleBackColor = False
         ' 
+        ' BGenerarIngreso
+        ' 
+        BGenerarIngreso.Location = New Point(150, 445)
+        BGenerarIngreso.Name = "BGenerarIngreso"
+        BGenerarIngreso.Size = New Size(94, 29)
+        BGenerarIngreso.TabIndex = 39
+        BGenerarIngreso.Text = "Ingreso"
+        BGenerarIngreso.UseVisualStyleBackColor = True
+        ' 
+        ' BGenerarInforme
+        ' 
+        BGenerarInforme.Location = New Point(311, 452)
+        BGenerarInforme.Name = "BGenerarInforme"
+        BGenerarInforme.Size = New Size(94, 29)
+        BGenerarInforme.TabIndex = 40
+        BGenerarInforme.Text = "Informe"
+        BGenerarInforme.UseVisualStyleBackColor = True
+        ' 
         ' FormEstadosEquiposAdmin
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
         ClientSize = New Size(1340, 639)
+        Controls.Add(BGenerarInforme)
+        Controls.Add(BGenerarIngreso)
         Controls.Add(BCerrar)
         Controls.Add(PBordeSuperior)
         Controls.Add(LEstadosEquipo)
@@ -310,4 +332,6 @@ Partial Class FormEstadosEquiposAdmin
     Friend WithEvents LEstadosEquipo As Label
     Friend WithEvents PBordeSuperior As Panel
     Friend WithEvents BCerrar As Button
+    Friend WithEvents BGenerarIngreso As Button
+    Friend WithEvents BGenerarInforme As Button
 End Class

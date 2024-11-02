@@ -84,7 +84,7 @@ Partial Class FormAgregarModelo
         BAgregarModelo.BackColor = Color.Black
         BAgregarModelo.FlatAppearance.BorderSize = 0
         BAgregarModelo.FlatStyle = FlatStyle.Flat
-        BAgregarModelo.Font = New Font("Microsoft Sans Serif", 12.0F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        BAgregarModelo.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BAgregarModelo.ForeColor = Color.White
         BAgregarModelo.Location = New Point(245, 120)
         BAgregarModelo.Margin = New Padding(3, 4, 3, 4)
@@ -96,7 +96,7 @@ Partial Class FormAgregarModelo
         ' 
         ' FormAgregarModelo
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(90), CByte(90), CByte(90))
         ClientSize = New Size(594, 187)
@@ -106,6 +106,7 @@ Partial Class FormAgregarModelo
         Controls.Add(PBordeSuperior)
         FormBorderStyle = FormBorderStyle.None
         Name = "FormAgregarModelo"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "FormAgregarMarca"
         PBordeSuperior.ResumeLayout(False)
         ResumeLayout(False)

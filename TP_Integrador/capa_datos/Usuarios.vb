@@ -12,6 +12,11 @@ Public Class Usuarios
         Public NombreUsuario As String
         Public Password As String
         Public Tipo As String
+        Public ReadOnly Property Apellido_Nombre As String
+            Get
+                Return $"{Apellido} {Nombre}"
+            End Get
+        End Property
     End Class
 
     Private usuarios As New List(Of Usuario)()

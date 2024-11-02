@@ -239,10 +239,13 @@ Public Class FormEstadosEquiposAdmin
         BInfoRevision.Visible = False
         BInfoPresupuesto.Visible = False
         BInfoReparacion.Visible = False
+        BGenerarIngreso.Visible = False
+        BGenerarInforme.Visible = False
         ' Mostrar solo el botón correspondiente al estado actual
         Select Case estado
             Case 1
                 BRevisarEquipo.Visible = True
+                BGenerarIngreso.Visible = True
             Case 2
                 BFinalizarRevision.Visible = True
             Case 3
@@ -270,6 +273,7 @@ Public Class FormEstadosEquiposAdmin
                 BInfoRevision.Visible = True
                 BInfoPresupuesto.Visible = True
                 BDevolverEquipo.Visible = True
+                BGenerarInforme.Visible = True
                 If Reparaciones.reparacionAprobada(Equipo.IDEquipo) Then
                     BInfoReparacion.Visible = True
                 Else
@@ -297,5 +301,14 @@ Public Class FormEstadosEquiposAdmin
             ReleaseCapture()
             SendMessage(Me.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0)
         End If
+    End Sub
+
+    Private Sub BGenerarInreso_Click(sender As Object, e As EventArgs) Handles BGenerarIngreso.Click
+        PDF.GenerarPDFIngresoEquipo(Equipo)
+
+    End Sub
+
+    Private Sub BGenerarInforme_Click(sender As Object, e As EventArgs) Handles BGenerarInforme.Click
+        PDF.generarPDFInformeEquipo(Equipo)
     End Sub
 End Class

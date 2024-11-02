@@ -75,4 +75,24 @@
         End Try
     End Function
 
+    Public Shared Function ObtenerDescripcionModelo(IDModelo As Integer) As String
+        Dim descripcion As String = String.Empty
+        Using conexion As SqlConnection = New BaseDeDatos().obtenerConexion()
+            Try
+                conexion.Open()
+                Dim comando As New SqlCommand("SELECT nombre FROM Modelos WHERE idModelo = @idModelo", conexion)
+                comando.Parameters.AddWithValue("@idModelo", IDModelo)
+
+                Using lector As SqlDataReader = comando.ExecuteReader()
+                    If lector.Read() Then
+                        descripcion = lector("nombre").ToString()
+                    End If
+                End Using
+            Catch ex As Exception
+                MessageBox.Show("Error al obtener el modelo: " & ex.Message)
+            End Try
+        End Using
+        Return descripcion
+    End Function
+
 End Class
