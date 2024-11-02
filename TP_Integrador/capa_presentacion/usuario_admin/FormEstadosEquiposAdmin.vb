@@ -159,18 +159,20 @@ Public Class FormEstadosEquiposAdmin
     Private Sub BDevolverEquipo_Click(sender As Object, e As EventArgs) Handles BDevolverEquipo.Click
         Dim reparacion As Reparaciones.Reparacion = Reparaciones.obtenerReparacionPorID(Equipo.IDEquipo)
 
-        Dim entrega As New Entregas.Entrega
-        entrega.Reparacion = reparacion
+        If reparacion.reparado Is Nothing OrElse reparacion.reparado = False Then
+            Dim entrega As New Entregas.Entrega
+            entrega.Reparacion = reparacion
+            Entregas.agregarEntrega(entrega, 14)
+            FormClosedHandler(14)
+        Else
+            Dim form As New FormDevolverEquipo(reparacion)
+            AddHandler form.FormClosed, Sub(s, args) FormClosedHandler(14)
+            form.Show()
 
-        Entregas.agregarEntrega(entrega, 14)
+        End If
 
 
-        EstadoActual = 14
-        LEstadosEquipo.Text = Equipos.ObtenerDescripcionEstado(EstadoActual)
-        Application.DoEvents()
-        MostrarBotonPorEstado(EstadoActual)
 
-        TimerEstados.Start()
     End Sub
 
     ' Evento que maneja las acciones del temporizador
@@ -226,6 +228,9 @@ Public Class FormEstadosEquiposAdmin
 
     ' Método para mostrar solo el botón correspondiente al estado
     Private Sub MostrarBotonPorEstado(estado As Integer)
+
+        Dim resultado As Nullable(Of Boolean) = Reparaciones.reparacionAprobada(Equipo.IDEquipo)
+
         ' Ocultar todos los botones
         BRevisarEquipo.Visible = False
         BFinalizarRevision.Visible = False
@@ -241,6 +246,7 @@ Public Class FormEstadosEquiposAdmin
         BInfoReparacion.Visible = False
         BGenerarIngreso.Visible = False
         BGenerarInforme.Visible = False
+        BFactura.Visible = False
         ' Mostrar solo el botón correspondiente al estado actual
         Select Case estado
             Case 1
@@ -248,37 +254,57 @@ Public Class FormEstadosEquiposAdmin
                 BGenerarIngreso.Visible = True
             Case 2
                 BFinalizarRevision.Visible = True
+                BGenerarIngreso.Visible = True
             Case 3
                 BCargarPresupuesto.Visible = True
                 BInfoRevision.Visible = True
+                BGenerarIngreso.Visible = True
 
             Case 10
                 BAprobarPresupuesto.Visible = True
                 BDesaprobarPresupuesto.Visible = True
                 BInfoRevision.Visible = True
                 BInfoPresupuesto.Visible = True
+                BGenerarIngreso.Visible = True
 
             Case 11
                 BRepararEquipo.Visible = True
                 BInfoRevision.Visible = True
                 BInfoPresupuesto.Visible = True
+                BGenerarIngreso.Visible = True
 
             Case 12
                 BReparacionExitosa.Visible = True
                 BIrreparable.Visible = True
                 BInfoRevision.Visible = True
                 BInfoPresupuesto.Visible = True
+                BGenerarIngreso.Visible = True
 
             Case 13
                 BInfoRevision.Visible = True
                 BInfoPresupuesto.Visible = True
                 BDevolverEquipo.Visible = True
                 BGenerarInforme.Visible = True
-                If Reparaciones.reparacionAprobada(Equipo.IDEquipo) Then
+                BGenerarIngreso.Visible = True
+                If resultado = True OrElse resultado = False Then
                     BInfoReparacion.Visible = True
                 Else
                     BInfoReparacion.Visible = False
                 End If
+
+            Case 14
+                BInfoRevision.Visible = True
+                BInfoPresupuesto.Visible = True
+                BGenerarInforme.Visible = True
+                BGenerarIngreso.Visible = True
+                If resultado = True Then
+                    BInfoReparacion.Visible = True
+                    BFactura.Visible = True
+                End If
+                If resultado = False Then
+                    BInfoReparacion.Visible = True
+                End If
+
 
 
         End Select
@@ -310,5 +336,9 @@ Public Class FormEstadosEquiposAdmin
 
     Private Sub BGenerarInforme_Click(sender As Object, e As EventArgs) Handles BGenerarInforme.Click
         PDF.generarPDFInformeEquipo(Equipo)
+    End Sub
+
+    Private Sub BFactura_Click(sender As Object, e As EventArgs) Handles BFactura.Click
+        PDF.generarPDFFacturaEquipo(Equipo)
     End Sub
 End Class
