@@ -40,4 +40,12 @@
             Throw New Exception(ex.Message)
         End Try
     End Function
+
+    Public Function ObtenerFacturacionPorSemana() As List(Of Estadisticas.VariacionSemanal)
+        Try
+            Return _estadisticas.ObtenerFacturacionPorSemana()
+        Catch ex As Exception
+            Throw New Exception(ex.Message)
+        End Try
+    End Function
 End Class

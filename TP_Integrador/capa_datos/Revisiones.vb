@@ -29,10 +29,11 @@ Public Class Revisiones
 
         Try
             ' Modifica la consulta para incluir "VALUES" correctamente
-            Dim comando = New SqlCommand("INSERT INTO Revisiones (idEquipo, observaciones) VALUES (@idEquipo, @observaciones)", conexion)
+            Dim comando = New SqlCommand("INSERT INTO Revisiones (idEquipo, observaciones, fechaDeFinalizacion) VALUES (@idEquipo, @observaciones, @fechaDeFinalizacion)", conexion)
 
             comando.Parameters.AddWithValue("@idEquipo", revision.Equipo.IDEquipo)
             comando.Parameters.AddWithValue("@observaciones", revision.Observaciones)
+            comando.Parameters.AddWithValue("@fechaDeFinalizacion", DateTime.Now)
 
             ' Abre la conexión antes de ejecutar el comando
             conexion.Open()

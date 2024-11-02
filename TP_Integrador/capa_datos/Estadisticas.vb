@@ -285,4 +285,57 @@ ORDER BY cantidad DESC;
 
         Return estados
     End Function
+
+    Public Function ObtenerFacturacionPorSemana() As List(Of VariacionSemanal)
+        Dim facturaciones = New List(Of VariacionSemanal)
+
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+        Dim comando = New SqlCommand("DECLARE @fechaPrimerEntrega DATE = (SELECT MIN(fecha) FROM Entregas);
+
+WITH FacturacionPorSemana AS (
+    SELECT 
+        DATEDIFF(WEEK, @fechaPrimerEntrega, fecha) + 1 AS Semana,
+        SUM(monto) AS Facturacion
+    FROM 
+        Entregas
+    JOIN 
+        Presupuestos 
+    ON 
+        Entregas.idReparacion = Presupuestos.idPresupuesto
+    GROUP BY 
+        DATEDIFF(WEEK, @fechaPrimerEntrega, fecha) + 1
+)
+SELECT 
+    Semana,
+    Facturacion,
+    Facturacion - LAG(Facturacion, 1, 0) OVER (ORDER BY Semana) AS Variacion
+FROM 
+    FacturacionPorSemana
+ORDER BY 
+    Semana;", conexion)
+
+        Try
+            conexion.Open()
+
+            Using lector As SqlDataReader = comando.ExecuteReader()
+                If lector.HasRows Then
+                    While lector.Read()
+                        Dim facturacion As New VariacionSemanal With {
+                            .Semana = lector("Semana"),
+                            .Cantidad = lector("Facturacion"),
+                            .Variacion = lector("Variacion")
+                        }
+
+                        facturaciones.Add(facturacion)
+                    End While
+                End If
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error al obtener facturaciones por semana: " & ex.Message)
+        Finally
+            conexion.Close()
+        End Try
+
+        Return facturaciones
+    End Function
 End Class
