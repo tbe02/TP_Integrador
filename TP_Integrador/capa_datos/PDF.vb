@@ -9,10 +9,6 @@ Public Class PDF
 
         Dim equipos As Equipos = New Equipos()
 
-        Dim rutaCarpeta As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\..\..\Documentos")
-        ' Ruta donde se guardará el PDF
-        Dim rutaArchivo As String = Path.Combine(rutaCarpeta, "ConstanciaIngresoEquipo.pdf")
-
         ' Crear el documento PDF
         Dim documento As New PdfDocument()
         documento.Info.Title = "Constancia de Ingreso de Equipo"
@@ -98,9 +94,19 @@ Public Class PDF
         yPosition += 20
         gfx.DrawString("Firma del Cliente: ________________________", fuenteTexto, XBrushes.Black, New XPoint(40, yPosition))
         ' Guardar el documento
+
         Try
-            documento.Save(rutaArchivo)
-            MessageBox.Show("PDF generado exitosamente en " & rutaArchivo)
+            Dim saveFileDialog = New SaveFileDialog()
+
+            saveFileDialog.Filter = "PDF Files |*.pdf"
+            saveFileDialog.Title = "Guardar constancia"
+            saveFileDialog.FileName = "ConstanciaIngresoEquipo-" + equipo.IDEquipo.ToString() + ".pdf"
+
+            If saveFileDialog.ShowDialog() = DialogResult.OK Then
+                documento.Save(saveFileDialog.FileName)
+
+                MessageBox.Show("PDF generado exitosamente en " & saveFileDialog.FileName)
+            End If
         Catch ex As Exception
             MessageBox.Show("Error al guardar el PDF: " & ex.Message)
         Finally
@@ -128,10 +134,6 @@ Public Class PDF
     Public Shared Sub GenerarPDFFacturaEquipo(equipo As Equipos.Equipo)
 
         Dim equipos As Equipos = New Equipos()
-
-        Dim rutaCarpeta As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\..\..\Documentos")
-        ' Ruta donde se guardará el PDF
-        Dim rutaArchivo As String = Path.Combine(rutaCarpeta, "FacturaEquipoReparado.pdf")
 
 
         ' Crear el documento PDF
@@ -207,8 +209,17 @@ Public Class PDF
 
         ' Guardar el documento
         Try
-            documento.Save(rutaArchivo)
-            MessageBox.Show("PDF generado exitosamente en " & rutaArchivo)
+            Dim saveFileDialog = New SaveFileDialog()
+
+            saveFileDialog.Filter = "PDF Files |*.pdf"
+            saveFileDialog.Title = "Guardar factura"
+            saveFileDialog.FileName = "FacturaEquipoReparado-" + equipo.IDEquipo.ToString() + ".pdf"
+
+            If saveFileDialog.ShowDialog() = DialogResult.OK Then
+                documento.Save(saveFileDialog.FileName)
+
+                MessageBox.Show("PDF generado exitosamente en " & saveFileDialog.FileName)
+            End If
         Catch ex As Exception
             MessageBox.Show("Error al guardar el PDF: " & ex.Message)
         Finally
@@ -240,10 +251,6 @@ Public Class PDF
     Public Shared Sub generarPDFInformeEquipo(equipo As Equipos.Equipo)
 
         Dim equipos As Equipos = New Equipos()
-
-        Dim rutaCarpeta As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\..\..\Documentos")
-        ' Ruta donde se guardará el PDF
-        Dim rutaArchivo As String = Path.Combine(rutaCarpeta, "InformeEquipoReparado.pdf")
 
         ' Crear el documento PDF
         Dim documento As New PdfDocument()
@@ -366,8 +373,17 @@ Public Class PDF
 
         ' Guardar el documento
         Try
-            documento.Save(rutaArchivo)
-            MessageBox.Show("PDF generado exitosamente en " & rutaArchivo)
+            Dim saveFileDialog = New SaveFileDialog()
+
+            saveFileDialog.Filter = "PDF Files |*.pdf"
+            saveFileDialog.Title = "Guardar informe"
+            saveFileDialog.FileName = "InformeEquipoReparado-" + equipo.IDEquipo.ToString() + ".pdf"
+
+            If saveFileDialog.ShowDialog() = DialogResult.OK Then
+                documento.Save(saveFileDialog.FileName)
+
+                MessageBox.Show("PDF generado exitosamente en " & saveFileDialog.FileName)
+            End If
         Catch ex As Exception
             MessageBox.Show("Error al guardar el PDF: " & ex.Message)
         Finally

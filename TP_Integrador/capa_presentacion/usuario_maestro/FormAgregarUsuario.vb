@@ -1,13 +1,17 @@
 ﻿Partial Public Class FormAgregarUsuario
     Private _controladorUsuarios As ControladorUsuarios = New ControladorUsuarios()
+    Private _controladorTiposDeUsuario As ControladorTiposDeUsuario = New ControladorTiposDeUsuario()
 
     Private Sub FormAgregarUsuario_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ListarTiposDeUsuario()
     End Sub
 
     Private Sub ListarTiposDeUsuario()
-        ComboBoxTipoUsuario.Items.Add("administrador")
-        ComboBoxTipoUsuario.Items.Add("tecnico")
+        Dim tiposDeEquipo = _controladorTiposDeUsuario.ObtenerTodos()
+
+        ComboBoxTipoUsuario.DataSource = tiposDeEquipo
+        ComboBoxTipoUsuario.DisplayMember = "nombre"
+        ComboBoxTipoUsuario.ValueMember = "idTipoUsuario"
     End Sub
 
     Private Sub BAgregarUsuario_Click(sender As Object, e As EventArgs) Handles BAgregarUsuario.Click
@@ -28,8 +32,6 @@
 
             Return
         End If
-
-        Dim usuarios = _controladorUsuarios.ObtenerTodos()
 
         Try
             _controladorUsuarios.AgregarUno(apellido, nombre, dni, telefono, correo, nombreusuario, contrasenia, tipoUsuario)

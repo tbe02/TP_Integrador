@@ -6,11 +6,11 @@ Public Class Autenticador
     Public Sub Autenticar(nombreUsuario As String, password As String)
         Dim usuario As Usuarios.Usuario = usuarios.obtenerUno(nombreUsuario)
 
-        If usuario Is Nothing Then
+        If usuario.DNI Is Nothing Then
             Throw New Exception("Usuario no encontrado")
         End If
 
-        Dim elPasswordEsValido As Boolean = usuario.Password.Equals(password)
+        Dim elPasswordEsValido As Boolean = usuarios.VerificarContraseña(nombreUsuario, password)
 
         If Not elPasswordEsValido Then
             Throw New Exception("La contraseña es incorrecta")

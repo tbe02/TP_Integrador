@@ -12,12 +12,12 @@ Public Class ControladorUsuarios
     End Function
 
     Public Class ErroresAlAgregarUno
-        Public Const CAMPOS_INCOMPLETOS As String = "CAMPOS_INCOMPLETOS"
-        Public Const APELLIDO_SOLO_LETRAS As String = "APELLIDO_SOLO_LETRAS"
-        Public Const NOMBRE_SOLO_LETRAS As String = "NOMBRE_SOLO_LETRAS"
-        Public Const DNI_SOLO_NUMEROS As String = "DNI_SOLO_NUMEROS"
-        Public Const TELEFONO_SOLO_NUMEROS As String = "TELEFONO_SOLO_NUMEROS"
-        Public Const CORREO_INVALIDO As String = "CORREO_INVALIDO"
+        Public Const CAMPOS_INCOMPLETOS As String = "Los campos estan incompletos"
+        Public Const APELLIDO_SOLO_LETRAS As String = "El apellido solo puede contener letras"
+        Public Const NOMBRE_SOLO_LETRAS As String = "El nombre solo puede contener letras"
+        Public Const DNI_SOLO_NUMEROS As String = "El DNI solo puede contener numeros"
+        Public Const TELEFONO_SOLO_NUMEROS As String = "El telefono solo puede contener numeros"
+        Public Const CORREO_INVALIDO As String = "El correo es invalido"
     End Class
 
     Public Sub AgregarUno(apellido As String, nombre As String, dni As String, telefono As String, correo As String, nombreUsuario As String, password As String, tipo As String)
@@ -26,7 +26,7 @@ Public Class ControladorUsuarios
 
             usuarios.agregarUsuario(apellido, nombre, dni, telefono, correo, nombreUsuario, password, tipo)
         Catch ex As Exception
-
+            Throw New Exception(ex.Message)
         End Try
     End Sub
 
