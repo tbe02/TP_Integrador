@@ -1,4 +1,7 @@
 ﻿Imports System.Text.RegularExpressions
+Imports System.Security.Cryptography
+Imports System.Text
+Imports TP_Integrador.Marcas
 
 Public Class Usuarios
     Private Shared instancia As Usuarios = Nothing
@@ -12,24 +15,68 @@ Public Class Usuarios
         Public NombreUsuario As String
         Public Password As String
         Public Tipo As String
-        Public ReadOnly Property Apellido_Nombre As String
-            Get
-                Return $"{Apellido} {Nombre}"
-            End Get
-        End Property
     End Class
 
     Private usuarios As New List(Of Usuario)()
 
-    Public Sub New()
-        agregar("Perez", "Cristian", "44876932", "3794098765", "cristianperez@gmail.com", "maestro", "maestro", "maestro")
-        agregar("Flores", "Fabian", "39876543", "3794123456", "fabian84@gmail.com", "admin", "admin", "administrador")
-        agregar("Pereira", "Rodrigo", "41098321", "3794887766", "rodrigox@gmail.com", "tecnico", "tecnico", "tecnico")
+    Sub agregar(apellido As String, nombre As String, dni As String, telefono As String, correo As String, nombreUsuario As String, password As String, tipo As String)
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+
+        Dim comando = New SqlCommand("INSERT INTO Usuarios (apellido, nombre, DNI, telefono, correo, usuario, contrasena, idTipoDeUsuario) VALUES (@apellido, @nombre, @DNI, @telefono, @correo, @usuario, @contrasena, @idTipoDeUsuario);", conexion)
+
+        comando.Parameters.AddWithValue("@apellido", apellido)
+        comando.Parameters.AddWithValue("@nombre", nombre)
+        comando.Parameters.AddWithValue("@DNI", dni)
+        comando.Parameters.AddWithValue("@telefono", telefono)
+        comando.Parameters.AddWithValue("@correo", correo)
+        comando.Parameters.AddWithValue("@usuario", nombreUsuario)
+        comando.Parameters.AddWithValue("@contrasena", ObtenerContraseñaHasheada(password))
+        comando.Parameters.AddWithValue("@idTipoDeUsuario", tipo)
+
+        conexion.Open()
+        comando.ExecuteNonQuery()
     End Sub
 
-    Sub agregar(apellido As String, nombre As String, dni As String, telefono As String, correo As String, nombreUsuario As String, password As String, tipo As String)
-        usuarios.Add(New Usuario With {.Apellido = apellido, .Nombre = nombre, .DNI = dni, .Telefono = telefono, .Correo = correo, .NombreUsuario = nombreUsuario, .Password = password, .Tipo = tipo})
-    End Sub
+    Public Function ObtenerContraseñaHasheada(ByVal constraseña As String) As String
+        Dim bytes As Byte() = Encoding.UTF8.GetBytes(constraseña)
+
+        Using sha256 As SHA256 = SHA256.Create()
+            Dim hashBytes As Byte() = sha256.ComputeHash(bytes)
+
+            Dim hash As New StringBuilder()
+
+            For Each b As Byte In hashBytes
+                hash.Append(b.ToString("x2"))
+            Next
+
+            Return hash.ToString()
+        End Using
+    End Function
+
+    Public Function VerificarContraseña(ByVal usuario As String, ByVal constraseña As String) As Boolean
+        Dim hashAlmacenado As String = Nothing
+
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+
+        Dim comando As New SqlCommand("SELECT contrasena FROM Usuarios WHERE usuario = @usuario", conexion)
+
+        comando.Parameters.AddWithValue("@usuario", usuario)
+
+        conexion.Open()
+        Using lector As SqlDataReader = comando.ExecuteReader()
+            If lector.Read() Then
+                hashAlmacenado = lector("contrasena").ToString()
+            End If
+        End Using
+
+        If String.IsNullOrEmpty(hashAlmacenado) Then
+            Return False
+        End If
+
+        Dim hashIngresado As String = ObtenerContraseñaHasheada(constraseña)
+
+        Return hashAlmacenado.Equals(hashIngresado)
+    End Function
 
     'hice 2 funciones diferentes pq me queria tirar errores cuando queria loguearme a la app si usaba solo esta
     Function agregarUsuario(apellido As String, nombre As String, dni As String, telefono As String, correo As String, nombreUsuario As String, password As String, tipo As String)
@@ -48,11 +95,61 @@ Public Class Usuarios
     End Function
 
     Function obtenerTodos() As List(Of Usuario)
+        Dim usuarios As New List(Of Usuario)()
+
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+        Dim comando = New SqlCommand("SELECT Usuarios.*, TiposDeUsuario.nombre as nombreTipoDeUsuario FROM Usuarios JOIN TiposDeUsuario ON Usuarios.idTipoDeUsuario = TiposDeUsuario.idTipoDeUsuario;", conexion)
+
+        conexion.Open()
+
+        Using lector As SqlDataReader = comando.ExecuteReader()
+            If lector.HasRows Then
+                While lector.Read()
+                    usuarios.Add(
+                        New Usuario With {
+                            .Apellido = lector("apellido"),
+                            .Nombre = lector("nombre"),
+                            .DNI = lector("DNI"),
+                            .Telefono = lector("telefono"),
+                            .Correo = lector("correo"),
+                            .NombreUsuario = lector("usuario"),
+                            .Tipo = lector("nombreTipoDeUsuario")
+                        }
+                    )
+                End While
+            End If
+        End Using
+
         Return usuarios
     End Function
 
     Function obtenerUno(nombreUsuario As String) As Usuario
-        Return obtenerTodos().Find(Function(usuario) usuario.NombreUsuario = nombreUsuario)
+        Dim usuario As New Usuario()
+
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+        Dim comando = New SqlCommand("SELECT Usuarios.*, TiposDeUsuario.nombre as nombreTipoDeUsuario FROM Usuarios JOIN TiposDeUsuario ON Usuarios.idTipoDeUsuario = TiposDeUsuario.idTipoDeUsuario WHERE usuario = @usuario;", conexion)
+
+        comando.Parameters.AddWithValue("@usuario", nombreUsuario)
+
+        conexion.Open()
+
+        Using lector As SqlDataReader = comando.ExecuteReader()
+            If lector.HasRows Then
+                While lector.Read()
+                    usuario = New Usuario With {
+                        .Apellido = lector("apellido"),
+                        .Nombre = lector("nombre"),
+                        .DNI = lector("DNI"),
+                        .Telefono = lector("telefono"),
+                        .Correo = lector("correo"),
+                        .NombreUsuario = lector("usuario"),
+                        .Tipo = lector("nombreTipoDeUsuario")
+                    }
+                End While
+            End If
+        End Using
+
+        Return usuario
     End Function
 
     Function verificarPassword(nombreUsuario As String, password As String) As Boolean
@@ -72,18 +169,33 @@ Public Class Usuarios
         End If
     End Sub
 
-    Public Sub editarUsuario(dni As String, apellido As String, nombre As String, telefono As String, correo As String, nombreUsuario As String, password As String, tipo As String)
-        ' Buscar el usuario que se va a editar usando el DNI
-        Dim usuario = usuarios.Find(Function(u) u.DNI = dni)
-        If (usuario IsNot Nothing) Then
-            usuario.Apellido = apellido
-            usuario.Nombre = nombre
-            usuario.Telefono = telefono
-            usuario.Correo = correo
-            usuario.NombreUsuario = nombreUsuario
-            usuario.Password = password
-            usuario.Tipo = tipo
+    Public Sub editarUsuario(apellido As String, nombre As String, dni As String, telefono As String, correo As String, nombreUsuario As String, password As String, tipo As String)
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+
+        Dim comando = New SqlCommand("UPDATE Usuarios SET apellido = @apellido, nombre = @nombre, DNI = @DNI, telefono = @telefono, correo = @correo, usuario = @usuario, idTipoDeUsuario = @idTipoDeUsuario WHERE usuario = @usuario;", conexion)
+
+        comando.Parameters.AddWithValue("@apellido", apellido)
+        comando.Parameters.AddWithValue("@nombre", nombre)
+        comando.Parameters.AddWithValue("@DNI", dni)
+        comando.Parameters.AddWithValue("@telefono", telefono)
+        comando.Parameters.AddWithValue("@correo", correo)
+        comando.Parameters.AddWithValue("@usuario", nombreUsuario)
+        comando.Parameters.AddWithValue("@idTipoDeUsuario", tipo)
+
+        conexion.Open()
+
+        comando.ExecuteNonQuery()
+
+        If String.IsNullOrEmpty(password) Then
+            Return
         End If
+
+        Dim comandoParaContraseña = New SqlCommand("UPDATE Usuarios SET contrasena = @contrasena WHERE usuario = @usuario;", conexion)
+
+        comandoParaContraseña.Parameters.AddWithValue("@usuario", nombreUsuario)
+        comandoParaContraseña.Parameters.AddWithValue("@contrasena", ObtenerContraseñaHasheada(password))
+
+        comandoParaContraseña.ExecuteNonQuery()
     End Sub
 
     Public Function verificaciones(apellido As String, nombre As String, dni As String, correo As String, telefono As String)
