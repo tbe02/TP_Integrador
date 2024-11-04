@@ -12,25 +12,29 @@
         tiposDeUsuario.Add(tipoDeUsuario)
     End Sub
 
-    Public Sub New()
-        Agregar(New TipoDeUsuario With {
-            .idTipoUsuario = 1,
-            .nombre = "maestro"
-        })
-
-        Agregar(New TipoDeUsuario With {
-            .idTipoUsuario = 2,
-            .nombre = "administrador"
-        })
-
-        Agregar(New TipoDeUsuario With {
-            .idTipoUsuario = 3,
-            .nombre = "tecnico"
-        })
-    End Sub
-
     Public Function ObtenerTodos() As List(Of TipoDeUsuario)
-        Return Me.tiposDeUsuario
+        Dim tiposDeUsuario As New List(Of TipoDeUsuario)()
+
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+
+        Dim comando = New SqlCommand("SELECT * FROM TiposDeUsuario;", conexion)
+
+        conexion.Open()
+
+        Using lector As SqlDataReader = comando.ExecuteReader()
+            If lector.HasRows Then
+                While lector.Read()
+                    tiposDeUsuario.Add(
+                        New TipoDeUsuario With {
+                            .idTipoUsuario = lector("idTipoDeUsuario").ToString(),
+                            .nombre = lector("nombre").ToString()
+                        }
+                    )
+                End While
+            End If
+        End Using
+
+        Return tiposDeUsuario
     End Function
 
     Public Shared Function ObtenerInstancia() As TiposDeUsuario
