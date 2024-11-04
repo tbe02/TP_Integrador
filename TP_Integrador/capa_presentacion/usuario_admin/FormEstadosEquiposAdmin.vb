@@ -1,5 +1,7 @@
 ﻿Imports System.Runtime.InteropServices 'Permite funcionalidades de API de Windows para poder trabajar con la funcion releaseCapture'
 Public Class FormEstadosEquiposAdmin
+    Private _sesion As Sesion = Sesion.ObtenerInstancia()
+
 
     '-------------------------------------------------------------------------------------------------------------------------'
     'Declaraciones para poder utilizar la funcion releaseCapture, que permite mover el formulario desde el panel superior'
@@ -40,6 +42,47 @@ Public Class FormEstadosEquiposAdmin
         TimerEstados.Interval = 100
         MostrarBotonPorEstado(EstadoActual)
         TimerEstados.Start()
+
+        Select Case _sesion.ObtenerUsuario().Tipo
+            Case "administrador"
+                BRevisarEquipo.BackColor = System.Drawing.Color.LightGray
+                BRevisarEquipo.ForeColor = System.Drawing.Color.DarkGray
+                BRevisarEquipo.Enabled = False
+
+                BFinalizarRevision.BackColor = System.Drawing.Color.LightGray
+                BFinalizarRevision.ForeColor = System.Drawing.Color.DarkGray
+                BFinalizarRevision.Enabled = False
+
+                BRepararEquipo.BackColor = System.Drawing.Color.LightGray
+                BRepararEquipo.ForeColor = System.Drawing.Color.DarkGray
+                BRepararEquipo.Enabled = False
+
+                BReparacionExitosa.BackColor = System.Drawing.Color.LightGray
+                BReparacionExitosa.ForeColor = System.Drawing.Color.DarkGray
+                BReparacionExitosa.Enabled = False
+
+                BIrreparable.BackColor = System.Drawing.Color.LightGray
+                BIrreparable.ForeColor = System.Drawing.Color.DarkGray
+                BIrreparable.Enabled = False
+            Case "tecnico"
+                BCargarPresupuesto.BackColor = System.Drawing.Color.LightGray
+                BCargarPresupuesto.ForeColor = System.Drawing.Color.DarkGray
+                BCargarPresupuesto.Enabled = False
+
+                BAprobarPresupuesto.BackColor = System.Drawing.Color.LightGray
+                BAprobarPresupuesto.ForeColor = System.Drawing.Color.DarkGray
+                BAprobarPresupuesto.Enabled = False
+
+                BDesaprobarPresupuesto.BackColor = System.Drawing.Color.LightGray
+                BDesaprobarPresupuesto.ForeColor = System.Drawing.Color.DarkGray
+                BDesaprobarPresupuesto.Enabled = False
+
+                BDevolverEquipo.BackColor = System.Drawing.Color.LightGray
+                BDevolverEquipo.ForeColor = System.Drawing.Color.DarkGray
+                BDevolverEquipo.Enabled = False
+            Case Else
+                Me.Close()
+        End Select
     End Sub
 
 
@@ -339,6 +382,6 @@ Public Class FormEstadosEquiposAdmin
     End Sub
 
     Private Sub BFactura_Click(sender As Object, e As EventArgs) Handles BFactura.Click
-        PDF.generarPDFFacturaEquipo(Equipo)
+        PDF.GenerarPDFFacturaEquipo(Equipo)
     End Sub
 End Class

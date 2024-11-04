@@ -19,7 +19,6 @@ Public Class Reparaciones
         Try
             Dim comando = New SqlCommand("INSERT INTO Reparaciones (idPresupuesto, reparado, observaciones, fechaDeFinalizacion) VALUES (@idPresupuesto, @reparado, @observaciones, @fechaDeFinalizacion)", conexion)
             comando.Parameters.AddWithValue("@idPresupuesto", reparacion.Presupuesto.IdPresupuesto)
-            comando.Parameters.AddWithValue("@fechaDeFinalizacion", DateTime.Now)
             If reparacionExitosa Is Nothing Then
                 comando.Parameters.AddWithValue("@reparado", DBNull.Value)
             Else
