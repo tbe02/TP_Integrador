@@ -2,6 +2,7 @@
 Imports PdfSharp.Drawing
 Imports TP_Integrador.Equipos
 Imports System.IO
+Imports PdfSharp.Drawing.Layout
 
 Public Class PDF
 
@@ -131,10 +132,11 @@ Public Class PDF
 
 
 
+
+
     Public Shared Sub GenerarPDFFacturaEquipo(equipo As Equipos.Equipo)
 
         Dim equipos As Equipos = New Equipos()
-
 
         ' Crear el documento PDF
         Dim documento As New PdfDocument()
@@ -143,81 +145,97 @@ Public Class PDF
         ' Crear una página
         Dim pagina As PdfPage = documento.AddPage()
         Dim gfx As XGraphics = XGraphics.FromPdfPage(pagina)
+        Dim tf As New XTextFormatter(gfx)
 
-        ' Definir fuentes
-        Dim fuenteTitulo As New XFont("Arial", 18, XFontStyle.Bold)
-        Dim fuenteSubtitulo As New XFont("Arial", 14, XFontStyle.Bold)
+        ' Definir colores y fuentes
+        Dim colorAzulFondo As XColor = XColor.FromArgb(25, 50, 200)
+        Dim fuenteTitulo As New XFont("Arial", 22, XFontStyle.Bold)
         Dim fuenteTexto As New XFont("Arial", 12, XFontStyle.Regular)
+        Dim fuenteSubtitulo As New XFont("Arial", 14, XFontStyle.Bold)
+        Dim fuenteTablaHeader As New XFont("Arial", 12, XFontStyle.Bold)
 
-        ' Ajustar la posición inicial en Y
-        Dim yPosition As Double = 20 ' Inicia cerca del margen superior
+        ' Encabezado de la factura con fondo azul
+        gfx.DrawRectangle(New XSolidBrush(colorAzulFondo), New XRect(0, 0, pagina.Width, 100))
+        gfx.DrawString("FACTURA", fuenteTitulo, XBrushes.White, New XPoint(40, 40))
+        gfx.DrawString("Fecha: " & DateTime.Now.ToString("dd/MM/yyyy"), fuenteTexto, XBrushes.White, New XPoint(40, 70))
 
-        ' Título del documento
-        gfx.DrawString("Factura", fuenteTitulo, XBrushes.Black, New XRect(0, yPosition, pagina.Width, pagina.Height), XStringFormats.TopCenter)
-        yPosition += 50 ' Espacio adicional debajo del título
+        ' Cargar el logo desde un archivo (asegurate de poner la ruta correcta)
+        Dim logo As XImage = XImage.FromFile("C:\Users\theoe\source\repos\TP_Integrador2\TP_Integrador\imagenes\gst_logo.png")
 
-        ' Fecha y hora de finalización de la reparación
-        Dim fechaFinReparacion As DateTime = Entregas.devolverEntrega(equipo.IDEquipo).fecha
-        gfx.DrawString("Fecha de emisión: " & fechaFinReparacion, fuenteTexto, XBrushes.Black, New XPoint(40, yPosition))
-        yPosition += 30 ' Espacio adicional después de la fecha
+        ' Dibujar el logo en la esquina superior derecha, al lado del título
+        gfx.DrawImage(logo, CDbl(pagina.Width) - 120, 10, 100, 80)  ' Ajusta el tamaño y la posición según sea necesario
 
-        ' Datos del Cliente
-        gfx.DrawString("Datos del Cliente", fuenteSubtitulo, XBrushes.Black, New XPoint(40, yPosition))
-        yPosition += 20 ' Espacio después del subtítulo
-
-        Dim nombreCliente As String = equipos.obtenerCliente(equipo.IDEquipo).Nombre & " " & equipos.obtenerCliente(equipo.IDEquipo).Apellido
-        Dim DNICliente As String = equipos.obtenerCliente(equipo.IDEquipo).Dni
-        Dim telefonoCliente As String = equipos.obtenerCliente(equipo.IDEquipo).Telefono
-        Dim correoCliente As String = equipos.obtenerCliente(equipo.IDEquipo).Correo
-
-        gfx.DrawString("Nombre: " & nombreCliente, fuenteTexto, XBrushes.Black, New XPoint(40, yPosition))
+        ' Información del Cliente y Empresa
+        Dim yPosition As Double = 120
+        gfx.DrawString("CLIENTE:", fuenteSubtitulo, XBrushes.Black, New XPoint(40, yPosition))
         yPosition += 20
-        gfx.DrawString("DNI: " & DNICliente, fuenteTexto, XBrushes.Black, New XPoint(40, yPosition))
+
+        Dim nombreCliente As String = Equipos.obtenerCliente(equipo.IDEquipo).Nombre & " " & Equipos.obtenerCliente(equipo.IDEquipo).Apellido
+        Dim DNICliente As String = Equipos.obtenerCliente(equipo.IDEquipo).Dni
+        Dim telefonoCliente As String = Equipos.obtenerCliente(equipo.IDEquipo).Telefono
+        Dim correoCliente As String = Equipos.obtenerCliente(equipo.IDEquipo).Correo
+
+        gfx.DrawString(nombreCliente, fuenteTexto, XBrushes.Black, New XPoint(40, yPosition))
+        gfx.DrawString(DNICliente, fuenteTexto, XBrushes.Black, New XPoint(40, yPosition + 20))
+        gfx.DrawString(telefonoCliente, fuenteTexto, XBrushes.Black, New XPoint(40, yPosition + 40))
+        gfx.DrawString(correoCliente, fuenteTexto, XBrushes.Black, New XPoint(40, yPosition + 60))
+
+        gfx.DrawString("EMPRESA:", fuenteSubtitulo, XBrushes.Black, New XPoint(300, 120))
+        gfx.DrawString("Gestión de Servicios Técnicos", fuenteTexto, XBrushes.Black, New XPoint(300, yPosition))
+        gfx.DrawString("LaMadrid 123, Corrientes Cap., CP:3400", fuenteTexto, XBrushes.Black, New XPoint(300, yPosition + 20))
+        gfx.DrawString("911-234-567", fuenteTexto, XBrushes.Black, New XPoint(300, yPosition + 40))
+        gfx.DrawString("hola@unsitio.com", fuenteTexto, XBrushes.Black, New XPoint(300, yPosition + 60))
+
+        ' Línea separadora
+        gfx.DrawLine(XPens.Black, 40, yPosition + 80, CDbl(pagina.Width) - 40, yPosition + 80)
+
+        ' Sección de descripción de los productos
+        yPosition += 100
+        gfx.DrawString("DESCRIPCIÓN", fuenteTablaHeader, XBrushes.Black, New XPoint(40, yPosition))
+        gfx.DrawString("IMPORTE", fuenteTablaHeader, XBrushes.Black, New XPoint(200, yPosition))
         yPosition += 20
-        gfx.DrawString("Teléfono: " & telefonoCliente, fuenteTexto, XBrushes.Black, New XPoint(40, yPosition))
-        yPosition += 20
-        gfx.DrawString("Correo: " & correoCliente, fuenteTexto, XBrushes.Black, New XPoint(40, yPosition))
-        yPosition += 40 ' Espacio adicional después de los datos del cliente
 
-        ' Servicio realizado
-        gfx.DrawString("Servicio realizado", fuenteSubtitulo, XBrushes.Black, New XPoint(40, yPosition))
-        yPosition += 20 ' Espacio después del subtítulo
-
-        Dim reparacion As String = Reparaciones.devolverReparacion(equipo.IDEquipo).observaciones
-        gfx.DrawString(reparacion, fuenteTexto, XBrushes.Black, New XPoint(40, yPosition))
-        yPosition += 30 ' Espacio adicional después del servicio realizado
-
-        ' Subtotal
-        gfx.DrawString("Subtotal", fuenteSubtitulo, XBrushes.Black, New XPoint(40, yPosition))
-        yPosition += 20 ' Espacio después del subtítulo
 
         Dim presupuesto_observacion As String = Presupuestos.obtenerPresupuestoParaInforme(equipo.IDEquipo).Detalles
-        gfx.DrawString(presupuesto_observacion, fuenteTexto, XBrushes.Black, New XPoint(40, yPosition))
-        yPosition += 20 ' Espacio adicional después del subtotal
 
-        ' Total
-        gfx.DrawString("Total", fuenteSubtitulo, XBrushes.Black, New XPoint(40, yPosition))
-        yPosition += 20 ' Espacio después del subtítulo
+        ' Ejemplo de producto
+        gfx.DrawString(presupuesto_observacion, fuenteTexto, XBrushes.Black, New XPoint(40, yPosition))
+        yPosition += 30
+
+
+        ' Línea separadora
+        gfx.DrawLine(XPens.Black, 40, yPosition + 80, CDbl(pagina.Width) - 40, yPosition + 80)
+
+        ' Sección de Observaciones
+        gfx.DrawString("OBSERVACIONES:", fuenteSubtitulo, XBrushes.Black, New XPoint(40, yPosition + 30))
+        Dim reparacion As String = Reparaciones.devolverReparacion(equipo.IDEquipo).observaciones
+        tf.Alignment = XParagraphAlignment.Left
+        tf.DrawString(reparacion, fuenteTexto, XBrushes.Black, New XRect(40, yPosition + 50, CDbl(pagina.Width) - 80, 100), XStringFormats.TopLeft)
+
+
 
         Dim presupuesto_monto As Double = Presupuestos.obtenerPresupuestoParaInforme(equipo.IDEquipo).Monto
-        gfx.DrawString("Monto: $" & presupuesto_monto, fuenteTexto, XBrushes.Black, New XPoint(40, yPosition))
-        yPosition += 30 ' Espacio adicional después del total
 
-        Dim metodoPago = Entregas.devolverEntrega(equipo.IDEquipo).metodoPago.nombre
-        gfx.DrawString("Método de pago: " & metodoPago, fuenteTexto, XBrushes.Black, New XPoint(40, yPosition))
-        yPosition += 40 ' Espacio adicional antes de guardar el documento
+        ' Total de la factura
+        yPosition += 150
+        gfx.DrawString("IVA", fuenteTablaHeader, XBrushes.Black, New XPoint(300, yPosition))
+        gfx.DrawString("0 $", fuenteTexto, XBrushes.Black, New XPoint(400, yPosition))
+        yPosition += 20
+        gfx.DrawString("IRPF", fuenteTablaHeader, XBrushes.Black, New XPoint(300, yPosition))
+        gfx.DrawString("0 $", fuenteTexto, XBrushes.Black, New XPoint(400, yPosition))
+        yPosition += 20
+        gfx.DrawString("TOTAL", fuenteTablaHeader, XBrushes.Black, New XPoint(300, yPosition))
+        gfx.DrawString(presupuesto_monto & " $", fuenteTexto, XBrushes.Black, New XPoint(400, yPosition))
 
         ' Guardar el documento
         Try
             Dim saveFileDialog = New SaveFileDialog()
-
             saveFileDialog.Filter = "PDF Files |*.pdf"
             saveFileDialog.Title = "Guardar factura"
-            saveFileDialog.FileName = "FacturaEquipoReparado-" + equipo.IDEquipo.ToString() + ".pdf"
+            saveFileDialog.FileName = "Factura-" & equipo.IDEquipo.ToString() & ".pdf"
 
             If saveFileDialog.ShowDialog() = DialogResult.OK Then
                 documento.Save(saveFileDialog.FileName)
-
                 MessageBox.Show("PDF generado exitosamente en " & saveFileDialog.FileName)
             End If
         Catch ex As Exception
@@ -226,6 +244,7 @@ Public Class PDF
             documento.Close()
         End Try
     End Sub
+
 
 
 
