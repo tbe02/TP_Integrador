@@ -11,7 +11,8 @@
         telefono = TBTelefono.Text
 
         Try
-            _controladorClientes.AgregarUno(New Cliente With {
+            ' Llama a AgregarUno y verifica el resultado
+            Dim seAgregoCliente As Boolean = _controladorClientes.AgregarUno(New Cliente With {
                 .Apellido = apellido,
                 .Nombre = nombre,
                 .Dni = dni,
@@ -19,11 +20,14 @@
                 .Telefono = telefono
             })
 
-            TBApellido.Clear()
-            TBNombre.Clear()
-            TBDNI.Clear()
-            TBCorreo.Clear()
-            TBTelefono.Clear()
+            ' Solo limpia los campos si se agregó correctamente
+            If seAgregoCliente Then
+                TBApellido.Clear()
+                TBNombre.Clear()
+                TBDNI.Clear()
+                TBCorreo.Clear()
+                TBTelefono.Clear()
+            End If
         Catch ex As Exception
             MsgBox("Error al agregar el cliente")
         End Try

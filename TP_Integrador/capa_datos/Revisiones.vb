@@ -13,7 +13,7 @@ Public Class Revisiones
 
         Try
             Equipos.ModificarEstadoEquipo(equipo.IDEquipo, nuevoEstado)
-            MessageBox.Show("Revisión comenzada correctamente", "Confirmación de revisión", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
             Return True
         Catch ex As Exception
             MessageBox.Show("Error al comenzar la revisión: " & ex.Message)
@@ -43,7 +43,7 @@ Public Class Revisiones
 
             ' Cambia el estado del equipo después de insertar la revisión
             Equipos.ModificarEstadoEquipo(revision.Equipo.IDEquipo, nuevoEstado)
-            MessageBox.Show("Revisión finalizada correctamente", "Confirmación de revisión", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
             Return True
         Catch ex As Exception
             MessageBox.Show("Error al finalizar la revisión: " & ex.Message)

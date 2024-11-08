@@ -31,7 +31,6 @@ Public Class Cliente
 
             comando.ExecuteNonQuery()
 
-            MessageBox.Show("Cliente editado correctamente", "Edicion de cliente", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As SqlException
             If ex.Number = 2627 Or ex.Number = 2601 Then
                 Dim claveRepetida As String = ""
@@ -49,52 +48,42 @@ Public Class Cliente
         End Try
     End Sub
 
-    Public Function agregarCliente(apellido As String, nombre As String, dni As String, correo As String, telefono As String)
-
+    Public Function agregarCliente(apellido As String, nombre As String, dni As String, correo As String, telefono As String) As Boolean
         Dim resultado As DialogResult
 
         If verificaciones(apellido, nombre, dni, correo, telefono) Then
-            resultado = MessageBox.Show("Esta seguro que desea agregar un nuevo cliente?", "Insercion de cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            resultado = MessageBox.Show("¿Está seguro que desea agregar un nuevo cliente?", "Inserción de cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If resultado = DialogResult.Yes Then
-
                 Try
                     Dim conexion = New BaseDeDatos().obtenerConexion()
+                    Dim comando = New SqlCommand("INSERT INTO Clientes (DNI, nombres, apellidos, telefono, correo) VALUES (@dni, @nombre, @apellido, @telefono, @correo);", conexion)
 
-                    Dim comando = New SqlCommand("INSERT INTO Clientes (DNI, nombres, apellidos, telefono, correo) VALUES ('" & dni & "', '" & nombre & "', '" & apellido & "', '" & telefono & "', '" & correo & "');", conexion)
+                    ' Usa parámetros para evitar SQL Injection
+                    comando.Parameters.AddWithValue("@dni", dni)
+                    comando.Parameters.AddWithValue("@nombre", nombre)
+                    comando.Parameters.AddWithValue("@apellido", apellido)
+                    comando.Parameters.AddWithValue("@telefono", telefono)
+                    comando.Parameters.AddWithValue("@correo", correo)
 
                     conexion.Open()
-
                     comando.ExecuteNonQuery()
-
-                    MessageBox.Show("Cliente agregado correctamente", "Confirmacion de cliente", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
+                    MessageBox.Show("Cliente agregado correctamente", "Confirmación de cliente", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     Return True
                 Catch ex As SqlException
                     If ex.Number = 2627 Or ex.Number = 2601 Then
-                        Dim claveRepetida As String = ""
-
-                        If ex.Message.Contains(dni) Then
-                            claveRepetida = "DNI (" & dni & ")"
-                        ElseIf ex.Message.Contains(correo) Then
-                            claveRepetida = "Correo (" & correo & ")"
-                        End If
-
-                        MessageBox.Show("Usted intento ingresar un cliente con datos que identifican a un cliente ya existente, este dato fue: " & claveRepetida, "Error al agregar cliente", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        Dim claveRepetida As String = If(ex.Message.Contains(dni), "DNI (" & dni & ")", If(ex.Message.Contains(correo), "Correo (" & correo & ")", ""))
+                        MessageBox.Show("Usted intentó ingresar un cliente con datos que identifican a un cliente ya existente: " & claveRepetida, "Error al agregar cliente", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
                 Catch ex As Exception
-                    MsgBox(ex.Message)
+                    MsgBox("Error: " & ex.Message)
                 End Try
-
             End If
-
         End If
 
+        ' Retorna False si no se agregó el cliente
         Return False
-
-
-
-
     End Function
+
 
     Public Function obtenerClientes() As List(Of Cliente)
         Dim clientes As New List(Of Cliente)()

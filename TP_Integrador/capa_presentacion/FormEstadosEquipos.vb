@@ -1,5 +1,5 @@
 ﻿Imports System.Runtime.InteropServices 'Permite funcionalidades de API de Windows para poder trabajar con la funcion releaseCapture'
-Public Class FormEstadosEquiposAdmin
+Public Class FormEstadosEquipos
     Private _sesion As Sesion = Sesion.ObtenerInstancia()
 
 
@@ -43,7 +43,7 @@ Public Class FormEstadosEquiposAdmin
         MostrarBotonPorEstado(EstadoActual)
         TimerEstados.Start()
 
-        Select Case _sesion.ObtenerUsuario().Tipo
+        Select Case _sesion.ObtenerUsuario().Tipo.nombre
             Case "administrador"
                 BRevisarEquipo.BackColor = System.Drawing.Color.LightGray
                 BRevisarEquipo.ForeColor = System.Drawing.Color.DarkGray

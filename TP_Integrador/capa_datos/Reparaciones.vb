@@ -35,7 +35,7 @@ Public Class Reparaciones
 
 
             Equipos.ModificarEstadoEquipo(reparacion.Presupuesto.Revision.Equipo.IDEquipo, nuevoEstado)
-            MessageBox.Show("Reparacion finalizada correctamente", "Confirmación de reparacion", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
             Return True
         Catch ex As Exception
             MessageBox.Show("Error al finalizar la reparacion: " & ex.Message)
@@ -55,7 +55,7 @@ Public Class Reparaciones
 
         Try
             Equipos.ModificarEstadoEquipo(equipo.IDEquipo, nuevoEstado)
-            MessageBox.Show("Equipo comenzado a reparar correctamente", "Comienzo de reparación exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
         Catch ex As Exception
             MessageBox.Show("Error al comenzar la reparacion: " & ex.Message)
             Return False

@@ -110,7 +110,6 @@ Public Class Equipos
             conexion.Open()
             comando.ExecuteNonQuery()
 
-            MessageBox.Show("Equipo editado correctamente", "Confirmación de equipo", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return True
         Catch ex As Exception
             MessageBox.Show("Error al editar el equipo: " & ex.Message)
@@ -161,7 +160,7 @@ Public Class Equipos
             conexion.Open()
             comando.ExecuteNonQuery()
 
-            MessageBox.Show("Equipo dado de baja correctamente", "Dar de baja equipo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
             Return True
         Catch ex As Exception
             MessageBox.Show("Error al dar de baja el equipo: " & ex.Message)
@@ -300,10 +299,10 @@ Public Class Equipos
             conexion.Open()
             comando.ExecuteNonQuery()
 
-            MessageBox.Show("Equipo editado correctamente", "Confirmación de equipo", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
             Return True
         Catch ex As Exception
-            MessageBox.Show("Error al editar el equipo: " & ex.Message)
+            MessageBox.Show("Error al editar el estado del equipo: " & ex.Message)
             Return False
         Finally
             conexion.Close()

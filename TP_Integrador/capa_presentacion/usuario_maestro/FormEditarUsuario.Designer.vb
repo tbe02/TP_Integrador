@@ -60,9 +60,9 @@ Partial Class FormEditarUsuario
         LEditarUsuario.BackColor = Color.Transparent
         LEditarUsuario.Font = New Font("Bahnschrift Condensed", 36F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LEditarUsuario.ForeColor = Color.White
-        LEditarUsuario.Location = New Point(147, 106)
+        LEditarUsuario.Location = New Point(168, 141)
         LEditarUsuario.Name = "LEditarUsuario"
-        LEditarUsuario.Size = New Size(250, 58)
+        LEditarUsuario.Size = New Size(309, 72)
         LEditarUsuario.TabIndex = 11
         LEditarUsuario.Text = "Editar Usuario"
         ' 
@@ -90,8 +90,9 @@ Partial Class FormEditarUsuario
         PAgregarCliente.Controls.Add(LApellido)
         PAgregarCliente.Controls.Add(tUsuario)
         PAgregarCliente.Location = New Point(0, 0)
+        PAgregarCliente.Margin = New Padding(3, 4, 3, 4)
         PAgregarCliente.Name = "PAgregarCliente"
-        PAgregarCliente.Size = New Size(495, 751)
+        PAgregarCliente.Size = New Size(566, 1001)
         PAgregarCliente.TabIndex = 5
         ' 
         ' PMenuSuperior
@@ -101,10 +102,9 @@ Partial Class FormEditarUsuario
         PMenuSuperior.Controls.Add(IBCerrar)
         PMenuSuperior.Controls.Add(IBMinimizar_EC)
         PMenuSuperior.Controls.Add(IBCerrar_EC)
-        PMenuSuperior.Location = New Point(0, 2)
-        PMenuSuperior.Margin = New Padding(3, 2, 3, 2)
+        PMenuSuperior.Location = New Point(0, 0)
         PMenuSuperior.Name = "PMenuSuperior"
-        PMenuSuperior.Size = New Size(498, 34)
+        PMenuSuperior.Size = New Size(569, 45)
         PMenuSuperior.TabIndex = 31
         ' 
         ' IBMinimizar
@@ -121,10 +121,9 @@ Partial Class FormEditarUsuario
         IBMinimizar.IconColor = Color.Gray
         IBMinimizar.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBMinimizar.IconSize = 20
-        IBMinimizar.Location = New Point(448, 2)
-        IBMinimizar.Margin = New Padding(3, 2, 3, 2)
+        IBMinimizar.Location = New Point(512, 3)
         IBMinimizar.Name = "IBMinimizar"
-        IBMinimizar.Size = New Size(19, 17)
+        IBMinimizar.Size = New Size(22, 23)
         IBMinimizar.TabIndex = 33
         IBMinimizar.UseVisualStyleBackColor = False
         ' 
@@ -142,10 +141,9 @@ Partial Class FormEditarUsuario
         IBCerrar.IconColor = Color.Gray
         IBCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBCerrar.IconSize = 20
-        IBCerrar.Location = New Point(473, 2)
-        IBCerrar.Margin = New Padding(3, 2, 3, 2)
+        IBCerrar.Location = New Point(541, 3)
         IBCerrar.Name = "IBCerrar"
-        IBCerrar.Size = New Size(19, 17)
+        IBCerrar.Size = New Size(22, 23)
         IBCerrar.TabIndex = 32
         IBCerrar.UseVisualStyleBackColor = False
         ' 
@@ -163,10 +161,9 @@ Partial Class FormEditarUsuario
         IBMinimizar_EC.IconColor = Color.Gray
         IBMinimizar_EC.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBMinimizar_EC.IconSize = 20
-        IBMinimizar_EC.Location = New Point(750, 7)
-        IBMinimizar_EC.Margin = New Padding(3, 2, 3, 2)
+        IBMinimizar_EC.Location = New Point(857, 9)
         IBMinimizar_EC.Name = "IBMinimizar_EC"
-        IBMinimizar_EC.Size = New Size(19, 17)
+        IBMinimizar_EC.Size = New Size(22, 23)
         IBMinimizar_EC.TabIndex = 18
         IBMinimizar_EC.UseVisualStyleBackColor = False
         ' 
@@ -184,19 +181,19 @@ Partial Class FormEditarUsuario
         IBCerrar_EC.IconColor = Color.Gray
         IBCerrar_EC.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBCerrar_EC.IconSize = 20
-        IBCerrar_EC.Location = New Point(774, 7)
-        IBCerrar_EC.Margin = New Padding(3, 2, 3, 2)
+        IBCerrar_EC.Location = New Point(885, 9)
         IBCerrar_EC.Name = "IBCerrar_EC"
-        IBCerrar_EC.Size = New Size(19, 17)
+        IBCerrar_EC.Size = New Size(22, 23)
         IBCerrar_EC.TabIndex = 16
         IBCerrar_EC.UseVisualStyleBackColor = False
         ' 
         ' PBEditarUsuario
         ' 
         PBEditarUsuario.Image = My.Resources.Resources.people1
-        PBEditarUsuario.Location = New Point(58, 106)
+        PBEditarUsuario.Location = New Point(66, 141)
+        PBEditarUsuario.Margin = New Padding(3, 4, 3, 4)
         PBEditarUsuario.Name = "PBEditarUsuario"
-        PBEditarUsuario.Size = New Size(83, 79)
+        PBEditarUsuario.Size = New Size(95, 105)
         PBEditarUsuario.TabIndex = 30
         PBEditarUsuario.TabStop = False
         ' 
@@ -205,9 +202,9 @@ Partial Class FormEditarUsuario
         LTelefono.AutoSize = True
         LTelefono.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LTelefono.ForeColor = Color.Silver
-        LTelefono.Location = New Point(49, 439)
+        LTelefono.Location = New Point(56, 585)
         LTelefono.Name = "LTelefono"
-        LTelefono.Size = New Size(71, 20)
+        LTelefono.Size = New Size(89, 25)
         LTelefono.TabIndex = 29
         LTelefono.Text = "Telefono"
         ' 
@@ -216,9 +213,9 @@ Partial Class FormEditarUsuario
         LCorreo.AutoSize = True
         LCorreo.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LCorreo.ForeColor = Color.Silver
-        LCorreo.Location = New Point(49, 379)
+        LCorreo.Location = New Point(56, 505)
         LCorreo.Name = "LCorreo"
-        LCorreo.Size = New Size(57, 20)
+        LCorreo.Size = New Size(72, 25)
         LCorreo.TabIndex = 28
         LCorreo.Text = "Correo"
         ' 
@@ -227,9 +224,9 @@ Partial Class FormEditarUsuario
         LDNI.AutoSize = True
         LDNI.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LDNI.ForeColor = Color.Silver
-        LDNI.Location = New Point(49, 319)
+        LDNI.Location = New Point(56, 425)
         LDNI.Name = "LDNI"
-        LDNI.Size = New Size(37, 20)
+        LDNI.Size = New Size(45, 25)
         LDNI.TabIndex = 27
         LDNI.Text = "DNI"
         ' 
@@ -238,9 +235,9 @@ Partial Class FormEditarUsuario
         LNombre.AutoSize = True
         LNombre.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LNombre.ForeColor = Color.Silver
-        LNombre.Location = New Point(49, 259)
+        LNombre.Location = New Point(56, 345)
         LNombre.Name = "LNombre"
-        LNombre.Size = New Size(77, 20)
+        LNombre.Size = New Size(97, 25)
         LNombre.TabIndex = 26
         LNombre.Text = "Nombre/s"
         ' 
@@ -249,9 +246,9 @@ Partial Class FormEditarUsuario
         Label3.AutoSize = True
         Label3.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label3.ForeColor = Color.Silver
-        Label3.Location = New Point(49, 199)
+        Label3.Location = New Point(56, 265)
         Label3.Name = "Label3"
-        Label3.Size = New Size(77, 20)
+        Label3.Size = New Size(98, 25)
         Label3.TabIndex = 25
         Label3.Text = "Apellido/s"
         ' 
@@ -261,10 +258,9 @@ Partial Class FormEditarUsuario
         TBTelefono.BorderStyle = BorderStyle.None
         TBTelefono.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBTelefono.ForeColor = Color.Silver
-        TBTelefono.Location = New Point(198, 439)
-        TBTelefono.Margin = New Padding(3, 2, 3, 2)
+        TBTelefono.Location = New Point(226, 585)
         TBTelefono.Name = "TBTelefono"
-        TBTelefono.Size = New Size(264, 17)
+        TBTelefono.Size = New Size(302, 21)
         TBTelefono.TabIndex = 24
         ' 
         ' TBCorreo
@@ -273,10 +269,9 @@ Partial Class FormEditarUsuario
         TBCorreo.BorderStyle = BorderStyle.None
         TBCorreo.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBCorreo.ForeColor = Color.Silver
-        TBCorreo.Location = New Point(198, 379)
-        TBCorreo.Margin = New Padding(3, 2, 3, 2)
+        TBCorreo.Location = New Point(226, 505)
         TBCorreo.Name = "TBCorreo"
-        TBCorreo.Size = New Size(264, 17)
+        TBCorreo.Size = New Size(302, 21)
         TBCorreo.TabIndex = 23
         ' 
         ' TBDNI
@@ -285,10 +280,9 @@ Partial Class FormEditarUsuario
         TBDNI.BorderStyle = BorderStyle.None
         TBDNI.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBDNI.ForeColor = Color.Silver
-        TBDNI.Location = New Point(198, 319)
-        TBDNI.Margin = New Padding(3, 2, 3, 2)
+        TBDNI.Location = New Point(226, 425)
         TBDNI.Name = "TBDNI"
-        TBDNI.Size = New Size(264, 17)
+        TBDNI.Size = New Size(302, 21)
         TBDNI.TabIndex = 22
         ' 
         ' tNombre
@@ -297,10 +291,9 @@ Partial Class FormEditarUsuario
         tNombre.BorderStyle = BorderStyle.None
         tNombre.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tNombre.ForeColor = Color.Silver
-        tNombre.Location = New Point(198, 259)
-        tNombre.Margin = New Padding(3, 2, 3, 2)
+        tNombre.Location = New Point(226, 345)
         tNombre.Name = "tNombre"
-        tNombre.Size = New Size(264, 17)
+        tNombre.Size = New Size(302, 21)
         tNombre.TabIndex = 21
         ' 
         ' TBApellido
@@ -309,10 +302,9 @@ Partial Class FormEditarUsuario
         TBApellido.BorderStyle = BorderStyle.None
         TBApellido.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBApellido.ForeColor = Color.Silver
-        TBApellido.Location = New Point(198, 199)
-        TBApellido.Margin = New Padding(3, 2, 3, 2)
+        TBApellido.Location = New Point(226, 265)
         TBApellido.Name = "TBApellido"
-        TBApellido.Size = New Size(264, 17)
+        TBApellido.Size = New Size(302, 21)
         TBApellido.TabIndex = 20
         ' 
         ' ComboBoxTipoUsuario
@@ -320,9 +312,10 @@ Partial Class FormEditarUsuario
         ComboBoxTipoUsuario.BackColor = Color.White
         ComboBoxTipoUsuario.ForeColor = Color.Black
         ComboBoxTipoUsuario.FormattingEnabled = True
-        ComboBoxTipoUsuario.Location = New Point(198, 619)
+        ComboBoxTipoUsuario.Location = New Point(226, 825)
+        ComboBoxTipoUsuario.Margin = New Padding(3, 4, 3, 4)
         ComboBoxTipoUsuario.Name = "ComboBoxTipoUsuario"
-        ComboBoxTipoUsuario.Size = New Size(264, 23)
+        ComboBoxTipoUsuario.Size = New Size(301, 28)
         ComboBoxTipoUsuario.TabIndex = 18
         ' 
         ' Label2
@@ -330,9 +323,9 @@ Partial Class FormEditarUsuario
         Label2.AutoSize = True
         Label2.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.Silver
-        Label2.Location = New Point(49, 619)
+        Label2.Location = New Point(56, 825)
         Label2.Name = "Label2"
-        Label2.Size = New Size(117, 20)
+        Label2.Size = New Size(147, 25)
         Label2.TabIndex = 15
         Label2.Text = "Tipo de usuario"
         ' 
@@ -341,9 +334,9 @@ Partial Class FormEditarUsuario
         Label1.AutoSize = True
         Label1.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = Color.Silver
-        Label1.Location = New Point(49, 559)
+        Label1.Location = New Point(56, 745)
         Label1.Name = "Label1"
-        Label1.Size = New Size(92, 20)
+        Label1.Size = New Size(114, 25)
         Label1.TabIndex = 13
         Label1.Text = "Contraseña"
         ' 
@@ -353,10 +346,9 @@ Partial Class FormEditarUsuario
         tContrasena.BorderStyle = BorderStyle.None
         tContrasena.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tContrasena.ForeColor = Color.Silver
-        tContrasena.Location = New Point(198, 559)
-        tContrasena.Margin = New Padding(3, 2, 3, 2)
+        tContrasena.Location = New Point(226, 745)
         tContrasena.Name = "tContrasena"
-        tContrasena.Size = New Size(264, 17)
+        tContrasena.Size = New Size(302, 21)
         tContrasena.TabIndex = 17
         ' 
         ' BEditarUsuario
@@ -366,10 +358,9 @@ Partial Class FormEditarUsuario
         BEditarUsuario.FlatStyle = FlatStyle.Flat
         BEditarUsuario.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BEditarUsuario.ForeColor = Color.White
-        BEditarUsuario.Location = New Point(71, 673)
-        BEditarUsuario.Margin = New Padding(3, 2, 3, 2)
+        BEditarUsuario.Location = New Point(81, 897)
         BEditarUsuario.Name = "BEditarUsuario"
-        BEditarUsuario.Size = New Size(350, 50)
+        BEditarUsuario.Size = New Size(400, 67)
         BEditarUsuario.TabIndex = 19
         BEditarUsuario.Text = "Editar usuario"
         BEditarUsuario.UseVisualStyleBackColor = False
@@ -379,9 +370,9 @@ Partial Class FormEditarUsuario
         LApellido.AutoSize = True
         LApellido.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LApellido.ForeColor = Color.Silver
-        LApellido.Location = New Point(49, 499)
+        LApellido.Location = New Point(56, 665)
         LApellido.Name = "LApellido"
-        LApellido.Size = New Size(64, 20)
+        LApellido.Size = New Size(79, 25)
         LApellido.TabIndex = 6
         LApellido.Text = "Usuario"
         ' 
@@ -391,20 +382,20 @@ Partial Class FormEditarUsuario
         tUsuario.BorderStyle = BorderStyle.None
         tUsuario.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         tUsuario.ForeColor = Color.Silver
-        tUsuario.Location = New Point(198, 499)
-        tUsuario.Margin = New Padding(3, 2, 3, 2)
+        tUsuario.Location = New Point(226, 665)
         tUsuario.Name = "tUsuario"
-        tUsuario.Size = New Size(264, 17)
+        tUsuario.Size = New Size(302, 21)
         tUsuario.TabIndex = 12
         ' 
         ' FormEditarUsuario
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        ClientSize = New Size(496, 749)
+        ClientSize = New Size(567, 999)
         Controls.Add(PAgregarCliente)
         FormBorderStyle = FormBorderStyle.None
+        Margin = New Padding(3, 4, 3, 4)
         Name = "FormEditarUsuario"
         Text = "FormAgregarUsuario"
         PAgregarCliente.ResumeLayout(False)

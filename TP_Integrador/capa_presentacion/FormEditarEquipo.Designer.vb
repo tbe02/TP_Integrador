@@ -46,10 +46,12 @@ Partial Class FormEditarEquipo
         IBMinimizar_EC = New FontAwesome.Sharp.IconButton()
         IBCerrar_EC = New FontAwesome.Sharp.IconButton()
         BEstadoEquipo = New Button()
+        PMenuSuperior = New Panel()
         PAsociarCliente.SuspendLayout()
         CType(PBAsociarCliente, ComponentModel.ISupportInitialize).BeginInit()
         PAgregarEquipo.SuspendLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
+        PMenuSuperior.SuspendLayout()
         SuspendLayout()
         ' 
         ' PAsociarCliente
@@ -328,7 +330,7 @@ Partial Class FormEditarEquipo
         IBMinimizar_EC.IconColor = Color.Gray
         IBMinimizar_EC.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBMinimizar_EC.IconSize = 20
-        IBMinimizar_EC.Location = New Point(1042, 15)
+        IBMinimizar_EC.Location = New Point(1059, 3)
         IBMinimizar_EC.Name = "IBMinimizar_EC"
         IBMinimizar_EC.Size = New Size(22, 23)
         IBMinimizar_EC.TabIndex = 35
@@ -348,7 +350,7 @@ Partial Class FormEditarEquipo
         IBCerrar_EC.IconColor = Color.Gray
         IBCerrar_EC.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBCerrar_EC.IconSize = 20
-        IBCerrar_EC.Location = New Point(1069, 15)
+        IBCerrar_EC.Location = New Point(1087, 3)
         IBCerrar_EC.Name = "IBCerrar_EC"
         IBCerrar_EC.Size = New Size(22, 23)
         IBCerrar_EC.TabIndex = 34
@@ -369,15 +371,24 @@ Partial Class FormEditarEquipo
         BEstadoEquipo.Text = "Estado equipo"
         BEstadoEquipo.UseVisualStyleBackColor = True
         ' 
+        ' PMenuSuperior
+        ' 
+        PMenuSuperior.BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
+        PMenuSuperior.Controls.Add(IBMinimizar_EC)
+        PMenuSuperior.Controls.Add(IBCerrar_EC)
+        PMenuSuperior.Location = New Point(0, 0)
+        PMenuSuperior.Name = "PMenuSuperior"
+        PMenuSuperior.Size = New Size(1112, 35)
+        PMenuSuperior.TabIndex = 43
+        ' 
         ' FormEditarEquipo
         ' 
-        AutoScaleDimensions = New SizeF(8.0F, 20.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
-        ClientSize = New Size(1105, 943)
+        ClientSize = New Size(1110, 943)
+        Controls.Add(PMenuSuperior)
         Controls.Add(BEstadoEquipo)
-        Controls.Add(IBMinimizar_EC)
-        Controls.Add(IBCerrar_EC)
         Controls.Add(PAsociarCliente)
         Controls.Add(PAgregarEquipo)
         FormBorderStyle = FormBorderStyle.None
@@ -389,6 +400,7 @@ Partial Class FormEditarEquipo
         PAgregarEquipo.ResumeLayout(False)
         PAgregarEquipo.PerformLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
+        PMenuSuperior.ResumeLayout(False)
         ResumeLayout(False)
     End Sub
 
@@ -416,4 +428,5 @@ Partial Class FormEditarEquipo
     Friend WithEvents ComboBModelo As ComboBox
     Friend WithEvents ComboBMarca As ComboBox
     Friend WithEvents BEstadoEquipo As Button
+    Friend WithEvents PMenuSuperior As Panel
 End Class
