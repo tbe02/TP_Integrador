@@ -1,33 +1,41 @@
 ﻿Public Class ControladorEstadisticas
     Private _estadisticas As Estadisticas = New Estadisticas()
 
-    Public Function ObtenerIngresosPorSemana() As List(Of Estadisticas.VariacionSemanal)
+    Public Function ObtenerIngresosPorSemana(fechaInicio As String, fechaFin As String) As List(Of Estadisticas.VariacionSemanal)
         Try
-            Return _estadisticas.ObtenerIngresosPorSemana()
+            Return _estadisticas.ObtenerIngresosPorSemana(fechaInicio, fechaFin)
         Catch ex As Exception
             Throw New Exception(ex.Message)
         End Try
     End Function
 
-    Public Function ObtenerRevisionesPorSemana() As List(Of Estadisticas.VariacionSemanal)
+    Public Function ObtenerFechaPrimerIngreso() As String
         Try
-            Return _estadisticas.ObtenerRevisionesPorSemana()
+            Return _estadisticas.ObtenerFechaPrimerIngreso()
         Catch ex As Exception
             Throw New Exception(ex.Message)
         End Try
     End Function
 
-    Public Function ObtenerReparacionesPorSemana() As List(Of Estadisticas.VariacionSemanal)
+    Public Function ObtenerRevisionesPorSemana(fechaInicio As String, fechaFin As String) As List(Of Estadisticas.VariacionSemanal)
         Try
-            Return _estadisticas.ObtenerReparacionesPorSemana()
+            Return _estadisticas.ObtenerRevisionesPorSemana(fechaInicio, fechaFin)
         Catch ex As Exception
             Throw New Exception(ex.Message)
         End Try
     End Function
 
-    Public Function ObtenerEntregasPorSemana() As List(Of Estadisticas.VariacionSemanal)
+    Public Function ObtenerReparacionesPorSemana(fechaInicio As String, fechaFin As String) As List(Of Estadisticas.VariacionSemanal)
         Try
-            Return _estadisticas.ObtenerEntregasPorSemana()
+            Return _estadisticas.ObtenerReparacionesPorSemana(fechaInicio, fechaFin)
+        Catch ex As Exception
+            Throw New Exception(ex.Message)
+        End Try
+    End Function
+
+    Public Function ObtenerEntregasPorSemana(fechaInicio As String, fechaFin As String) As List(Of Estadisticas.VariacionSemanal)
+        Try
+            Return _estadisticas.ObtenerEntregasPorSemana(fechaInicio, fechaFin)
         Catch ex As Exception
             Throw New Exception(ex.Message)
         End Try
@@ -41,9 +49,9 @@
         End Try
     End Function
 
-    Public Function ObtenerFacturacionPorSemana() As List(Of Estadisticas.VariacionSemanal)
+    Public Function ObtenerFacturacionPorSemana(fechaInicio As String, fechaFin As String) As List(Of Estadisticas.VariacionSemanal)
         Try
-            Return _estadisticas.ObtenerFacturacionPorSemana()
+            Return _estadisticas.ObtenerFacturacionPorSemana(fechaInicio, fechaFin)
         Catch ex As Exception
             Throw New Exception(ex.Message)
         End Try

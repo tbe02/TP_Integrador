@@ -1,34 +1,51 @@
 ﻿Public Class Estadisticas
     Public Class VariacionSemanal
-        Public Property Semana As Integer
+        Public Property Semana As String
         Public Property Cantidad As Integer
         Public Property Variacion As Integer
     End Class
 
-    Public Function ObtenerIngresosPorSemana() As List(Of VariacionSemanal)
+    Public Function ObtenerIngresosPorSemana(fechaInicio As String, fechaFin As String) As List(Of VariacionSemanal)
         Dim ingresos = New List(Of VariacionSemanal)
 
         Dim conexion = New BaseDeDatos().obtenerConexion()
-        Dim comando = New SqlCommand("DECLARE @fechaPrimerIngreso DATE = (SELECT MIN(fechaDeIngreso) FROM Equipos);
+        Dim comando = New SqlCommand($"DECLARE @fechaInicio DATE = '{fechaInicio}';
+DECLARE @fechaFin DATE = '{fechaFin}';
 
 WITH EquiposPorSemana AS (
     SELECT 
-        DATEDIFF(WEEK, @fechaPrimerIngreso, fechaDeIngreso) + 1 AS Semana,
+        @fechaInicio AS Semana,
+        COALESCE(COUNT(*), 0) AS CantidadEquipos
+    FROM 
+        Equipos
+    WHERE 
+        fechaDeIngreso BETWEEN DATEADD(WEEK, -1, @fechaInicio) AND DATEADD(DAY, -1, @fechaInicio)
+    HAVING 
+        COUNT(*) > 0 OR COUNT(*) = 0
+    
+    UNION ALL
+
+    SELECT 
+        DATEADD(WEEK, (DATEDIFF(WEEK, @fechaInicio, fechaDeIngreso) + 1), @fechaInicio) AS Semana,
         COUNT(*) AS CantidadEquipos
     FROM 
         Equipos
+    WHERE 
+        fechaDeIngreso BETWEEN @fechaInicio AND @fechaFin
     GROUP BY 
-        DATEDIFF(WEEK, @fechaPrimerIngreso, fechaDeIngreso) + 1
+        DATEDIFF(WEEK, @fechaInicio, fechaDeIngreso) + 1
 )
 SELECT 
     Semana,
     CantidadEquipos,
-    CantidadEquipos - LAG(CantidadEquipos, 1, 0) OVER (ORDER BY Semana) AS Variacion
+    CASE 
+        WHEN ROW_NUMBER() OVER (ORDER BY Semana) = 1 THEN 0
+        ELSE CantidadEquipos - LAG(CantidadEquipos, 1, 0) OVER (ORDER BY Semana) 
+    END AS Variacion
 FROM 
     EquiposPorSemana
 ORDER BY 
-    Semana;
-", conexion)
+    Semana;", conexion)
 
         Try
             conexion.Open()
@@ -55,30 +72,73 @@ ORDER BY
         Return ingresos
     End Function
 
-    Public Function ObtenerRevisionesPorSemana() As List(Of VariacionSemanal)
+    Public Function ObtenerFechaPrimerIngreso() As Date
+        Dim fecha = DateTime.Now()
+
+        Dim conexion = New BaseDeDatos().obtenerConexion()
+        Dim comando = New SqlCommand("SELECT MIN(fechaDeIngreso) FROM Equipos", conexion)
+
+        Try
+            conexion.Open()
+
+            Dim primerFechaIngreso As Object = comando.ExecuteScalar()
+
+            ' Verifica que la fecha no sea NULL antes de asignarla
+            If primerFechaIngreso IsNot DBNull.Value Then
+                fecha = Convert.ToDateTime(primerFechaIngreso)
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error al obtener revisiones por semana: " & ex.Message)
+        Finally
+            conexion.Close()
+        End Try
+
+        Return fecha
+    End Function
+
+    Public Function ObtenerRevisionesPorSemana(fechaInicio As String, fechaFin As String) As List(Of VariacionSemanal)
         Dim revisiones = New List(Of VariacionSemanal)
 
         Dim conexion = New BaseDeDatos().obtenerConexion()
-        Dim comando = New SqlCommand("DECLARE @fechaPrimerFinalizacion DATE = (SELECT MIN(fechaDeFinalizacion) FROM Revisiones);
+        Dim comando = New SqlCommand($"DECLARE @fechaInicio DATE = '{fechaInicio}';
+    DECLARE @fechaFin DATE = '{fechaFin}';
 
-WITH RevisionesPorSemana AS (
+    WITH RevisionesPorSemana AS (
+    -- Primer registro: Revisiones entre fechaInicio y 7 días antes
     SELECT 
-        DATEDIFF(WEEK, @fechaPrimerFinalizacion, fechaDeFinalizacion) + 1 AS Semana,
+        @fechaInicio AS Semana,
+        COALESCE(COUNT(*), 0) AS CantidadRevisiones
+    FROM 
+        Revisiones
+    WHERE 
+        fechaDeFinalizacion BETWEEN DATEADD(WEEK, -1, @fechaInicio) AND DATEADD(DAY, -1, @fechaInicio)
+    HAVING 
+        COUNT(*) > 0 OR COUNT(*) = 0
+    
+    UNION ALL
+
+    -- Revisiones agrupadas por semana entre fechaInicio y fechaFin
+    SELECT 
+        DATEADD(WEEK, (DATEDIFF(WEEK, @fechaInicio, fechaDeFinalizacion) + 1), @fechaInicio) AS Semana,
         COUNT(*) AS CantidadRevisiones
     FROM 
         Revisiones
+    WHERE 
+        fechaDeFinalizacion BETWEEN @fechaInicio AND @fechaFin
     GROUP BY 
-        DATEDIFF(WEEK, @fechaPrimerFinalizacion, fechaDeFinalizacion) + 1
+        DATEDIFF(WEEK, @fechaInicio, fechaDeFinalizacion) + 1
 )
 SELECT 
     Semana,
     CantidadRevisiones,
-    CantidadRevisiones - LAG(CantidadRevisiones, 1, 0) OVER (ORDER BY Semana) AS Variacion
+    CASE 
+        WHEN ROW_NUMBER() OVER (ORDER BY Semana) = 1 THEN 0
+        ELSE CantidadRevisiones - LAG(CantidadRevisiones, 1, 0) OVER (ORDER BY Semana) 
+    END AS Variacion
 FROM 
     RevisionesPorSemana
 ORDER BY 
-    Semana;
-", conexion)
+    Semana;", conexion)
 
         Try
             conexion.Open()
@@ -105,30 +165,49 @@ ORDER BY
         Return revisiones
     End Function
 
-    Public Function ObtenerReparacionesPorSemana() As List(Of VariacionSemanal)
+    Public Function ObtenerReparacionesPorSemana(fechaInicio As String, fechaFin As String) As List(Of VariacionSemanal)
         Dim reparaciones = New List(Of VariacionSemanal)
 
         Dim conexion = New BaseDeDatos().obtenerConexion()
-        Dim comando = New SqlCommand("DECLARE @fechaPrimerFinalizacion DATE = (SELECT MIN(fechaDeFinalizacion) FROM Reparaciones);
+        Dim comando = New SqlCommand($"DECLARE @fechaInicio DATE = '{fechaInicio}';
+DECLARE @fechaFin DATE = '{fechaFin}';
 
 WITH ReparacionesPorSemana AS (
+    -- Primer registro: Reparaciones entre fechaInicio y 7 días antes
     SELECT 
-        DATEDIFF(WEEK, @fechaPrimerFinalizacion, fechaDeFinalizacion) + 1 AS Semana,
+        @fechaInicio AS Semana,
+        COALESCE(COUNT(*), 0) AS CantidadReparaciones
+    FROM 
+        Reparaciones
+    WHERE 
+        fechaDeFinalizacion BETWEEN DATEADD(WEEK, -1, @fechaInicio) AND DATEADD(DAY, -1, @fechaInicio)
+    HAVING 
+        COUNT(*) > 0 OR COUNT(*) = 0
+    
+    UNION ALL
+
+    -- Reparaciones agrupadas por semana entre fechaInicio y fechaFin
+    SELECT 
+        DATEADD(WEEK, (DATEDIFF(WEEK, @fechaInicio, fechaDeFinalizacion) + 1), @fechaInicio) AS Semana,
         COUNT(*) AS CantidadReparaciones
     FROM 
         Reparaciones
+    WHERE 
+        fechaDeFinalizacion BETWEEN @fechaInicio AND @fechaFin
     GROUP BY 
-        DATEDIFF(WEEK, @fechaPrimerFinalizacion, fechaDeFinalizacion) + 1
+        DATEDIFF(WEEK, @fechaInicio, fechaDeFinalizacion) + 1
 )
 SELECT 
     Semana,
     CantidadReparaciones,
-    CantidadReparaciones - LAG(CantidadReparaciones, 1, 0) OVER (ORDER BY Semana) AS Variacion
+    CASE 
+        WHEN ROW_NUMBER() OVER (ORDER BY Semana) = 1 THEN 0
+        ELSE CantidadReparaciones - LAG(CantidadReparaciones, 1, 0) OVER (ORDER BY Semana) 
+    END AS Variacion
 FROM 
     ReparacionesPorSemana
 ORDER BY 
-    Semana;
-", conexion)
+    Semana;", conexion)
 
         Try
             conexion.Open()
@@ -155,30 +234,49 @@ ORDER BY
         Return reparaciones
     End Function
 
-    Public Function ObtenerEntregasPorSemana() As List(Of VariacionSemanal)
+    Public Function ObtenerEntregasPorSemana(fechaInicio As String, fechaFin As String) As List(Of VariacionSemanal)
         Dim entregas = New List(Of VariacionSemanal)
 
         Dim conexion = New BaseDeDatos().obtenerConexion()
-        Dim comando = New SqlCommand("DECLARE @fechaPrimerEntrega DATE = (SELECT MIN(fecha) FROM Entregas);
+        Dim comando = New SqlCommand($"DECLARE @fechaInicio DATE = '{fechaInicio}';
+DECLARE @fechaFin DATE = '{fechaFin}';
 
 WITH EntregasPorSemana AS (
+    -- Primer registro: Entregas entre fechaInicio y 7 días antes
     SELECT 
-        DATEDIFF(WEEK, @fechaPrimerEntrega, fecha) + 1 AS Semana,
+        @fechaInicio AS Semana,
+        COALESCE(COUNT(*), 0) AS CantidadEntregas
+    FROM 
+        Entregas
+    WHERE 
+        fecha BETWEEN DATEADD(WEEK, -1, @fechaInicio) AND DATEADD(DAY, -1, @fechaInicio)
+    HAVING 
+        COUNT(*) > 0 OR COUNT(*) = 0
+    
+    UNION ALL
+
+    -- Entregas agrupadas por semana entre fechaInicio y fechaFin
+    SELECT 
+        DATEADD(WEEK, (DATEDIFF(WEEK, @fechaInicio, fecha) + 1), @fechaInicio) AS Semana,
         COUNT(*) AS CantidadEntregas
     FROM 
         Entregas
+    WHERE 
+        fecha BETWEEN @fechaInicio AND @fechaFin
     GROUP BY 
-        DATEDIFF(WEEK, @fechaPrimerEntrega, fecha) + 1
+        DATEDIFF(WEEK, @fechaInicio, fecha) + 1
 )
 SELECT 
     Semana,
     CantidadEntregas,
-    CantidadEntregas - LAG(CantidadEntregas, 1, 0) OVER (ORDER BY Semana) AS Variacion
+    CASE 
+        WHEN ROW_NUMBER() OVER (ORDER BY Semana) = 1 THEN 0
+        ELSE CantidadEntregas - LAG(CantidadEntregas, 1, 0) OVER (ORDER BY Semana) 
+    END AS Variacion
 FROM 
     EntregasPorSemana
 ORDER BY 
-    Semana;
-", conexion)
+    Semana;", conexion)
 
         Try
             conexion.Open()
@@ -214,51 +312,58 @@ ORDER BY
         Dim estados = New List(Of CantidadPorEstado)
 
         Dim conexion = New BaseDeDatos().obtenerConexion()
-        Dim comando = New SqlCommand("SELECT 
-	estado, 
-	COUNT(*) AS cantidad 
-FROM (
-	SELECT 
-		Equipos.idEquipo,
-		CASE 
-			-- Si no existe una revisión, el equipo está pendiente de revisión
-			WHEN Revisiones.idEquipo IS NULL THEN 'Pendiente de revisión'
-        
-			-- Si la revisión existe pero no ha finalizado, el equipo está en revisión
-			WHEN Revisiones.fechaDeFinalizacion IS NULL THEN 'En revisión'
-        
-			-- Si la revisión está finalizada pero no hay presupuesto, el equipo está pendiente de presupuesto
-			WHEN Presupuestos.idPresupuesto IS NULL THEN 'Pendiente de presupuesto'
+        Dim comando = New SqlCommand("-- Tabla derivada con todos los estados posibles
+WITH EstadosPosibles AS (
+    SELECT 'Pendiente de revisión' AS estado
+    UNION ALL
+    SELECT 'En revisión'
+    UNION ALL
+    SELECT 'Pendiente de presupuesto'
+    UNION ALL
+    SELECT 'Pendiente de aprobacion de presupuesto'
+    UNION ALL
+    SELECT 'Pendiente de entrega'
+    UNION ALL
+    SELECT 'Pendiente de reparación'
+    UNION ALL
+    SELECT 'En reparación'
+    UNION ALL
+    SELECT 'Entregado'
+)
 
-			-- Si el presupuesto existe pero el cliente aun no decidio si lo aprueba, el equipo está pendiente de aprobacion de presupuesto
-			WHEN Presupuestos.aprobado IS NULL THEN 'Pendiente de aprobacion de presupuesto'
-        
-			-- Si el presupuesto existe pero no está aprobado y no ha sido entregado, el equipo está pendiente de entrega
-			WHEN Presupuestos.aprobado = 0 AND Entregas.idReparacion IS NULL THEN 'Pendiente de entrega'
-        
-			-- Si el presupuesto está aprobado pero no existe reparación, el equipo está pendiente de reparación
-			WHEN Reparaciones.idPresupuesto IS NULL THEN 'Pendiente de reparación'
-        
-			-- Si la reparación existe pero no ha finalizado y no es irreparable, el equipo está en reparación
-			WHEN Reparaciones.fechaDeFinalizacion IS NULL THEN 'En reparación'
-        
-			-- Si la reparación existe, ha finalizado y es irreparable, el equipo está pendiente de entrega
-			WHEN Reparaciones.irreparable = 1 AND Entregas.idReparacion IS NULL THEN 'Pendiente de entrega'
-
-			-- Si la reparación está finalizada pero no existe entrega, el equipo está pendiente de entrega
-			WHEN Entregas.idReparacion IS NULL THEN 'Pendiente de entrega'
-        
-			-- Si el equipo ha sido entregado, está en estado entregado
-			ELSE 'Entregado'
-		END AS estado
-	FROM 
-		Equipos
-		LEFT JOIN Revisiones ON Equipos.idEquipo = Revisiones.idEquipo
-		LEFT JOIN Presupuestos ON Revisiones.idEquipo = Presupuestos.idRevision
-		LEFT JOIN Reparaciones ON Presupuestos.idPresupuesto = Reparaciones.idPresupuesto
-		LEFT JOIN Entregas ON Reparaciones.idPresupuesto = Entregas.idReparacion
-) AS estados
-GROUP BY estado
+SELECT 
+    EstadosPosibles.estado,
+    COALESCE(cantidad, 0) AS cantidad
+FROM 
+    EstadosPosibles
+LEFT JOIN (
+    SELECT 
+        estado, 
+        COUNT(*) AS cantidad 
+    FROM (
+        SELECT 
+            Equipos.idEquipo,
+            CASE 
+                WHEN Revisiones.idEquipo IS NULL THEN 'Pendiente de revisión'
+                WHEN Revisiones.fechaDeFinalizacion IS NULL THEN 'En revisión'
+                WHEN Presupuestos.idPresupuesto IS NULL THEN 'Pendiente de presupuesto'
+                WHEN Presupuestos.aprobado IS NULL THEN 'Pendiente de aprobacion de presupuesto'
+                WHEN Presupuestos.aprobado = 0 AND Entregas.idReparacion IS NULL THEN 'Pendiente de entrega'
+                WHEN Reparaciones.idPresupuesto IS NULL THEN 'Pendiente de reparación'
+                WHEN Reparaciones.fechaDeFinalizacion IS NULL THEN 'En reparación'
+                WHEN Reparaciones.irreparable = 1 AND Entregas.idReparacion IS NULL THEN 'Pendiente de entrega'
+                WHEN Entregas.idReparacion IS NULL THEN 'Pendiente de entrega'
+                ELSE 'Entregado'
+            END AS estado
+        FROM 
+            Equipos
+            LEFT JOIN Revisiones ON Equipos.idEquipo = Revisiones.idEquipo
+            LEFT JOIN Presupuestos ON Revisiones.idEquipo = Presupuestos.idRevision
+            LEFT JOIN Reparaciones ON Presupuestos.idPresupuesto = Reparaciones.idPresupuesto
+            LEFT JOIN Entregas ON Reparaciones.idPresupuesto = Entregas.idReparacion
+    ) AS estados
+    GROUP BY estado
+) AS conteo ON EstadosPosibles.estado = conteo.estado
 ORDER BY cantidad DESC;
 ", conexion)
 
@@ -286,29 +391,47 @@ ORDER BY cantidad DESC;
         Return estados
     End Function
 
-    Public Function ObtenerFacturacionPorSemana() As List(Of VariacionSemanal)
+    Public Function ObtenerFacturacionPorSemana(fechaInicio As String, fechaFin As String) As List(Of VariacionSemanal)
         Dim facturaciones = New List(Of VariacionSemanal)
 
         Dim conexion = New BaseDeDatos().obtenerConexion()
-        Dim comando = New SqlCommand("DECLARE @fechaPrimerEntrega DATE = (SELECT MIN(fecha) FROM Entregas);
+        Dim comando = New SqlCommand($"DECLARE @fechaInicio DATE = '{fechaInicio}';
+DECLARE @fechaFin DATE = '{fechaFin}';
 
 WITH FacturacionPorSemana AS (
+    -- Primer registro: Facturación entre fechaInicio y 7 días antes
     SELECT 
-        DATEDIFF(WEEK, @fechaPrimerEntrega, fecha) + 1 AS Semana,
+        @fechaInicio AS Semana,
+        COALESCE(SUM(monto), 0) AS Facturacion
+    FROM 
+        Entregas
+    JOIN 
+        Presupuestos ON Entregas.idReparacion = Presupuestos.idPresupuesto
+    WHERE 
+        fecha BETWEEN DATEADD(WEEK, -1, @fechaInicio) AND DATEADD(DAY, -1, @fechaInicio)
+    
+    UNION ALL
+
+    -- Facturación agrupada por semana entre fechaInicio y fechaFin
+    SELECT 
+        DATEADD(WEEK, (DATEDIFF(WEEK, @fechaInicio, fecha) + 1), @fechaInicio) AS Semana,
         SUM(monto) AS Facturacion
     FROM 
         Entregas
     JOIN 
-        Presupuestos 
-    ON 
-        Entregas.idReparacion = Presupuestos.idPresupuesto
+        Presupuestos ON Entregas.idReparacion = Presupuestos.idPresupuesto
+    WHERE 
+        fecha BETWEEN @fechaInicio AND @fechaFin
     GROUP BY 
-        DATEDIFF(WEEK, @fechaPrimerEntrega, fecha) + 1
+        DATEDIFF(WEEK, @fechaInicio, fecha) + 1
 )
 SELECT 
     Semana,
     Facturacion,
-    Facturacion - LAG(Facturacion, 1, 0) OVER (ORDER BY Semana) AS Variacion
+    CASE 
+        WHEN ROW_NUMBER() OVER (ORDER BY Semana) = 1 THEN 0
+        ELSE Facturacion - LAG(Facturacion, 1, 0) OVER (ORDER BY Semana) 
+    END AS Variacion
 FROM 
     FacturacionPorSemana
 ORDER BY 

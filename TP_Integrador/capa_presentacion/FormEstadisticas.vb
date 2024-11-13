@@ -1,29 +1,45 @@
-﻿Imports System.Windows.Media
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar
+Imports System.Windows.Media
+Imports System.Windows.Navigation
 Imports LiveCharts.Wpf.Points
 Imports ScottPlot
+Imports ScottPlot.Plottables
+Imports TP_Integrador.Equipos
 
 Public Class FormEstadisticas
     Private _controladorEstadisticas As ControladorEstadisticas = New ControladorEstadisticas()
 
     Private _seccionActual As Integer = 0
 
-    Private Sub ActualizarGraficoIngresosPorSemana(sender As Object, e As EventArgs) Handles ComboBoxIngresosPorSemana.SelectedIndexChanged
+    Private Sub ActualizarGraficoIngresosPorSemana(sender As Object, e As EventArgs) Handles ComboBoxIngresosPorSemana.SelectedIndexChanged, DateTimePickerDesdeIngresosPorSemana.ValueChanged, DateTimePickerHastaIngresosPorSemana.ValueChanged
         FormsPlotIngresosPorSemana.Plot.Clear()
 
-        Dim ingresos = _controladorEstadisticas.ObtenerIngresosPorSemana()
+        Dim fechaInicio As String = DateTimePickerDesdeIngresosPorSemana.Value.ToString("yyyy-MM-dd")
+        Dim fechaFin As String = DateTimePickerHastaIngresosPorSemana.Value.ToString("yyyy-MM-dd")
 
-        Dim semanas = ingresos.Select(Function(ingreso) ingreso.Semana).ToList
-        semanas.Insert(0, 0)
+        Dim ingresos = _controladorEstadisticas.ObtenerIngresosPorSemana(fechaInicio, fechaFin)
+
+        Dim tickGenerator = New ScottPlot.TickGenerators.NumericManual()
+
+        Dim contadorSemana = -1
+        Dim semanas = ingresos.Select(Function(ingreso)
+                                          contadorSemana += 1
+
+                                          tickGenerator.AddMajor(contadorSemana, ingreso.Semana)
+
+                                          Return contadorSemana
+                                      End Function).ToList
 
         FormsPlotIngresosPorSemana.Plot.XLabel("Semanas")
+        FormsPlotIngresosPorSemana.Plot.Axes.SetLimitsX(0, semanas.Max)
+
+        FormsPlotIngresosPorSemana.Plot.Axes.Bottom.TickGenerator = tickGenerator
 
         If ComboBoxIngresosPorSemana.Text = "Total" Then
             Dim cantidades = ingresos.Select(Function(ingreso) ingreso.Cantidad).ToList
 
-            cantidades.Insert(0, 0)
-
             FormsPlotIngresosPorSemana.Plot.Add.Scatter(semanas, cantidades)
-            FormsPlotIngresosPorSemana.Plot.Axes.SetLimitsY(cantidades.Min - 1, cantidades.Max + 1)
+            FormsPlotIngresosPorSemana.Plot.Axes.SetLimitsY(cantidades.Min, cantidades.Max + 1)
             FormsPlotIngresosPorSemana.Plot.Title("Ingresos por semana")
             FormsPlotIngresosPorSemana.Plot.YLabel("Ingresos")
 
@@ -33,33 +49,44 @@ Public Class FormEstadisticas
         End If
 
         Dim variaciones = ingresos.Select(Function(ingreso) ingreso.Variacion).ToList
-        variaciones.Insert(0, 0)
 
         FormsPlotIngresosPorSemana.Plot.Add.Scatter(semanas, variaciones)
-        FormsPlotIngresosPorSemana.Plot.Axes.SetLimitsY(variaciones.Min - 1, variaciones.Max + 1)
+        FormsPlotIngresosPorSemana.Plot.Axes.SetLimitsY(variaciones.Min, variaciones.Max + 1)
         FormsPlotIngresosPorSemana.Plot.Title("Variacion de ingresos por semana")
         FormsPlotIngresosPorSemana.Plot.YLabel("Variacion Ingresos")
 
         FormsPlotIngresosPorSemana.Refresh()
     End Sub
 
-    Private Sub ActualizarGraficoRevisionesPorSemana(sender As Object, e As EventArgs) Handles ComboBoxRevisionesPorSemana.SelectedIndexChanged
+    Private Sub ActualizarGraficoRevisionesPorSemana(sender As Object, e As EventArgs) Handles ComboBoxRevisionesPorSemana.SelectedIndexChanged, DateTimePickerDesdeRevisionesPorSemana.ValueChanged, DateTimePickerHastaRevisionesPorSemana.ValueChanged
         FormsPlotRevisionesPorSemana.Plot.Clear()
 
-        Dim revisiones = _controladorEstadisticas.ObtenerRevisionesPorSemana
+        Dim fechaInicio As String = DateTimePickerDesdeRevisionesPorSemana.Value.ToString("yyyy-MM-dd")
+        Dim fechaFin As String = DateTimePickerHastaRevisionesPorSemana.Value.ToString("yyyy-MM-dd")
 
-        Dim semanas = revisiones.Select(Function(revision) revision.Semana).ToList
-        semanas.Insert(0, 0)
+        Dim revisiones = _controladorEstadisticas.ObtenerRevisionesPorSemana(fechaInicio, fechaFin)
+
+        Dim tickGenerator = New ScottPlot.TickGenerators.NumericManual()
+
+        Dim contadorSemana = -1
+        Dim semanas = revisiones.Select(Function(ingreso)
+                                            contadorSemana += 1
+
+                                            tickGenerator.AddMajor(contadorSemana, ingreso.Semana)
+
+                                            Return contadorSemana
+                                        End Function).ToList
 
         FormsPlotRevisionesPorSemana.Plot.XLabel("Semanas")
+        FormsPlotRevisionesPorSemana.Plot.Axes.SetLimitsX(0, semanas.Max)
+
+        FormsPlotRevisionesPorSemana.Plot.Axes.Bottom.TickGenerator = tickGenerator
 
         If ComboBoxRevisionesPorSemana.Text = "Total" Then
             Dim cantidades = revisiones.Select(Function(revision) revision.Cantidad).ToList
 
-            cantidades.Insert(0, 0)
-
             FormsPlotRevisionesPorSemana.Plot.Add.Scatter(semanas, cantidades)
-            FormsPlotRevisionesPorSemana.Plot.Axes.SetLimitsY(cantidades.Min - 1, cantidades.Max + 1)
+            FormsPlotRevisionesPorSemana.Plot.Axes.SetLimitsY(cantidades.Min, cantidades.Max + 1)
             FormsPlotRevisionesPorSemana.Plot.Title("Revisiones por semana")
             FormsPlotRevisionesPorSemana.Plot.YLabel("Revisiones")
 
@@ -69,10 +96,9 @@ Public Class FormEstadisticas
         End If
 
         Dim variaciones = revisiones.Select(Function(revision) revision.Variacion).ToList
-        variaciones.Insert(0, 0)
 
         FormsPlotRevisionesPorSemana.Plot.Add.Scatter(semanas, variaciones)
-        FormsPlotRevisionesPorSemana.Plot.Axes.SetLimitsY(variaciones.Min - 1, variaciones.Max + 1)
+        FormsPlotRevisionesPorSemana.Plot.Axes.SetLimitsY(variaciones.Min, variaciones.Max + 1)
         FormsPlotRevisionesPorSemana.Plot.Title("Variacion de revisiones por semana")
         FormsPlotRevisionesPorSemana.Plot.YLabel("Variacion revisiones")
 
@@ -82,18 +108,42 @@ Public Class FormEstadisticas
     Private Sub ActualizarSeccion()
         FormsPlotIngresosPorSemana.Hide()
         ComboBoxIngresosPorSemana.Hide()
+        LabelDesdeIngresosPorSemana.Hide()
+        DateTimePickerDesdeIngresosPorSemana.Hide()
+        LabelHastaEquiposPorSemana.Hide()
+        DateTimePickerHastaIngresosPorSemana.Hide()
         FormsPlotRevisionesPorSemana.Hide()
         ComboBoxRevisionesPorSemana.Hide()
+        LabelDesdeIngresosPorSemana.Hide()
+        DateTimePickerDesdeIngresosPorSemana.Hide()
+        LabelHastaEquiposPorSemana.Hide()
+        DateTimePickerHastaIngresosPorSemana.Hide()
+        LabelDesdeRevisionesPorSemana.Hide()
+        DateTimePickerDesdeRevisionesPorSemana.Hide()
+        LabelHastaRevisionesPorSemana.Hide()
+        DateTimePickerHastaRevisionesPorSemana.Hide()
 
         FormsPlotReparacionesPorSemana.Hide()
         ComboBoxReparacionesPorSemana.Hide()
         FormsPlotEntregasPorSemana.Hide()
         ComboBoxEntregasPorSemana.Hide()
+        LabelDesdeReparacionesPorSemana.Hide()
+        DateTimePickerDesdeReparacionesPorSemana.Hide()
+        LabelHastaReparacionesPorSemana.Hide()
+        DateTimePickerHastaReparacionesPorSemana.Hide()
+        LabelDesdeEntregasPorSemana.Hide()
+        DateTimePickerDesdeEntregasPorSemana.Hide()
+        LabelHastaEntregasPorSemana.Hide()
+        DateTimePickerHastaEntregasPorSemana.Hide()
 
         FormsPlotEquiposPorEstado.Hide()
 
         FormsPlotFacturacionPorSemana.Hide()
         ComboBoxFacturacionPorSemana.Hide()
+        LabelDesdeFacturacionPorSemana.Hide()
+        DateTimePickerDesdeFacturacionPorSemana.Hide()
+        LabelHastaFacturacionPorSemana.Hide()
+        DateTimePickerHastaFacturacionPorSemana.Hide()
 
         Select Case _seccionActual
             Case 1
@@ -103,6 +153,14 @@ Public Class FormEstadisticas
                 ComboBoxReparacionesPorSemana.Show()
                 FormsPlotEntregasPorSemana.Show()
                 ComboBoxEntregasPorSemana.Show()
+                LabelDesdeReparacionesPorSemana.Show()
+                DateTimePickerDesdeReparacionesPorSemana.Show()
+                LabelHastaReparacionesPorSemana.Show()
+                DateTimePickerHastaReparacionesPorSemana.Show()
+                LabelDesdeEntregasPorSemana.Show()
+                DateTimePickerDesdeEntregasPorSemana.Show()
+                LabelHastaEntregasPorSemana.Show()
+                DateTimePickerHastaEntregasPorSemana.Show()
             Case 2
                 TituloDeSeccion.Text = "Cantidad de equipos por estado"
 
@@ -114,6 +172,10 @@ Public Class FormEstadisticas
 
                 FormsPlotFacturacionPorSemana.Show()
                 ComboBoxFacturacionPorSemana.Show()
+                LabelDesdeFacturacionPorSemana.Show()
+                DateTimePickerDesdeFacturacionPorSemana.Show()
+                LabelHastaFacturacionPorSemana.Show()
+                DateTimePickerHastaFacturacionPorSemana.Show()
             Case Else
                 TituloDeSeccion.Text = "Ingresos y Revisiones"
 
@@ -121,6 +183,14 @@ Public Class FormEstadisticas
                 ComboBoxIngresosPorSemana.Show()
                 FormsPlotRevisionesPorSemana.Show()
                 ComboBoxRevisionesPorSemana.Show()
+                LabelDesdeIngresosPorSemana.Show()
+                DateTimePickerDesdeIngresosPorSemana.Show()
+                LabelHastaEquiposPorSemana.Show()
+                DateTimePickerHastaIngresosPorSemana.Show()
+                LabelDesdeRevisionesPorSemana.Show()
+                DateTimePickerDesdeRevisionesPorSemana.Show()
+                LabelHastaRevisionesPorSemana.Show()
+                DateTimePickerHastaRevisionesPorSemana.Show()
         End Select
     End Sub
 
@@ -168,59 +238,83 @@ Public Class FormEstadisticas
         ActualizarSeccion()
     End Sub
 
-    Private Sub ActualizarGraficoReparacionesPorSemana(sender As Object, e As EventArgs) Handles ComboBoxReparacionesPorSemana.SelectedIndexChanged
-        FormsPlotReparacionesPorSemana.Plot.Clear
+    Private Sub ActualizarGraficoReparacionesPorSemana(sender As Object, e As EventArgs) Handles ComboBoxReparacionesPorSemana.SelectedIndexChanged, DateTimePickerDesdeReparacionesPorSemana.ValueChanged, DateTimePickerHastaReparacionesPorSemana.ValueChanged
+        FormsPlotReparacionesPorSemana.Plot.Clear()
 
-        Dim reparaciones = _controladorEstadisticas.ObtenerReparacionesPorSemana
+        Dim fechaInicio As String = DateTimePickerDesdeReparacionesPorSemana.Value.ToString("yyyy-MM-dd")
+        Dim fechaFin As String = DateTimePickerHastaReparacionesPorSemana.Value.ToString("yyyy-MM-dd")
 
-        Dim semanas = reparaciones.Select(Function(reparacion) reparacion.Semana).ToList
-        semanas.Insert(0, 0)
+        Dim reparaciones = _controladorEstadisticas.ObtenerReparacionesPorSemana(fechaInicio, fechaFin)
+
+        Dim tickGenerator = New ScottPlot.TickGenerators.NumericManual()
+
+        Dim contadorSemana = -1
+        Dim semanas = reparaciones.Select(Function(ingreso)
+                                              contadorSemana += 1
+
+                                              tickGenerator.AddMajor(contadorSemana, ingreso.Semana)
+
+                                              Return contadorSemana
+                                          End Function).ToList
 
         FormsPlotReparacionesPorSemana.Plot.XLabel("Semanas")
+        FormsPlotReparacionesPorSemana.Plot.Axes.SetLimitsX(0, semanas.Max)
+
+        FormsPlotReparacionesPorSemana.Plot.Axes.Bottom.TickGenerator = tickGenerator
 
         If ComboBoxReparacionesPorSemana.Text = "Total" Then
             Dim cantidades = reparaciones.Select(Function(reparacion) reparacion.Cantidad).ToList
 
-            cantidades.Insert(0, 0)
-
             FormsPlotReparacionesPorSemana.Plot.Add.Scatter(semanas, cantidades)
-            FormsPlotReparacionesPorSemana.Plot.Axes.SetLimitsY(cantidades.Min - 1, cantidades.Max + 1)
+            FormsPlotReparacionesPorSemana.Plot.Axes.SetLimitsY(cantidades.Min, cantidades.Max + 1)
             FormsPlotReparacionesPorSemana.Plot.Title("Reparaciones por semana")
             FormsPlotReparacionesPorSemana.Plot.YLabel("Reparaciones")
 
-            FormsPlotReparacionesPorSemana.Refresh
+            FormsPlotReparacionesPorSemana.Refresh()
 
             Return
         End If
 
         Dim variaciones = reparaciones.Select(Function(reparacion) reparacion.Variacion).ToList
-        variaciones.Insert(0, 0)
 
         FormsPlotReparacionesPorSemana.Plot.Add.Scatter(semanas, variaciones)
-        FormsPlotReparacionesPorSemana.Plot.Axes.SetLimitsY(variaciones.Min - 1, variaciones.Max + 1)
+        FormsPlotReparacionesPorSemana.Plot.Axes.SetLimitsY(variaciones.Min, variaciones.Max + 1)
         FormsPlotReparacionesPorSemana.Plot.Title("Variacion de reparaciones por semana")
         FormsPlotReparacionesPorSemana.Plot.YLabel("Variacion reparaciones")
 
-        FormsPlotReparacionesPorSemana.Refresh
+        FormsPlotReparacionesPorSemana.Refresh()
     End Sub
 
-    Private Sub ActualizarGraficoEntregasPorSemana(sender As Object, e As EventArgs) Handles ComboBoxEntregasPorSemana.SelectedIndexChanged
+    Private Sub ActualizarGraficoEntregasPorSemana(sender As Object, e As EventArgs) Handles ComboBoxEntregasPorSemana.SelectedIndexChanged, DateTimePickerDesdeEntregasPorSemana.ValueChanged, DateTimePickerHastaEntregasPorSemana.ValueChanged
         FormsPlotEntregasPorSemana.Plot.Clear()
 
-        Dim entregas = _controladorEstadisticas.ObtenerEntregasPorSemana()
+        Dim fechaInicio As String = DateTimePickerDesdeEntregasPorSemana.Value.ToString("yyyy-MM-dd")
+        Dim fechaFin As String = DateTimePickerHastaEntregasPorSemana.Value.ToString("yyyy-MM-dd")
 
-        Dim semanas = entregas.Select(Function(entrega) entrega.Semana).ToList
-        semanas.Insert(0, 0)
+        Dim entregas = _controladorEstadisticas.ObtenerEntregasPorSemana(fechaInicio, fechaFin)
+
+        Dim tickGenerator = New ScottPlot.TickGenerators.NumericManual()
+
+        Dim contadorSemana = -1
+        Dim semanas = entregas.Select(Function(ingreso)
+                                          contadorSemana += 1
+
+                                          tickGenerator.AddMajor(contadorSemana, ingreso.Semana)
+
+                                          Return contadorSemana
+                                      End Function).ToList
 
         FormsPlotEntregasPorSemana.Plot.XLabel("Semanas")
+        FormsPlotEntregasPorSemana.Plot.Axes.SetLimitsX(0, semanas.Max)
+
+
+        FormsPlotEntregasPorSemana.Plot.Axes.Bottom.TickGenerator = tickGenerator
 
         If ComboBoxEntregasPorSemana.Text = "Total" Then
-            Dim cantidades = entregas.Select(Function(entrega) entrega.Cantidad).ToList()
-
-            cantidades.Insert(0, 0)
+            Dim cantidades = entregas.Select(Function(entrega) entrega.Cantidad).ToList
 
             FormsPlotEntregasPorSemana.Plot.Add.Scatter(semanas, cantidades)
-            FormsPlotEntregasPorSemana.Plot.Axes.SetLimitsY(cantidades.Min - 1, cantidades.Max + 1)
+            FormsPlotEntregasPorSemana.Plot.Axes.SetLimitsY(cantidades.Min, cantidades.Max + 1)
             FormsPlotEntregasPorSemana.Plot.Title("Entregas por semana")
             FormsPlotEntregasPorSemana.Plot.YLabel("Entregas")
 
@@ -230,10 +324,9 @@ Public Class FormEstadisticas
         End If
 
         Dim variaciones = entregas.Select(Function(entrega) entrega.Variacion).ToList
-        variaciones.Insert(0, 0)
 
         FormsPlotEntregasPorSemana.Plot.Add.Scatter(semanas, variaciones)
-        FormsPlotEntregasPorSemana.Plot.Axes.SetLimitsY(variaciones.Min - 1, variaciones.Max + 1)
+        FormsPlotEntregasPorSemana.Plot.Axes.SetLimitsY(variaciones.Min, variaciones.Max + 1)
         FormsPlotEntregasPorSemana.Plot.Title("Variacion de entregas por semana")
         FormsPlotEntregasPorSemana.Plot.YLabel("Variacion entregas")
 
@@ -241,6 +334,14 @@ Public Class FormEstadisticas
     End Sub
 
     Private Sub FormEstadisticas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim primerFechaIngreso = _controladorEstadisticas.ObtenerFechaPrimerIngreso()
+
+        DateTimePickerDesdeIngresosPorSemana.Value = primerFechaIngreso
+        DateTimePickerDesdeRevisionesPorSemana.Value = primerFechaIngreso
+        DateTimePickerDesdeReparacionesPorSemana.Value = primerFechaIngreso
+        DateTimePickerDesdeEntregasPorSemana.Value = primerFechaIngreso
+        DateTimePickerDesdeFacturacionPorSemana.Value = primerFechaIngreso
+
         ActualizarSeccion()
 
         ButtonAnterior.BackColor = System.Drawing.Color.LightGray
@@ -268,45 +369,65 @@ Public Class FormEstadisticas
 
         Dim indiceColor = 0
 
+        Dim tickGenerator = New ScottPlot.TickGenerators.NumericManual()
+
         For Each equipo In equipos
-            slices.Add(New ScottPlot.PieSlice With {
-                .Value = equipo.Cantidad,
-                .Label = equipo.Estado,
-                .FillColor = colores(indiceColor),
-                .LegendText = equipo.Estado,
-                .LabelBold = True
+            Dim barAdded = FormsPlotEquiposPorEstado.Plot.Add.Bars({
+                New ScottPlot.Bar With {
+                    .Position = indiceColor + 1,
+                    .Value = equipo.Cantidad,
+                    .FillColor = colores(indiceColor),
+                    .Label = equipo.Estado.Replace(" ", Environment.NewLine)
+                }
             })
 
+            tickGenerator.AddMajor(indiceColor + 1, equipo.Cantidad)
+
+            barAdded.LegendText = equipo.Estado
+            barAdded.ValueLabelStyle.Bold = True
             indiceColor += 1
         Next
 
-        Dim pie As ScottPlot.Plottables.Pie = FormsPlotEquiposPorEstado.Plot.Add.Pie(slices)
-
-        FormsPlotEquiposPorEstado.Plot.ShowLegend()
-
-        FormsPlotEquiposPorEstado.Plot.Axes.Frameless()
+        FormsPlotEquiposPorEstado.Plot.Axes.Bottom.TickGenerator = tickGenerator
+        FormsPlotEquiposPorEstado.Plot.Axes.Bottom.MajorTickStyle.Length = 0
         FormsPlotEquiposPorEstado.Plot.HideGrid()
+        FormsPlotEquiposPorEstado.Plot.FigureBackground.Color = ScottPlot.Colors.White
+        FormsPlotEquiposPorEstado.Plot.Axes.Margins(0, 0, 0, 0.2)
+        FormsPlotEquiposPorEstado.Plot.Axes.SetLimitsX(0, 9)
+        FormsPlotEquiposPorEstado.Plot.ShowLegend(Alignment.UpperRight)
 
         FormsPlotEquiposPorEstado.Refresh()
     End Sub
 
-    Private Sub ActualizarGraficoFacturacionPorSemana(sender As Object, e As EventArgs) Handles ComboBoxFacturacionPorSemana.SelectedIndexChanged
+    Private Sub ActualizarGraficoFacturacionPorSemana(sender As Object, e As EventArgs) Handles ComboBoxFacturacionPorSemana.SelectedIndexChanged, DateTimePickerDesdeFacturacionPorSemana.ValueChanged, DateTimePickerHastaFacturacionPorSemana.ValueChanged
         FormsPlotFacturacionPorSemana.Plot.Clear()
 
-        Dim facturaciones = _controladorEstadisticas.ObtenerFacturacionPorSemana()
+        Dim fechaInicio As String = DateTimePickerDesdeFacturacionPorSemana.Value.ToString("yyyy-MM-dd")
+        Dim fechaFin As String = DateTimePickerHastaFacturacionPorSemana.Value.ToString("yyyy-MM-dd")
 
-        Dim semanas = facturaciones.Select(Function(facturacion) facturacion.Semana).ToList
-        semanas.Insert(0, 0)
+        Dim facturaciones = _controladorEstadisticas.ObtenerFacturacionPorSemana(fechaInicio, fechaFin)
+
+        Dim tickGenerator = New ScottPlot.TickGenerators.NumericManual()
+
+        Dim contadorSemana = -1
+        Dim semanas = facturaciones.Select(Function(ingreso)
+                                               contadorSemana += 1
+
+                                               tickGenerator.AddMajor(contadorSemana, ingreso.Semana)
+
+                                               Return contadorSemana
+                                           End Function).ToList
 
         FormsPlotFacturacionPorSemana.Plot.XLabel("Semanas")
+        FormsPlotFacturacionPorSemana.Plot.Axes.SetLimitsX(0, semanas.Max)
+
+        FormsPlotFacturacionPorSemana.Plot.Axes.Bottom.TickGenerator = tickGenerator
 
         If ComboBoxFacturacionPorSemana.Text = "Total" Then
-            Dim cantidades = facturaciones.Select(Function(facturacion) facturacion.Cantidad).ToList()
-
-            cantidades.Insert(0, 0)
+            Dim cantidades = facturaciones.Select(Function(facturacion) facturacion.Cantidad).ToList
 
             FormsPlotFacturacionPorSemana.Plot.Add.Scatter(semanas, cantidades)
-            FormsPlotFacturacionPorSemana.Plot.Axes.SetLimitsY(cantidades.Min - 1, cantidades.Max + 1)
+            FormsPlotFacturacionPorSemana.Plot.Axes.SetLimitsY(cantidades.Min, cantidades.Max + 1)
             FormsPlotFacturacionPorSemana.Plot.Title("Facturacion por semana")
             FormsPlotFacturacionPorSemana.Plot.YLabel("Facturacion")
 
@@ -316,10 +437,9 @@ Public Class FormEstadisticas
         End If
 
         Dim variaciones = facturaciones.Select(Function(facturacion) facturacion.Variacion).ToList
-        variaciones.Insert(0, 0)
 
         FormsPlotFacturacionPorSemana.Plot.Add.Scatter(semanas, variaciones)
-        FormsPlotFacturacionPorSemana.Plot.Axes.SetLimitsY(variaciones.Min - 1, variaciones.Max + 1)
+        FormsPlotFacturacionPorSemana.Plot.Axes.SetLimitsY(variaciones.Min, variaciones.Max + 1)
         FormsPlotFacturacionPorSemana.Plot.Title("Variacion de facturacion por semana")
         FormsPlotFacturacionPorSemana.Plot.YLabel("Variacion facturacion")
 
