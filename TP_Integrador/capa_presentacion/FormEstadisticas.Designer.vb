@@ -209,7 +209,8 @@ Partial Class FormEstadisticas
         ' 
         ' DateTimePickerDesdeFacturacionPorSemana
         ' 
-        DateTimePickerDesdeFacturacionPorSemana.Format = DateTimePickerFormat.Short
+        DateTimePickerDesdeFacturacionPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerDesdeFacturacionPorSemana.CustomFormat = "dd/MM/yyyy"
         DateTimePickerDesdeFacturacionPorSemana.Location = New Point(522, 545)
         DateTimePickerDesdeFacturacionPorSemana.Name = "DateTimePickerDesdeFacturacionPorSemana"
         DateTimePickerDesdeFacturacionPorSemana.Size = New Size(99, 23)
@@ -237,7 +238,8 @@ Partial Class FormEstadisticas
         ' 
         ' DateTimePickerHastaFacturacionPorSemana
         ' 
-        DateTimePickerHastaFacturacionPorSemana.Format = DateTimePickerFormat.Short
+        DateTimePickerHastaFacturacionPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerHastaFacturacionPorSemana.CustomFormat = "dd/MM/yyyy"
         DateTimePickerHastaFacturacionPorSemana.Location = New Point(672, 545)
         DateTimePickerHastaFacturacionPorSemana.Name = "DateTimePickerHastaFacturacionPorSemana"
         DateTimePickerHastaFacturacionPorSemana.Size = New Size(99, 23)
@@ -255,7 +257,8 @@ Partial Class FormEstadisticas
         ' 
         ' DateTimePickerHastaIngresosPorSemana
         ' 
-        DateTimePickerHastaIngresosPorSemana.Format = DateTimePickerFormat.Short
+        DateTimePickerHastaIngresosPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerHastaIngresosPorSemana.CustomFormat = "dd/MM/yyyy"
         DateTimePickerHastaIngresosPorSemana.Location = New Point(343, 527)
         DateTimePickerHastaIngresosPorSemana.Name = "DateTimePickerHastaIngresosPorSemana"
         DateTimePickerHastaIngresosPorSemana.Size = New Size(99, 23)
@@ -273,7 +276,8 @@ Partial Class FormEstadisticas
         ' 
         ' DateTimePickerDesdeIngresosPorSemana
         ' 
-        DateTimePickerDesdeIngresosPorSemana.Format = DateTimePickerFormat.Short
+        DateTimePickerDesdeIngresosPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerDesdeIngresosPorSemana.CustomFormat = "dd/MM/yyyy"
         DateTimePickerDesdeIngresosPorSemana.Location = New Point(193, 527)
         DateTimePickerDesdeIngresosPorSemana.Name = "DateTimePickerDesdeIngresosPorSemana"
         DateTimePickerDesdeIngresosPorSemana.Size = New Size(99, 23)
@@ -291,7 +295,8 @@ Partial Class FormEstadisticas
         ' 
         ' DateTimePickerHastaRevisionesPorSemana
         ' 
-        DateTimePickerHastaRevisionesPorSemana.Format = DateTimePickerFormat.Short
+        DateTimePickerHastaRevisionesPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerHastaRevisionesPorSemana.CustomFormat = "dd/MM/yyyy"
         DateTimePickerHastaRevisionesPorSemana.Location = New Point(822, 525)
         DateTimePickerHastaRevisionesPorSemana.Name = "DateTimePickerHastaRevisionesPorSemana"
         DateTimePickerHastaRevisionesPorSemana.Size = New Size(99, 23)
@@ -309,7 +314,8 @@ Partial Class FormEstadisticas
         ' 
         ' DateTimePickerDesdeRevisionesPorSemana
         ' 
-        DateTimePickerDesdeRevisionesPorSemana.Format = DateTimePickerFormat.Short
+        DateTimePickerDesdeRevisionesPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerDesdeRevisionesPorSemana.CustomFormat = "dd/MM/yyyy"
         DateTimePickerDesdeRevisionesPorSemana.Location = New Point(672, 525)
         DateTimePickerDesdeRevisionesPorSemana.Name = "DateTimePickerDesdeRevisionesPorSemana"
         DateTimePickerDesdeRevisionesPorSemana.Size = New Size(99, 23)
@@ -327,7 +333,8 @@ Partial Class FormEstadisticas
         ' 
         ' DateTimePickerHastaReparacionesPorSemana
         ' 
-        DateTimePickerHastaReparacionesPorSemana.Format = DateTimePickerFormat.Short
+        DateTimePickerHastaReparacionesPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerHastaReparacionesPorSemana.CustomFormat = "dd/MM/yyyy"
         DateTimePickerHastaReparacionesPorSemana.Location = New Point(343, 527)
         DateTimePickerHastaReparacionesPorSemana.Name = "DateTimePickerHastaReparacionesPorSemana"
         DateTimePickerHastaReparacionesPorSemana.Size = New Size(99, 23)
@@ -345,7 +352,8 @@ Partial Class FormEstadisticas
         ' 
         ' DateTimePickerDesdeReparacionesPorSemana
         ' 
-        DateTimePickerDesdeReparacionesPorSemana.Format = DateTimePickerFormat.Short
+        DateTimePickerDesdeReparacionesPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerDesdeReparacionesPorSemana.CustomFormat = "dd/MM/yyyy"
         DateTimePickerDesdeReparacionesPorSemana.Location = New Point(193, 527)
         DateTimePickerDesdeReparacionesPorSemana.Name = "DateTimePickerDesdeReparacionesPorSemana"
         DateTimePickerDesdeReparacionesPorSemana.Size = New Size(99, 23)
@@ -363,7 +371,8 @@ Partial Class FormEstadisticas
         ' 
         ' DateTimePickerHastaEntregasPorSemana
         ' 
-        DateTimePickerHastaEntregasPorSemana.Format = DateTimePickerFormat.Short
+        DateTimePickerHastaEntregasPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerHastaEntregasPorSemana.CustomFormat = "dd/MM/yyyy"
         DateTimePickerHastaEntregasPorSemana.Location = New Point(822, 525)
         DateTimePickerHastaEntregasPorSemana.Name = "DateTimePickerHastaEntregasPorSemana"
         DateTimePickerHastaEntregasPorSemana.Size = New Size(99, 23)
@@ -381,7 +390,8 @@ Partial Class FormEstadisticas
         ' 
         ' DateTimePickerDesdeEntregasPorSemana
         ' 
-        DateTimePickerDesdeEntregasPorSemana.Format = DateTimePickerFormat.Short
+        DateTimePickerDesdeEntregasPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerDesdeEntregasPorSemana.CustomFormat = "dd/MM/yyyy"
         DateTimePickerDesdeEntregasPorSemana.Location = New Point(672, 525)
         DateTimePickerDesdeEntregasPorSemana.Name = "DateTimePickerDesdeEntregasPorSemana"
         DateTimePickerDesdeEntregasPorSemana.Size = New Size(99, 23)

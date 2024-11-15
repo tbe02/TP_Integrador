@@ -38,6 +38,8 @@ Public Class FormReparacionEquipo
             reparacion.observaciones = TBObservaciones.Text
             reparacion.reparado = 0
             reparacion.Presupuesto = Presupuesto
+
+            Dim reparaciones = New Reparaciones()
             If Reparaciones.agregarReparacion(reparacion, 13, Reparable) Then
                 Me.Close()
             End If

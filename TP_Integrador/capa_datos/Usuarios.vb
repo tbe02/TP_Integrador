@@ -8,6 +8,7 @@ Public Class Usuarios
     Private Shared instancia As Usuarios = Nothing
 
     Public Class Usuario
+        Public ID As Integer
         Public Apellido As String
         Public Nombre As String
         Public DNI As String
@@ -108,6 +109,7 @@ Public Class Usuarios
                 While lector.Read()
                     usuarios.Add(
                         New Usuario With {
+                            .ID = lector("idUsuario"),
                             .Apellido = lector("apellido"),
                             .Nombre = lector("nombre"),
                             .DNI = lector("DNI"),
@@ -138,6 +140,7 @@ Public Class Usuarios
             If lector.HasRows Then
                 While lector.Read()
                     usuario = New Usuario With {
+                        .ID = lector("idUsuario"),
                         .Apellido = lector("apellido"),
                         .Nombre = lector("nombre"),
                         .DNI = lector("DNI"),

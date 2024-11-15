@@ -115,7 +115,8 @@ Public Class Presupuestos
             comando.ExecuteNonQuery()
 
             Equipos.ModificarEstadoEquipo(IDEquipo, nuevoEstado)
-            Reparaciones.agregarReparacion(reparacion, nuevoEstado, valor)
+            Dim reparaciones = New Reparaciones()
+            reparaciones.agregarReparacion(reparacion, nuevoEstado, valor)
 
 
             Return True

@@ -277,7 +277,20 @@ Public Class PDF
 
         yPosition += 30
 
+        gfx.DrawString("TECNICO", fuenteTablaHeader, XBrushes.Black, New XPoint(40, yPosition))
+        yPosition += 20
 
+        'ACA AGREGA EL TECNICO
+        Dim tecnico As Usuarios.Usuario = Reparaciones.devolverReparacion(equipo.IDEquipo).Tecnico
+
+        gfx.DrawString("Nombre: " + tecnico.Nombre + " " + tecnico.Apellido, fuenteTexto, XBrushes.Black, New XPoint(40, yPosition))
+        yPosition += 20 ' Avanza la posición para cada línea
+
+        gfx.DrawString("E-mail: " + tecnico.Correo, fuenteTexto, XBrushes.Black, New XPoint(40, yPosition))
+        yPosition += 20 ' Avanza la posición para cada línea
+
+        gfx.DrawString("Telefono: " + tecnico.Telefono, fuenteTexto, XBrushes.Black, New XPoint(40, yPosition))
+        yPosition += 20 ' Avanza la posición para cada línea
 
 
         ' Línea separadora

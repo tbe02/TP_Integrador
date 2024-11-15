@@ -21,15 +21,17 @@ Public Class FormEstadisticas
 
         Dim tickGenerator = New ScottPlot.TickGenerators.NumericManual()
 
+        tickGenerator.AddMajor(0, DateTimePickerDesdeIngresosPorSemana.Value.ToString("dd-MM-yyyy"))
+
         Dim contadorSemana = -1
         Dim semanas = ingresos.Select(Function(ingreso)
                                           contadorSemana += 1
 
-                                          tickGenerator.AddMajor(contadorSemana, ingreso.Semana)
-
                                           Return contadorSemana
                                       End Function).ToList
 
+
+        tickGenerator.AddMajor(semanas.Max, DateTimePickerHastaIngresosPorSemana.Value.ToString("dd-MM-yyyy"))
         FormsPlotIngresosPorSemana.Plot.XLabel("Semanas")
         FormsPlotIngresosPorSemana.Plot.Axes.SetLimitsX(0, semanas.Max)
 
@@ -68,15 +70,16 @@ Public Class FormEstadisticas
 
         Dim tickGenerator = New ScottPlot.TickGenerators.NumericManual()
 
+        tickGenerator.AddMajor(0, DateTimePickerDesdeRevisionesPorSemana.Value.ToString("dd-MM-yyyy"))
+
         Dim contadorSemana = -1
         Dim semanas = revisiones.Select(Function(ingreso)
                                             contadorSemana += 1
 
-                                            tickGenerator.AddMajor(contadorSemana, ingreso.Semana)
-
                                             Return contadorSemana
                                         End Function).ToList
 
+        tickGenerator.AddMajor(semanas.Max, DateTimePickerHastaRevisionesPorSemana.Value.ToString("dd-MM-yyyy"))
         FormsPlotRevisionesPorSemana.Plot.XLabel("Semanas")
         FormsPlotRevisionesPorSemana.Plot.Axes.SetLimitsX(0, semanas.Max)
 
@@ -248,15 +251,17 @@ Public Class FormEstadisticas
 
         Dim tickGenerator = New ScottPlot.TickGenerators.NumericManual()
 
+        tickGenerator.AddMajor(0, DateTimePickerDesdeReparacionesPorSemana.Value.ToString("dd-MM-yyyy"))
+
         Dim contadorSemana = -1
         Dim semanas = reparaciones.Select(Function(ingreso)
                                               contadorSemana += 1
 
-                                              tickGenerator.AddMajor(contadorSemana, ingreso.Semana)
-
                                               Return contadorSemana
                                           End Function).ToList
 
+
+        tickGenerator.AddMajor(semanas.Max, DateTimePickerHastaReparacionesPorSemana.Value.ToString("dd-MM-yyyy"))
         FormsPlotReparacionesPorSemana.Plot.XLabel("Semanas")
         FormsPlotReparacionesPorSemana.Plot.Axes.SetLimitsX(0, semanas.Max)
 
@@ -295,15 +300,17 @@ Public Class FormEstadisticas
 
         Dim tickGenerator = New ScottPlot.TickGenerators.NumericManual()
 
+        tickGenerator.AddMajor(0, DateTimePickerDesdeEntregasPorSemana.Value.ToString("dd-MM-yyyy"))
+
         Dim contadorSemana = -1
         Dim semanas = entregas.Select(Function(ingreso)
                                           contadorSemana += 1
 
-                                          tickGenerator.AddMajor(contadorSemana, ingreso.Semana)
-
                                           Return contadorSemana
                                       End Function).ToList
 
+
+        tickGenerator.AddMajor(semanas.Max, DateTimePickerHastaEntregasPorSemana.Value.ToString("dd-MM-yyyy"))
         FormsPlotEntregasPorSemana.Plot.XLabel("Semanas")
         FormsPlotEntregasPorSemana.Plot.Axes.SetLimitsX(0, semanas.Max)
 
@@ -409,15 +416,16 @@ Public Class FormEstadisticas
 
         Dim tickGenerator = New ScottPlot.TickGenerators.NumericManual()
 
+        tickGenerator.AddMajor(0, DateTimePickerDesdeFacturacionPorSemana.Value.ToString("dd-MM-yyyy"))
+
         Dim contadorSemana = -1
         Dim semanas = facturaciones.Select(Function(ingreso)
                                                contadorSemana += 1
 
-                                               tickGenerator.AddMajor(contadorSemana, ingreso.Semana)
-
                                                Return contadorSemana
                                            End Function).ToList
 
+        tickGenerator.AddMajor(semanas.Max, DateTimePickerHastaFacturacionPorSemana.Value.ToString("dd-MM-yyyy"))
         FormsPlotFacturacionPorSemana.Plot.XLabel("Semanas")
         FormsPlotFacturacionPorSemana.Plot.Axes.SetLimitsX(0, semanas.Max)
 

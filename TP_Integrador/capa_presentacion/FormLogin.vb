@@ -55,8 +55,6 @@ Public Class FormLogin
             Return
         End Try
 
-        MessageBox.Show("Ingreso exitoso", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
         Dim usuarios As Usuarios = Usuarios.ObtenerInstancia()
         Dim usuarioAutenticado = usuarios.obtenerUno(usuario)
 

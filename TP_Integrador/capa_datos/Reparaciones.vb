@@ -1,8 +1,11 @@
 ﻿Imports TP_Integrador.Equipos
 Imports TP_Integrador.Presupuestos
 Imports TP_Integrador.Revisiones
+Imports TP_Integrador.TiposDeUsuario
 
 Public Class Reparaciones
+    Private _sesion As Sesion = Sesion.ObtenerInstancia()
+
     Class Reparacion
         Public Property Presupuesto As Presupuesto
         Public Property reparado As Boolean?
@@ -12,12 +15,12 @@ Public Class Reparaciones
     End Class
 
 
-    Public Shared Function agregarReparacion(reparacion As Reparacion, nuevoEstado As Integer, reparacionExitosa As Boolean?)
+    Public Function agregarReparacion(reparacion As Reparacion, nuevoEstado As Integer, reparacionExitosa As Boolean?)
         Dim conexion = New BaseDeDatos().obtenerConexion()
 
 
         Try
-            Dim comando = New SqlCommand("INSERT INTO Reparaciones (idPresupuesto, reparado, observaciones, fechaDeFinalizacion) VALUES (@idPresupuesto, @reparado, @observaciones, @fechaDeFinalizacion)", conexion)
+            Dim comando = New SqlCommand("INSERT INTO Reparaciones (idPresupuesto, reparado, observaciones, fechaDeFinalizacion, idUsuario) VALUES (@idPresupuesto, @reparado, @observaciones, @fechaDeFinalizacion, @idUsuario)", conexion)
             comando.Parameters.AddWithValue("@idPresupuesto", reparacion.Presupuesto.IdPresupuesto)
             If reparacionExitosa Is Nothing Then
                 comando.Parameters.AddWithValue("@reparado", DBNull.Value)
@@ -26,6 +29,7 @@ Public Class Reparaciones
             End If
 
             comando.Parameters.AddWithValue("@observaciones", reparacion.observaciones)
+            comando.Parameters.AddWithValue("@idUsuario", _sesion.ObtenerUsuario().ID)
 
             comando.Parameters.AddWithValue("@fechaDeFinalizacion", DateTime.Now)
 
@@ -144,13 +148,18 @@ Public Class Reparaciones
         End Try
     End Function
 
+    Public Class ReparacionConTecnico
+        Inherits Reparacion
 
-    Public Shared Function devolverReparacion(IDEquipo As Integer) As Reparacion
+        Public Property Tecnico As Usuarios.Usuario
+    End Class
+
+    Public Shared Function devolverReparacion(IDEquipo As Integer) As ReparacionConTecnico
         Dim conexion = New BaseDeDatos().obtenerConexion()
-        Dim reparacion As New Reparacion()
+        Dim reparacion As ReparacionConTecnico = New ReparacionConTecnico()
 
         Try
-            Dim comando = New SqlCommand("SELECT * FROM Reparaciones r JOIN Presupuestos p ON r.idPresupuesto = p.idPresupuesto WHERE p.idRevision = @idEquipo", conexion)
+            Dim comando = New SqlCommand("SELECT * FROM Reparaciones r JOIN Presupuestos p ON r.idPresupuesto = p.idPresupuesto JOIN Usuarios ON r.idUsuario = Usuarios.idUsuario WHERE p.idRevision = @idEquipo", conexion)
             comando.Parameters.AddWithValue("@idEquipo", IDEquipo)
 
             conexion.Open()
@@ -159,6 +168,20 @@ Public Class Reparaciones
             If reader.Read() Then
                 reparacion.fechaDeFinalizacion = reader("fechaDeFinalizacion")
                 reparacion.observaciones = reader("observaciones")
+
+                Dim usuario As Usuarios.Usuario = New Usuarios.Usuario With {
+                    .ID = reader("idUsuario"),
+                    .Apellido = reader("apellido"),
+                    .Nombre = reader("nombre"),
+                    .DNI = reader("DNI"),
+                    .Telefono = reader("telefono"),
+                    .Correo = reader("correo"),
+                    .NombreUsuario = reader("usuario"),
+                    .Tipo = New TipoDeUsuario() With {.idTipoUsuario = 3, .nombre = "tecnico"}
+                }
+
+                reparacion.Tecnico = usuario
+
                 If reader("reparado") Is DBNull.Value Then
                     reparacion.reparado = Nothing
 
@@ -183,7 +206,5 @@ Public Class Reparaciones
 
         Return reparacion
     End Function
-
-
 
 End Class

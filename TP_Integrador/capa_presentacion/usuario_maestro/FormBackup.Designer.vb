@@ -38,9 +38,10 @@ Partial Class FormBackup
         BBackup.FlatStyle = FlatStyle.Flat
         BBackup.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BBackup.ForeColor = Color.White
-        BBackup.Location = New Point(108, 195)
+        BBackup.Location = New Point(94, 146)
+        BBackup.Margin = New Padding(3, 2, 3, 2)
         BBackup.Name = "BBackup"
-        BBackup.Size = New Size(400, 67)
+        BBackup.Size = New Size(350, 50)
         BBackup.TabIndex = 20
         BBackup.Text = "Realizar Backup"
         BBackup.UseVisualStyleBackColor = False
@@ -52,9 +53,10 @@ Partial Class FormBackup
         BRestore.FlatStyle = FlatStyle.Flat
         BRestore.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BRestore.ForeColor = Color.White
-        BRestore.Location = New Point(569, 195)
+        BRestore.Location = New Point(498, 146)
+        BRestore.Margin = New Padding(3, 2, 3, 2)
         BRestore.Name = "BRestore"
-        BRestore.Size = New Size(400, 67)
+        BRestore.Size = New Size(350, 50)
         BRestore.TabIndex = 21
         BRestore.Text = "Realizar Restore"
         BRestore.UseVisualStyleBackColor = False
@@ -62,9 +64,10 @@ Partial Class FormBackup
         ' PictureBox1
         ' 
         PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), Image)
-        PictureBox1.Location = New Point(184, 301)
+        PictureBox1.Location = New Point(161, 226)
+        PictureBox1.Margin = New Padding(3, 2, 3, 2)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(258, 275)
+        PictureBox1.Size = New Size(226, 206)
         PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox1.TabIndex = 22
         PictureBox1.TabStop = False
@@ -72,24 +75,26 @@ Partial Class FormBackup
         ' PictureBox2
         ' 
         PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), Image)
-        PictureBox2.Location = New Point(638, 301)
+        PictureBox2.Location = New Point(558, 226)
+        PictureBox2.Margin = New Padding(3, 2, 3, 2)
         PictureBox2.Name = "PictureBox2"
-        PictureBox2.Size = New Size(258, 275)
+        PictureBox2.Size = New Size(226, 206)
         PictureBox2.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox2.TabIndex = 23
         PictureBox2.TabStop = False
         ' 
         ' FormBackup
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
-        ClientSize = New Size(1083, 775)
+        ClientSize = New Size(948, 581)
         Controls.Add(PictureBox2)
         Controls.Add(PictureBox1)
         Controls.Add(BRestore)
         Controls.Add(BBackup)
         FormBorderStyle = FormBorderStyle.FixedSingle
+        Margin = New Padding(3, 2, 3, 2)
         Name = "FormBackup"
         Text = "FormBackup"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
