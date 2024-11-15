@@ -19,8 +19,8 @@
     <ItemGroup>
 	    <PackageReference Include="FontAwesome.Sharp" Version="6.6.0" />
 	    <PackageReference Include="LiveCharts.WinForms" Version="0.9.7.1" />
-	    <PackageReference Include="ScottPlot.WinForms" Version="5.0.42" />
 	    <PackageReference Include="PDFsharp" Version="1.50.5147" />
+	    <PackageReference Include="ScottPlot.WinForms" Version="5.0.42" />
 	    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
     </ItemGroup>
 
