@@ -68,6 +68,7 @@ Partial Class FormListaEquiposAdmin
         DGVListaEquipos.AllowUserToResizeColumns = False
         DGVListaEquipos.AllowUserToResizeRows = False
         DGVListaEquipos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        DGVListaEquipos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         DGVListaEquipos.BackgroundColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         DGVListaEquipos.BorderStyle = BorderStyle.None
         DGVListaEquipos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None

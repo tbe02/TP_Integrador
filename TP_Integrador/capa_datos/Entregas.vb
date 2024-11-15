@@ -38,7 +38,7 @@ Public Class Entregas
             Equipos.ModificarEstadoEquipo(entrega.Reparacion.Presupuesto.Revision.Equipo.IDEquipo, nuevoEstado)
             Equipos.darDeBajaEquipo(entrega.Reparacion.Presupuesto.Revision.Equipo.IDEquipo)
 
-            MessageBox.Show("Entrega agregada correctamente", "Presupuesto agregado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
             Return True
         Catch ex As Exception
             MessageBox.Show("Error al insertar la entrega: " & ex.Message)

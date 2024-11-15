@@ -43,7 +43,7 @@ Public Class Presupuestos
 
 
             Equipos.ModificarEstadoEquipo(presupuesto.Revision.Equipo.IDEquipo, nuevoEstado)
-            MessageBox.Show("Presupuesto agregado correctamente", "Presupuesto agregado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
             Return True
         Catch ex As Exception
             MessageBox.Show("Error al insertar el presupuesto: " & ex.Message)
@@ -115,9 +115,10 @@ Public Class Presupuestos
             comando.ExecuteNonQuery()
 
             Equipos.ModificarEstadoEquipo(IDEquipo, nuevoEstado)
-            Reparaciones.agregarReparacion(reparacion, nuevoEstado, valor)
+            Dim reparaciones = New Reparaciones()
+            reparaciones.agregarReparacion(reparacion, nuevoEstado, valor)
 
-            MessageBox.Show("Presupuesto desaprobado correctamente", "Presupuesto desaprobado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
             Return True
         Catch ex As Exception
             MessageBox.Show("Error al desaprobar el presupuesto: " & ex.Message)
@@ -142,7 +143,7 @@ Public Class Presupuestos
 
             Equipos.ModificarEstadoEquipo(IDEquipo, nuevoEstado)
 
-            MessageBox.Show("Presupuesto aprobado correctamente", "Presupuesto desaprobado", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
             Return True
         Catch ex As Exception
             MessageBox.Show("Error al aprobar el presupuesto: " & ex.Message)

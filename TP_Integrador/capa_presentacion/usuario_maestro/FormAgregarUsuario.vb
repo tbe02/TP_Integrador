@@ -29,23 +29,27 @@
             tipoUsuario = CType(ComboBoxTipoUsuario.SelectedItem, TiposDeUsuario.TipoDeUsuario).idTipoUsuario
         Else
             MessageBox.Show("Por favor, seleccione un tipo de usuario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-
             Return
         End If
 
         Try
-            _controladorUsuarios.AgregarUno(apellido, nombre, dni, telefono, correo, nombreusuario, contrasenia, tipoUsuario)
+            ' Llama a AgregarUno y verifica el resultado
+            Dim seAgregoUsuario As Boolean = _controladorUsuarios.AgregarUno(apellido, nombre, dni, telefono, correo, nombreusuario, contrasenia, tipoUsuario)
 
-            TBApellido.Clear()
-            tNombre.Clear()
-            TBDNI.Clear()
-            TBCorreo.Clear()
-            TBTelefono.Clear()
-            tUsuario.Clear()
-            tContrasena.Clear()
-            ComboBoxTipoUsuario.SelectedIndex = -1
+            ' Solo limpia los campos si se agregó correctamente
+            If seAgregoUsuario Then
+                TBApellido.Clear()
+                tNombre.Clear()
+                TBDNI.Clear()
+                TBCorreo.Clear()
+                TBTelefono.Clear()
+                tUsuario.Clear()
+                tContrasena.Clear()
+                ComboBoxTipoUsuario.SelectedIndex = -1
+            End If
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
+
 End Class

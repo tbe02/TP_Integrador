@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class FormEstadosEquiposAdmin
+Partial Class FormEstadosEquipos
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -304,7 +304,7 @@ Partial Class FormEstadosEquiposAdmin
         BFactura.FlatStyle = FlatStyle.Flat
         BFactura.Font = New Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BFactura.ForeColor = Color.White
-        BFactura.Location = New Point(478, 418)
+        BFactura.Location = New Point(472, 418)
         BFactura.Margin = New Padding(2, 3, 2, 3)
         BFactura.Name = "BFactura"
         BFactura.Size = New Size(179, 37)

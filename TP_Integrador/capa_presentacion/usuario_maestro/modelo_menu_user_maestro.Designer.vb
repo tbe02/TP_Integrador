@@ -35,13 +35,13 @@ Partial Class modelo_menu_user_maestro
         TSMCerrarSesion = New ToolStripMenuItem()
         PFondoPrincipal = New Panel()
         PMenuIzquierdo = New Panel()
+        IBBackup = New FontAwesome.Sharp.IconButton()
         LGestionServicTec = New Label()
         PBIconoEmpresa = New PictureBox()
         LGST = New Label()
         PMenuSuperior = New Panel()
         IB_Minimizar = New FontAwesome.Sharp.IconButton()
         IBMinimizar = New FontAwesome.Sharp.IconButton()
-        IB_Maximizar = New FontAwesome.Sharp.IconButton()
         IB_Cerrar = New FontAwesome.Sharp.IconButton()
         IBMaximizar = New FontAwesome.Sharp.IconButton()
         IBSesion = New FontAwesome.Sharp.IconButton()
@@ -66,10 +66,9 @@ Partial Class modelo_menu_user_maestro
         IBAgregarUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBAgregarUsuario.IconSize = 40
         IBAgregarUsuario.ImageAlign = ContentAlignment.MiddleLeft
-        IBAgregarUsuario.Location = New Point(0, 524)
-        IBAgregarUsuario.Margin = New Padding(3, 2, 3, 2)
+        IBAgregarUsuario.Location = New Point(0, 661)
         IBAgregarUsuario.Name = "IBAgregarUsuario"
-        IBAgregarUsuario.Size = New Size(247, 60)
+        IBAgregarUsuario.Size = New Size(282, 80)
         IBAgregarUsuario.TabIndex = 11
         IBAgregarUsuario.Text = "Agregar usuario"
         IBAgregarUsuario.UseVisualStyleBackColor = False
@@ -88,10 +87,9 @@ Partial Class modelo_menu_user_maestro
         IBMenuPrincipal.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBMenuPrincipal.IconSize = 40
         IBMenuPrincipal.ImageAlign = ContentAlignment.MiddleLeft
-        IBMenuPrincipal.Location = New Point(0, 293)
-        IBMenuPrincipal.Margin = New Padding(3, 2, 3, 2)
+        IBMenuPrincipal.Location = New Point(0, 353)
         IBMenuPrincipal.Name = "IBMenuPrincipal"
-        IBMenuPrincipal.Size = New Size(247, 60)
+        IBMenuPrincipal.Size = New Size(282, 80)
         IBMenuPrincipal.TabIndex = 10
         IBMenuPrincipal.Text = "Menú principal"
         IBMenuPrincipal.UseVisualStyleBackColor = False
@@ -110,10 +108,9 @@ Partial Class modelo_menu_user_maestro
         IBListaUsuarios.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBListaUsuarios.IconSize = 40
         IBListaUsuarios.ImageAlign = ContentAlignment.MiddleLeft
-        IBListaUsuarios.Location = New Point(0, 607)
-        IBListaUsuarios.Margin = New Padding(3, 2, 3, 2)
+        IBListaUsuarios.Location = New Point(0, 771)
         IBListaUsuarios.Name = "IBListaUsuarios"
-        IBListaUsuarios.Size = New Size(247, 60)
+        IBListaUsuarios.Size = New Size(282, 80)
         IBListaUsuarios.TabIndex = 10
         IBListaUsuarios.Text = "Lista de usuarios"
         IBListaUsuarios.UseVisualStyleBackColor = False
@@ -132,10 +129,9 @@ Partial Class modelo_menu_user_maestro
         IBListaClientes.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBListaClientes.IconSize = 40
         IBListaClientes.ImageAlign = ContentAlignment.MiddleLeft
-        IBListaClientes.Location = New Point(0, 368)
-        IBListaClientes.Margin = New Padding(3, 2, 3, 2)
+        IBListaClientes.Location = New Point(0, 453)
         IBListaClientes.Name = "IBListaClientes"
-        IBListaClientes.Size = New Size(247, 60)
+        IBListaClientes.Size = New Size(282, 80)
         IBListaClientes.TabIndex = 9
         IBListaClientes.Text = "Lista de clientes"
         IBListaClientes.UseVisualStyleBackColor = False
@@ -154,10 +150,9 @@ Partial Class modelo_menu_user_maestro
         IBListaEquipos.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBListaEquipos.IconSize = 40
         IBListaEquipos.ImageAlign = ContentAlignment.MiddleLeft
-        IBListaEquipos.Location = New Point(0, 443)
-        IBListaEquipos.Margin = New Padding(3, 2, 3, 2)
+        IBListaEquipos.Location = New Point(0, 553)
         IBListaEquipos.Name = "IBListaEquipos"
-        IBListaEquipos.Size = New Size(247, 60)
+        IBListaEquipos.Size = New Size(282, 80)
         IBListaEquipos.TabIndex = 8
         IBListaEquipos.Text = "Lista de equipos"
         IBListaEquipos.UseVisualStyleBackColor = False
@@ -169,7 +164,7 @@ Partial Class modelo_menu_user_maestro
         MenuPerfil.Items.AddRange(New ToolStripItem() {TSMMiPerfil, TSMCerrarSesion})
         MenuPerfil.Name = "ContextMenuStrip1"
         MenuPerfil.RenderMode = ToolStripRenderMode.System
-        MenuPerfil.Size = New Size(148, 62)
+        MenuPerfil.Size = New Size(168, 62)
         ' 
         ' TSMMiPerfil
         ' 
@@ -196,14 +191,16 @@ Partial Class modelo_menu_user_maestro
         ' PFondoPrincipal
         ' 
         PFondoPrincipal.BackColor = Color.Transparent
-        PFondoPrincipal.Location = New Point(256, 72)
+        PFondoPrincipal.Location = New Point(293, 96)
+        PFondoPrincipal.Margin = New Padding(3, 4, 3, 4)
         PFondoPrincipal.Name = "PFondoPrincipal"
-        PFondoPrincipal.Size = New Size(932, 653)
+        PFondoPrincipal.Size = New Size(1065, 871)
         PFondoPrincipal.TabIndex = 6
         ' 
         ' PMenuIzquierdo
         ' 
         PMenuIzquierdo.BackColor = Color.FromArgb(CByte(31), CByte(30), CByte(68))
+        PMenuIzquierdo.Controls.Add(IBBackup)
         PMenuIzquierdo.Controls.Add(LGestionServicTec)
         PMenuIzquierdo.Controls.Add(PBIconoEmpresa)
         PMenuIzquierdo.Controls.Add(LGST)
@@ -214,9 +211,31 @@ Partial Class modelo_menu_user_maestro
         PMenuIzquierdo.Controls.Add(IBListaEquipos)
         PMenuIzquierdo.Dock = DockStyle.Left
         PMenuIzquierdo.Location = New Point(0, 0)
+        PMenuIzquierdo.Margin = New Padding(3, 4, 3, 4)
         PMenuIzquierdo.Name = "PMenuIzquierdo"
-        PMenuIzquierdo.Size = New Size(250, 737)
+        PMenuIzquierdo.Size = New Size(286, 983)
         PMenuIzquierdo.TabIndex = 1
+        ' 
+        ' IBBackup
+        ' 
+        IBBackup.BackColor = Color.Transparent
+        IBBackup.FlatAppearance.BorderSize = 0
+        IBBackup.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        IBBackup.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        IBBackup.FlatStyle = FlatStyle.Flat
+        IBBackup.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        IBBackup.ForeColor = Color.White
+        IBBackup.IconChar = FontAwesome.Sharp.IconChar.Computer
+        IBBackup.IconColor = Color.White
+        IBBackup.IconFont = FontAwesome.Sharp.IconFont.Auto
+        IBBackup.IconSize = 40
+        IBBackup.ImageAlign = ContentAlignment.MiddleLeft
+        IBBackup.Location = New Point(0, 881)
+        IBBackup.Name = "IBBackup"
+        IBBackup.Size = New Size(282, 80)
+        IBBackup.TabIndex = 17
+        IBBackup.Text = "Base de datos"
+        IBBackup.UseVisualStyleBackColor = False
         ' 
         ' LGestionServicTec
         ' 
@@ -224,9 +243,9 @@ Partial Class modelo_menu_user_maestro
         LGestionServicTec.BackColor = Color.Transparent
         LGestionServicTec.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LGestionServicTec.ForeColor = Color.Silver
-        LGestionServicTec.Location = New Point(37, 214)
+        LGestionServicTec.Location = New Point(42, 285)
         LGestionServicTec.Name = "LGestionServicTec"
-        LGestionServicTec.Size = New Size(165, 17)
+        LGestionServicTec.Size = New Size(196, 20)
         LGestionServicTec.TabIndex = 16
         LGestionServicTec.Text = "Gestión Servicio Técnico"
         ' 
@@ -234,10 +253,10 @@ Partial Class modelo_menu_user_maestro
         ' 
         PBIconoEmpresa.BackColor = Color.Transparent
         PBIconoEmpresa.Image = My.Resources.Resources.impresora21
-        PBIconoEmpresa.Location = New Point(37, 30)
-        PBIconoEmpresa.Margin = New Padding(3, 4, 3, 4)
+        PBIconoEmpresa.Location = New Point(42, 40)
+        PBIconoEmpresa.Margin = New Padding(3, 5, 3, 5)
         PBIconoEmpresa.Name = "PBIconoEmpresa"
-        PBIconoEmpresa.Size = New Size(164, 156)
+        PBIconoEmpresa.Size = New Size(187, 208)
         PBIconoEmpresa.SizeMode = PictureBoxSizeMode.StretchImage
         PBIconoEmpresa.TabIndex = 14
         PBIconoEmpresa.TabStop = False
@@ -248,9 +267,9 @@ Partial Class modelo_menu_user_maestro
         LGST.BackColor = Color.Transparent
         LGST.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Italic, GraphicsUnit.Point, CByte(0))
         LGST.ForeColor = Color.Silver
-        LGST.Location = New Point(102, 190)
+        LGST.Location = New Point(117, 253)
         LGST.Name = "LGST"
-        LGST.Size = New Size(42, 20)
+        LGST.Size = New Size(54, 25)
         LGST.TabIndex = 15
         LGST.Text = "GST"
         ' 
@@ -259,15 +278,15 @@ Partial Class modelo_menu_user_maestro
         PMenuSuperior.BackColor = Color.FromArgb(CByte(26), CByte(25), CByte(72))
         PMenuSuperior.Controls.Add(IB_Minimizar)
         PMenuSuperior.Controls.Add(IBMinimizar)
-        PMenuSuperior.Controls.Add(IB_Maximizar)
         PMenuSuperior.Controls.Add(IB_Cerrar)
         PMenuSuperior.Controls.Add(IBMaximizar)
         PMenuSuperior.Controls.Add(IBSesion)
         PMenuSuperior.Controls.Add(IBCerrar)
         PMenuSuperior.Dock = DockStyle.Top
-        PMenuSuperior.Location = New Point(250, 0)
+        PMenuSuperior.Location = New Point(286, 0)
+        PMenuSuperior.Margin = New Padding(3, 4, 3, 4)
         PMenuSuperior.Name = "PMenuSuperior"
-        PMenuSuperior.Size = New Size(952, 60)
+        PMenuSuperior.Size = New Size(1088, 80)
         PMenuSuperior.TabIndex = 7
         ' 
         ' IB_Minimizar
@@ -284,9 +303,10 @@ Partial Class modelo_menu_user_maestro
         IB_Minimizar.IconColor = Color.Gray
         IB_Minimizar.IconFont = FontAwesome.Sharp.IconFont.Auto
         IB_Minimizar.IconSize = 20
-        IB_Minimizar.Location = New Point(868, 3)
+        IB_Minimizar.Location = New Point(1025, 4)
+        IB_Minimizar.Margin = New Padding(3, 4, 3, 4)
         IB_Minimizar.Name = "IB_Minimizar"
-        IB_Minimizar.Size = New Size(22, 23)
+        IB_Minimizar.Size = New Size(25, 31)
         IB_Minimizar.TabIndex = 18
         IB_Minimizar.UseVisualStyleBackColor = False
         ' 
@@ -304,31 +324,12 @@ Partial Class modelo_menu_user_maestro
         IBMinimizar.IconColor = Color.Gray
         IBMinimizar.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBMinimizar.IconSize = 20
-        IBMinimizar.Location = New Point(1621, 3)
+        IBMinimizar.Location = New Point(1853, 4)
+        IBMinimizar.Margin = New Padding(3, 4, 3, 4)
         IBMinimizar.Name = "IBMinimizar"
-        IBMinimizar.Size = New Size(22, 23)
+        IBMinimizar.Size = New Size(25, 31)
         IBMinimizar.TabIndex = 15
         IBMinimizar.UseVisualStyleBackColor = False
-        ' 
-        ' IB_Maximizar
-        ' 
-        IB_Maximizar.Anchor = AnchorStyles.Top Or AnchorStyles.Right
-        IB_Maximizar.BackColor = Color.Transparent
-        IB_Maximizar.FlatAppearance.BorderSize = 0
-        IB_Maximizar.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        IB_Maximizar.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        IB_Maximizar.FlatStyle = FlatStyle.Flat
-        IB_Maximizar.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        IB_Maximizar.ForeColor = Color.White
-        IB_Maximizar.IconChar = FontAwesome.Sharp.IconChar.WindowMaximize
-        IB_Maximizar.IconColor = Color.Gray
-        IB_Maximizar.IconFont = FontAwesome.Sharp.IconFont.Auto
-        IB_Maximizar.IconSize = 20
-        IB_Maximizar.Location = New Point(896, 3)
-        IB_Maximizar.Name = "IB_Maximizar"
-        IB_Maximizar.Size = New Size(22, 23)
-        IB_Maximizar.TabIndex = 17
-        IB_Maximizar.UseVisualStyleBackColor = False
         ' 
         ' IB_Cerrar
         ' 
@@ -344,9 +345,10 @@ Partial Class modelo_menu_user_maestro
         IB_Cerrar.IconColor = Color.Gray
         IB_Cerrar.IconFont = FontAwesome.Sharp.IconFont.Auto
         IB_Cerrar.IconSize = 20
-        IB_Cerrar.Location = New Point(924, 3)
+        IB_Cerrar.Location = New Point(1056, 4)
+        IB_Cerrar.Margin = New Padding(3, 4, 3, 4)
         IB_Cerrar.Name = "IB_Cerrar"
-        IB_Cerrar.Size = New Size(22, 23)
+        IB_Cerrar.Size = New Size(25, 31)
         IB_Cerrar.TabIndex = 16
         IB_Cerrar.UseVisualStyleBackColor = False
         ' 
@@ -364,9 +366,10 @@ Partial Class modelo_menu_user_maestro
         IBMaximizar.IconColor = Color.Gray
         IBMaximizar.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBMaximizar.IconSize = 20
-        IBMaximizar.Location = New Point(1649, 3)
+        IBMaximizar.Location = New Point(1885, 4)
+        IBMaximizar.Margin = New Padding(3, 4, 3, 4)
         IBMaximizar.Name = "IBMaximizar"
-        IBMaximizar.Size = New Size(22, 23)
+        IBMaximizar.Size = New Size(25, 31)
         IBMaximizar.TabIndex = 14
         IBMaximizar.UseVisualStyleBackColor = False
         ' 
@@ -384,9 +387,10 @@ Partial Class modelo_menu_user_maestro
         IBSesion.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBSesion.IconSize = 40
         IBSesion.ImageAlign = ContentAlignment.MiddleLeft
-        IBSesion.Location = New Point(699, 13)
+        IBSesion.Location = New Point(799, 17)
+        IBSesion.Margin = New Padding(3, 4, 3, 4)
         IBSesion.Name = "IBSesion"
-        IBSesion.Size = New Size(145, 44)
+        IBSesion.Size = New Size(166, 59)
         IBSesion.TabIndex = 16
         IBSesion.Text = "Theo"
         IBSesion.UseVisualStyleBackColor = False
@@ -405,23 +409,23 @@ Partial Class modelo_menu_user_maestro
         IBCerrar.IconColor = Color.Gray
         IBCerrar.IconFont = FontAwesome.Sharp.IconFont.Auto
         IBCerrar.IconSize = 20
-        IBCerrar.Location = New Point(1677, 3)
+        IBCerrar.Location = New Point(1917, 4)
+        IBCerrar.Margin = New Padding(3, 4, 3, 4)
         IBCerrar.Name = "IBCerrar"
-        IBCerrar.Size = New Size(22, 23)
+        IBCerrar.Size = New Size(25, 31)
         IBCerrar.TabIndex = 13
         IBCerrar.UseVisualStyleBackColor = False
         ' 
         ' modelo_menu_user_maestro
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
-        ClientSize = New Size(1202, 737)
+        ClientSize = New Size(1374, 983)
         Controls.Add(PMenuSuperior)
         Controls.Add(PMenuIzquierdo)
         Controls.Add(PFondoPrincipal)
         FormBorderStyle = FormBorderStyle.None
-        Margin = New Padding(3, 2, 3, 2)
         Name = "modelo_menu_user_maestro"
         Text = "modelo_menu_principal"
         MenuPerfil.ResumeLayout(False)
@@ -450,6 +454,6 @@ Partial Class modelo_menu_user_maestro
     Friend WithEvents IBSesion As FontAwesome.Sharp.IconButton
     Friend WithEvents IBCerrar As FontAwesome.Sharp.IconButton
     Friend WithEvents IB_Minimizar As FontAwesome.Sharp.IconButton
-    Friend WithEvents IB_Maximizar As FontAwesome.Sharp.IconButton
     Friend WithEvents IB_Cerrar As FontAwesome.Sharp.IconButton
+    Friend WithEvents IBBackup As FontAwesome.Sharp.IconButton
 End Class

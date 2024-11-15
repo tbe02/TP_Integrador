@@ -37,6 +37,26 @@ Partial Class FormEstadisticas
         FormsPlotEquiposPorEstado = New ScottPlot.WinForms.FormsPlot()
         ComboBoxFacturacionPorSemana = New ComboBox()
         FormsPlotFacturacionPorSemana = New ScottPlot.WinForms.FormsPlot()
+        DateTimePickerDesdeFacturacionPorSemana = New DateTimePicker()
+        LabelDesdeFacturacionPorSemana = New Label()
+        LabelHastaFacturacionPorSemana = New Label()
+        DateTimePickerHastaFacturacionPorSemana = New DateTimePicker()
+        LabelHastaEquiposPorSemana = New Label()
+        DateTimePickerHastaIngresosPorSemana = New DateTimePicker()
+        LabelDesdeIngresosPorSemana = New Label()
+        DateTimePickerDesdeIngresosPorSemana = New DateTimePicker()
+        LabelHastaRevisionesPorSemana = New Label()
+        DateTimePickerHastaRevisionesPorSemana = New DateTimePicker()
+        LabelDesdeRevisionesPorSemana = New Label()
+        DateTimePickerDesdeRevisionesPorSemana = New DateTimePicker()
+        LabelHastaReparacionesPorSemana = New Label()
+        DateTimePickerHastaReparacionesPorSemana = New DateTimePicker()
+        LabelDesdeReparacionesPorSemana = New Label()
+        DateTimePickerDesdeReparacionesPorSemana = New DateTimePicker()
+        LabelHastaEntregasPorSemana = New Label()
+        DateTimePickerHastaEntregasPorSemana = New DateTimePicker()
+        LabelDesdeEntregasPorSemana = New Label()
+        DateTimePickerDesdeEntregasPorSemana = New DateTimePicker()
         SuspendLayout()
         ' 
         ' LEstadisticas
@@ -164,7 +184,7 @@ Partial Class FormEstadisticas
         ' FormsPlotEquiposPorEstado
         ' 
         FormsPlotEquiposPorEstado.DisplayScale = 1F
-        FormsPlotEquiposPorEstado.Location = New Point(12, 147)
+        FormsPlotEquiposPorEstado.Location = New Point(12, 153)
         FormsPlotEquiposPorEstado.Name = "FormsPlotEquiposPorEstado"
         FormsPlotEquiposPorEstado.Size = New Size(908, 461)
         FormsPlotEquiposPorEstado.TabIndex = 12
@@ -173,7 +193,7 @@ Partial Class FormEstadisticas
         ' 
         ComboBoxFacturacionPorSemana.FormattingEnabled = True
         ComboBoxFacturacionPorSemana.Items.AddRange(New Object() {"Total", "Variacion"})
-        ComboBoxFacturacionPorSemana.Location = New Point(602, 197)
+        ComboBoxFacturacionPorSemana.Location = New Point(603, 187)
         ComboBoxFacturacionPorSemana.Name = "ComboBoxFacturacionPorSemana"
         ComboBoxFacturacionPorSemana.Size = New Size(168, 23)
         ComboBoxFacturacionPorSemana.TabIndex = 14
@@ -182,10 +202,200 @@ Partial Class FormEstadisticas
         ' FormsPlotFacturacionPorSemana
         ' 
         FormsPlotFacturacionPorSemana.DisplayScale = 1F
-        FormsPlotFacturacionPorSemana.Location = New Point(158, 225)
+        FormsPlotFacturacionPorSemana.Location = New Point(159, 215)
         FormsPlotFacturacionPorSemana.Name = "FormsPlotFacturacionPorSemana"
         FormsPlotFacturacionPorSemana.Size = New Size(612, 324)
         FormsPlotFacturacionPorSemana.TabIndex = 13
+        ' 
+        ' DateTimePickerDesdeFacturacionPorSemana
+        ' 
+        DateTimePickerDesdeFacturacionPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerDesdeFacturacionPorSemana.CustomFormat = "dd/MM/yyyy"
+        DateTimePickerDesdeFacturacionPorSemana.Location = New Point(522, 545)
+        DateTimePickerDesdeFacturacionPorSemana.Name = "DateTimePickerDesdeFacturacionPorSemana"
+        DateTimePickerDesdeFacturacionPorSemana.Size = New Size(99, 23)
+        DateTimePickerDesdeFacturacionPorSemana.TabIndex = 15
+        ' 
+        ' LabelDesdeFacturacionPorSemana
+        ' 
+        LabelDesdeFacturacionPorSemana.ForeColor = Color.White
+        LabelDesdeFacturacionPorSemana.Location = New Point(477, 545)
+        LabelDesdeFacturacionPorSemana.Name = "LabelDesdeFacturacionPorSemana"
+        LabelDesdeFacturacionPorSemana.Size = New Size(48, 23)
+        LabelDesdeFacturacionPorSemana.TabIndex = 16
+        LabelDesdeFacturacionPorSemana.Text = "Desde:"
+        LabelDesdeFacturacionPorSemana.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' LabelHastaFacturacionPorSemana
+        ' 
+        LabelHastaFacturacionPorSemana.ForeColor = Color.White
+        LabelHastaFacturacionPorSemana.Location = New Point(627, 545)
+        LabelHastaFacturacionPorSemana.Name = "LabelHastaFacturacionPorSemana"
+        LabelHastaFacturacionPorSemana.Size = New Size(48, 23)
+        LabelHastaFacturacionPorSemana.TabIndex = 18
+        LabelHastaFacturacionPorSemana.Text = "Hasta:"
+        LabelHastaFacturacionPorSemana.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' DateTimePickerHastaFacturacionPorSemana
+        ' 
+        DateTimePickerHastaFacturacionPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerHastaFacturacionPorSemana.CustomFormat = "dd/MM/yyyy"
+        DateTimePickerHastaFacturacionPorSemana.Location = New Point(672, 545)
+        DateTimePickerHastaFacturacionPorSemana.Name = "DateTimePickerHastaFacturacionPorSemana"
+        DateTimePickerHastaFacturacionPorSemana.Size = New Size(99, 23)
+        DateTimePickerHastaFacturacionPorSemana.TabIndex = 17
+        ' 
+        ' LabelHastaEquiposPorSemana
+        ' 
+        LabelHastaEquiposPorSemana.ForeColor = Color.White
+        LabelHastaEquiposPorSemana.Location = New Point(298, 527)
+        LabelHastaEquiposPorSemana.Name = "LabelHastaEquiposPorSemana"
+        LabelHastaEquiposPorSemana.Size = New Size(48, 23)
+        LabelHastaEquiposPorSemana.TabIndex = 22
+        LabelHastaEquiposPorSemana.Text = "Hasta:"
+        LabelHastaEquiposPorSemana.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' DateTimePickerHastaIngresosPorSemana
+        ' 
+        DateTimePickerHastaIngresosPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerHastaIngresosPorSemana.CustomFormat = "dd/MM/yyyy"
+        DateTimePickerHastaIngresosPorSemana.Location = New Point(343, 527)
+        DateTimePickerHastaIngresosPorSemana.Name = "DateTimePickerHastaIngresosPorSemana"
+        DateTimePickerHastaIngresosPorSemana.Size = New Size(99, 23)
+        DateTimePickerHastaIngresosPorSemana.TabIndex = 21
+        ' 
+        ' LabelDesdeIngresosPorSemana
+        ' 
+        LabelDesdeIngresosPorSemana.ForeColor = Color.White
+        LabelDesdeIngresosPorSemana.Location = New Point(148, 527)
+        LabelDesdeIngresosPorSemana.Name = "LabelDesdeIngresosPorSemana"
+        LabelDesdeIngresosPorSemana.Size = New Size(48, 23)
+        LabelDesdeIngresosPorSemana.TabIndex = 20
+        LabelDesdeIngresosPorSemana.Text = "Desde:"
+        LabelDesdeIngresosPorSemana.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' DateTimePickerDesdeIngresosPorSemana
+        ' 
+        DateTimePickerDesdeIngresosPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerDesdeIngresosPorSemana.CustomFormat = "dd/MM/yyyy"
+        DateTimePickerDesdeIngresosPorSemana.Location = New Point(193, 527)
+        DateTimePickerDesdeIngresosPorSemana.Name = "DateTimePickerDesdeIngresosPorSemana"
+        DateTimePickerDesdeIngresosPorSemana.Size = New Size(99, 23)
+        DateTimePickerDesdeIngresosPorSemana.TabIndex = 19
+        ' 
+        ' LabelHastaRevisionesPorSemana
+        ' 
+        LabelHastaRevisionesPorSemana.ForeColor = Color.White
+        LabelHastaRevisionesPorSemana.Location = New Point(777, 525)
+        LabelHastaRevisionesPorSemana.Name = "LabelHastaRevisionesPorSemana"
+        LabelHastaRevisionesPorSemana.Size = New Size(48, 23)
+        LabelHastaRevisionesPorSemana.TabIndex = 26
+        LabelHastaRevisionesPorSemana.Text = "Hasta:"
+        LabelHastaRevisionesPorSemana.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' DateTimePickerHastaRevisionesPorSemana
+        ' 
+        DateTimePickerHastaRevisionesPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerHastaRevisionesPorSemana.CustomFormat = "dd/MM/yyyy"
+        DateTimePickerHastaRevisionesPorSemana.Location = New Point(822, 525)
+        DateTimePickerHastaRevisionesPorSemana.Name = "DateTimePickerHastaRevisionesPorSemana"
+        DateTimePickerHastaRevisionesPorSemana.Size = New Size(99, 23)
+        DateTimePickerHastaRevisionesPorSemana.TabIndex = 25
+        ' 
+        ' LabelDesdeRevisionesPorSemana
+        ' 
+        LabelDesdeRevisionesPorSemana.ForeColor = Color.White
+        LabelDesdeRevisionesPorSemana.Location = New Point(627, 525)
+        LabelDesdeRevisionesPorSemana.Name = "LabelDesdeRevisionesPorSemana"
+        LabelDesdeRevisionesPorSemana.Size = New Size(48, 23)
+        LabelDesdeRevisionesPorSemana.TabIndex = 24
+        LabelDesdeRevisionesPorSemana.Text = "Desde:"
+        LabelDesdeRevisionesPorSemana.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' DateTimePickerDesdeRevisionesPorSemana
+        ' 
+        DateTimePickerDesdeRevisionesPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerDesdeRevisionesPorSemana.CustomFormat = "dd/MM/yyyy"
+        DateTimePickerDesdeRevisionesPorSemana.Location = New Point(672, 525)
+        DateTimePickerDesdeRevisionesPorSemana.Name = "DateTimePickerDesdeRevisionesPorSemana"
+        DateTimePickerDesdeRevisionesPorSemana.Size = New Size(99, 23)
+        DateTimePickerDesdeRevisionesPorSemana.TabIndex = 23
+        ' 
+        ' LabelHastaReparacionesPorSemana
+        ' 
+        LabelHastaReparacionesPorSemana.ForeColor = Color.White
+        LabelHastaReparacionesPorSemana.Location = New Point(298, 527)
+        LabelHastaReparacionesPorSemana.Name = "LabelHastaReparacionesPorSemana"
+        LabelHastaReparacionesPorSemana.Size = New Size(48, 23)
+        LabelHastaReparacionesPorSemana.TabIndex = 30
+        LabelHastaReparacionesPorSemana.Text = "Hasta:"
+        LabelHastaReparacionesPorSemana.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' DateTimePickerHastaReparacionesPorSemana
+        ' 
+        DateTimePickerHastaReparacionesPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerHastaReparacionesPorSemana.CustomFormat = "dd/MM/yyyy"
+        DateTimePickerHastaReparacionesPorSemana.Location = New Point(343, 527)
+        DateTimePickerHastaReparacionesPorSemana.Name = "DateTimePickerHastaReparacionesPorSemana"
+        DateTimePickerHastaReparacionesPorSemana.Size = New Size(99, 23)
+        DateTimePickerHastaReparacionesPorSemana.TabIndex = 29
+        ' 
+        ' LabelDesdeReparacionesPorSemana
+        ' 
+        LabelDesdeReparacionesPorSemana.ForeColor = Color.White
+        LabelDesdeReparacionesPorSemana.Location = New Point(148, 527)
+        LabelDesdeReparacionesPorSemana.Name = "LabelDesdeReparacionesPorSemana"
+        LabelDesdeReparacionesPorSemana.Size = New Size(48, 23)
+        LabelDesdeReparacionesPorSemana.TabIndex = 28
+        LabelDesdeReparacionesPorSemana.Text = "Desde:"
+        LabelDesdeReparacionesPorSemana.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' DateTimePickerDesdeReparacionesPorSemana
+        ' 
+        DateTimePickerDesdeReparacionesPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerDesdeReparacionesPorSemana.CustomFormat = "dd/MM/yyyy"
+        DateTimePickerDesdeReparacionesPorSemana.Location = New Point(193, 527)
+        DateTimePickerDesdeReparacionesPorSemana.Name = "DateTimePickerDesdeReparacionesPorSemana"
+        DateTimePickerDesdeReparacionesPorSemana.Size = New Size(99, 23)
+        DateTimePickerDesdeReparacionesPorSemana.TabIndex = 27
+        ' 
+        ' LabelHastaEntregasPorSemana
+        ' 
+        LabelHastaEntregasPorSemana.ForeColor = Color.White
+        LabelHastaEntregasPorSemana.Location = New Point(777, 525)
+        LabelHastaEntregasPorSemana.Name = "LabelHastaEntregasPorSemana"
+        LabelHastaEntregasPorSemana.Size = New Size(48, 23)
+        LabelHastaEntregasPorSemana.TabIndex = 34
+        LabelHastaEntregasPorSemana.Text = "Hasta:"
+        LabelHastaEntregasPorSemana.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' DateTimePickerHastaEntregasPorSemana
+        ' 
+        DateTimePickerHastaEntregasPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerHastaEntregasPorSemana.CustomFormat = "dd/MM/yyyy"
+        DateTimePickerHastaEntregasPorSemana.Location = New Point(822, 525)
+        DateTimePickerHastaEntregasPorSemana.Name = "DateTimePickerHastaEntregasPorSemana"
+        DateTimePickerHastaEntregasPorSemana.Size = New Size(99, 23)
+        DateTimePickerHastaEntregasPorSemana.TabIndex = 33
+        ' 
+        ' LabelDesdeEntregasPorSemana
+        ' 
+        LabelDesdeEntregasPorSemana.ForeColor = Color.White
+        LabelDesdeEntregasPorSemana.Location = New Point(627, 525)
+        LabelDesdeEntregasPorSemana.Name = "LabelDesdeEntregasPorSemana"
+        LabelDesdeEntregasPorSemana.Size = New Size(48, 23)
+        LabelDesdeEntregasPorSemana.TabIndex = 32
+        LabelDesdeEntregasPorSemana.Text = "Desde:"
+        LabelDesdeEntregasPorSemana.TextAlign = ContentAlignment.MiddleLeft
+        ' 
+        ' DateTimePickerDesdeEntregasPorSemana
+        ' 
+        DateTimePickerDesdeEntregasPorSemana.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        DateTimePickerDesdeEntregasPorSemana.CustomFormat = "dd/MM/yyyy"
+        DateTimePickerDesdeEntregasPorSemana.Location = New Point(672, 525)
+        DateTimePickerDesdeEntregasPorSemana.Name = "DateTimePickerDesdeEntregasPorSemana"
+        DateTimePickerDesdeEntregasPorSemana.Size = New Size(99, 23)
+        DateTimePickerDesdeEntregasPorSemana.TabIndex = 31
         ' 
         ' FormEstadisticas
         ' 
@@ -193,6 +403,26 @@ Partial Class FormEstadisticas
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
         ClientSize = New Size(932, 653)
+        Controls.Add(LabelHastaEntregasPorSemana)
+        Controls.Add(DateTimePickerHastaEntregasPorSemana)
+        Controls.Add(LabelDesdeEntregasPorSemana)
+        Controls.Add(DateTimePickerDesdeEntregasPorSemana)
+        Controls.Add(LabelHastaReparacionesPorSemana)
+        Controls.Add(DateTimePickerHastaReparacionesPorSemana)
+        Controls.Add(LabelDesdeReparacionesPorSemana)
+        Controls.Add(DateTimePickerDesdeReparacionesPorSemana)
+        Controls.Add(LabelHastaRevisionesPorSemana)
+        Controls.Add(DateTimePickerHastaRevisionesPorSemana)
+        Controls.Add(LabelDesdeRevisionesPorSemana)
+        Controls.Add(DateTimePickerDesdeRevisionesPorSemana)
+        Controls.Add(LabelHastaEquiposPorSemana)
+        Controls.Add(DateTimePickerHastaIngresosPorSemana)
+        Controls.Add(LabelDesdeIngresosPorSemana)
+        Controls.Add(DateTimePickerDesdeIngresosPorSemana)
+        Controls.Add(LabelHastaFacturacionPorSemana)
+        Controls.Add(DateTimePickerHastaFacturacionPorSemana)
+        Controls.Add(LabelDesdeFacturacionPorSemana)
+        Controls.Add(DateTimePickerDesdeFacturacionPorSemana)
         Controls.Add(ComboBoxFacturacionPorSemana)
         Controls.Add(FormsPlotFacturacionPorSemana)
         Controls.Add(FormsPlotEquiposPorEstado)
@@ -230,4 +460,24 @@ Partial Class FormEstadisticas
     Friend WithEvents FormsPlotEquiposPorEstado As ScottPlot.WinForms.FormsPlot
     Friend WithEvents ComboBoxFacturacionPorSemana As ComboBox
     Friend WithEvents FormsPlotFacturacionPorSemana As ScottPlot.WinForms.FormsPlot
+    Friend WithEvents DateTimePickerDesdeFacturacionPorSemana As DateTimePicker
+    Friend WithEvents LabelDesdeFacturacionPorSemana As Label
+    Friend WithEvents LabelHastaFacturacionPorSemana As Label
+    Friend WithEvents DateTimePickerHastaFacturacionPorSemana As DateTimePicker
+    Friend WithEvents LabelHastaEquiposPorSemana As Label
+    Friend WithEvents DateTimePickerHastaIngresosPorSemana As DateTimePicker
+    Friend WithEvents LabelDesdeIngresosPorSemana As Label
+    Friend WithEvents DateTimePickerDesdeIngresosPorSemana As DateTimePicker
+    Friend WithEvents LabelHastaRevisionesPorSemana As Label
+    Friend WithEvents DateTimePickerHastaRevisionesPorSemana As DateTimePicker
+    Friend WithEvents LabelDesdeRevisionesPorSemana As Label
+    Friend WithEvents DateTimePickerDesdeRevisionesPorSemana As DateTimePicker
+    Friend WithEvents LabelHastaReparacionesPorSemana As Label
+    Friend WithEvents DateTimePickerHastaReparacionesPorSemana As DateTimePicker
+    Friend WithEvents LabelDesdeReparacionesPorSemana As Label
+    Friend WithEvents DateTimePickerDesdeReparacionesPorSemana As DateTimePicker
+    Friend WithEvents LabelHastaEntregasPorSemana As Label
+    Friend WithEvents DateTimePickerHastaEntregasPorSemana As DateTimePicker
+    Friend WithEvents LabelDesdeEntregasPorSemana As Label
+    Friend WithEvents DateTimePickerDesdeEntregasPorSemana As DateTimePicker
 End Class

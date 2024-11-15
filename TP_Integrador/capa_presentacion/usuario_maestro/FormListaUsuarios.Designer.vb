@@ -22,11 +22,11 @@ Partial Class FormListaUsuarios
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         IPBBuscarUsuario = New FontAwesome.Sharp.IconPictureBox()
         TBBuscarUsuario = New TextBox()
         PBClientes = New PictureBox()
@@ -58,10 +58,11 @@ Partial Class FormListaUsuarios
         IPBBuscarUsuario.IconChar = FontAwesome.Sharp.IconChar.Search
         IPBBuscarUsuario.IconColor = Color.White
         IPBBuscarUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto
-        IPBBuscarUsuario.IconSize = 23
-        IPBBuscarUsuario.Location = New Point(912, 69)
+        IPBBuscarUsuario.IconSize = 27
+        IPBBuscarUsuario.Location = New Point(1042, 92)
+        IPBBuscarUsuario.Margin = New Padding(3, 4, 3, 4)
         IPBBuscarUsuario.Name = "IPBBuscarUsuario"
-        IPBBuscarUsuario.Size = New Size(24, 23)
+        IPBBuscarUsuario.Size = New Size(27, 31)
         IPBBuscarUsuario.TabIndex = 22
         IPBBuscarUsuario.TabStop = False
         ' 
@@ -69,19 +70,19 @@ Partial Class FormListaUsuarios
         ' 
         TBBuscarUsuario.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         TBBuscarUsuario.ForeColor = SystemColors.Window
-        TBBuscarUsuario.Location = New Point(798, 69)
+        TBBuscarUsuario.Location = New Point(912, 92)
+        TBBuscarUsuario.Margin = New Padding(3, 4, 3, 4)
         TBBuscarUsuario.Multiline = True
         TBBuscarUsuario.Name = "TBBuscarUsuario"
-        TBBuscarUsuario.Size = New Size(108, 23)
+        TBBuscarUsuario.Size = New Size(123, 29)
         TBBuscarUsuario.TabIndex = 21
         ' 
         ' PBClientes
         ' 
         PBClientes.Image = My.Resources.Resources.people
-        PBClientes.Location = New Point(226, 4)
-        PBClientes.Margin = New Padding(3, 2, 3, 2)
+        PBClientes.Location = New Point(258, 5)
         PBClientes.Name = "PBClientes"
-        PBClientes.Size = New Size(91, 73)
+        PBClientes.Size = New Size(104, 97)
         PBClientes.TabIndex = 20
         PBClientes.TabStop = False
         ' 
@@ -91,9 +92,9 @@ Partial Class FormListaUsuarios
         LListaClientes.BackColor = Color.Transparent
         LListaClientes.Font = New Font("Bahnschrift Condensed", 36F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LListaClientes.ForeColor = Color.White
-        LListaClientes.Location = New Point(307, 9)
+        LListaClientes.Location = New Point(351, 12)
         LListaClientes.Name = "LListaClientes"
-        LListaClientes.Size = New Size(298, 58)
+        LListaClientes.Size = New Size(368, 72)
         LListaClientes.TabIndex = 19
         LListaClientes.Text = "Lista de Usuarios"
         ' 
@@ -101,10 +102,9 @@ Partial Class FormListaUsuarios
         ' 
         PListaEquipos.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         PListaEquipos.Controls.Add(DGVListaUsuarios)
-        PListaEquipos.Location = New Point(11, 112)
-        PListaEquipos.Margin = New Padding(3, 2, 3, 2)
+        PListaEquipos.Location = New Point(13, 149)
         PListaEquipos.Name = "PListaEquipos"
-        PListaEquipos.Size = New Size(927, 566)
+        PListaEquipos.Size = New Size(1059, 755)
         PListaEquipos.TabIndex = 18
         ' 
         ' DGVListaUsuarios
@@ -112,45 +112,46 @@ Partial Class FormListaUsuarios
         DGVListaUsuarios.AllowUserToResizeColumns = False
         DGVListaUsuarios.AllowUserToResizeRows = False
         DGVListaUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        DGVListaUsuarios.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         DGVListaUsuarios.BackgroundColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         DGVListaUsuarios.BorderStyle = BorderStyle.None
         DGVListaUsuarios.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = Color.FromArgb(CByte(109), CByte(122), CByte(224))
-        DataGridViewCellStyle6.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle6.ForeColor = Color.White
-        DataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(CByte(109), CByte(122), CByte(224))
-        DataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = DataGridViewTriState.True
-        DGVListaUsuarios.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(109), CByte(122), CByte(224))
+        DataGridViewCellStyle1.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle1.ForeColor = Color.White
+        DataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(CByte(109), CByte(122), CByte(224))
+        DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
+        DGVListaUsuarios.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         DGVListaUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DGVListaUsuarios.Columns.AddRange(New DataGridViewColumn() {C_Apellido, C_Nombre, C_DNI, C_Telefono, C_Correo, C_Usuario, C_TipoDeUsuario, C_Editar, C_Eliminar})
-        DataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        DataGridViewCellStyle9.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        DataGridViewCellStyle9.ForeColor = Color.White
-        DataGridViewCellStyle9.SelectionBackColor = Color.MediumPurple
-        DataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle9.WrapMode = DataGridViewTriState.True
-        DGVListaUsuarios.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
+        DataGridViewCellStyle4.Font = New Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle4.ForeColor = Color.White
+        DataGridViewCellStyle4.SelectionBackColor = Color.MediumPurple
+        DataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = DataGridViewTriState.True
+        DGVListaUsuarios.DefaultCellStyle = DataGridViewCellStyle4
         DGVListaUsuarios.EnableHeadersVisualStyles = False
         DGVListaUsuarios.GridColor = Color.FromArgb(CByte(109), CByte(122), CByte(224))
         DGVListaUsuarios.Location = New Point(0, 0)
-        DGVListaUsuarios.Margin = New Padding(3, 2, 3, 2)
         DGVListaUsuarios.Name = "DGVListaUsuarios"
         DGVListaUsuarios.ReadOnly = True
         DGVListaUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DGVListaUsuarios.RowHeadersVisible = False
         DGVListaUsuarios.RowHeadersWidth = 51
-        DataGridViewCellStyle10.ForeColor = Color.White
-        DGVListaUsuarios.RowsDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle5.ForeColor = Color.White
+        DGVListaUsuarios.RowsDefaultCellStyle = DataGridViewCellStyle5
         DGVListaUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DGVListaUsuarios.Size = New Size(922, 563)
+        DGVListaUsuarios.Size = New Size(1054, 751)
         DGVListaUsuarios.TabIndex = 0
         ' 
         ' C_Apellido
         ' 
         C_Apellido.HeaderText = "Apellido"
+        C_Apellido.MinimumWidth = 6
         C_Apellido.Name = "C_Apellido"
         C_Apellido.ReadOnly = True
         ' 
@@ -165,18 +166,21 @@ Partial Class FormListaUsuarios
         ' C_DNI
         ' 
         C_DNI.HeaderText = "DNI"
+        C_DNI.MinimumWidth = 6
         C_DNI.Name = "C_DNI"
         C_DNI.ReadOnly = True
         ' 
         ' C_Telefono
         ' 
         C_Telefono.HeaderText = "Telefono"
+        C_Telefono.MinimumWidth = 6
         C_Telefono.Name = "C_Telefono"
         C_Telefono.ReadOnly = True
         ' 
         ' C_Correo
         ' 
         C_Correo.HeaderText = "Correo"
+        C_Correo.MinimumWidth = 6
         C_Correo.Name = "C_Correo"
         C_Correo.ReadOnly = True
         ' 
@@ -198,13 +202,14 @@ Partial Class FormListaUsuarios
         ' 
         ' C_Editar
         ' 
-        DataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.BackColor = Color.SkyBlue
-        DataGridViewCellStyle7.ForeColor = Color.White
-        DataGridViewCellStyle7.SelectionBackColor = Color.SkyBlue
-        C_Editar.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = Color.SkyBlue
+        DataGridViewCellStyle2.ForeColor = Color.White
+        DataGridViewCellStyle2.SelectionBackColor = Color.SkyBlue
+        C_Editar.DefaultCellStyle = DataGridViewCellStyle2
         C_Editar.FlatStyle = FlatStyle.Popup
         C_Editar.HeaderText = "Editar"
+        C_Editar.MinimumWidth = 6
         C_Editar.Name = "C_Editar"
         C_Editar.ReadOnly = True
         C_Editar.Text = "Editar"
@@ -212,11 +217,11 @@ Partial Class FormListaUsuarios
         ' 
         ' C_Eliminar
         ' 
-        DataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = Color.SkyBlue
-        DataGridViewCellStyle8.ForeColor = Color.White
-        DataGridViewCellStyle8.SelectionBackColor = Color.SkyBlue
-        C_Eliminar.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = Color.SkyBlue
+        DataGridViewCellStyle3.ForeColor = Color.White
+        DataGridViewCellStyle3.SelectionBackColor = Color.SkyBlue
+        C_Eliminar.DefaultCellStyle = DataGridViewCellStyle3
         C_Eliminar.FlatStyle = FlatStyle.Popup
         C_Eliminar.HeaderText = "Eliminar"
         C_Eliminar.MinimumWidth = 6
@@ -232,27 +237,28 @@ Partial Class FormListaUsuarios
         LFiltrar.AutoSize = True
         LFiltrar.Font = New Font("Segoe UI", 10F)
         LFiltrar.ForeColor = Color.White
-        LFiltrar.Location = New Point(593, 70)
+        LFiltrar.Location = New Point(679, 94)
         LFiltrar.Name = "LFiltrar"
-        LFiltrar.Size = New Size(72, 19)
+        LFiltrar.Size = New Size(88, 23)
         LFiltrar.TabIndex = 24
         LFiltrar.Text = "Filtrar por:"
         ' 
         ' CBFiltro
         ' 
         CBFiltro.FormattingEnabled = True
-        CBFiltro.Location = New Point(671, 69)
+        CBFiltro.Location = New Point(768, 92)
+        CBFiltro.Margin = New Padding(3, 4, 3, 4)
         CBFiltro.Name = "CBFiltro"
-        CBFiltro.Size = New Size(121, 23)
+        CBFiltro.Size = New Size(138, 28)
         CBFiltro.TabIndex = 23
         CBFiltro.Text = "Todos"
         ' 
         ' FormListaUsuarios
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
-        ClientSize = New Size(948, 685)
+        ClientSize = New Size(1083, 913)
         Controls.Add(LFiltrar)
         Controls.Add(CBFiltro)
         Controls.Add(IPBBuscarUsuario)
@@ -260,6 +266,7 @@ Partial Class FormListaUsuarios
         Controls.Add(PBClientes)
         Controls.Add(LListaClientes)
         Controls.Add(PListaEquipos)
+        Margin = New Padding(3, 4, 3, 4)
         Name = "FormListaUsuarios"
         Text = "Form1"
         CType(IPBBuscarUsuario, ComponentModel.ISupportInitialize).EndInit()

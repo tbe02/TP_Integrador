@@ -4,6 +4,7 @@ Imports FontAwesome.Sharp
 Public Class modelo_menu_user_maestro
     Public Sub New()
         InitializeComponent()
+        Me.Size() = New Size(1200, 750)
     End Sub
 
     '-------------------------------------------------------------------------------------------------------------------------'
@@ -158,8 +159,7 @@ Public Class modelo_menu_user_maestro
         Me.PFondoPrincipal.Controls.Add(form)
         form.Show()
 
-        Me.PFondoPrincipal.Controls.Add(form)
-        form.Show()
+
     End Sub
 
     Private Sub IBListaUsuarios_Click(sender As Object, e As EventArgs) Handles IBListaUsuarios.Click
@@ -180,6 +180,23 @@ Public Class modelo_menu_user_maestro
         form.Show()
     End Sub
 
+    Private Sub IBBackup_Click(sender As Object, e As EventArgs) Handles IBBackup.Click
+        Dim color As Color
+
+        color = Color.FromArgb(255, 0, 0)
+        activarBoton(sender, color)
+
+        Me.PFondoPrincipal.Controls.Clear()
+
+        Dim form As New FormBackup()
+
+        form.TopLevel = False
+        form.FormBorderStyle = FormBorderStyle.None
+
+        Me.PFondoPrincipal.Controls.Add(form)
+        form.Show()
+    End Sub
+
     Private Sub EjecutarIBMenuPrincipal()
         ' Llama al método IBMenuPrincipal_Click, pasando un valor predeterminado para sender y e
         IBMenuPrincipal_Click(IBMenuPrincipal, EventArgs.Empty)
@@ -192,14 +209,6 @@ Public Class modelo_menu_user_maestro
         End If
     End Sub
 
-    Private Sub IB_Maximizar_Click(sender As Object, e As EventArgs) Handles IB_Maximizar.Click
-        If (Me.WindowState = FormWindowState.Normal) Then
-            Me.WindowState = FormWindowState.Maximized
-        Else
-            Me.WindowState = FormWindowState.Normal
-
-        End If
-    End Sub
 
     Private Sub IB_Minimizar_Click(sender As Object, e As EventArgs) Handles IB_Minimizar.Click
         Me.WindowState = FormWindowState.Minimized
@@ -228,4 +237,6 @@ Public Class modelo_menu_user_maestro
 
         formLogin.Show()
     End Sub
+
+
 End Class

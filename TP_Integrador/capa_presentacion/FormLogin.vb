@@ -29,7 +29,7 @@ Public Class FormLogin
 
             ' Rellenar los controles con los datos guardados
             TBUsuario.Text = nombreUsuario
-            CBRecordarme.Checked = True
+
         End If
     End Sub
 
@@ -55,8 +55,6 @@ Public Class FormLogin
             Return
         End Try
 
-        MessageBox.Show("Ingreso exitoso", "Ingreso de usuario", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
         Dim usuarios As Usuarios = Usuarios.ObtenerInstancia()
         Dim usuarioAutenticado = usuarios.obtenerUno(usuario)
 
@@ -64,13 +62,9 @@ Public Class FormLogin
 
         sesion.GuardarSesion(usuarioAutenticado)
 
-        If CBRecordarme.Checked Then
-            Dim json As String = JsonSerializer.Serialize(usuarioAutenticado.NombreUsuario)
 
-            File.WriteAllText("usuario.json", json)
-        End If
 
-        Select Case usuarioAutenticado.Tipo
+        Select Case usuarioAutenticado.Tipo.nombre
             Case "maestro"
                 Dim menu As New modelo_menu_user_maestro()
 

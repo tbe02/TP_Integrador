@@ -1,11 +1,12 @@
 ﻿Imports System.Text.RegularExpressions
 
 Public Class ControladorUsuarios
-    Private usuarios As Usuarios = Usuarios.ObtenerInstancia()
+    Private _usuarios As Usuarios = Usuarios.ObtenerInstancia()
+
 
     Public Function ObtenerTodos() As List(Of Usuarios.Usuario)
         Try
-            Return usuarios.obtenerTodos()
+            Return _usuarios.obtenerTodos()
         Catch ex As Exception
             Throw New Exception(ex.Message)
         End Try
@@ -20,35 +21,30 @@ Public Class ControladorUsuarios
         Public Const CORREO_INVALIDO As String = "El correo es invalido"
     End Class
 
-    Public Sub AgregarUno(apellido As String, nombre As String, dni As String, telefono As String, correo As String, nombreUsuario As String, password As String, tipo As String)
+    Public Function AgregarUno(apellido As String, nombre As String, dni As String, telefono As String, correo As String, nombreUsuario As String, password As String, tipo As String) As Boolean
         Try
-            ObtenerLosCamposSonValidos(apellido, nombre, dni, correo, telefono)
-
-            usuarios.agregarUsuario(apellido, nombre, dni, telefono, correo, nombreUsuario, password, tipo)
+            ' Llama a agregarUsuario y devuelve el resultado (True o False)
+            Return _usuarios.agregarUsuario(apellido, nombre, dni, telefono, correo, nombreUsuario, password, tipo)
         Catch ex As Exception
-            Throw New Exception(ex.Message)
+            MsgBox("Error: " & ex.Message)
+            Return False
         End Try
-    End Sub
+    End Function
+
 
     Public Function ObtenerUnoPorNombreDeUsuario(nombreDeUsuario As String) As Usuarios.Usuario
         Try
-            Return usuarios.obtenerUno(nombreDeUsuario)
+            Return _usuarios.obtenerUno(nombreDeUsuario)
         Catch ex As Exception
             Throw New Exception(ex.Message)
         End Try
     End Function
 
-    Public Sub EliminarUnoPorNombreDeUsuario(nombreDeUsuario As String)
-        Try
-            usuarios.eliminarUsuario(nombreDeUsuario)
-        Catch ex As Exception
-            Throw New Exception(ex.Message)
-        End Try
-    End Sub
+
 
     Public Sub EditarUnoPorDNI(dni As String, apellido As String, nombre As String, telefono As String, correo As String, nombreUsuario As String, password As String, tipo As String)
         Try
-            usuarios.editarUsuario(dni, apellido, nombre, telefono, correo, nombreUsuario, password, tipo)
+            _usuarios.editarUsuario(dni, apellido, nombre, telefono, correo, nombreUsuario, password, tipo)
         Catch ex As Exception
             Throw New Exception(ex.Message)
         End Try
@@ -73,6 +69,15 @@ Public Class ControladorUsuarios
 
         Return True
     End Function
+
+    Public Sub EliminarUsuario(DNI As String)
+        Try
+
+            _usuarios.eliminarUsuario(DNI)
+        Catch ex As Exception
+            Throw New Exception("Error al eliminar usuario: " & ex.Message)
+        End Try
+    End Sub
 
     Public Function ObtenerLosCamposSonValidos(apellido As String, nombre As String, dni As String, correo As String, telefono As String)
         If (apellido = "" Or nombre = "" Or dni = "" Or correo = "" Or telefono = "") Then

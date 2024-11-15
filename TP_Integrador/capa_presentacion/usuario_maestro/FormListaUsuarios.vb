@@ -1,143 +1,160 @@
 ﻿Imports TP_Integrador.Usuarios
 
 Public Class FormListaUsuarios
-    Private usuarios As Usuarios = Usuarios.ObtenerInstancia()
+
+    Private _controladorUsuarios As ControladorUsuarios = New ControladorUsuarios()
     Public Sub New()
         InitializeComponent()
 
-        CargarUsuarios()
         ListarFiltros()
-    End Sub
-    Private Sub ListarFiltros()
-        CBFiltro.Items.Add("Todos")
-        CBFiltro.Items.Add("Apellido")
-        CBFiltro.Items.Add("Nombre")
-        CBFiltro.Items.Add("DNI")
-        CBFiltro.Items.Add("Correo")
-        CBFiltro.Items.Add("Telefono")
-        CBFiltro.Items.Add("Usuario")
-        CBFiltro.Items.Add("Administrador")
-        CBFiltro.Items.Add("Tecnico")
-        CBFiltro.Items.Add("Maestro")
+        CargarUsuarios()
+        DGVListaUsuarios.AllowUserToAddRows = False
     End Sub
 
     Private Sub refrescarLista()
-        Dim listaUsuarios As List(Of Usuario) = usuarios.obtenerTodos() ' Reemplaza con tu método para obtener los usuarios
-
-        ' Limpia las filas actuales del DataGridView
         DGVListaUsuarios.Rows.Clear()
+        CargarUsuarios()
+    End Sub
 
-        ' Agrega los usuarios actualizados al DataGridView
-        For Each usuario In listaUsuarios
-            DGVListaUsuarios.Rows.Add(usuario.Apellido, usuario.Nombre, usuario.DNI, usuario.Telefono, usuario.Correo, usuario.NombreUsuario, usuario.Tipo)
-        Next
+    Private Sub ListarFiltros()
+        CBFiltro.Items.Add("Maestro")
+        CBFiltro.Items.Add("Técnico")
+        CBFiltro.Items.Add("Administrador")
+        CBFiltro.Items.Add("Todos")
     End Sub
 
     Private Sub CargarUsuarios()
-        DGVListaUsuarios.AllowUserToAddRows = False
 
-        Dim listaUsuarios = usuarios.obtenerTodos()
+        DGVListaUsuarios.Rows.Clear() ' Asegúrate de limpiar filas antes de listar
+
+        Dim listaUsuarios = _controladorUsuarios.ObtenerTodos()
         For Each usuario As Usuario In listaUsuarios
-            DGVListaUsuarios.Rows.Add(usuario.Apellido, usuario.Nombre, usuario.DNI, usuario.Telefono, usuario.Correo, usuario.NombreUsuario, usuario.Tipo)
+            DGVListaUsuarios.Rows.Add(usuario.Apellido, usuario.Nombre, usuario.DNI, usuario.Telefono, usuario.Correo, usuario.NombreUsuario, usuario.Tipo.nombre)
         Next
+
     End Sub
 
 
     Private Sub DGVEliminarUsuario_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVListaUsuarios.CellClick
-        ' Verificar si se hizo clic en la columna "C_Eliminar" y que la fila sea válida
+
         If e.ColumnIndex = DGVListaUsuarios.Columns("C_Eliminar").Index AndAlso e.RowIndex >= 0 Then
-            ' Obtener el DNI del usuario seleccionado
-            Dim dni As String = DGVListaUsuarios.Rows(e.RowIndex).Cells("C_DNI").Value.ToString()
 
-            ' Confirmar la eliminación
-            Dim resultado As DialogResult = MessageBox.Show("¿Está seguro que desea eliminar este cliente?", "Eliminar Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
-            ' Si el usuario confirma la eliminación
+
+            Dim usuarioSeleccionado As Usuario = _controladorUsuarios.ObtenerTodos(e.RowIndex)
+
+
+            Dim resultado As DialogResult = MessageBox.Show("¿Está seguro que desea eliminar este usuario?", "Eliminar Usuario", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+
             If resultado = DialogResult.Yes Then
-                ' Llamar al método para eliminar el cliente usando su DNI
-                usuarios.eliminarUsuario(dni)
 
-                ' Refrescar la lista después de eliminar
+                _controladorUsuarios.eliminarUsuario(usuarioSeleccionado.DNI)
+
                 refrescarLista()
 
-                ' Mostrar mensaje de éxito
-                MessageBox.Show("Cliente eliminado con éxito.", "Eliminación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                MessageBox.Show("Usuario eliminado con éxito.", "Eliminación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
         End If
     End Sub
 
     Private Sub DGVEditarUsuario_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVListaUsuarios.CellClick
         If e.ColumnIndex = DGVListaUsuarios.Columns("C_Editar").Index AndAlso e.RowIndex >= 0 Then
-            Dim nombreUsuario As String = DGVListaUsuarios.Rows(e.RowIndex).Cells("C_Usuario").Value.ToString()
 
-            Dim usuarioActual As Usuarios.Usuario = usuarios.obtenerTodos().Find(Function(u) u.NombreUsuario = nombreUsuario)
+            Dim filaSeleccionada As DataGridViewRow = DGVListaUsuarios.Rows(e.RowIndex)
 
-            Dim formEditar As New FormEditarUsuario(usuarioActual, usuarios)
-            If formEditar.ShowDialog() = DialogResult.OK Then
-                ' Obtener los valores editados del formulario
-                Dim usuarioEditado As Usuarios.Usuario = formEditar.ObtenerUsuarioEditado()
+            Dim usuario As Usuarios.Usuario = _controladorUsuarios.ObtenerTodos(e.RowIndex)
 
-                ' Actualizar el usuario
-                If usuarios.verificaciones(usuarioEditado.Apellido, usuarioEditado.Nombre, usuarioEditado.DNI, usuarioEditado.Correo, usuarioEditado.Telefono) Then
-                    usuarios.editarUsuario(usuarioEditado.Apellido, usuarioEditado.Nombre, usuarioEditado.DNI, usuarioEditado.Telefono, usuarioEditado.Correo, usuarioEditado.NombreUsuario, usuarioEditado.Password, usuarioEditado.Tipo)
 
-                    ' Refrescar la lista después de editar
-                    refrescarLista()
+            Dim formEditar As New FormEditarUsuario(usuario, New Action(
+                    Sub()
+                        refrescarLista()
+                    End Sub
+                ))
 
-                    ' Mostrar mensaje de éxito
-                    MessageBox.Show("Usuario editado con éxito.", "Edición Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                End If
-            End If
+            formEditar.Size = New Size(495, 1001)
+            formEditar.Show()
+
         End If
     End Sub
 
-    Private Sub FiltrarClientes(sender As Object, e As EventArgs) Handles IPBBuscarUsuario.Click
-        Dim filtro = CBFiltro.Text
-        Dim busqueda = TBBuscarUsuario.Text
+    Private Sub FiltrarUsuarios()
+        Dim filtro As String = TBBuscarUsuario.Text.Trim()
+        Dim estadoFiltro As String = If(CBFiltro.SelectedItem IsNot Nothing, CBFiltro.SelectedItem.ToString(), "Todos")
 
-        Dim usuariosFiltrados As List(Of Usuario)
 
-        DGVListaUsuarios.Rows.Clear()
+        For Each r As DataGridViewRow In DGVListaUsuarios.Rows
+            r.Visible = False
+        Next
 
-        Select Case filtro
-            Case "Apellido"
-                usuariosFiltrados = usuarios.obtenerTodos().Where(Function(usuario) usuario.Apellido.StartsWith(busqueda)).ToList()
-            Case "Nombre"
-                usuariosFiltrados = usuarios.obtenerTodos().Where(Function(usuario) usuario.Nombre.StartsWith(busqueda)).ToList()
-            Case "DNI"
-                usuariosFiltrados = usuarios.obtenerTodos().Where(Function(usuario) usuario.DNI.StartsWith(busqueda)).ToList()
-            Case "Correo"
-                usuariosFiltrados = usuarios.obtenerTodos().Where(Function(usuario) usuario.Correo.StartsWith(busqueda)).ToList()
-            Case "Telefono"
-                usuariosFiltrados = usuarios.obtenerTodos().Where(Function(usuario) usuario.Telefono.StartsWith(busqueda)).ToList()
-            Case "Usuario"
-                usuariosFiltrados = usuarios.obtenerTodos().Where(Function(usuario) usuario.NombreUsuario.StartsWith(busqueda)).ToList()
-            Case "Administrador"
-                usuariosFiltrados = usuarios.obtenerTodos().Where(Function(usuario) usuario.Tipo = "administrador").ToList()
-            Case "Tecnico"
-                usuariosFiltrados = usuarios.obtenerTodos().Where(Function(usuario) usuario.Tipo = "tecnico").ToList()
-            Case "Maestro"
-                usuariosFiltrados = usuarios.obtenerTodos().Where(Function(usuario) usuario.Tipo = "maestro").ToList()
-            Case Else
-                usuariosFiltrados = usuarios.obtenerTodos()
-        End Select
+        For Each r As DataGridViewRow In DGVListaUsuarios.Rows
+            Dim estado As String = r.Cells("C_TipoDeUsuario").Value.ToString()
+            Dim mostrar As Boolean = False
 
-        For Each usuario In usuariosFiltrados
-            DGVListaUsuarios.Rows.Add(usuario.Apellido, usuario.Nombre, usuario.DNI, usuario.Telefono, usuario.Correo, usuario.NombreUsuario, usuario.Tipo)
+            ' Filtrar según el ComboBox
+            If estadoFiltro = "Maestro" And estado = "maestro" Then
+                mostrar = True
+            ElseIf estadoFiltro = "Técnico" And estado = "tecnico" Then
+                mostrar = True
+            ElseIf estadoFiltro = "Administrador" And estado = "administrador" Then
+                mostrar = True
+            ElseIf estadoFiltro = "Todos" Then
+                mostrar = True
+            End If
+
+            ' Verificar si coincide con la búsqueda
+            If mostrar Then
+                If String.IsNullOrEmpty(filtro) OrElse r.Cells.Cast(Of DataGridViewCell)().Any(Function(c) c.Value IsNot Nothing AndAlso c.Value.ToString().ToUpper().Contains(filtro.ToUpper())) Then
+                    r.Visible = True ' Si cumple con la búsqueda, mostrar la fila
+                End If
+            End If
+        Next
+    End Sub
+
+
+    Private Sub IPBBuscarUsuario_Click(sender As Object, e As EventArgs) Handles IPBBuscarUsuario.Click
+        Dim filtro As String = TBBuscarUsuario.Text.Trim()
+        Dim estadoFiltro As String = If(CBFiltro.SelectedItem IsNot Nothing, CBFiltro.SelectedItem.ToString(), "Todos")
+
+
+        For Each r As DataGridViewRow In DGVListaUsuarios.Rows
+            r.Visible = False
+        Next
+
+        For Each r As DataGridViewRow In DGVListaUsuarios.Rows
+            Dim estado As String = r.Cells("C_TipoDeUsuario").Value.ToString()
+            Dim mostrar As Boolean = False
+
+            ' Filtrar según el ComboBox
+            If estadoFiltro = "Maestro" And estado = "maestro" Then
+                mostrar = True
+            ElseIf estadoFiltro = "Técnico" And estado = "tecnico" Then
+                mostrar = True
+            ElseIf estadoFiltro = "Administrador" And estado = "admin" Then
+                mostrar = True
+            ElseIf estadoFiltro = "Todos" Then
+                mostrar = True
+            End If
+
+            ' Verificar si coincide con la búsqueda
+            If mostrar Then
+                If String.IsNullOrEmpty(filtro) OrElse r.Cells.Cast(Of DataGridViewCell)().Any(Function(c) c.Value IsNot Nothing AndAlso c.Value.ToString().ToUpper().Contains(filtro.ToUpper())) Then
+                    r.Visible = True ' Si cumple con la búsqueda, mostrar la fila
+                End If
+            End If
         Next
     End Sub
 
     Private Sub ManejarFiltro(sender As Object, e As EventArgs) Handles CBFiltro.SelectedIndexChanged
-        TBBuscarUsuario.Clear()
+        FiltrarUsuarios()
+    End Sub
 
-        Dim filtro = CBFiltro.Text
-
-        If filtro = "Administrador" Or filtro = "Tecnico" Or filtro = "Maestro" Then
-            FiltrarClientes(sender, e)
-
-            Return
+    Private Sub TBBuscarUsuario_KeyDown(sender As Object, e As KeyEventArgs) Handles TBBuscarUsuario.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            ' Simula un clic en el botón de búsqueda
+            IPBBuscarUsuario_Click(sender, e)
+            e.SuppressKeyPress = True ' Evita el sonido de "beep" al presionar Enter
         End If
-
-        refrescarLista()
     End Sub
 End Class

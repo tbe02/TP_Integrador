@@ -22,6 +22,7 @@ Public Class FormEditarCliente
     Public Sub New(clienteActual As Cliente, alFinalizar As Action)
         ' Esta llamada es necesaria para el diseñador.
         InitializeComponent()
+        SetEstados()
 
         ' Asigna el cliente al formulario
         Me.ClienteActual = clienteActual
@@ -78,11 +79,11 @@ Public Class FormEditarCliente
         End If
     End Sub
 
-    Private Sub IBCerrar_Click(sender As Object, e As EventArgs) Handles IBCerrar_EC.Click
-        Close()
-    End Sub
-
     Private Sub IBMinimizar_Click(sender As Object, e As EventArgs) Handles IBMinimizar_EC.Click
         WindowState = FormWindowState.Minimized
+    End Sub
+
+    Private Sub IBCerrar_Click(sender As Object, e As EventArgs) Handles IBCerrar.Click
+        Me.Close()
     End Sub
 End Class

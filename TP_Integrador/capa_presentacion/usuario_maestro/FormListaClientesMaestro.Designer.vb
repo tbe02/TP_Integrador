@@ -49,10 +49,9 @@ Partial Class FormListaClientesMaestro
         ' 
         PListaEquipos.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         PListaEquipos.Controls.Add(DGVListaClientes)
-        PListaEquipos.Location = New Point(10, 110)
-        PListaEquipos.Margin = New Padding(3, 2, 3, 2)
+        PListaEquipos.Location = New Point(11, 147)
         PListaEquipos.Name = "PListaEquipos"
-        PListaEquipos.Size = New Size(927, 566)
+        PListaEquipos.Size = New Size(1059, 755)
         PListaEquipos.TabIndex = 0
         ' 
         ' DGVListaClientes
@@ -60,6 +59,7 @@ Partial Class FormListaClientesMaestro
         DGVListaClientes.AllowUserToResizeColumns = False
         DGVListaClientes.AllowUserToResizeRows = False
         DGVListaClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        DGVListaClientes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells
         DGVListaClientes.BackgroundColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         DGVListaClientes.BorderStyle = BorderStyle.None
         DGVListaClientes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
@@ -84,7 +84,6 @@ Partial Class FormListaClientesMaestro
         DGVListaClientes.EnableHeadersVisualStyles = False
         DGVListaClientes.GridColor = Color.FromArgb(CByte(109), CByte(122), CByte(224))
         DGVListaClientes.Location = New Point(0, 0)
-        DGVListaClientes.Margin = New Padding(3, 2, 3, 2)
         DGVListaClientes.Name = "DGVListaClientes"
         DGVListaClientes.ReadOnly = True
         DGVListaClientes.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
@@ -93,7 +92,7 @@ Partial Class FormListaClientesMaestro
         DataGridViewCellStyle3.ForeColor = Color.White
         DGVListaClientes.RowsDefaultCellStyle = DataGridViewCellStyle3
         DGVListaClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DGVListaClientes.Size = New Size(922, 563)
+        DGVListaClientes.Size = New Size(1054, 751)
         DGVListaClientes.TabIndex = 0
         ' 
         ' C_Apellido
@@ -139,6 +138,7 @@ Partial Class FormListaClientesMaestro
         ' C_Estado
         ' 
         C_Estado.HeaderText = "Estado"
+        C_Estado.MinimumWidth = 6
         C_Estado.Name = "C_Estado"
         C_Estado.ReadOnly = True
         C_Estado.Resizable = DataGridViewTriState.False
@@ -149,19 +149,18 @@ Partial Class FormListaClientesMaestro
         LListaClientes.BackColor = Color.Transparent
         LListaClientes.Font = New Font("Bahnschrift Condensed", 36F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LListaClientes.ForeColor = Color.White
-        LListaClientes.Location = New Point(306, 7)
+        LListaClientes.Location = New Point(350, 9)
         LListaClientes.Name = "LListaClientes"
-        LListaClientes.Size = New Size(290, 58)
+        LListaClientes.Size = New Size(357, 72)
         LListaClientes.TabIndex = 12
         LListaClientes.Text = "Lista de Clientes"
         ' 
         ' PBClientes
         ' 
         PBClientes.Image = My.Resources.Resources.people
-        PBClientes.Location = New Point(225, 2)
-        PBClientes.Margin = New Padding(3, 2, 3, 2)
+        PBClientes.Location = New Point(257, 3)
         PBClientes.Name = "PBClientes"
-        PBClientes.Size = New Size(91, 73)
+        PBClientes.Size = New Size(104, 97)
         PBClientes.TabIndex = 13
         PBClientes.TabStop = False
         ' 
@@ -173,10 +172,11 @@ Partial Class FormListaClientesMaestro
         IPBBuscarCliente.IconChar = FontAwesome.Sharp.IconChar.Search
         IPBBuscarCliente.IconColor = Color.White
         IPBBuscarCliente.IconFont = FontAwesome.Sharp.IconFont.Auto
-        IPBBuscarCliente.IconSize = 23
-        IPBBuscarCliente.Location = New Point(911, 67)
+        IPBBuscarCliente.IconSize = 27
+        IPBBuscarCliente.Location = New Point(1041, 89)
+        IPBBuscarCliente.Margin = New Padding(3, 4, 3, 4)
         IPBBuscarCliente.Name = "IPBBuscarCliente"
-        IPBBuscarCliente.Size = New Size(24, 23)
+        IPBBuscarCliente.Size = New Size(27, 31)
         IPBBuscarCliente.TabIndex = 17
         IPBBuscarCliente.TabStop = False
         ' 
@@ -184,10 +184,11 @@ Partial Class FormListaClientesMaestro
         ' 
         TBBuscarCliente.BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
         TBBuscarCliente.ForeColor = SystemColors.Window
-        TBBuscarCliente.Location = New Point(797, 67)
+        TBBuscarCliente.Location = New Point(911, 89)
+        TBBuscarCliente.Margin = New Padding(3, 4, 3, 4)
         TBBuscarCliente.Multiline = True
         TBBuscarCliente.Name = "TBBuscarCliente"
-        TBBuscarCliente.Size = New Size(108, 23)
+        TBBuscarCliente.Size = New Size(123, 29)
         TBBuscarCliente.TabIndex = 16
         ' 
         ' LFiltrar
@@ -195,27 +196,28 @@ Partial Class FormListaClientesMaestro
         LFiltrar.AutoSize = True
         LFiltrar.Font = New Font("Segoe UI", 10F)
         LFiltrar.ForeColor = Color.White
-        LFiltrar.Location = New Point(592, 68)
+        LFiltrar.Location = New Point(677, 91)
         LFiltrar.Name = "LFiltrar"
-        LFiltrar.Size = New Size(72, 19)
+        LFiltrar.Size = New Size(88, 23)
         LFiltrar.TabIndex = 21
         LFiltrar.Text = "Filtrar por:"
         ' 
         ' CBFiltro
         ' 
         CBFiltro.FormattingEnabled = True
-        CBFiltro.Location = New Point(670, 67)
+        CBFiltro.Location = New Point(766, 89)
+        CBFiltro.Margin = New Padding(3, 4, 3, 4)
         CBFiltro.Name = "CBFiltro"
-        CBFiltro.Size = New Size(121, 23)
+        CBFiltro.Size = New Size(138, 28)
         CBFiltro.TabIndex = 20
         CBFiltro.Text = "Todos"
         ' 
         ' FormListaClientesMaestro
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(34), CByte(33), CByte(74))
-        ClientSize = New Size(948, 685)
+        ClientSize = New Size(1083, 913)
         Controls.Add(LFiltrar)
         Controls.Add(CBFiltro)
         Controls.Add(IPBBuscarCliente)
@@ -224,7 +226,6 @@ Partial Class FormListaClientesMaestro
         Controls.Add(LListaClientes)
         Controls.Add(PListaEquipos)
         FormBorderStyle = FormBorderStyle.FixedSingle
-        Margin = New Padding(3, 2, 3, 2)
         Name = "FormListaClientesMaestro"
         Text = "FormListaEquipos"
         PListaEquipos.ResumeLayout(False)

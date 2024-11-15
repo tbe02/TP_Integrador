@@ -1,13 +1,14 @@
 ﻿Public Class ControladorClientes
     Private _clientes As Cliente = New Cliente()
 
-    Public Sub AgregarUno(cliente As Cliente)
+    Public Function AgregarUno(cliente As Cliente) As Boolean
         Try
-            _clientes.agregarCliente(cliente.Apellido, cliente.Nombre, cliente.Dni, cliente.Correo, cliente.Telefono)
+            Return _clientes.agregarCliente(cliente.Apellido, cliente.Nombre, cliente.Dni, cliente.Correo, cliente.Telefono)
         Catch ex As Exception
-            Throw New Exception(ex.Message)
+            MsgBox("Error: " & ex.Message)
+            Return False
         End Try
-    End Sub
+    End Function
 
     Public Function ObtenerTodos() As List(Of Cliente)
         Try
