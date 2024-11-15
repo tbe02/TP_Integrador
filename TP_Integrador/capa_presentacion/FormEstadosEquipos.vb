@@ -64,11 +64,11 @@ Public Class FormEstadosEquipos
                 BIrreparable.BackColor = System.Drawing.Color.LightGray
                 BIrreparable.ForeColor = System.Drawing.Color.DarkGray
                 BIrreparable.Enabled = False
-            Case "tecnico"
+
                 BCargarPresupuesto.BackColor = System.Drawing.Color.LightGray
                 BCargarPresupuesto.ForeColor = System.Drawing.Color.DarkGray
                 BCargarPresupuesto.Enabled = False
-
+            Case "tecnico"
                 BAprobarPresupuesto.BackColor = System.Drawing.Color.LightGray
                 BAprobarPresupuesto.ForeColor = System.Drawing.Color.DarkGray
                 BAprobarPresupuesto.Enabled = False
