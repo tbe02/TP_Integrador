@@ -14,6 +14,9 @@ Public Class FormEstadisticas
     Private Sub ActualizarGraficoIngresosPorSemana(sender As Object, e As EventArgs) Handles ComboBoxIngresosPorSemana.SelectedIndexChanged, DateTimePickerDesdeIngresosPorSemana.ValueChanged, DateTimePickerHastaIngresosPorSemana.ValueChanged
         FormsPlotIngresosPorSemana.Plot.Clear()
 
+        DateTimePickerHastaIngresosPorSemana.MinDate = DateTimePickerDesdeIngresosPorSemana.Value.AddDays(1)
+        DateTimePickerDesdeIngresosPorSemana.MaxDate = DateTimePickerHastaIngresosPorSemana.Value.AddDays(-1)
+
         Dim fechaInicio As String = DateTimePickerDesdeIngresosPorSemana.Value.ToString("yyyy-MM-dd")
         Dim fechaFin As String = DateTimePickerHastaIngresosPorSemana.Value.ToString("yyyy-MM-dd")
 
@@ -62,6 +65,9 @@ Public Class FormEstadisticas
 
     Private Sub ActualizarGraficoRevisionesPorSemana(sender As Object, e As EventArgs) Handles ComboBoxRevisionesPorSemana.SelectedIndexChanged, DateTimePickerDesdeRevisionesPorSemana.ValueChanged, DateTimePickerHastaRevisionesPorSemana.ValueChanged
         FormsPlotRevisionesPorSemana.Plot.Clear()
+
+        DateTimePickerHastaRevisionesPorSemana.MinDate = DateTimePickerDesdeRevisionesPorSemana.Value.AddDays(1)
+        DateTimePickerDesdeRevisionesPorSemana.MaxDate = DateTimePickerHastaRevisionesPorSemana.Value.AddDays(-1)
 
         Dim fechaInicio As String = DateTimePickerDesdeRevisionesPorSemana.Value.ToString("yyyy-MM-dd")
         Dim fechaFin As String = DateTimePickerHastaRevisionesPorSemana.Value.ToString("yyyy-MM-dd")
@@ -244,6 +250,9 @@ Public Class FormEstadisticas
     Private Sub ActualizarGraficoReparacionesPorSemana(sender As Object, e As EventArgs) Handles ComboBoxReparacionesPorSemana.SelectedIndexChanged, DateTimePickerDesdeReparacionesPorSemana.ValueChanged, DateTimePickerHastaReparacionesPorSemana.ValueChanged
         FormsPlotReparacionesPorSemana.Plot.Clear()
 
+        DateTimePickerHastaReparacionesPorSemana.MinDate = DateTimePickerDesdeReparacionesPorSemana.Value.AddDays(1)
+        DateTimePickerDesdeReparacionesPorSemana.MaxDate = DateTimePickerHastaReparacionesPorSemana.Value.AddDays(-1)
+
         Dim fechaInicio As String = DateTimePickerDesdeReparacionesPorSemana.Value.ToString("yyyy-MM-dd")
         Dim fechaFin As String = DateTimePickerHastaReparacionesPorSemana.Value.ToString("yyyy-MM-dd")
 
@@ -292,6 +301,9 @@ Public Class FormEstadisticas
 
     Private Sub ActualizarGraficoEntregasPorSemana(sender As Object, e As EventArgs) Handles ComboBoxEntregasPorSemana.SelectedIndexChanged, DateTimePickerDesdeEntregasPorSemana.ValueChanged, DateTimePickerHastaEntregasPorSemana.ValueChanged
         FormsPlotEntregasPorSemana.Plot.Clear()
+
+        DateTimePickerHastaEntregasPorSemana.MinDate = DateTimePickerDesdeEntregasPorSemana.Value.AddDays(1)
+        DateTimePickerDesdeEntregasPorSemana.MaxDate = DateTimePickerHastaEntregasPorSemana.Value.AddDays(-1)
 
         Dim fechaInicio As String = DateTimePickerDesdeEntregasPorSemana.Value.ToString("yyyy-MM-dd")
         Dim fechaFin As String = DateTimePickerHastaEntregasPorSemana.Value.ToString("yyyy-MM-dd")
@@ -344,10 +356,20 @@ Public Class FormEstadisticas
         Dim primerFechaIngreso = _controladorEstadisticas.ObtenerFechaPrimerIngreso()
 
         DateTimePickerDesdeIngresosPorSemana.Value = primerFechaIngreso
+        DateTimePickerHastaIngresosPorSemana.MinDate = DateTimePickerDesdeIngresosPorSemana.Value.AddDays(1)
+        DateTimePickerDesdeIngresosPorSemana.MaxDate = DateTimePickerHastaIngresosPorSemana.Value.AddDays(-1)
         DateTimePickerDesdeRevisionesPorSemana.Value = primerFechaIngreso
+        DateTimePickerHastaRevisionesPorSemana.MinDate = DateTimePickerDesdeRevisionesPorSemana.Value.AddDays(1)
+        DateTimePickerDesdeRevisionesPorSemana.MaxDate = DateTimePickerHastaRevisionesPorSemana.Value.AddDays(-1)
         DateTimePickerDesdeReparacionesPorSemana.Value = primerFechaIngreso
+        DateTimePickerHastaReparacionesPorSemana.MinDate = DateTimePickerDesdeReparacionesPorSemana.Value.AddDays(1)
+        DateTimePickerDesdeReparacionesPorSemana.MaxDate = DateTimePickerHastaReparacionesPorSemana.Value.AddDays(-1)
         DateTimePickerDesdeEntregasPorSemana.Value = primerFechaIngreso
+        DateTimePickerHastaEntregasPorSemana.MinDate = DateTimePickerDesdeEntregasPorSemana.Value.AddDays(1)
+        DateTimePickerDesdeEntregasPorSemana.MaxDate = DateTimePickerHastaEntregasPorSemana.Value.AddDays(-1)
         DateTimePickerDesdeFacturacionPorSemana.Value = primerFechaIngreso
+        DateTimePickerHastaFacturacionPorSemana.MinDate = DateTimePickerDesdeFacturacionPorSemana.Value.AddDays(1)
+        DateTimePickerDesdeFacturacionPorSemana.MaxDate = DateTimePickerHastaFacturacionPorSemana.Value.AddDays(-1)
 
         ActualizarSeccion()
 
@@ -408,6 +430,9 @@ Public Class FormEstadisticas
 
     Private Sub ActualizarGraficoFacturacionPorSemana(sender As Object, e As EventArgs) Handles ComboBoxFacturacionPorSemana.SelectedIndexChanged, DateTimePickerDesdeFacturacionPorSemana.ValueChanged, DateTimePickerHastaFacturacionPorSemana.ValueChanged
         FormsPlotFacturacionPorSemana.Plot.Clear()
+
+        DateTimePickerHastaFacturacionPorSemana.MinDate = DateTimePickerDesdeFacturacionPorSemana.Value.AddDays(1)
+        DateTimePickerDesdeFacturacionPorSemana.MaxDate = DateTimePickerHastaFacturacionPorSemana.Value.AddDays(-1)
 
         Dim fechaInicio As String = DateTimePickerDesdeFacturacionPorSemana.Value.ToString("yyyy-MM-dd")
         Dim fechaFin As String = DateTimePickerHastaFacturacionPorSemana.Value.ToString("yyyy-MM-dd")
