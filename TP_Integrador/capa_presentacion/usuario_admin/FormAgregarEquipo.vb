@@ -104,4 +104,10 @@ Public Class FormAgregarEquipo
 
         form.Show()
     End Sub
+
+    Private Sub BAgregarCliente_Click_1(sender As Object, e As EventArgs) Handles BAgregarCliente.Click
+        Dim form As New FormAgregarCliente
+
+        form.Show()
+    End Sub
 End Class

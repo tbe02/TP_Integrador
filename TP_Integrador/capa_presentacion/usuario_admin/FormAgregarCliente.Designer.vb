@@ -56,9 +56,10 @@ Partial Class FormAgregarCliente
         PAgregarCliente.Controls.Add(TBNombre)
         PAgregarCliente.Controls.Add(TBApellido)
         PAgregarCliente.Controls.Add(PBAgregarCliente)
-        PAgregarCliente.Location = New Point(1, 3)
+        PAgregarCliente.Location = New Point(1, 4)
+        PAgregarCliente.Margin = New Padding(3, 4, 3, 4)
         PAgregarCliente.Name = "PAgregarCliente"
-        PAgregarCliente.Size = New Size(496, 608)
+        PAgregarCliente.Size = New Size(567, 811)
         PAgregarCliente.TabIndex = 4
         ' 
         ' BAgregarCliente
@@ -68,10 +69,9 @@ Partial Class FormAgregarCliente
         BAgregarCliente.FlatStyle = FlatStyle.Flat
         BAgregarCliente.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         BAgregarCliente.ForeColor = Color.White
-        BAgregarCliente.Location = New Point(75, 542)
-        BAgregarCliente.Margin = New Padding(3, 2, 3, 2)
+        BAgregarCliente.Location = New Point(86, 723)
         BAgregarCliente.Name = "BAgregarCliente"
-        BAgregarCliente.Size = New Size(350, 50)
+        BAgregarCliente.Size = New Size(400, 67)
         BAgregarCliente.TabIndex = 6
         BAgregarCliente.Text = "Agregar cliente"
         BAgregarCliente.UseVisualStyleBackColor = False
@@ -82,9 +82,9 @@ Partial Class FormAgregarCliente
         LAgregarCliente.BackColor = Color.Transparent
         LAgregarCliente.Font = New Font("Bahnschrift Condensed", 36F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LAgregarCliente.ForeColor = Color.White
-        LAgregarCliente.Location = New Point(107, 140)
+        LAgregarCliente.Location = New Point(122, 187)
         LAgregarCliente.Name = "LAgregarCliente"
-        LAgregarCliente.Size = New Size(275, 58)
+        LAgregarCliente.Size = New Size(339, 72)
         LAgregarCliente.TabIndex = 11
         LAgregarCliente.Text = "Agregar Cliente"
         ' 
@@ -93,9 +93,9 @@ Partial Class FormAgregarCliente
         LTelefono.AutoSize = True
         LTelefono.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LTelefono.ForeColor = Color.Silver
-        LTelefono.Location = New Point(40, 466)
+        LTelefono.Location = New Point(46, 621)
         LTelefono.Name = "LTelefono"
-        LTelefono.Size = New Size(71, 20)
+        LTelefono.Size = New Size(89, 25)
         LTelefono.TabIndex = 10
         LTelefono.Text = "Telefono"
         ' 
@@ -104,9 +104,9 @@ Partial Class FormAgregarCliente
         LCorreo.AutoSize = True
         LCorreo.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LCorreo.ForeColor = Color.Silver
-        LCorreo.Location = New Point(40, 406)
+        LCorreo.Location = New Point(46, 541)
         LCorreo.Name = "LCorreo"
-        LCorreo.Size = New Size(57, 20)
+        LCorreo.Size = New Size(72, 25)
         LCorreo.TabIndex = 9
         LCorreo.Text = "Correo"
         ' 
@@ -115,9 +115,9 @@ Partial Class FormAgregarCliente
         LDNI.AutoSize = True
         LDNI.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LDNI.ForeColor = Color.Silver
-        LDNI.Location = New Point(40, 346)
+        LDNI.Location = New Point(46, 461)
         LDNI.Name = "LDNI"
-        LDNI.Size = New Size(37, 20)
+        LDNI.Size = New Size(45, 25)
         LDNI.TabIndex = 8
         LDNI.Text = "DNI"
         ' 
@@ -126,9 +126,9 @@ Partial Class FormAgregarCliente
         LNombre.AutoSize = True
         LNombre.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LNombre.ForeColor = Color.Silver
-        LNombre.Location = New Point(40, 286)
+        LNombre.Location = New Point(46, 381)
         LNombre.Name = "LNombre"
-        LNombre.Size = New Size(77, 20)
+        LNombre.Size = New Size(97, 25)
         LNombre.TabIndex = 7
         LNombre.Text = "Nombre/s"
         ' 
@@ -137,9 +137,9 @@ Partial Class FormAgregarCliente
         LApellido.AutoSize = True
         LApellido.Font = New Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         LApellido.ForeColor = Color.Silver
-        LApellido.Location = New Point(40, 226)
+        LApellido.Location = New Point(46, 301)
         LApellido.Name = "LApellido"
-        LApellido.Size = New Size(77, 20)
+        LApellido.Size = New Size(98, 25)
         LApellido.TabIndex = 6
         LApellido.Text = "Apellido/s"
         ' 
@@ -149,10 +149,9 @@ Partial Class FormAgregarCliente
         TBTelefono.BorderStyle = BorderStyle.None
         TBTelefono.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBTelefono.ForeColor = Color.Silver
-        TBTelefono.Location = New Point(189, 466)
-        TBTelefono.Margin = New Padding(3, 2, 3, 2)
+        TBTelefono.Location = New Point(216, 621)
         TBTelefono.Name = "TBTelefono"
-        TBTelefono.Size = New Size(264, 17)
+        TBTelefono.Size = New Size(302, 21)
         TBTelefono.TabIndex = 5
         ' 
         ' TBCorreo
@@ -161,10 +160,9 @@ Partial Class FormAgregarCliente
         TBCorreo.BorderStyle = BorderStyle.None
         TBCorreo.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBCorreo.ForeColor = Color.Silver
-        TBCorreo.Location = New Point(189, 406)
-        TBCorreo.Margin = New Padding(3, 2, 3, 2)
+        TBCorreo.Location = New Point(216, 541)
         TBCorreo.Name = "TBCorreo"
-        TBCorreo.Size = New Size(264, 17)
+        TBCorreo.Size = New Size(302, 21)
         TBCorreo.TabIndex = 4
         ' 
         ' TBDNI
@@ -173,10 +171,9 @@ Partial Class FormAgregarCliente
         TBDNI.BorderStyle = BorderStyle.None
         TBDNI.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBDNI.ForeColor = Color.Silver
-        TBDNI.Location = New Point(189, 346)
-        TBDNI.Margin = New Padding(3, 2, 3, 2)
+        TBDNI.Location = New Point(216, 461)
         TBDNI.Name = "TBDNI"
-        TBDNI.Size = New Size(264, 17)
+        TBDNI.Size = New Size(302, 21)
         TBDNI.TabIndex = 3
         ' 
         ' TBNombre
@@ -185,10 +182,9 @@ Partial Class FormAgregarCliente
         TBNombre.BorderStyle = BorderStyle.None
         TBNombre.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBNombre.ForeColor = Color.Silver
-        TBNombre.Location = New Point(189, 286)
-        TBNombre.Margin = New Padding(3, 2, 3, 2)
+        TBNombre.Location = New Point(216, 381)
         TBNombre.Name = "TBNombre"
-        TBNombre.Size = New Size(264, 17)
+        TBNombre.Size = New Size(302, 21)
         TBNombre.TabIndex = 2
         ' 
         ' TBApellido
@@ -197,30 +193,29 @@ Partial Class FormAgregarCliente
         TBApellido.BorderStyle = BorderStyle.None
         TBApellido.Font = New Font("Microsoft Sans Serif", 10.8F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TBApellido.ForeColor = Color.Silver
-        TBApellido.Location = New Point(189, 226)
-        TBApellido.Margin = New Padding(3, 2, 3, 2)
+        TBApellido.Location = New Point(216, 301)
         TBApellido.Name = "TBApellido"
-        TBApellido.Size = New Size(264, 17)
+        TBApellido.Size = New Size(302, 21)
         TBApellido.TabIndex = 1
         ' 
         ' PBAgregarCliente
         ' 
         PBAgregarCliente.Image = My.Resources.Resources.agregar_cliente
-        PBAgregarCliente.Location = New Point(189, 7)
+        PBAgregarCliente.Location = New Point(216, 9)
+        PBAgregarCliente.Margin = New Padding(3, 4, 3, 4)
         PBAgregarCliente.Name = "PBAgregarCliente"
-        PBAgregarCliente.Size = New Size(151, 130)
+        PBAgregarCliente.Size = New Size(173, 173)
         PBAgregarCliente.TabIndex = 0
         PBAgregarCliente.TabStop = False
         ' 
         ' FormAgregarCliente
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(48), CByte(63), CByte(105))
-        ClientSize = New Size(500, 614)
+        ClientSize = New Size(571, 819)
         Controls.Add(PAgregarCliente)
-        FormBorderStyle = FormBorderStyle.None
-        Margin = New Padding(3, 2, 3, 2)
+        FormBorderStyle = FormBorderStyle.FixedToolWindow
         Name = "FormAgregarCliente"
         Text = "FormAgregarCliente"
         PAgregarCliente.ResumeLayout(False)
